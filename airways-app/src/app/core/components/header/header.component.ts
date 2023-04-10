@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,42 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export default class HeaderComponent {
+  public formatDate = [
+    { id: 1, text: 'MM/DD/YYYY', done: 'done' },
+    { id: 2, text: 'DD/MM/YYYY', done: '' },
+    { id: 3, text: 'YYYY/DD/MM', done: '' },
+    { id: 4, text: 'YYYY/MM/DD', done: '' },
+  ];
 
+  public formatMoney = [
+    { id: 1, text: 'EUR' },
+    { id: 2, text: 'USA' },
+    { id: 3, text: 'RUB' },
+    { id: 4, text: 'PLN' },
+  ];
+
+  public valueDate = 'MM/DD/YYYY';
+
+  public valueMoney = 'EUR';
+
+  constructor(private router: Router) {}
+
+  public switchFormatDate(id: number) {
+    this.formatDate.forEach((item) => {
+      if (item.id === id) {
+        item.done = 'done';
+        this.valueDate = item.text;
+      } else item.done = '';
+    });
+  }
+
+  public switchFormatMoney(id: number) {
+    this.formatMoney.forEach((item) => {
+      if (item.id === id) this.valueMoney = item.text;
+    });
+  }
+
+  public toMainPage() {
+    this.router.navigate(['main']);
+  }
 }

@@ -1,0 +1,116 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88px;
+  background: rgba(116, 118, 122, 0.2);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    height: 100%;
+  }
+
+  &__logo {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: .5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &__img {
+      width: 38px;
+      height: 38px;
+      border: 1px solid #11397E;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      color: #11397E;
+      font-weight: 700;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    width: 700px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: capitalize;
+  }
+
+  .button {
+    background: rgba(241, 243, 246, 0.15);
+    border: 0.5px solid #CECECE;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    cursor: pointer;
+    transition: .5s;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &__format-date {
+    width: 162px;
+    gap: 15px;
+
+    &__title {
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    &__drop-down {
+      color: #ffffff;
+    }
+  }
+
+  &__format-money {
+    width: 64px;
+    color: #ffffff;
+  }
+
+  &__button-login {
+    width: 114px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    &__title {
+      color: #ffffff;
+    }
+  }
+
+  &__basket {
+    cursor: pointer;
+    border: none !important;
+    background: transparent !important;
+  }
+}

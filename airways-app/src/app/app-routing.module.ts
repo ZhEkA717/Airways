@@ -3,7 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import FlightSearchPageComponent from './main/flight-search-page/flight-search-page.component';
 
 const routes: Routes = [
-  { path: '', component: FlightSearchPageComponent },
+  {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full',
+  },
+  { path: 'main', component: FlightSearchPageComponent },
 ];
 
 @NgModule({

@@ -8,9 +8,9 @@ describe('FlightFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlightFormComponent ]
+      declarations: [FlightFormComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FlightFormComponent);
     component = fixture.componentInstance;
