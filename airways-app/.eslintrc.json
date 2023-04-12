@@ -40,7 +40,9 @@
           }
         ],
         "import/no-extraneous-dependencies": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "operator-assignment": "off",
+        "class-methods-use-this": "off"
       }
     },
     {

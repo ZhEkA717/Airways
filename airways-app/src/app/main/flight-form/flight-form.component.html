@@ -1,1 +1,102 @@
-<p>flight-form works!</p>
+<mat-card class="form">
+  <mat-radio-group class="ratio-group" [(ngModel)]="tripPosition">
+    <mat-radio-button color="primary" value="round">Round Trip</mat-radio-button>
+    <mat-radio-button color="primary" value="one">One Way</mat-radio-button>
+  </mat-radio-group>
+
+  <div class="autocomplete-group">
+    <mat-form-field
+      class="autocomplete"
+      appearance="fill"
+    >
+      <mat-label>From</mat-label>
+      <input type="text"
+             aria-label="from"
+             matInput
+             [formControl]="fromControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of options"
+          [value]="option"
+        >
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div
+      (click)="onChangeDirection()"
+      class="change-destination"
+    >
+      <img src="../../../assets/icons/left-right-arrow.svg" alt="change-destination">
+    </div>
+    <mat-form-field
+      class="autocomplete"
+      appearance="fill"
+    >
+      <mat-label>Destination</mat-label>
+      <input type="text"
+             aria-label="destination"
+             matInput
+             [formControl]="destinationControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of options"
+          [value]="option"
+        >
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="date-passenger">
+    <mat-form-field class="date" appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" >
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>
+        <small>MM/DD/YYYY – MM/DD/YYYY</small>
+      </mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-datepicker (monthSelected)="setMonthAndYear($event)">
+      </mat-datepicker>
+    </mat-form-field>
+
+    <div
+      #passenger
+      [ngClass]="{focus: isChoiceInput}"
+      (click)="onFocus($event)"
+      class="passenger"
+      appearance="fill"
+    >
+      <div [ngClass]="{active: isChoiceInput}" class="passenger__placeholder">{{placeholder}}</div>
+      <mat-icon class="arrow">arrow_drop_down</mat-icon>
+      <div *ngIf="isChoiceInput" class="passenger__options">
+        <div class="passenger__option" *ngFor="let item of passengers">
+          <div class="passenger__option__value">
+            {{item.view}}
+          </div>
+          <div class="passenger__option__buttons">
+            <button class="counter" (click)="decrement(item.id)">-</button>
+            <div>{{item.value}}</div>
+            <button class="counter" (click)="increment(item.id)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div align="end">
+    <button
+      center
+      class="button-search"
+      mat-raised-button
+      color="primary"
+    >Search</button>
+  </div>
+
+</mat-card>
