@@ -82,7 +82,8 @@
       <div *ngIf="isChoiceInput" class="passenger__options">
         <div class="passenger__option" *ngFor="let item of passengers">
           <div class="passenger__option__value">
-            {{item.view}}
+            <p class="view">{{item.view}}</p>
+            <p class="description">{{item.description}}</p>
           </div>
           <div class="passenger__option__buttons">
             <button class="counter" (click)="decrement(item.id)">-</button>

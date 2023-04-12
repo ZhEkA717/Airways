@@ -38,9 +38,24 @@ export default class FlightFormComponent implements OnInit {
   public options: string[] = ['One', 'Two', 'Three'];
 
   public passengers = [
-    { id: 0, view: 'Adults', value: 1 },
-    { id: 1, view: 'Child', value: 1 },
-    { id: 2, view: 'Infant', value: 0 },
+    {
+      id: 0,
+      view: 'Adults',
+      description: '14+ years',
+      value: 1,
+    },
+    {
+      id: 1,
+      view: 'Child',
+      escription: '2-14 years',
+      value: 1,
+    },
+    {
+      id: 2,
+      view: 'Infant',
+      description: '0-2 years',
+      value: 0,
+    },
   ];
 
   public date = new FormControl(moment());
