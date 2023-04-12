@@ -1,0 +1,26 @@
+.footer {
+  height: 92px;
+  border-top: 1px solid #D0D9DF;
+  width: 100%;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .right {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 24px;
+
+    &__icons {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}

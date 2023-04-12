@@ -7,23 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export default class HeaderComponent {
+  public valueDate = 'MM/DD/YYYY';
+
+  public valueMoney = 'EUR';
+
   public formatDate = [
-    { id: 1, text: 'MM/DD/YYYY', done: 'done' },
+    { id: 1, text: this.valueDate, done: 'done' },
     { id: 2, text: 'DD/MM/YYYY', done: '' },
     { id: 3, text: 'YYYY/DD/MM', done: '' },
     { id: 4, text: 'YYYY/MM/DD', done: '' },
   ];
 
   public formatMoney = [
-    { id: 1, text: 'EUR' },
+    { id: 1, text: this.valueMoney },
     { id: 2, text: 'USA' },
     { id: 3, text: 'RUB' },
     { id: 4, text: 'PLN' },
   ];
-
-  public valueDate = 'MM/DD/YYYY';
-
-  public valueMoney = 'EUR';
 
   constructor(private router: Router) {}
 
