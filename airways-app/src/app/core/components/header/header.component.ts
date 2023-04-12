@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import SelectsService from '../../services/selects.service';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,10 @@ export default class HeaderComponent {
     { id: 4, text: 'PLN' },
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private selectService: SelectsService,
+  ) {}
 
   public switchFormatDate(id: number) {
     this.formatDate.forEach((item) => {
@@ -34,6 +38,7 @@ export default class HeaderComponent {
         this.valueDate = item.text;
       } else item.done = '';
     });
+    this.selectService.setFormateDate(this.valueDate);
   }
 
   public switchFormatMoney(id: number) {

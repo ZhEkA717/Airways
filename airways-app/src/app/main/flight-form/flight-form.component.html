@@ -58,7 +58,11 @@
         <input matEndDate placeholder="End date">
       </mat-date-range-input>
       <mat-hint>
-        <small>MM/DD/YYYY – MM/DD/YYYY</small>
+        <small>
+          {{selectService.formateDate$ | async}}
+          -
+          {{selectService.formateDate$ | async}}
+        </small>
       </mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>

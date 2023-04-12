@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as _moment from 'moment';
 import { Moment } from 'moment';
+import SelectsService from 'src/app/core/services/selects.service';
 
 const moment = _moment;
 
-export const MY_FORMATS = {
+export const format = {
   display: {
     dateInput: 'MM/DD/YYYY',
-    monthYearLabel: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
   },
 };
 @Component({
@@ -23,10 +25,10 @@ export const MY_FORMATS = {
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_DATE_FORMATS, useValue: format },
   ],
 })
-export default class FlightFormComponent {
+export default class FlightFormComponent implements OnInit {
   public tripPosition: 'round' | 'one' = 'round';
 
   public fromControl = new FormControl('');
@@ -46,6 +48,14 @@ export default class FlightFormComponent {
   public isChoiceInput = false;
 
   public placeholder = 'Passenger';
+
+  constructor(public selectService: SelectsService) {}
+
+  ngOnInit(): void {
+    this.selectService.formateDate$.subscribe((formatDate) => {
+      format.display.dateInput = formatDate;
+    });
+  }
 
   onChangeDirection() {
     const fromValue = this.fromControl.value;
