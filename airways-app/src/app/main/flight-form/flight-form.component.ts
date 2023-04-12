@@ -47,7 +47,7 @@ export default class FlightFormComponent implements OnInit {
     {
       id: 1,
       view: 'Child',
-      escription: '2-14 years',
+      description: '2-14 years',
       value: 1,
     },
     {

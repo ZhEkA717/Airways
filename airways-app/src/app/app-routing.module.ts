@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import FlightSearchPageComponent from './main/flight-search-page/flight-search-page.component';
 
 const routes: Routes = [
   {
@@ -8,7 +7,11 @@ const routes: Routes = [
     redirectTo: 'main',
     pathMatch: 'full',
   },
-  { path: 'main', component: FlightSearchPageComponent },
+  {
+    path: 'main',
+    loadChildren: () => import('./main/main.module').then((mainPage) => mainPage.default),
+    title: 'main',
+  },
 ];
 
 @NgModule({

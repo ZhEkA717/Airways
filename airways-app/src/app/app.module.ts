@@ -7,8 +7,6 @@ import AppComponent from './app.component';
 import CoreModule from './core/core.module';
 import LoginComponent from './auth/login/login.component';
 import RegistrationComponent from './auth/registration/registration.component';
-import FlightFormComponent from './main/flight-form/flight-form.component';
-import FlightSearchPageComponent from './main/flight-search-page/flight-search-page.component';
 import SharedModule from './shared/shared.module';
 
 @NgModule({
@@ -16,8 +14,6 @@ import SharedModule from './shared/shared.module';
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    FlightFormComponent,
-    FlightSearchPageComponent,
   ],
   imports: [
     BrowserModule,
