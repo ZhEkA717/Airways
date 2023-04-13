@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import SelectsService from '../services/selects.service';
+import SelectsService from '../../services/selects.service';
 
 @Component({
   selector: 'app-select-passengers',

@@ -54,28 +54,8 @@
     </mat-form-field>
   </div>
   <div class="date-passenger">
-    <mat-form-field class="date" appearance="fill">
-      <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input
-        [rangePicker]="picker"
-      >
-        <input formControlName="startDate" matStartDate placeholder="Start date" >
-        <input formControlName="endDate" matEndDate placeholder="End date">
-      </mat-date-range-input>
-      <mat-hint>
-        <small>
-          {{rangeDateService.formateDate$ | async}}
-          -
-          {{rangeDateService.formateDate$ | async}}
-        </small>
-      </mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-      <mat-datepicker (monthSelected)="setMonthAndYear($event)">
-      </mat-datepicker>
-    </mat-form-field>
+    <app-range-date></app-range-date>
     <app-select-passengers></app-select-passengers>
-
   </div>
 
   <div align="end">
@@ -84,7 +64,9 @@
       class="button-search"
       mat-raised-button
       color="primary"
-      [disabled]="form.invalid || !selectService.isValidate"
+      [disabled]="form.invalid
+        || !selectService.isValidate
+        || rangeDateService.form.invalid"
     >Search</button>
   </div>
 

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -14,4 +16,10 @@ export default class RangeDateService {
   public setFormateDate(newFormateDate: string) {
     this.formateDate.next(newFormateDate);
   }
+
+  public form = new FormGroup({
+    startDate: new FormControl(null, Validators.required),
+    endDate: new FormControl(null, Validators.required),
+    date: new FormControl(moment(), Validators.required),
+  });
 }
