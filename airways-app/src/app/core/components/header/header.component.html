@@ -15,13 +15,13 @@
       [matMenuTriggerFor]="menuFormatDate"
       class="button header__format-date"
     >
-      <span class="header__format-date__title">{{valueDate}}</span>
+      <span class="header__format-date__title">{{formatService.valueDate}}</span>
       <mat-icon class="header__format-date__drop-down">arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menuFormatDate="matMenu">
         <button
-          *ngFor="let date of formatDate"
-          (click)="switchFormatDate(date.id)"
+          *ngFor="let date of formatService.formatDate"
+          (click)="formatService.switchFormatDate(date.id)"
           mat-menu-item
           style=" display: flex; flex-direction: row-reverse;"
         >
@@ -34,12 +34,12 @@
     <button
       [matMenuTriggerFor]="menuFormatMoney"
       class="button header__format-money"
-    >{{valueMoney}}</button>
+    >{{formatService.valueMoney}}</button>
     <mat-menu #menuFormatMoney="matMenu">
       <button
-        *ngFor="let money of formatMoney"
+        *ngFor="let money of formatService.formatMoney"
         mat-menu-item
-        (click)="switchFormatMoney(money.id)"
+        (click)="formatService.switchFormatMoney(money.id)"
       >{{money.text}}</button>
     </mat-menu>
     <button class="button header__button-login">
