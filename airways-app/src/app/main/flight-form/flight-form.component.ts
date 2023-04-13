@@ -16,4 +16,11 @@ export default class FlightFormComponent {
     public rangeDateService: RangeDateService,
     public autocompleteService: AutocompleteService,
   ) {}
+
+  hideDarkSpace(event: MouseEvent) {
+    const el = event.currentTarget as HTMLElement;
+    if (el.classList.contains('dark-background')) {
+      this.selectService.isChoiceInput = false;
+    }
+  }
 }
