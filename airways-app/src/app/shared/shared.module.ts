@@ -15,12 +15,14 @@ import { MatButtonModule } from '@angular/material/button';
 import SelectPassengersComponent from './components/select-passengers/select-passengers.component';
 import SelectValidateDirective from './directives/select-validate.directive';
 import RangeDateComponent from './components/range-date/range-date.component';
+import AutocompleteGroupComponent from './components/autocomplete-group/autocomplete-group.component';
 
 @NgModule({
   declarations: [
     SelectPassengersComponent,
     RangeDateComponent,
     SelectValidateDirective,
+    AutocompleteGroupComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import RangeDateComponent from './components/range-date/range-date.component';
     MatButtonModule,
     SelectPassengersComponent,
     RangeDateComponent,
+    AutocompleteGroupComponent,
   ],
 })
 export default class SharedModule { }

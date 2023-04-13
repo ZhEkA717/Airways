@@ -1,0 +1,48 @@
+<mat-form-field
+  [formGroup]="autocompleteService.form"
+  class="autocomplete"
+  appearance="fill"
+>
+<mat-label>From</mat-label>
+<input type="text"
+       aria-label="from"
+       matInput
+       formControlName="from"
+       [matAutocomplete]="auto">
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option
+    *ngFor="let option of autocompleteService.options"
+    [value]="option"
+  >
+    {{option}}
+  </mat-option>
+</mat-autocomplete>
+</mat-form-field>
+<div
+  *ngIf="directionVisibility"
+  (click)="autocompleteService.onChangeDirection()"
+  class="change-destination"
+>
+<img src="../../../assets/icons/left-right-arrow.svg" alt="change-destination">
+</div>
+<mat-form-field
+  [formGroup]="autocompleteService.form"
+  class="autocomplete"
+  appearance="fill"
+>
+<mat-label>Destination</mat-label>
+<input type="text"
+       aria-label="destination"
+       matInput
+       formControlName="destination"
+       [matAutocomplete]="auto">
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option
+    *ngFor="let option of autocompleteService.options"
+    [value]="option"
+  >
+    {{option}}
+  </mat-option>
+</mat-autocomplete>
+</mat-form-field>
+

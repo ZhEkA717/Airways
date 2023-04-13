@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import AutocompleteService from 'src/app/shared/services/autocomplete.service';
 import RangeDateService from 'src/app/shared/services/range-date.service';
 import SelectsService from 'src/app/shared/services/selects.service';
 
@@ -9,23 +9,11 @@ import SelectsService from 'src/app/shared/services/selects.service';
   styleUrls: ['./flight-form.component.scss'],
 })
 export default class FlightFormComponent {
-  public form = new FormGroup({
-    from: new FormControl('', Validators.required),
-    destination: new FormControl('', Validators.required),
-    ratio: new FormControl('round'),
-  });
-
-  public options: string[] = ['One', 'Two', 'Three'];
+  tripWay: 'round' | 'one' = 'round';
 
   constructor(
     public selectService: SelectsService,
     public rangeDateService: RangeDateService,
+    public autocompleteService: AutocompleteService,
   ) {}
-
-  onChangeDirection() {
-    const fromValue = this.form.get('from')?.value;
-    const destinationValue = this.form.get('destination')?.value;
-    this.form.get('from')?.setValue(destinationValue as string);
-    this.form.get('destination')?.setValue(fromValue as string);
-  }
 }

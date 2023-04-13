@@ -1,58 +1,12 @@
-<mat-card
-  [formGroup]="form"
-  class="form"
->
-  <mat-radio-group class="ratio-group" formControlName="ratio">
+<mat-card class="form">
+  <mat-radio-group class="ratio-group" [(ngModel)]="tripWay">
     <mat-radio-button color="primary" value="round">Round Trip</mat-radio-button>
     <mat-radio-button color="primary" value="one">One Way</mat-radio-button>
   </mat-radio-group>
-
-  <div class="autocomplete-group">
-    <mat-form-field
-      class="autocomplete"
-      appearance="fill"
-    >
-      <mat-label>From</mat-label>
-      <input type="text"
-             aria-label="from"
-             matInput
-             formControlName="from"
-             [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let option of options"
-          [value]="option"
-        >
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <div
-      (click)="onChangeDirection()"
-      class="change-destination"
-    >
-      <img src="../../../assets/icons/left-right-arrow.svg" alt="change-destination">
-    </div>
-    <mat-form-field
-      class="autocomplete"
-      appearance="fill"
-    >
-      <mat-label>Destination</mat-label>
-      <input type="text"
-             aria-label="destination"
-             matInput
-             formControlName="destination"
-             [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let option of options"
-          [value]="option"
-        >
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
+  <app-autocomplete-group
+    class="autocomplete-group"
+    [directionVisibility]="true"
+  ></app-autocomplete-group>
   <div class="date-passenger">
     <app-range-date></app-range-date>
     <app-select-passengers></app-select-passengers>
@@ -64,9 +18,9 @@
       class="button-search"
       mat-raised-button
       color="primary"
-      [disabled]="form.invalid
-        || !selectService.isValidate
-        || rangeDateService.form.invalid"
+      [disabled]="autocompleteService.form.invalid
+        || rangeDateService.form.invalid
+        || !selectService.isValidate"
     >Search</button>
   </div>
 
