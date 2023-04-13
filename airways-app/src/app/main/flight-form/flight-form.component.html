@@ -18,6 +18,7 @@
       class="button-search"
       mat-raised-button
       color="primary"
+      (click)="submit()"
       [disabled]="autocompleteService.form.invalid
         || rangeDateService.form.invalid
         || !selectService.isValidate"
