@@ -6,8 +6,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export default class AutocompleteService {
   public form = new FormGroup({
-    from: new FormControl('', Validators.required),
-    destination: new FormControl('', Validators.required),
+    from: new FormControl('', [
+      Validators.required,
+    ]),
+    destination: new FormControl('', [
+      Validators.required,
+    ]),
   });
 
   public options: string[] = ['One', 'Two', 'Three'];

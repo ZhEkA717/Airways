@@ -22,3 +22,17 @@
   <mat-datepicker (monthSelected)="setMonthAndYear($event)">
   </mat-datepicker>
 </mat-form-field>
+<div
+  class="error-message"
+  *ngIf="(rangeDateService.form.get('endDate')?.invalid &&
+  rangeDateService.form.get('endDate')?.touched) ||
+  (rangeDateService.form.get('startDate')?.touched &&
+  rangeDateService.form.get('endDate')?.touched)"
+>
+  <small *ngIf="rangeDateService.form.get('endDate')?.errors?.['required']">
+    Please enter a date range
+  </small>
+  <small *ngIf="rangeDateService.form.get('startDate')?.errors?.['validityDate']">
+    The date is invalid
+  </small>
+</div>
