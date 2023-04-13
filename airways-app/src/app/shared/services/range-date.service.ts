@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export default class SelectsService {
+export default class RangeDateService {
   private defaultFormateDate = 'MM/DD/YYYY';
 
   private formateDate = new BehaviorSubject<string>(this.defaultFormateDate);

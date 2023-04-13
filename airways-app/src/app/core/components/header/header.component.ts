@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import SelectsService from '../../services/selects.service';
+import RangeDateService from 'src/app/shared/services/range-date.service';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +28,7 @@ export default class HeaderComponent {
 
   constructor(
     private router: Router,
-    private selectService: SelectsService,
+    private rangeDateService: RangeDateService,
   ) {}
 
   public switchFormatDate(id: number) {
@@ -38,7 +38,7 @@ export default class HeaderComponent {
         this.valueDate = item.text;
       } else item.done = '';
     });
-    this.selectService.setFormateDate(this.valueDate);
+    this.rangeDateService.setFormateDate(this.valueDate);
   }
 
   public switchFormatMoney(id: number) {

@@ -1,5 +1,8 @@
-<mat-card class="form">
-  <mat-radio-group class="ratio-group" [(ngModel)]="tripPosition">
+<mat-card
+  [formGroup]="form"
+  class="form"
+>
+  <mat-radio-group class="ratio-group" formControlName="ratio">
     <mat-radio-button color="primary" value="round">Round Trip</mat-radio-button>
     <mat-radio-button color="primary" value="one">One Way</mat-radio-button>
   </mat-radio-group>
@@ -13,7 +16,7 @@
       <input type="text"
              aria-label="from"
              matInput
-             [formControl]="fromControl"
+             formControlName="from"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option
@@ -38,7 +41,7 @@
       <input type="text"
              aria-label="destination"
              matInput
-             [formControl]="destinationControl"
+             formControlName="destination"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option
@@ -53,15 +56,17 @@
   <div class="date-passenger">
     <mat-form-field class="date" appearance="fill">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date" >
-        <input matEndDate placeholder="End date">
+      <mat-date-range-input
+        [rangePicker]="picker"
+      >
+        <input formControlName="startDate" matStartDate placeholder="Start date" >
+        <input formControlName="endDate" matEndDate placeholder="End date">
       </mat-date-range-input>
       <mat-hint>
         <small>
-          {{selectService.formateDate$ | async}}
+          {{rangeDateService.formateDate$ | async}}
           -
-          {{selectService.formateDate$ | async}}
+          {{rangeDateService.formateDate$ | async}}
         </small>
       </mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -69,30 +74,8 @@
       <mat-datepicker (monthSelected)="setMonthAndYear($event)">
       </mat-datepicker>
     </mat-form-field>
+    <app-select-passengers></app-select-passengers>
 
-    <div
-      #passenger
-      [ngClass]="{focus: isChoiceInput}"
-      (click)="onFocus($event)"
-      class="passenger"
-      appearance="fill"
-    >
-      <div [ngClass]="{active: isChoiceInput}" class="passenger__placeholder">{{placeholder}}</div>
-      <mat-icon class="arrow">arrow_drop_down</mat-icon>
-      <div *ngIf="isChoiceInput" class="passenger__options">
-        <div class="passenger__option" *ngFor="let item of passengers">
-          <div class="passenger__option__value">
-            <p class="view">{{item.view}}</p>
-            <p class="description">{{item.description}}</p>
-          </div>
-          <div class="passenger__option__buttons">
-            <button class="counter" (click)="decrement(item.id)">-</button>
-            <div>{{item.value}}</div>
-            <button class="counter" (click)="increment(item.id)">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div align="end">
@@ -101,6 +84,7 @@
       class="button-search"
       mat-raised-button
       color="primary"
+      [disabled]="form.invalid || !selectService.isValidate"
     >Search</button>
   </div>
 

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as _moment from 'moment';
 import { Moment } from 'moment';
-import SelectsService from 'src/app/core/services/selects.service';
+import RangeDateService from 'src/app/shared/services/range-date.service';
+import SelectsService from 'src/app/shared/services/selects.service';
 
 const moment = _moment;
 
-export const format = {
+export const MY_FORMAT = {
   display: {
     dateInput: 'MM/DD/YYYY',
     monthYearLabel: 'MMM YYYY',
@@ -25,102 +26,43 @@ export const format = {
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
-    { provide: MAT_DATE_FORMATS, useValue: format },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
   ],
 })
 export default class FlightFormComponent implements OnInit {
-  public tripPosition: 'round' | 'one' = 'round';
-
-  public fromControl = new FormControl('');
-
-  public destinationControl = new FormControl('');
+  public form = new FormGroup({
+    from: new FormControl('', Validators.required),
+    destination: new FormControl('', Validators.required),
+    startDate: new FormControl(null, Validators.required),
+    endDate: new FormControl(null, Validators.required),
+    date: new FormControl(moment(), Validators.required),
+    ratio: new FormControl('round'),
+  });
 
   public options: string[] = ['One', 'Two', 'Three'];
 
-  public passengers = [
-    {
-      id: 0,
-      view: 'Adults',
-      description: '14+ years',
-      value: 1,
-    },
-    {
-      id: 1,
-      view: 'Child',
-      description: '2-14 years',
-      value: 1,
-    },
-    {
-      id: 2,
-      view: 'Infant',
-      description: '0-2 years',
-      value: 0,
-    },
-  ];
-
-  public date = new FormControl(moment());
-
-  public isChoiceInput = false;
-
-  public placeholder = 'Passenger';
-
-  constructor(public selectService: SelectsService) {}
+  constructor(
+    public rangeDateService: RangeDateService,
+    public selectService: SelectsService,
+  ) {}
 
   ngOnInit(): void {
-    this.selectService.formateDate$.subscribe((formatDate) => {
-      format.display.dateInput = formatDate;
+    this.rangeDateService.formateDate$.subscribe((formatDate) => {
+      MY_FORMAT.display.dateInput = formatDate;
     });
   }
 
   onChangeDirection() {
-    const fromValue = this.fromControl.value;
-    const destinationValue = this.destinationControl.value;
-    this.fromControl.setValue(destinationValue);
-    this.destinationControl.setValue(fromValue);
+    const fromValue = this.form.get('from')?.value;
+    const destinationValue = this.form.get('destination')?.value;
+    this.form.get('from')?.setValue(destinationValue as string);
+    this.form.get('destination')?.setValue(fromValue as string);
   }
 
   setMonthAndYear(normalizedMonthAndYear: Moment) {
-    const ctrlValue = this.date.value;
+    const ctrlValue = this.form.get('date')?.value;
     ctrlValue?.month(normalizedMonthAndYear.month());
     ctrlValue?.year(normalizedMonthAndYear.year());
-    this.date.setValue(ctrlValue);
-  }
-
-  onFocus(event: Event) {
-    const el = event.target as HTMLElement;
-    const elCurr = event.currentTarget as HTMLElement;
-    if (elCurr.classList.contains('passenger')
-      && !el.classList.contains('counter')) {
-      this.isChoiceInput = !this.isChoiceInput;
-    }
-    this.updatePlaceholder();
-  }
-
-  increment(num: number) {
-    if (this.passengers[num].value < 10) {
-      this.passengers[num].value = this.passengers[num].value + 1;
-      this.updatePlaceholder();
-    }
-  }
-
-  decrement(num: number) {
-    if (this.passengers[num].value !== 0) {
-      this.passengers[num].value = this.passengers[num].value - 1;
-      this.updatePlaceholder();
-    }
-  }
-
-  updatePlaceholder() {
-    this.placeholder = '';
-    this.passengers.forEach((item, i, arr) => {
-      if (item.value > 0) this.placeholder += `${item.value} ${item.view}, `;
-      if (arr.length - 1 === i) this.placeholder = this.placeholder.slice(0, -2);
-      if (!this.isChoiceInput) this.placeholder = this.cutPlaceholder(this.placeholder, 20);
-    });
-    if (!this.passengers.reduce((start, item) => start + item.value, 0)) this.placeholder = 'Passenger';
-  }
-
-  cutPlaceholder(text: string, num: number) {
-    return text.length > num ? `${text.slice(0, num)}...` : text;
+    this.form.get('date')?.setValue(ctrlValue as Moment);
   }
 }

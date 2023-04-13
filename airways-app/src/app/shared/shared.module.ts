@@ -12,9 +12,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import SelectPassengersComponent from './select-passengers/select-passengers.component';
+import SelectValidateDirective from './directives/select-validate.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SelectPassengersComponent,
+    SelectValidateDirective,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -45,6 +50,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    SelectPassengersComponent,
   ],
 })
 export default class SharedModule { }
