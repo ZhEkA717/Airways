@@ -55,6 +55,12 @@ export default class SelectsService {
     return !!this.passengers.filter((item) => item.value > 0).length;
   }
 
+  touched() {
+    if (this.count < 2) {
+      this.count += 1;
+    }
+  }
+
   public updatePlaceholder() {
     this.placeholder = '';
     this.passengers.forEach((item, i, arr) => {

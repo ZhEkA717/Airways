@@ -28,7 +28,7 @@ export default class SelectValidateDirective {
     this.r.setStyle(this.el.nativeElement, 'borderColor', this.requiredSelect());
     this.r.setStyle(this.el.nativeElement.firstChild, 'color', this.requiredSelect());
 
-    if (this.selectService.count < 2) this.selectService.count += 1;
+    this.selectService.touched();
   }
 
   requiredSelect() {
