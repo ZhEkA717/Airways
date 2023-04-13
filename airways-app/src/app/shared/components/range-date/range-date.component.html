@@ -26,7 +26,7 @@
   class="error-message"
   *ngIf="(rangeDateService.form.get('endDate')?.invalid &&
   rangeDateService.form.get('endDate')?.touched) ||
-  (rangeDateService.form.get('startDate')?.touched &&
+  (rangeDateService.form.get('startDate')?.invalid &&
   rangeDateService.form.get('endDate')?.touched)"
 >
   <small *ngIf="rangeDateService.form.get('endDate')?.errors?.['required']">

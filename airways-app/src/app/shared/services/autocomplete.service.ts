@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import MatchFieldValidator from '../validators/autocomplete.validator';
 
 @Injectable({
   providedIn: 'root',
 })
 export default class AutocompleteService {
   public form = new FormGroup({
-    from: new FormControl('', [
-      Validators.required,
-    ]),
-    destination: new FormControl('', [
-      Validators.required,
+    from: new FormControl(''),
+    destination: new FormControl(''),
+  }, {
+    validators: Validators.compose([
+      MatchFieldValidator.validFieldMatch('from', 'destination'),
     ]),
   });
 

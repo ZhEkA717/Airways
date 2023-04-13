@@ -45,4 +45,32 @@
   </mat-option>
 </mat-autocomplete>
 </mat-form-field>
+<div
+  class="error-message"
+  *ngIf="autocompleteService.form.get('from')?.invalid &&
+  autocompleteService.form.get('from')?.touched"
+>
+  <small *ngIf="autocompleteService.form.get('from')?.errors?.['required']">
+    {{autocompleteService.form.get('from')?.errors?.['requiredFrom']}}
+  </small>
+</div>
+<div
+  class="error-message"
+  *ngIf="autocompleteService.form.get('destination')?.invalid &&
+  autocompleteService.form.get('destination')?.touched"
+>
+  <small *ngIf="autocompleteService.form.get('destination')?.errors?.['required']">
+    {{autocompleteService.form.get('destination')?.errors?.['requiredDestination']}}
+  </small>
+</div>
+<div
+  class="error-message"
+  *ngIf="autocompleteService.form.invalid &&
+  autocompleteService.form.touched"
+>
+  <small *ngIf="autocompleteService.form.get('destination')?.errors?.['equalFields']">
+    {{autocompleteService.form.get('destination')?.errors?.['errorMessage']}}
+  </small>
+</div>
+
 
