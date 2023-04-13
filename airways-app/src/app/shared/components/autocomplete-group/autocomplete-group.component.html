@@ -8,8 +8,8 @@
        aria-label="from"
        matInput
        formControlName="from"
-       [matAutocomplete]="auto">
-<mat-autocomplete #auto="matAutocomplete">
+       [matAutocomplete]="from">
+<mat-autocomplete #from="matAutocomplete">
   <mat-option
     *ngFor="let option of autocompleteService.options"
     [value]="option"
@@ -35,8 +35,8 @@
        aria-label="destination"
        matInput
        formControlName="destination"
-       [matAutocomplete]="auto">
-<mat-autocomplete #auto="matAutocomplete">
+       [matAutocomplete]="destination">
+<mat-autocomplete #destination="matAutocomplete">
   <mat-option
     *ngFor="let option of autocompleteService.options"
     [value]="option"
@@ -65,8 +65,6 @@
 </div>
 <div
   class="error-message"
-  *ngIf="autocompleteService.form.invalid &&
-  autocompleteService.form.touched"
 >
   <small *ngIf="autocompleteService.form.get('destination')?.errors?.['equalFields']">
     {{autocompleteService.form.get('destination')?.errors?.['errorMessage']}}
