@@ -37,3 +37,11 @@
   </div>
 </div>
 </div>
+<div
+  class="error-message"
+  *ngIf="!selectService.isChoiceInput && selectService.count === 2"
+>
+  <small *ngIf="!selectService.isValidate">
+    Please select passengers
+  </small>
+</div>

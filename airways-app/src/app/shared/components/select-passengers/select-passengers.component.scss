@@ -101,3 +101,15 @@
     }
   }
 }
+
+.error-message {
+  margin-left: 18px;
+
+  small {
+    margin-top: 4px;
+    display: block;
+    color: red;
+    font-size: 12px;
+    position: relative;
+  }
+}

@@ -12,6 +12,8 @@ export default class SelectsService {
 
   public isValidate = false;
 
+  public count = 0;
+
   public passengers = [
     {
       id: 0,
