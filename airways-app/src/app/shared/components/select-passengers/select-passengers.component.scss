@@ -1,3 +1,5 @@
+@import '../../../../stylings/variables';
+
 :host {
   width: 40%;
   height: 56px;
@@ -10,26 +12,26 @@
   position: relative;
   width: 100%;
   height: 56px;
-  background: whitesmoke;
+  background: $base-hover-color;
   border-radius: 3px 3px 0 0;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid $select-border-color;
 
   &.focus {
-    border-bottom: 2px solid #3f51b5;
-    background: rgb(235, 231, 231);
+    border-bottom: 2px solid $base-primary-color;
+    background: $select-focus-color;
 
     &:hover {
-      border-bottom: 2px solid #3f51b5;
+      border-bottom: 2px solid $base-primary-color;
     }
   }
 
   &:hover {
-    border-bottom: 0.5px solid rgb(12, 12, 12);
-    background: rgb(235, 231, 231);
+    border-bottom: 0.5px solid $dark-color;
+    background: $select-hover-color;
   }
 
   &__placeholder {
-    color: grey;
+    color: $text-average-color;
     padding-top: 20px;
     padding-left: 16px;
     transition: .1s;
@@ -40,7 +42,7 @@
     &.active {
       font-size: 12px;
       font-weight: 400;
-      color: #3f51b5;
+      color: $base-primary-color;
       padding-top: 10px;
     }
   }
@@ -56,9 +58,9 @@
     position: absolute;
     top: 57px;
     width: 100%;
-    background: #fff;
+    background: $light-color;
     z-index: 100;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: #00000029 0px 1px 4px;
   }
 
   &__option {
@@ -73,11 +75,11 @@
     }
 
     .view {
-      color: #3f51b5;
+      color: $base-primary-color;
     }
 
     .description {
-      color: grey;
+      color: $text-average-color;
       font-size: 12px;
     }
 
@@ -98,7 +100,7 @@
         cursor: pointer;
 
         &:hover{
-          background: rgb(238, 231, 231);
+          background: $base-hover-color;
         }
       }
     }
@@ -111,7 +113,7 @@
   small {
     margin-top: 4px;
     display: block;
-    color: red;
+    color: $text-error-color;
     font-size: 12px;
     position: relative;
   }

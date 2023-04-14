@@ -1,3 +1,5 @@
+@import '../../../../stylings/variables';
+
 :host {
   width: 60%;
   @media(max-width:610px) {
@@ -15,7 +17,7 @@
   small {
     margin-top: 4px;
     display: block;
-    color: red;
+    color: $text-error-color;
     font-size: 12px;
     position: relative;
   }

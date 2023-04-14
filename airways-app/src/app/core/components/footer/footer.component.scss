@@ -1,6 +1,14 @@
+@import '../../../../stylings/variables';
+
+:host {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 0;
+}
+
 .footer {
   height: 92px;
-  border-top: 1px solid #D0D9DF;
+  border-top: 1px solid $footer-border-color;
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
