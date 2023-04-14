@@ -50,9 +50,16 @@
     }
   }
 
+  .wrapper-menu {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: end;
+  }
+
   &__menu {
     display: flex;
-    width: 700px;
+    width: 480px;
     height: 100%;
     justify-content: space-between;
     align-items: center;
