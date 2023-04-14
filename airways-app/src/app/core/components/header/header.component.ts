@@ -8,6 +8,8 @@ import FormatService from '../../services/format.service';
   styleUrls: ['./header.component.scss'],
 })
 export default class HeaderComponent {
+  public menuShow = false;
+
   constructor(
     private router: Router,
     public formatService: FormatService,

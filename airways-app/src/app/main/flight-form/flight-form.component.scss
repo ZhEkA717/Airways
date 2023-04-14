@@ -1,15 +1,40 @@
-:host {
-  display: block;
-  position: absolute;
-  z-index: 2;
-  top: calc(10% + 88px);
-  left: 20%;
-}
-
 .form {
   width: 580px;
   padding-left: 24px;
   padding-right: 24px;
+  margin-bottom: 12px;
+
+  @media(max-width:625px) {
+    width: 540px;
+  }
+
+  @media(max-width:580px) {
+    width: 500px;
+  }
+
+  @media(max-width:540px) {
+    width: 460px;
+  }
+
+  @media(max-width:490px) {
+    width: 400px;
+  }
+
+  @media(max-width:440px) {
+    width: 360px;
+  }
+
+  @media(max-width:390px) {
+    width: 320px;
+  }
+
+  @media(max-width:370px) {
+    width: 320px;
+  }
+
+  @media(max-width:335px) {
+    width: 300px;
+  }
 
   .ratio-group {
     margin-top: 14px;
@@ -17,6 +42,9 @@
     height: 48px;
     display: flex;
     justify-content: space-between;
+    @media(max-width:440px) {
+      width: 100%;
+    }
   }
 
   .autocomplete-group {
@@ -31,6 +59,9 @@
     display: flex;
     gap: 20px;
     width: 100%;
+    @media(max-width:610px) {
+      flex-direction: column;
+    }
   }
 
   .button-search {

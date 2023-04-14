@@ -1,5 +1,8 @@
 :host {
   width: 60%;
+  @media(max-width:610px) {
+    width: 100%;
+  }
 }
 
 .date {

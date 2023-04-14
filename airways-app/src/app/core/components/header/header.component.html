@@ -9,8 +9,19 @@
     </div>
     <div class="header__logo__title">airways</div>
   </div>
-  <div class="header__menu">
-    <div class="header__title">Book flights</div>
+  <div
+    [ngClass]="{showMenu: menuShow}"
+    class="header__menu"
+  >
+    <div class="header__title">
+      <div>Book flights</div>
+      <button
+      (click)="menuShow = !menuShow"
+      class="button button_menu"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    </div>
     <button
       [matMenuTriggerFor]="menuFormatDate"
       class="button header__format-date"
@@ -49,12 +60,20 @@
       >
       <div class="header__button-login__title">Sign in</div>
     </button>
+  </div>
+  <div class="button-wrapper">
     <button class="button header__basket">
       <img
         class="header__basket__img"
         src="../../../../assets/icons/basket.svg"
         alt="basket"
       >
+    </button>
+    <button
+      (click)="menuShow = !menuShow"
+      class="button button_menu"
+    >
+      <mat-icon>menu</mat-icon>
     </button>
   </div>
 </div>

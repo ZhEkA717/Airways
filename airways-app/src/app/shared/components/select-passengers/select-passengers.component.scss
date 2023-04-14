@@ -1,6 +1,9 @@
 :host {
   width: 40%;
   height: 56px;
+  @media(max-width:610px) {
+   width: 100%;
+  }
 }
 
 .passenger {

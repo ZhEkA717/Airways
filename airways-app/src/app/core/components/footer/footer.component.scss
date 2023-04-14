@@ -2,6 +2,8 @@
   height: 92px;
   border-top: 1px solid #D0D9DF;
   width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
 
   .container {
     display: flex;
@@ -10,11 +12,25 @@
     height: 100%;
   }
 
+  .left {
+    &__description {
+      @media(max-width:460px) {
+        display: none;
+      }
+    }
+  }
+
   .right {
     display: flex;
     height: 100%;
     align-items: center;
     gap: 24px;
+
+    &__description {
+      @media(max-width:710px) {
+        display: none;
+      }
+    }
 
     &__icons {
       display: flex;
@@ -24,3 +40,9 @@
     }
   }
 }
+
+
+
+
+
+
