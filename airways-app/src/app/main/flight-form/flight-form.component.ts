@@ -21,6 +21,7 @@ export default class FlightFormComponent {
   hideDarkSpace() {
     this.selectService.touched();
     this.selectService.isChoiceInput = false;
+    this.selectService.updatePlaceholder();
   }
 
   submit() {
