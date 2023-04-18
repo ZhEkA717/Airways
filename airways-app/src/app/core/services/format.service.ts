@@ -4,19 +4,15 @@ import { saveDateFormat, saveMoneyFormat } from 'src/app/redux/actions/settings.
 
 @Injectable()
 export default class FormatService {
-  public valueDate = 'MM/DD/YYYY';
-
-  public valueMoney = 'EUR';
-
   public formatDate = [
-    { id: 1, text: this.valueDate, done: 'done' },
+    { id: 1, text: 'MM/DD/YYYY', done: 'done' },
     { id: 2, text: 'DD/MM/YYYY', done: '' },
     { id: 3, text: 'YYYY/DD/MM', done: '' },
     { id: 4, text: 'YYYY/MM/DD', done: '' },
   ];
 
   public formatMoney = [
-    { id: 1, text: this.valueMoney },
+    { id: 1, text: 'EUR' },
     { id: 2, text: 'USA' },
     { id: 3, text: 'RUB' },
     { id: 4, text: 'PLN' },
@@ -30,15 +26,14 @@ export default class FormatService {
     this.formatDate.forEach((item) => {
       if (item.id === id) {
         item.done = 'done';
-        this.valueDate = item.text;
+        this.store.dispatch(saveDateFormat({ dateFormat: item.text }));
       } else item.done = '';
     });
-    this.store.dispatch(saveDateFormat({ dateFormat: this.valueDate }));
   }
 
   public switchFormatMoney(id: number) {
-    this.valueMoney = this.formatMoney
+    const formatMoney = this.formatMoney
       .find((item) => item.id === id)?.text as string;
-    this.store.dispatch(saveMoneyFormat({ moneyFormat: this.valueMoney }));
+    this.store.dispatch(saveMoneyFormat({ moneyFormat: formatMoney }));
   }
 }

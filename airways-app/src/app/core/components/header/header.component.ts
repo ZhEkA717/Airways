@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import FormatService from '../../services/format.service';
 
 @Component({
@@ -10,9 +12,14 @@ import FormatService from '../../services/format.service';
 export default class HeaderComponent {
   public menuShow = false;
 
+  public formatDate$ = this.store.select(selectDateFormat);
+
+  public formatMoney$ = this.store.select(selectMoneyFormat);
+
   constructor(
     private router: Router,
     public formatService: FormatService,
+    private store: Store,
   ) {}
 
   public toMainPage() {
