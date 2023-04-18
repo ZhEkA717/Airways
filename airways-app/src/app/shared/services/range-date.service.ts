@@ -1,23 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { BehaviorSubject } from 'rxjs';
 import StartDateValidator from '../validators/start-date.validator';
 
 @Injectable({
   providedIn: 'root',
 })
 export default class RangeDateService {
-  private defaultFormateDate = 'MM/DD/YYYY';
-
-  private formateDate = new BehaviorSubject<string>(this.defaultFormateDate);
-
-  public formateDate$ = this.formateDate.asObservable();
-
-  public setFormateDate(newFormateDate: string) {
-    this.formateDate.next(newFormateDate);
-  }
-
   public form = new FormGroup({
     startDate: new FormControl(null, [
       Validators.required,
@@ -26,4 +15,13 @@ export default class RangeDateService {
     endDate: new FormControl(null, Validators.required),
     date: new FormControl(moment(), Validators.required),
   });
+
+  public changeFormat() {
+    const start = this.form.get('startDate')?.value;
+    const end = this.form.get('endDate')?.value;
+    if (start && end) {
+      this.form.get('startDate')?.setValue(start);
+      this.form.get('endDate')?.setValue(end);
+    }
+  }
 }

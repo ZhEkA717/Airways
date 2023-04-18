@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import RangeDateService from 'src/app/shared/services/range-date.service';
+import { Store } from '@ngrx/store';
+import { saveDateFormat, saveMoneyFormat } from 'src/app/redux/actions/settings.action';
 
 @Injectable()
 export default class FormatService {
@@ -22,7 +23,7 @@ export default class FormatService {
   ];
 
   constructor(
-    private rangeDateService: RangeDateService,
+    private store: Store,
   ) {}
 
   public switchFormatDate(id: number) {
@@ -32,12 +33,12 @@ export default class FormatService {
         this.valueDate = item.text;
       } else item.done = '';
     });
-    this.rangeDateService.setFormateDate(this.valueDate);
+    this.store.dispatch(saveDateFormat({ dateFormat: this.valueDate }));
   }
 
   public switchFormatMoney(id: number) {
-    this.formatMoney.forEach((item) => {
-      if (item.id === id) this.valueMoney = item.text;
-    });
+    this.valueMoney = this.formatMoney
+      .find((item) => item.id === id)?.text as string;
+    this.store.dispatch(saveMoneyFormat({ moneyFormat: this.valueMoney }));
   }
 }
