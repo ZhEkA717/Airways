@@ -5,7 +5,7 @@ import { send } from 'src/app/redux/actions/search.action';
 import AutocompleteService from 'src/app/shared/services/autocomplete.service';
 import RangeDateService from 'src/app/shared/services/range-date.service';
 import SelectsService from 'src/app/shared/services/selects.service';
-import { FlightSearch } from '../model/flight-search.model';
+import { FlightSearch, TripWay } from '../model/flight-search.model';
 
 @Component({
   selector: 'app-flight-form',
@@ -13,7 +13,7 @@ import { FlightSearch } from '../model/flight-search.model';
   styleUrls: ['./flight-form.component.scss'],
 })
 export default class FlightFormComponent {
-  tripWay: 'round' | 'one' = 'round';
+  tripWay: TripWay = 'round';
 
   constructor(
     public selectService: SelectsService,

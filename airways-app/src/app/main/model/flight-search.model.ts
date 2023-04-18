@@ -1,11 +1,13 @@
 export interface FlightSearch {
-  tripWay: string,
+  tripWay: TripWay,
   from: string,
   destination: string,
   startDate: Date,
   endDate: Date,
   passengers: Passengers[],
 }
+
+export type TripWay = 'round' | 'one';
 
 export interface Passengers {
   id: number,
