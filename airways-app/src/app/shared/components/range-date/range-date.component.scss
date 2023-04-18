@@ -1,0 +1,24 @@
+@import '../../../../stylings/variables';
+
+:host {
+  width: 60%;
+  @media(max-width:610px) {
+    width: 100%;
+  }
+}
+
+.date {
+  width: 100%;
+}
+
+.error-message {
+  margin-left: 18px;
+
+  small {
+    margin-top: 4px;
+    display: block;
+    color: $text-error-color;
+    font-size: 12px;
+    position: relative;
+  }
+}

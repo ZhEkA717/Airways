@@ -1,0 +1,176 @@
+@import '../../../../stylings/variables';
+
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88px;
+  background: $header-background-color;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    height: 100%;
+  }
+
+  &__logo {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: .5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &__img {
+      width: 38px;
+      height: 38px;
+      border: 1px solid $base-primary-color;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      color: $logo-color;
+      font-weight: 700;
+    }
+  }
+
+  .wrapper-menu {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: end;
+  }
+
+  &__menu {
+    display: flex;
+    width: 480px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    @media(max-width:700px) {
+      flex-direction: column;
+      background: $base-primary-color;
+      position: fixed;
+      width: 200px;
+      right: 0;
+      top: 0;
+      height: 100%;
+      padding: 15px;
+      justify-content: flex-start;
+      gap: 30px;
+      z-index: 1;
+      right: -500px;
+      transition: .3s linear;
+    }
+
+    &.showMenu {
+      @media(max-width:700px) {
+        right: 0;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    color: $text-light-color;
+    text-transform: capitalize;
+    @media(max-width: 700px) {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .button-wrapper {
+    display: flex;
+    gap: 30px;
+  }
+
+  .button {
+    background: $button-background-color;
+    border: 0.5px solid $button-border-color;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    cursor: pointer;
+    transition: .5s;
+
+    @media(max-width:700px) {
+      width: 100%;
+    }
+
+    &_menu {
+      width: 60px;
+      color: $text-light-color;
+      display: none;
+      @media(max-width:700px) {
+        display: block;
+      }
+    }
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &__format-date {
+    width: 162px;
+    gap: 15px;
+
+    &__title {
+      text-transform: uppercase;
+      color: $text-light-color;
+    }
+
+    &__drop-down {
+      color: $text-light-color;
+    }
+  }
+
+  &__format-money {
+    width: 64px;
+    color: $text-light-color;
+  }
+
+  &__button-login {
+    width: 114px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    &__title {
+      color: $text-light-color;
+    }
+  }
+
+  &__basket {
+    cursor: pointer;
+    border: none !important;
+    background: transparent !important;
+    @media(max-width:700px) {
+      width: fit-content !important;
+    }
+  }
+}

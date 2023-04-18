@@ -38,7 +38,12 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "import/no-extraneous-dependencies": "off",
+        "no-param-reassign": "off",
+        "operator-assignment": "off",
+        "class-methods-use-this": "off",
+        "no-underscore-dangle": "off"
       }
     },
     {

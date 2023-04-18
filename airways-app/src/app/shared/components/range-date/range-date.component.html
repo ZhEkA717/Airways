@@ -1,0 +1,38 @@
+<mat-form-field
+  [formGroup]="rangeDateService.form"
+  class="date"
+  appearance="fill"
+>
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input
+    [rangePicker]="picker"
+  >
+    <input formControlName="startDate" matStartDate placeholder="Start date" >
+    <input formControlName="endDate" matEndDate placeholder="End date">
+  </mat-date-range-input>
+  <mat-hint>
+    <small>
+      {{rangeDateService.formateDate$ | async}}
+      -
+      {{rangeDateService.formateDate$ | async}}
+    </small>
+  </mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+  <mat-datepicker (monthSelected)="setMonthAndYear($event)">
+  </mat-datepicker>
+</mat-form-field>
+<div
+  class="error-message"
+  *ngIf="(rangeDateService.form.get('endDate')?.invalid &&
+  rangeDateService.form.get('endDate')?.touched) ||
+  (rangeDateService.form.get('startDate')?.invalid &&
+  rangeDateService.form.get('endDate')?.touched)"
+>
+  <small *ngIf="rangeDateService.form.get('endDate')?.errors?.['required']">
+    Please enter a date range
+  </small>
+  <small *ngIf="rangeDateService.form.get('startDate')?.errors?.['validityDate']">
+    The date is invalid
+  </small>
+</div>

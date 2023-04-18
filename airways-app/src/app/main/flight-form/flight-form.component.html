@@ -1,1 +1,35 @@
-<p>flight-form works!</p>
+<mat-card class="form">
+  <mat-radio-group class="ratio-group" [(ngModel)]="tripWay">
+    <mat-radio-button color="primary" value="round">Round Trip</mat-radio-button>
+    <mat-radio-button color="primary" value="one">One Way</mat-radio-button>
+  </mat-radio-group>
+  <app-autocomplete-group
+    class="autocomplete-group"
+    [directionVisibility]="true"
+  ></app-autocomplete-group>
+  <div class="date-passenger">
+    <app-range-date></app-range-date>
+    <app-select-passengers></app-select-passengers>
+  </div>
+
+  <div align="end">
+    <button
+      center
+      class="button-search"
+      mat-raised-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="autocompleteService.form.invalid
+        || rangeDateService.form.invalid
+        || !selectService.isValidate"
+    >Search</button>
+  </div>
+
+</mat-card>
+
+<div
+  (click)="hideDarkSpace()"
+  [ngClass]="{visible: selectService.isChoiceInput}"
+  class="dark-background">
+</div>
+
