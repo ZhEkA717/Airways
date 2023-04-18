@@ -7,5 +7,5 @@ export enum SearchAction {
 
 export const send = createAction(
   SearchAction.send,
-  (search: FlightSearch) => search,
+  (searchForm: FlightSearch) => searchForm,
 );

@@ -16,6 +16,6 @@ export const searchReducer = createReducer(
   initialState,
   on(send, (state, action):SearchState => ({
     ...state,
-    searchForm: { ...action },
+    searchForm: action,
   })),
 );
