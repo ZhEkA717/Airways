@@ -39,9 +39,9 @@ export default class FlightFormComponent {
       destination: this.autocompleteService.form
         .get('destination')?.value,
       startDate: moment(this.rangeDateService.form
-        .get('startDate')?.value).toDate(),
+        .get('startDate')?.value).toDate().toString(),
       endDate: moment(this.rangeDateService.form
-        .get('endDate')?.value).toDate(),
+        .get('endDate')?.value).toDate().toString(),
       passengers,
     };
     this.store.dispatch(send(search));

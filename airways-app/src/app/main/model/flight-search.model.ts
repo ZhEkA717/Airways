@@ -2,8 +2,8 @@ export interface FlightSearch {
   tripWay: TripWay,
   from: string,
   destination: string,
-  startDate: Date,
-  endDate: Date,
+  startDate: string,
+  endDate: string,
   passengers: Passengers[],
 }
 
