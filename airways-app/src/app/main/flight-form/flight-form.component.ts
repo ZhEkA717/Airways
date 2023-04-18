@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import * as moment from 'moment';
+import { send } from 'src/app/redux/actions/search.action';
 import AutocompleteService from 'src/app/shared/services/autocomplete.service';
 import RangeDateService from 'src/app/shared/services/range-date.service';
 import SelectsService from 'src/app/shared/services/selects.service';
+import { FlightSearch } from '../model/flight-search.model';
 
 @Component({
   selector: 'app-flight-form',
@@ -16,6 +19,7 @@ export default class FlightFormComponent {
     public selectService: SelectsService,
     public rangeDateService: RangeDateService,
     public autocompleteService: AutocompleteService,
+    private store: Store,
   ) {}
 
   hideDarkSpace() {
@@ -25,7 +29,10 @@ export default class FlightFormComponent {
   }
 
   submit() {
-    const search = {
+    const passengers = JSON.parse(
+      JSON.stringify(this.selectService.passengers),
+    );
+    const search = <FlightSearch>{
       tripWay: this.tripWay,
       from: this.autocompleteService.form
         .get('from')?.value,
@@ -35,9 +42,8 @@ export default class FlightFormComponent {
         .get('startDate')?.value).toDate(),
       endDate: moment(this.rangeDateService.form
         .get('endDate')?.value).toDate(),
-      passengers: this.selectService.passengers,
+      passengers,
     };
-    // eslint-disable-next-line no-console
-    console.log(search);
+    this.store.dispatch(send(search));
   }
 }
