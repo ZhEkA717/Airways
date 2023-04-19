@@ -5,6 +5,7 @@ import { send } from 'src/app/redux/actions/search.action';
 import AutocompleteService from 'src/app/shared/services/autocomplete.service';
 import RangeDateService from 'src/app/shared/services/range-date.service';
 import SelectsService from 'src/app/shared/services/selects.service';
+import { Router } from '@angular/router';
 import { FlightSearch, TripWay } from '../model/flight-search.model';
 
 @Component({
@@ -19,8 +20,9 @@ export default class FlightFormComponent {
     public selectService: SelectsService,
     public rangeDateService: RangeDateService,
     public autocompleteService: AutocompleteService,
+    private router: Router,
     private store: Store,
-  ) {}
+  ) { }
 
   hideDarkSpace() {
     this.selectService.touched();
@@ -45,5 +47,6 @@ export default class FlightFormComponent {
       passengers,
     };
     this.store.dispatch(send(search));
+    this.router.navigate(['booking']);
   }
 }

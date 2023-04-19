@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () => import('./main/main.module').then((mainPage) => mainPage.default),
     title: 'main',
   },
+  {
+    path: 'booking',
+    loadChildren: () => import('./booking/booking.module').then((bookingPage) => bookingPage.default),
+    title: 'booking',
+  },
 ];
 
 @NgModule({
