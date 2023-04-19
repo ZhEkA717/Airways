@@ -27,7 +27,7 @@
       [matMenuTriggerFor]="menuFormatDate"
       class="button header__format-date"
     >
-      <span class="header__format-date__title">{{formatService.valueDate}}</span>
+      <span class="header__format-date__title">{{formatDate$ | async}}</span>
       <mat-icon class="header__format-date__drop-down">arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menuFormatDate="matMenu">
@@ -46,7 +46,7 @@
     <button
       [matMenuTriggerFor]="menuFormatMoney"
       class="button header__format-money"
-    >{{formatService.valueMoney}}</button>
+    >{{formatMoney$ | async}}</button>
     <mat-menu #menuFormatMoney="matMenu">
       <button
         *ngFor="let money of formatService.formatMoney"

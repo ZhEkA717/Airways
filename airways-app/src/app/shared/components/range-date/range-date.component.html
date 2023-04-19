@@ -7,20 +7,28 @@
   <mat-date-range-input
     [rangePicker]="picker"
   >
-    <input formControlName="startDate" matStartDate placeholder="Start date" >
-    <input formControlName="endDate" matEndDate placeholder="End date">
+    <input
+      readonly
+      formControlName="startDate"
+      matStartDate
+      placeholder="Start date"
+    >
+    <input
+      readonly
+      formControlName="endDate"
+      matEndDate
+      placeholder="End date"
+    >
   </mat-date-range-input>
   <mat-hint>
     <small>
-      {{rangeDateService.formateDate$ | async}}
+      {{dateFormat$ | async}}
       -
-      {{rangeDateService.formateDate$ | async}}
+      {{dateFormat$ | async}}
     </small>
   </mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-date-range-picker #picker></mat-date-range-picker>
-  <mat-datepicker (monthSelected)="setMonthAndYear($event)">
-  </mat-datepicker>
 </mat-form-field>
 <div
   class="error-message"

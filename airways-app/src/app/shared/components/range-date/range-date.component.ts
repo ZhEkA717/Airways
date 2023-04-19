@@ -1,10 +1,13 @@
 import {
   Component,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { Moment } from 'moment';
+import { Store } from '@ngrx/store';
+import { selectDateFormat } from 'src/app/redux/selectors/settings.selector';
+import { Observable, Subscription } from 'rxjs';
 import RangeDateService from '../../services/range-date.service';
 
 export const MY_FORMAT = {
@@ -28,21 +31,25 @@ export const MY_FORMAT = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
   ],
 })
-export default class RangeDateComponent implements OnInit {
+export default class RangeDateComponent implements OnInit, OnDestroy {
+  public dateFormat$!: Observable<string>;
+
+  private subDate!: Subscription;
+
   constructor(
     public rangeDateService: RangeDateService,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
-    this.rangeDateService.formateDate$.subscribe((formatDate) => {
+    this.dateFormat$ = this.store.select(selectDateFormat);
+    this.subDate = this.dateFormat$.subscribe((formatDate) => {
       MY_FORMAT.display.dateInput = formatDate;
+      this.rangeDateService.changeFormat();
     });
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Moment) {
-    const ctrlValue = this.rangeDateService.form.get('date')?.value;
-    ctrlValue?.month(normalizedMonthAndYear.month());
-    ctrlValue?.year(normalizedMonthAndYear.year());
-    this.rangeDateService.form.get('date')?.setValue(ctrlValue as Moment);
+  ngOnDestroy(): void {
+    this.subDate.unsubscribe();
   }
 }
