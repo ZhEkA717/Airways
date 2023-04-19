@@ -1,1 +1,30 @@
-<p>second-menu works!</p>
+<div class="container">
+  <div class="menu">
+    <div class="menu__direction">
+      <span class="menu__direction__text">{{from}}</span>
+      <div
+        [ngClass]="{'one': tripWay}"
+        class="menu__direction__img"
+      >
+        <img src="../../../../assets/icons/directions.svg" alt="directions">
+      </div>
+      <span class="menu__direction__text">{{destination}}</span>
+    </div>
+    <div class="menu__info">
+      <span>Return</span>
+      <span class="dot">&bull;</span>
+      <span>{{startDate | date:'d MMM'}}</span> - <span>{{endDate | date:'d MMM'}}</span>
+      <span class="dot">&bull;</span>
+      <span>{{count}}</span>
+      <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
+    </div>
+    <div class="menu__change">
+      <button *ngIf="true; else save"
+        class="menu__change__button"
+      >Edit</button>
+      <ng-template #save>
+        <button class="menu__change__button">Save</button>
+      </ng-template>
+    </div>
+  </div>
+</div>

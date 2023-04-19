@@ -1,0 +1,74 @@
+@import '../../../../stylings/variables';
+
+:host {
+  display: block;
+  background: #FAFAFA;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  height: 68px;
+  gap: 63px;
+
+  &__direction {
+    display: flex;
+    height: fit-content;
+    gap: 15px;
+    align-items: center;
+
+    &__img {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &.one{
+        height: 7.5px;
+        overflow: hidden;
+        align-items: start;
+      }
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: 16px;
+      color: $text-dark-color;
+    }
+  }
+
+  &__info {
+    display: flex;
+    height: fit-content;
+    gap: 5px;
+    align-items: center;
+    span {
+      color: $text-average-color;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .dot {
+      color: $text-secondary-color;
+      font-size: 21px;
+    }
+  }
+
+  &__change {
+    &__button {
+      width: 44px;
+      height: 28px;
+      border-radius: 4px;
+      color: $base-primary-color;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      &:hover {
+        background: $base-hover-color;
+      }
+    }
+  }
+}
