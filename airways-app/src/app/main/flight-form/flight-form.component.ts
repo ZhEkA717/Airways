@@ -24,12 +24,6 @@ export default class FlightFormComponent {
     private store: Store,
   ) { }
 
-  hideDarkSpace() {
-    this.selectService.touched();
-    this.selectService.isChoiceInput = false;
-    this.selectService.updatePlaceholder();
-  }
-
   submit() {
     const passengers = JSON.parse(
       JSON.stringify(this.selectService.passengers),

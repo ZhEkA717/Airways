@@ -19,12 +19,35 @@
       <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
     </div>
     <div class="menu__change">
-      <button *ngIf="true; else save"
+      <button
+        (click)="isEdit = !isEdit"
+        *ngIf="!isEdit; else save"
         class="menu__change__button"
       >Edit</button>
       <ng-template #save>
-        <button class="menu__change__button">Save</button>
+        <button
+          (click)="isEdit = !isEdit; submit()"
+          class="menu__change__button"
+          [disabled]="autocompleteService.form.invalid
+          || rangeDateService.form.invalid
+          || !selectService.isValidate"
+        >Save</button>
       </ng-template>
     </div>
+  </div>
+  <div
+    *ngIf="isEdit"
+    class="edit"
+  >
+    <app-autocomplete-group
+      class="autocomplete-group"
+      [directionVisibility]="false"
+    ></app-autocomplete-group>
+    <app-range-date
+      class="range-date"
+    ></app-range-date>
+    <app-select-passengers
+      class="select-passengers"
+    ></app-select-passengers>
   </div>
 </div>

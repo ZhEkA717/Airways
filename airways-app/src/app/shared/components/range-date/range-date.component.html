@@ -20,13 +20,6 @@
       placeholder="End date"
     >
   </mat-date-range-input>
-  <mat-hint>
-    <small>
-      {{dateFormat$ | async}}
-      -
-      {{dateFormat$ | async}}
-    </small>
-  </mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>

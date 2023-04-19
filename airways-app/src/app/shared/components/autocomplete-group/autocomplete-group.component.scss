@@ -1,6 +1,17 @@
 @import '../../../../stylings/variables';
 
+:host {
+  position: relative;
+}
+
+.from,
+.destination {
+  position: relative;
+  width: 100%;
+}
+
 .autocomplete {
+  width: 100%;
   margin-bottom: -15px;
 }
 
@@ -26,8 +37,11 @@
   }
 }
 
+
 .error-message {
-  margin-left: 18px;
+  position: absolute;
+  bottom: -10px;
+  left: 18px;
 
   small {
     margin-top: 4px;
