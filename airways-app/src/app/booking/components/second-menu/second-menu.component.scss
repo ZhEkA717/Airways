@@ -9,13 +9,33 @@
 
 .container {
   position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .menu {
   display: flex;
   align-items: center;
   height: 68px;
-  gap: 63px;
+  max-width: 580px;
+  justify-content: space-between;
+
+  @media(max-width: 600px) {
+    padding-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-change {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 68px;
+
+    @media(max-width: 600px) {
+      gap: 40px;
+    }
+  }
 
   &__direction {
     display: flex;
@@ -100,8 +120,25 @@
   gap: 20px;
   align-items: flex-start;
 
-  .autocomplete-group{
+  @media(max-width: 990px) {
+    flex-wrap: wrap;
+    height: fit-content;
+    padding-bottom: 20px;
+  }
+
+  .autocomplete-group,
+  .date-passenger {
     display: flex;
     gap: 20px;
+    width: 100%;
+
+    @media(max-width: 600px) {
+     flex-direction: column;
+    }
+  }
+
+  .range-date,
+  .select-passengers {
+    width: 100%;
   }
 }

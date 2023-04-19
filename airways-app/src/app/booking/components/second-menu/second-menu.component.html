@@ -10,29 +10,31 @@
       </div>
       <span class="menu__direction__text">{{destination}}</span>
     </div>
-    <div class="menu__info">
-      <span>Return</span>
-      <span class="dot">&bull;</span>
-      <span>{{startDate | date:'d MMM'}}</span> - <span>{{endDate | date:'d MMM'}}</span>
-      <span class="dot">&bull;</span>
-      <span>{{count}}</span>
-      <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
-    </div>
-    <div class="menu__change">
-      <button
-        (click)="isEdit = !isEdit"
-        *ngIf="!isEdit; else save"
-        class="menu__change__button"
-      >Edit</button>
-      <ng-template #save>
+    <div class="info-change">
+      <div class="menu__info">
+        <span>Return</span>
+        <span class="dot">&bull;</span>
+        <span>{{startDate | date:'d MMM'}}</span> - <span>{{endDate | date:'d MMM'}}</span>
+        <span class="dot">&bull;</span>
+        <span>{{count}}</span>
+        <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
+      </div>
+      <div class="menu__change">
         <button
-          (click)="isEdit = !isEdit; submit()"
+          (click)="isEdit = !isEdit"
+          *ngIf="!isEdit; else save"
           class="menu__change__button"
-          [disabled]="autocompleteService.form.invalid
-          || rangeDateService.form.invalid
-          || !selectService.isValidate"
-        >Save</button>
-      </ng-template>
+        >Edit</button>
+        <ng-template #save>
+          <button
+            (click)="isEdit = !isEdit; submit()"
+            class="menu__change__button"
+            [disabled]="autocompleteService.form.invalid
+            || rangeDateService.form.invalid
+            || !selectService.isValidate"
+          >Save</button>
+        </ng-template>
+      </div>
     </div>
   </div>
   <div
@@ -43,11 +45,13 @@
       class="autocomplete-group"
       [directionVisibility]="false"
     ></app-autocomplete-group>
-    <app-range-date
-      class="range-date"
-    ></app-range-date>
-    <app-select-passengers
-      class="select-passengers"
-    ></app-select-passengers>
+    <div class="date-passenger">
+      <app-range-date
+        class="range-date"
+      ></app-range-date>
+      <app-select-passengers
+        class="select-passengers"
+      ></app-select-passengers>
+    </div>
   </div>
 </div>
