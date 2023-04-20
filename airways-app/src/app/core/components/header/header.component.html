@@ -15,31 +15,9 @@
     </div>
     <div class="header__logo__title">airways</div>
   </div>
-  <div
+  <app-stepper
     *ngIf="(headerService.isBooking$ | async) !== true"
-    class="header__stepper"
-  >
-    <div class="step">
-      <span *ngIf="false" class="number">1</span>
-      <span
-        *ngIf="true"
-        class="active"
-      >
-        <img src="../../../../assets/icons/edit.svg" alt="edit">
-      </span>
-      <span class="text">Flight</span>
-    </div>
-    <hr class="line">
-    <div class="step">
-      <span class="number">2</span>
-      <span class="text">Passengers</span>
-    </div>
-    <hr class="line">
-    <div class="step">
-      <span class="number">3</span>
-      <span class="text">Review & Payment</span>
-    </div>
-  </div>
+  ></app-stepper>
   <div class="wrapper-menu">
     <div
       [ngClass]="{showMenu: menuShow}"

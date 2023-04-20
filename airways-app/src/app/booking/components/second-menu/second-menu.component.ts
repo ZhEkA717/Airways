@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
+import HeaderService from 'src/app/core/services/header.service';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
 import { send } from 'src/app/redux/actions/search.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
@@ -34,6 +35,7 @@ export default class SecondMenuComponent implements OnInit {
     public selectService: SelectsService,
     public rangeDateService: RangeDateService,
     public autocompleteService: AutocompleteService,
+    public headerService: HeaderService,
     private store: Store,
   ) {}
 

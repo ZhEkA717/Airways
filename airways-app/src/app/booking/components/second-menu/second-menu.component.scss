@@ -17,24 +17,23 @@
   display: flex;
   align-items: center;
   height: 68px;
-  max-width: 580px;
+  max-width: 520px;
   justify-content: space-between;
+  gap: 10px;
 
   @media(max-width: 600px) {
     padding-top: 10px;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
   }
 
   .info-change {
     display: flex;
     align-items: center;
     height: 100%;
-    gap: 68px;
-
-    @media(max-width: 600px) {
-      gap: 40px;
-    }
+    width: 300px;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   &__direction {
@@ -67,6 +66,7 @@
     height: fit-content;
     gap: 5px;
     align-items: center;
+    white-space: nowrap;
 
     span {
       color: $text-average-color;
@@ -114,11 +114,18 @@
   height: 100px;
   width: 100%;
   position: absolute;
-  top: 68px;
+  top: -400px;
   left: 0;
   display: flex;
   gap: 20px;
+  z-index: -1;
   align-items: flex-start;
+  transition: top .5s;
+
+  &.isEdit {
+    top: 68px;
+    z-index: auto;
+  }
 
   @media(max-width: 990px) {
     flex-wrap: wrap;

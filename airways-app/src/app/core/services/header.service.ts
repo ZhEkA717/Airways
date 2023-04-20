@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 export interface StepperState {
   flight: boolean,
   passengers: boolean,
-  rewiew: boolean,
+  review: boolean,
 }
 
 @Injectable({
@@ -16,7 +16,7 @@ export default class HeaderService {
   private defaultStepper = {
     flight: true,
     passengers: false,
-    rewiew: false,
+    review: false,
   };
 
   private isBooking = new BehaviorSubject<boolean>(this.defaultIsBooking);
