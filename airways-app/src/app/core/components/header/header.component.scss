@@ -21,6 +21,21 @@
     align-items: center;
     gap: 30px;
     height: 100%;
+
+    @media(max-width: 935px) {
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    @media(max-width: 700px) {
+      flex-wrap: nowrap;
+      gap: 30px;
+    }
+
+    @media(max-width: 635px) {
+      flex-wrap: wrap;
+      gap: 0;
+    }
   }
 
   &__logo {
@@ -62,6 +77,21 @@
     justify-content: space-between;
     gap: 10px;
 
+    @media(max-width: 935px) {
+      height: fit-content;
+      order: 1;
+    }
+
+    @media(max-width: 700px) {
+      height: 100%;
+      order: 0;
+    }
+
+    @media(max-width: 635px) {
+      height: fit-content;
+      order: 1;
+    }
+
     .line {
       width: 100%;
     }
@@ -85,6 +115,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media(max-width: 350px) {
+          font-size: 10px;
+        }
       }
 
       .active {
@@ -93,6 +127,10 @@
 
       .text {
         font-size: 14px;
+
+        @media(max-width: 350px) {
+          font-size: 12px;
+        }
       }
     }
   }
