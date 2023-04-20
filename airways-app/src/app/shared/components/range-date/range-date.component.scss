@@ -1,6 +1,7 @@
 @import '../../../../stylings/variables';
 
 :host {
+  position: relative;
   width: 60%;
   @media(max-width:610px) {
     width: 100%;
@@ -12,8 +13,10 @@
 }
 
 .error-message {
-  margin-left: 18px;
-
+  left: 18px;
+  height: 20px;
+  bottom: 3px;
+  position: absolute;
   small {
     margin-top: 4px;
     display: block;

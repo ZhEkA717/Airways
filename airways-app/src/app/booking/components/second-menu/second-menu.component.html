@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="menu">
+    <div class="menu__direction">
+      <span class="menu__direction__text">{{from}}</span>
+      <div
+        [ngClass]="{'one': tripWay}"
+        class="menu__direction__img"
+      >
+        <img src="../../../../assets/icons/directions.svg" alt="directions">
+      </div>
+      <span class="menu__direction__text">{{destination}}</span>
+    </div>
+    <div class="info-change">
+      <div class="menu__info">
+        <span>Return</span>
+        <span class="dot">&bull;</span>
+        <span>{{startDate | date:'d MMM'}}</span> - <span>{{endDate | date:'d MMM'}}</span>
+        <span class="dot">&bull;</span>
+        <span>{{count}}</span>
+        <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
+      </div>
+      <div class="menu__change">
+        <button
+          (click)="isEdit = !isEdit"
+          *ngIf="!isEdit; else save"
+          class="menu__change__button"
+        >Edit</button>
+        <ng-template #save>
+          <button
+            (click)="isEdit = !isEdit; submit()"
+            class="menu__change__button"
+            [disabled]="autocompleteService.form.invalid
+            || rangeDateService.form.invalid
+            || !selectService.isValidate"
+          >Save</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="isEdit"
+    class="edit"
+  >
+    <app-autocomplete-group
+      class="autocomplete-group"
+      [directionVisibility]="false"
+    ></app-autocomplete-group>
+    <div class="date-passenger">
+      <app-range-date
+        class="range-date"
+      ></app-range-date>
+      <app-select-passengers
+        class="select-passengers"
+      ></app-select-passengers>
+    </div>
+  </div>
+</div>

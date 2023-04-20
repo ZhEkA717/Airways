@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import SelectsService from './shared/services/selects.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export default class AppComponent {
   title = 'airways-app';
+
+  constructor(public selectService: SelectsService) {}
+
+  hideDarkSpace() {
+    this.selectService.touched();
+    this.selectService.isChoiceInput = false;
+    this.selectService.updatePlaceholder();
+  }
 }

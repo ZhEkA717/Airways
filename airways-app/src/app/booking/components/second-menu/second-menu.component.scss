@@ -1,0 +1,144 @@
+@import '../../../../stylings/variables';
+
+:host {
+  display: block;
+  background: #FAFAFA;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  height: 68px;
+  max-width: 580px;
+  justify-content: space-between;
+
+  @media(max-width: 600px) {
+    padding-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-change {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 68px;
+
+    @media(max-width: 600px) {
+      gap: 40px;
+    }
+  }
+
+  &__direction {
+    display: flex;
+    height: fit-content;
+    gap: 15px;
+    align-items: center;
+
+    &__img {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &.one {
+        height: 7.5px;
+        overflow: hidden;
+        align-items: start;
+      }
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: 16px;
+      color: $text-dark-color;
+    }
+  }
+
+  &__info {
+    display: flex;
+    height: fit-content;
+    gap: 5px;
+    align-items: center;
+
+    span {
+      color: $text-average-color;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .dot {
+      color: $text-secondary-color;
+      font-size: 21px;
+    }
+  }
+
+  &__change {
+    &__button {
+      width: 44px;
+      height: 28px;
+      border-radius: 4px;
+      color: $base-primary-color;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      &:hover {
+        background: $base-hover-color;
+      }
+
+      &:disabled {
+        background: transparent;
+        opacity: 0.7;
+        cursor: auto;
+      }
+    }
+  }
+}
+
+.edit {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #FAFAFA;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: 68px;
+  left: 0;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+
+  @media(max-width: 990px) {
+    flex-wrap: wrap;
+    height: fit-content;
+    padding-bottom: 20px;
+  }
+
+  .autocomplete-group,
+  .date-passenger {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+
+    @media(max-width: 600px) {
+     flex-direction: column;
+    }
+  }
+
+  .range-date,
+  .select-passengers {
+    width: 100%;
+  }
+}

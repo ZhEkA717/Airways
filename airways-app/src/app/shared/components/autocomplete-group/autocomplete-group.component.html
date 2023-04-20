@@ -1,23 +1,34 @@
-<mat-form-field
+<div class="from">
+  <mat-form-field
   [formGroup]="autocompleteService.form"
   class="autocomplete"
   appearance="fill"
->
-<mat-label>From</mat-label>
-<input type="text"
+  >
+  <mat-label>From</mat-label>
+  <input type="text"
        aria-label="from"
        matInput
        formControlName="from"
        [matAutocomplete]="from">
-<mat-autocomplete #from="matAutocomplete">
-  <mat-option
-    *ngFor="let option of autocompleteService.options"
-    [value]="option"
+  <mat-autocomplete #from="matAutocomplete">
+    <mat-option
+      *ngFor="let option of autocompleteService.options"
+      [value]="option"
+    >
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+  <div
+    class="error-message"
+    *ngIf="autocompleteService.form.get('from')?.invalid &&
+    autocompleteService.form.get('from')?.touched"
   >
-    {{option}}
-  </mat-option>
-</mat-autocomplete>
-</mat-form-field>
+    <small *ngIf="autocompleteService.form.get('from')?.errors?.['required']">
+      {{autocompleteService.form.get('from')?.errors?.['requiredFrom']}}
+    </small>
+  </div>
+</div>
 <div
   *ngIf="directionVisibility"
   (click)="autocompleteService.onChangeDirection()"
@@ -25,44 +36,38 @@
 >
 <img src="../../../assets/icons/left-right-arrow.svg" alt="change-destination">
 </div>
-<mat-form-field
-  [formGroup]="autocompleteService.form"
-  class="autocomplete"
-  appearance="fill"
->
-<mat-label>Destination</mat-label>
-<input type="text"
-       aria-label="destination"
-       matInput
-       formControlName="destination"
-       [matAutocomplete]="destination">
-<mat-autocomplete #destination="matAutocomplete">
-  <mat-option
-    *ngFor="let option of autocompleteService.options"
-    [value]="option"
+<div class="destination">
+  <mat-form-field
+    [formGroup]="autocompleteService.form"
+    class="autocomplete"
+    appearance="fill"
   >
-    {{option}}
-  </mat-option>
-</mat-autocomplete>
-</mat-form-field>
-<div
-  class="error-message"
-  *ngIf="autocompleteService.form.get('from')?.invalid &&
-  autocompleteService.form.get('from')?.touched"
->
-  <small *ngIf="autocompleteService.form.get('from')?.errors?.['required']">
-    {{autocompleteService.form.get('from')?.errors?.['requiredFrom']}}
-  </small>
+  <mat-label>Destination</mat-label>
+  <input type="text"
+         aria-label="destination"
+         matInput
+         formControlName="destination"
+         [matAutocomplete]="destination">
+  <mat-autocomplete #destination="matAutocomplete">
+    <mat-option
+      *ngFor="let option of autocompleteService.options"
+      [value]="option"
+    >
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+  <div
+    class="error-message"
+    *ngIf="autocompleteService.form.get('destination')?.invalid &&
+    autocompleteService.form.get('destination')?.touched"
+  >
+    <small *ngIf="autocompleteService.form.get('destination')?.errors?.['required']">
+      {{autocompleteService.form.get('destination')?.errors?.['requiredDestination']}}
+    </small>
+  </div>
 </div>
-<div
-  class="error-message"
-  *ngIf="autocompleteService.form.get('destination')?.invalid &&
-  autocompleteService.form.get('destination')?.touched"
->
-  <small *ngIf="autocompleteService.form.get('destination')?.errors?.['required']">
-    {{autocompleteService.form.get('destination')?.errors?.['requiredDestination']}}
-  </small>
-</div>
+
 <div
   class="error-message"
 >
