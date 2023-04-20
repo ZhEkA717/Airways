@@ -1,4 +1,7 @@
 {
+  "users": [
+    { "id": 1, "email": "admin@airways.com", "password": "31337" }
+  ],
   "posts": [
     { "id": 1, "title": "json-server", "author": "typicode" }
   ],
