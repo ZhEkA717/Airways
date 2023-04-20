@@ -41,7 +41,8 @@
     </div>
   </div>
   <div
-    [ngClass]="{isEdit}"
+    *ngIf="headerService.stepper$ | async as stepper"
+    [ngClass]="{isEdit: isEdit && stepper.flight}"
     class="edit"
   >
     <app-autocomplete-group
