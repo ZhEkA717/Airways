@@ -19,14 +19,17 @@
         <span>{{count}}</span>
         <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
       </div>
-      <div class="menu__change">
+      <div
+        *ngIf="headerService.stepper$ | async as stepper"
+        class="menu__change">
         <button
           (click)="isEdit = !isEdit"
-          *ngIf="!isEdit; else save"
+          *ngIf="!isEdit && stepper.flight; else save"
           class="menu__change__button"
         >Edit</button>
         <ng-template #save>
           <button
+            *ngIf="stepper.flight;"
             (click)="isEdit = !isEdit; submit()"
             class="menu__change__button"
             [disabled]="autocompleteService.form.invalid
@@ -38,7 +41,8 @@
     </div>
   </div>
   <div
-    *ngIf="isEdit"
+    *ngIf="headerService.stepper$ | async as stepper"
+    [ngClass]="{isEdit: isEdit && stepper.flight}"
     class="edit"
   >
     <app-autocomplete-group
