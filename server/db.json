@@ -41,5 +41,662 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "airports": [
+    {
+      "city": "Acapulco",
+      "country": "Mexico",
+      "code": "ACA"
+    },
+    {
+      "city": "Izmir",
+      "country": "Turkey",
+      "code": "ADB"
+    },
+    {
+      "city": "Almaty",
+      "country": "Kazakhstan",
+      "code": "ALA"
+    },
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "code": "AMS"
+    },
+    {
+      "city": "Stockholm",
+      "country": "Sweden",
+      "code": "ARN"
+    },
+    {
+      "city": "Athens",
+      "country": "Greece",
+      "code": "ATH"
+    },
+    {
+      "city": "Antalya",
+      "country": "Turkey",
+      "code": "AYT"
+    },
+    {
+      "city": "Baku",
+      "country": "Azerbaijan",
+      "code": "BAK"
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "code": "BCN"
+    },
+    {
+      "city": "Beirut",
+      "country": "Lebanon",
+      "code": "BEY"
+    },
+    {
+      "city": "Beijing",
+      "country": "China",
+      "code": "BJS"
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "code": "BKK"
+    },
+    {
+      "city": "Bordeaux",
+      "country": "France",
+      "code": "BOD"
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "code": "BOM"
+    },
+    {
+      "city": "Boston, MA ",
+      "country": "USA ",
+      "code": "BOS"
+    },
+    {
+      "city": "Brussels",
+      "country": "Belgium",
+      "code": "BRU"
+    },
+    {
+      "city": "Brasilia",
+      "country": "Brazil",
+      "code": "BSB"
+    },
+    {
+      "city": "Bratislava",
+      "country": "Slovakia",
+      "code": "BTS"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "code": "BUD"
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "code": "CAI"
+    },
+    {
+      "city": "Canberra, A.C.T.",
+      "country": "Australia",
+      "code": "CBR"
+    },
+    {
+      "city": "Caracas",
+      "country": "Venezuela",
+      "code": "CCS"
+    },
+    {
+      "city": "Calcutta",
+      "country": "India",
+      "code": "CCU"
+    },
+    {
+      "city": "Paris",
+      "country": "France",
+      "code": "CDG"
+    },
+    {
+      "city": "Jakarta, Java",
+      "country": "Indonesia",
+      "code": "CGK"
+    },
+    {
+      "city": "Rome",
+      "country": "Italy",
+      "code": "CIA"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "code": "CPH"
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "code": "CPT"
+    },
+    {
+      "city": "Sapporo",
+      "country": "Japan",
+      "code": "CTS"
+    },
+    {
+      "city": "Dallas, TX ",
+      "country": "USA ",
+      "code": "DAL"
+    },
+    {
+      "city": "Damascus",
+      "country": "Syria",
+      "code": "DAM"
+    },
+    {
+      "city": "Washington DC ",
+      "country": "USA ",
+      "code": "DCA"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "code": "DEL"
+    },
+    {
+      "city": "Donetsk",
+      "country": "Ukraine",
+      "code": "DOK"
+    },
+    {
+      "city": "Dresden",
+      "country": "Germany",
+      "code": "DRS"
+    },
+    {
+      "city": "Dortmund",
+      "country": "Germany",
+      "code": "DTM"
+    },
+    {
+      "city": "Detroit, MI ",
+      "country": "USA ",
+      "code": "DTW"
+    },
+    {
+      "city": "Dublin",
+      "country": "Ireland",
+      "code": "DUB"
+    },
+    {
+      "city": "Dusseldorf",
+      "country": "Germany",
+      "code": "DUS"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "code": "DXB"
+    },
+    {
+      "city": "Dushanbe",
+      "country": "Tajikistan",
+      "code": "DYU"
+    },
+    {
+      "city": "Edinburgh",
+      "country": "Scotland",
+      "code": "EDI"
+    },
+    {
+      "city": "Ankara",
+      "country": "Turkey",
+      "code": "ESB"
+    },
+    {
+      "city": "Yerevan",
+      "country": "Armenia",
+      "code": "EVN"
+    },
+    {
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "code": "EZE"
+    },
+    {
+      "city": "Florence",
+      "country": "Italy",
+      "code": "FLR"
+    },
+    {
+      "city": "Pyongyang",
+      "country": "North Korea",
+      "code": "FNJ"
+    },
+    {
+      "city": "Frankfurt",
+      "country": "Germany",
+      "code": "FRA"
+    },
+    {
+      "city": "Guadalajara",
+      "country": "Mexico",
+      "code": "GDL"
+    },
+    {
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "code": "GIG"
+    },
+    {
+      "city": "Glasgow",
+      "country": "Scotland",
+      "code": "GLA"
+    },
+    {
+      "city": "Genoa",
+      "country": "Italy",
+      "code": "GOA"
+    },
+    {
+      "city": "Geneva",
+      "country": "Switzerland",
+      "code": "GVA"
+    },
+    {
+      "city": "Hamburg",
+      "country": "Germany",
+      "code": "HAM"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "code": "HAV"
+    },
+    {
+      "city": "Helsinki",
+      "country": "Finland",
+      "code": "HEL"
+    },
+    {
+      "city": "Hangzhou",
+      "country": "China",
+      "code": "HGH"
+    },
+    {
+      "city": "Hong Kong",
+      "country": "China",
+      "code": "HKG"
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "code": "HKT"
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "code": "HND"
+    },
+    {
+      "city": "Houston, TX ",
+      "country": "USA ",
+      "code": "HOU"
+    },
+    {
+      "city": "Ibiza",
+      "country": "Spain",
+      "code": "IBZ"
+    },
+    {
+      "city": "Osaka",
+      "country": "Japan",
+      "code": "ITM"
+    },
+    {
+      "city": "Jeddah",
+      "country": "Saudi Arabia",
+      "code": "JED"
+    },
+    {
+      "city": "Kiev",
+      "country": "Ukraine",
+      "code": "KBP"
+    },
+    {
+      "city": "Reykjavik",
+      "country": "Iceland",
+      "code": "KEF"
+    },
+    {
+      "city": "Karaganda",
+      "country": "Kazakhstan",
+      "code": "KGF"
+    },
+    {
+      "city": "Karachi",
+      "country": "Pakistan",
+      "code": "KHI"
+    },
+    {
+      "city": "Krakow",
+      "country": "Poland",
+      "code": "KRK"
+    },
+    {
+      "city": "Katowice",
+      "country": "Poland",
+      "code": "KTW"
+    },
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "code": "KUL"
+    },
+    {
+      "city": "Las Vegas, NV ",
+      "country": "USA ",
+      "code": "LAS"
+    },
+    {
+      "city": "Los Angeles, CA ",
+      "country": "USA ",
+      "code": "LAX"
+    },
+    {
+      "city": "London",
+      "country": "England",
+      "code": "LCY"
+    },
+    {
+      "city": "St. Petersburg",
+      "country": "Russia",
+      "code": "LED"
+    },
+    {
+      "city": "Leipzig",
+      "country": "Germany",
+      "code": "LEJ"
+    },
+    {
+      "city": "Leon",
+      "country": "Spain",
+      "code": "LEN"
+    },
+    {
+      "city": "Milan",
+      "country": "Italy",
+      "code": "LIN"
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "code": "LIS"
+    },
+    {
+      "city": "Ljubljana",
+      "country": "Slovenia",
+      "code": "LJU"
+    },
+    {
+      "city": "Liverpool",
+      "country": "England",
+      "code": "LPL"
+    },
+    {
+      "city": "Lyon",
+      "country": "France",
+      "code": "LYS"
+    },
+    {
+      "city": "Manchester",
+      "country": "England",
+      "code": "MAN"
+    },
+    {
+      "city": "Chicago, IL ",
+      "country": "USA ",
+      "code": "MDW"
+    },
+    {
+      "city": "Melbourne, Vic.",
+      "country": "Australia",
+      "code": "MEL"
+    },
+    {
+      "city": "Medan, Sumatra",
+      "country": "Indonesia",
+      "code": "MES"
+    },
+    {
+      "city": "Minsk",
+      "country": "Belarus",
+      "code": "MHP"
+    },
+    {
+      "city": "Marseille",
+      "country": "France",
+      "code": "MRS"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "code": "MUC"
+    },
+    {
+      "city": "Nagasaki",
+      "country": "Japan",
+      "code": "NGS"
+    },
+    {
+      "city": "Nanjing",
+      "country": "China",
+      "code": "NKG"
+    },
+    {
+      "city": "New York, NY ",
+      "country": "USA ",
+      "code": "NYC"
+    },
+    {
+      "city": "Oslo",
+      "country": "Norway",
+      "code": "OSL"
+    },
+    {
+      "city": "Palma, Mallorca",
+      "country": "Spain",
+      "code": "PMI"
+    },
+    {
+      "city": "Palermo, Sicily",
+      "country": "Italy",
+      "code": "PMO"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "code": "PRG"
+    },
+    {
+      "city": "Marrakech",
+      "country": "Morocco",
+      "code": "RAK"
+    },
+    {
+      "city": "Riga",
+      "country": "Latvia",
+      "code": "RIX"
+    },
+    {
+      "city": "Rotterdam",
+      "country": "Netherlands",
+      "code": "RTM"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "code": "SAW"
+    },
+    {
+      "city": "Santa Barbara, CA ",
+      "country": "USA ",
+      "code": "SBA"
+    },
+    {
+      "city": "Santiago",
+      "country": "Chile",
+      "code": "SCL"
+    },
+    {
+      "city": "Baghdad",
+      "country": "Iraq",
+      "code": "SDA"
+    },
+    {
+      "city": "Saigon",
+      "country": "Vietnam",
+      "code": "SGN"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "code": "SHA"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "code": "SIN"
+    },
+    {
+      "city": "Thessaloniki",
+      "country": "Greece",
+      "code": "SKG"
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "code": "SOF"
+    },
+    {
+      "city": "Sharm El Sheikh",
+      "country": "Egypt",
+      "code": "SSH"
+    },
+    {
+      "city": "Moscow",
+      "country": "Russia",
+      "code": "SVO"
+    },
+    {
+      "city": "Strasbourg",
+      "country": "France",
+      "code": "SXB"
+    },
+    {
+      "city": "Berlin",
+      "country": "Germany",
+      "code": "SXF"
+    },
+    {
+      "city": "Sydney, N.S.W.",
+      "country": "Australia",
+      "code": "SYD"
+    },
+    {
+      "city": "Shenzhen",
+      "country": "China",
+      "code": "SZX"
+    },
+    {
+      "city": "Tapachula",
+      "country": "Mexico",
+      "code": "TAP"
+    },
+    {
+      "city": "Tehran",
+      "country": "Iran",
+      "code": "THR"
+    },
+    {
+      "city": "Tripoli",
+      "country": "Libya",
+      "code": "TIP"
+    },
+    {
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "code": "TLV"
+    },
+    {
+      "city": "Astana",
+      "country": "Kazakhstan",
+      "code": "TSE"
+    },
+    {
+      "city": "Tunis",
+      "country": "Tunisia",
+      "code": "TUN"
+    },
+    {
+      "city": "Ulan Bator",
+      "country": "Mongolia",
+      "code": "ULN"
+    },
+    {
+      "city": "Venice",
+      "country": "Italy",
+      "code": "VCE"
+    },
+    {
+      "city": "Vienna",
+      "country": "Austria",
+      "code": "VIE"
+    },
+    {
+      "city": "Vilnius",
+      "country": "Lithuania",
+      "code": "VNO"
+    },
+    {
+      "city": "Verona",
+      "country": "Italy",
+      "code": "VRN"
+    },
+    {
+      "city": "Warsaw",
+      "country": "Poland",
+      "code": "WAW"
+    },
+    {
+      "city": "Ottawa, ON",
+      "country": "Canada",
+      "code": "YOW"
+    },
+    {
+      "city": "Toronto, ON",
+      "country": "Canada",
+      "code": "YTZ"
+    },
+    {
+      "city": "Montreal, PQ",
+      "country": "Canada",
+      "code": "YUL"
+    },
+    {
+      "city": "Calgary, AB",
+      "country": "Canada",
+      "code": "YYC"
+    },
+    {
+      "city": "Zagreb",
+      "country": "Croatia",
+      "code": "ZAG"
+    }
+  ]
 }
