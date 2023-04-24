@@ -1,12 +1,45 @@
 {
   "users": [
-    { "id": 1, "email": "admin@airways.com", "password": "31337" }
+    {
+      "email": "admin@airways.com",
+      "password": "$2a$10$noMoM04GPzHK.aBR0yy55.CA8M2xOGgDQ8SwKm.eoGiCMuF/q/j0y",
+      "userName": "admin",
+      "id": 1
+    },
+    {
+      "email": "customer1@airways.com",
+      "password": "$2a$10$3O5SfMxIW1rN3W/nHs4UYuOy9IjgKAaEJH1a/MX7ZHX73v8lSP2am",
+      "userName": "EXisTAnZ",
+      "id": 2
+    },
+    {
+      "email": "customer2@airways.com",
+      "password": "$2a$10$rZI/.11ewX4SZWVqZNlYcujXg8iXIZGJ/9uN/nlcruWDLQZD/8cCS",
+      "userName": "ZhEkA717",
+      "id": 3
+    },
+    {
+      "email": "customer3@airways.com",
+      "password": "$2a$10$r1PYAbUE90ab/DXF.7qdGu9O0DS/l431KkhKPZBPhkM7V6cPQa7vK",
+      "userName": "mironovahl",
+      "id": 4
+    }
   ],
   "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
   ],
   "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "name": "typicode"
+  }
 }
