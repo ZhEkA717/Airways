@@ -1,0 +1,361 @@
+{
+  "users": [
+    {
+      "email": "admin@airways.com",
+      "password": "$2a$10$noMoM04GPzHK.aBR0yy55.CA8M2xOGgDQ8SwKm.eoGiCMuF/q/j0y",
+      "userName": "admin",
+      "id": 1
+    },
+    {
+      "email": "customer1@airways.com",
+      "password": "$2a$10$3O5SfMxIW1rN3W/nHs4UYuOy9IjgKAaEJH1a/MX7ZHX73v8lSP2am",
+      "userName": "EXisTAnZ",
+      "id": 2
+    },
+    {
+      "email": "customer2@airways.com",
+      "password": "$2a$10$rZI/.11ewX4SZWVqZNlYcujXg8iXIZGJ/9uN/nlcruWDLQZD/8cCS",
+      "userName": "ZhEkA717",
+      "id": 3
+    },
+    {
+      "email": "customer3@airways.com",
+      "password": "$2a$10$r1PYAbUE90ab/DXF.7qdGu9O0DS/l431KkhKPZBPhkM7V6cPQa7vK",
+      "userName": "mironovahl",
+      "id": 4
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "airports": [
+    { "city": "Vienna", "country": "Austria", "code": "VIE" },
+    { "city": "Minsk", "country": "Belarus", "code": "MHP" },
+    { "city": "Brussels", "country": "Belgium", "code": "BRU" },
+    { "city": "Sofia", "country": "Bulgaria", "code": "SOF" },
+    { "city": "Prague", "country": "Czech Republic", "code": "PRG" },
+    { "city": "Copenhagen", "country": "Denmark", "code": "CPH" },
+    { "city": "London", "country": "England", "code": "LCY" },
+    { "city": "Helsinki", "country": "Finland", "code": "HEL" },
+    { "city": "Paris", "country": "France", "code": "CDG" },
+    { "city": "Berlin", "country": "Germany", "code": "SXF" },
+    { "city": "Athens", "country": "Greece", "code": "ATH" },
+    { "city": "Budapest", "country": "Hungary", "code": "BUD" },
+    { "city": "Reykjavik", "country": "Iceland", "code": "KEF" },
+    { "city": "Dublin", "country": "Ireland", "code": "DUB" },
+    { "city": "Tel Aviv", "country": "Israel", "code": "TLV" },
+    { "city": "Rome", "country": "Italy", "code": "CIA" },
+    { "city": "Riga", "country": "Latvia", "code": "RIX" },
+    { "city": "Vilnius", "country": "Lithuania", "code": "VNO" },
+    { "city": "Amsterdam", "country": "Netherlands", "code": "AMS" },
+    { "city": "Oslo", "country": "Norway", "code": "OSL" },
+    { "city": "Warsaw", "country": "Poland", "code": "WAW" },
+    { "city": "Moscow", "country": "Russia", "code": "SVO" },
+    { "city": "Barcelona", "country": "Spain", "code": "BCN" },
+    { "city": "Stockholm", "country": "Sweden", "code": "ARN" },
+    { "city": "Geneva", "country": "Switzerland", "code": "GVA" },
+    { "city": "Kiev", "country": "Ukraine", "code": "KBP" }
+  ],
+  "trips": [
+    {
+      "id": 1,
+      "flightNo": "AW1069",
+      "from": "AMS",
+      "to": "WAW",
+      "departDate": "08.05.2023 9:00:00",
+      "flightTime": 330,
+      "arriveDate": "08.05.2023 14:30:00",
+      "seats": 95,
+      "price": 104
+    },
+    {
+      "id": 2,
+      "flightNo": "AV1377",
+      "from": "ARN",
+      "to": "VNO",
+      "departDate": "09.05.2023 16:40:00",
+      "flightTime": 140,
+      "arriveDate": "09.05.2023 19:00:00",
+      "seats": 75,
+      "price": 162
+    },
+    {
+      "id": 3,
+      "flightNo": "AV875",
+      "from": "ATH",
+      "to": "VIE",
+      "departDate": "10.05.2023 10:10:00",
+      "flightTime": 110,
+      "arriveDate": "10.05.2023 12:00:00",
+      "seats": 57,
+      "price": 98
+    },
+    {
+      "id": 4,
+      "flightNo": "BT948",
+      "from": "BCN",
+      "to": "TLV",
+      "departDate": "11.05.2023 8:00:00",
+      "flightTime": 250,
+      "arriveDate": "11.05.2023 12:10:00",
+      "seats": 33,
+      "price": 185
+    },
+    {
+      "id": 5,
+      "flightNo": "BS1416",
+      "from": "BRU",
+      "to": "SXF",
+      "departDate": "12.05.2023 14:50:00",
+      "flightTime": 370,
+      "arriveDate": "12.05.2023 21:00:00",
+      "seats": 57,
+      "price": 99
+    },
+    {
+      "id": 6,
+      "flightNo": "BS1216",
+      "from": "BUD",
+      "to": "SVO",
+      "departDate": "13.05.2023 12:20:00",
+      "flightTime": 190,
+      "arriveDate": "13.05.2023 15:30:00",
+      "seats": 105,
+      "price": 181
+    },
+    {
+      "id": 7,
+      "flightNo": "CS1698",
+      "from": "CDG",
+      "to": "SOF",
+      "departDate": "14.05.2023 16:10:00",
+      "flightTime": 450,
+      "arriveDate": "14.05.2023 23:40:00",
+      "seats": 132,
+      "price": 146
+    },
+    {
+      "id": 8,
+      "flightNo": "CR1703",
+      "from": "CIA",
+      "to": "RIX",
+      "departDate": "15.05.2023 18:20:00",
+      "flightTime": 310,
+      "arriveDate": "15.05.2023 23:30:00",
+      "seats": 102,
+      "price": 191
+    },
+    {
+      "id": 9,
+      "flightNo": "CP1661",
+      "from": "CPH",
+      "to": "PRG",
+      "departDate": "16.05.2023 17:40:00",
+      "flightTime": 300,
+      "arriveDate": "16.05.2023 22:40:00",
+      "seats": 115,
+      "price": 186
+    },
+    {
+      "id": 10,
+      "flightNo": "DO1705",
+      "from": "DUB",
+      "to": "OSL",
+      "departDate": "17.05.2023 21:30:00",
+      "flightTime": 130,
+      "arriveDate": "17.05.2023 23:40:00",
+      "seats": 84,
+      "price": 201
+    },
+    {
+      "id": 11,
+      "flightNo": "GM1136",
+      "from": "GVA",
+      "to": "MHP",
+      "departDate": "18.05.2023 12:50:00",
+      "flightTime": 170,
+      "arriveDate": "18.05.2023 15:40:00",
+      "seats": 62,
+      "price": 134
+    },
+    {
+      "id": 12,
+      "flightNo": "HL1080",
+      "from": "HEL",
+      "to": "LCY",
+      "departDate": "19.05.2023 12:30:00",
+      "flightTime": 70,
+      "arriveDate": "19.05.2023 13:40:00",
+      "seats": 65,
+      "price": 195
+    },
+    {
+      "id": 13,
+      "flightNo": "KK1459",
+      "from": "KBP",
+      "to": "KEF",
+      "departDate": "20.05.2023 18:20:00",
+      "flightTime": 170,
+      "arriveDate": "20.05.2023 21:10:00",
+      "seats": 60,
+      "price": 129
+    },
+    {
+      "id": 14,
+      "flightNo": "AW1069",
+      "from": "WAW",
+      "to": "AMS",
+      "departDate": "21.05.2023 18:10:00",
+      "flightTime": 330,
+      "arriveDate": "21.05.2023 23:40:00",
+      "seats": 93,
+      "price": 104
+    },
+    {
+      "id": 15,
+      "flightNo": "AV1377",
+      "from": "VNO",
+      "to": "ARN",
+      "departDate": "22.05.2023 19:30:00",
+      "flightTime": 140,
+      "arriveDate": "22.05.2023 21:50:00",
+      "seats": 99,
+      "price": 162
+    },
+    {
+      "id": 16,
+      "flightNo": "AV875",
+      "from": "VIE",
+      "to": "ATH",
+      "departDate": "23.05.2023 8:20:00",
+      "flightTime": 110,
+      "arriveDate": "23.05.2023 10:10:00",
+      "seats": 109,
+      "price": 98
+    },
+    {
+      "id": 17,
+      "flightNo": "BT948",
+      "from": "TLV",
+      "to": "BCN",
+      "departDate": "24.05.2023 9:10:00",
+      "flightTime": 250,
+      "arriveDate": "24.05.2023 13:20:00",
+      "seats": 72,
+      "price": 185
+    },
+    {
+      "id": 18,
+      "flightNo": "BS1416",
+      "from": "SXF",
+      "to": "BRU",
+      "departDate": "25.05.2023 8:00:00",
+      "flightTime": 370,
+      "arriveDate": "25.05.2023 14:10:00",
+      "seats": 49,
+      "price": 99
+    },
+    {
+      "id": 19,
+      "flightNo": "BS1216",
+      "from": "SVO",
+      "to": "BUD",
+      "departDate": "26.05.2023 18:40:00",
+      "flightTime": 190,
+      "arriveDate": "26.05.2023 21:50:00",
+      "seats": 73,
+      "price": 181
+    },
+    {
+      "id": 20,
+      "flightNo": "CS1698",
+      "from": "SOF",
+      "to": "CDG",
+      "departDate": "27.05.2023 8:30:00",
+      "flightTime": 450,
+      "arriveDate": "27.05.2023 16:00:00",
+      "seats": 28,
+      "price": 146
+    },
+    {
+      "id": 21,
+      "flightNo": "CR1703",
+      "from": "RIX",
+      "to": "CIA",
+      "departDate": "28.05.2023 17:00:00",
+      "flightTime": 310,
+      "arriveDate": "28.05.2023 22:10:00",
+      "seats": 120,
+      "price": 191
+    },
+    {
+      "id": 22,
+      "flightNo": "CP1661",
+      "from": "PRG",
+      "to": "CPH",
+      "departDate": "29.05.2023 17:30:00",
+      "flightTime": 300,
+      "arriveDate": "29.05.2023 22:30:00",
+      "seats": 82,
+      "price": 186
+    },
+    {
+      "id": 23,
+      "flightNo": "DO1705",
+      "from": "OSL",
+      "to": "DUB",
+      "departDate": "30.05.2023 9:40:00",
+      "flightTime": 130,
+      "arriveDate": "30.05.2023 11:50:00",
+      "seats": 86,
+      "price": 201
+    },
+    {
+      "id": 24,
+      "flightNo": "GM1136",
+      "from": "MHP",
+      "to": "GVA",
+      "departDate": "31.05.2023 9:10:00",
+      "flightTime": 170,
+      "arriveDate": "31.05.2023 12:00:00",
+      "seats": 61,
+      "price": 134
+    },
+    {
+      "id": 25,
+      "flightNo": "HL1080",
+      "from": "LCY",
+      "to": "HEL",
+      "departDate": "01.06.2023 21:50:00",
+      "flightTime": 70,
+      "arriveDate": "01.06.2023 23:00:00",
+      "seats": 57,
+      "price": 195
+    },
+    {
+      "id": 26,
+      "flightNo": "KK1459",
+      "from": "KEF",
+      "to": "KBP",
+      "departDate": "02.06.2023 15:00:00",
+      "flightTime": 170,
+      "arriveDate": "02.06.2023 17:50:00",
+      "seats": 46,
+      "price": 129
+    }
+  ]
+}
