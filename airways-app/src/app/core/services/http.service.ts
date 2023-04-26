@@ -5,7 +5,11 @@ import {
 } from 'rxjs';
 import { Airport } from '../../shared/model/airport.model';
 import { Trip } from '../../shared/model/trip.model';
-import { URL_AIRPORTS, URL_API, URL_TRIPS } from '../../shared/env.constants';
+import {
+  URL_AIRPORTS, URL_API, URL_LOGIN, URL_REGISTER, URL_TRIPS, URL_USERS,
+} from '../../shared/env.constants';
+import { User } from '../../shared/model/persons.model';
+import { UserResponse } from '../../shared/model/response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +37,18 @@ export default class HttpService {
     const params = new HttpParams().appendAll({ code });
     return this.http.get<Airport[]>(URL_API + URL_AIRPORTS, { params })
       .pipe(map((items) => items[0]));
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(URL_API + URL_USERS);
+  }
+
+  loginUser(user: User): Observable<UserResponse> {
+    return this.http.post<UserResponse>(URL_API + URL_LOGIN, user);
+  }
+
+  registerUser(user: User): Observable<UserResponse> {
+    delete user.id;
+    return this.http.post<UserResponse>(URL_API + URL_REGISTER, user);
   }
 }
