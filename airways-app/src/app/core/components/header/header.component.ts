@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import FormatService from '../../services/format.service';
+import HeaderService from '../../services/header.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ export default class HeaderComponent {
   constructor(
     private router: Router,
     public formatService: FormatService,
+    public headerService: HeaderService,
     private store: Store,
   ) {}
 

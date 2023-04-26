@@ -6,11 +6,13 @@ import FooterComponent from './components/footer/footer.component';
 import SharedModule from '../shared/shared.module';
 import FormatService from './services/format.service';
 import HttpApiInterceptor from './services/http-api.interceptor';
+import StepperComponent from './components/stepper/stepper.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
+    StepperComponent,
   ],
   imports: [
     CommonModule,
