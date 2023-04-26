@@ -41,6 +41,6 @@ export default class FlightFormComponent {
       passengers,
     };
     this.store.dispatch(send(search));
-    this.router.navigate(['booking']);
+    this.router.navigate(['booking', 'flight']);
   }
 }

@@ -11,12 +11,31 @@
   padding-left: 10px;
   padding-right: 10px;
 
+  &.isBooking {
+    background: $text-light-color;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
     height: 100%;
+
+    @media(max-width: 935px) {
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    @media(max-width: 700px) {
+      flex-wrap: nowrap;
+      gap: 30px;
+    }
+
+    @media(max-width: 635px) {
+      flex-wrap: wrap;
+      gap: 0;
+    }
   }
 
   &__logo {
@@ -53,7 +72,6 @@
   .wrapper-menu {
     display: flex;
     gap: 10px;
-    width: 100%;
     justify-content: end;
   }
 
@@ -63,6 +81,10 @@
     height: 100%;
     justify-content: space-between;
     align-items: center;
+
+    &.isBooking {
+      width: 380px;
+    }
 
     @media(max-width:700px) {
       flex-direction: column;
@@ -113,11 +135,16 @@
     justify-content: center;
     align-items: center;
     height: 48px;
+    font-weight: 600;
     cursor: pointer;
-    transition: .5s;
+    transition: opacity .5s;
 
     @media(max-width:700px) {
       width: 100%;
+    }
+
+    &.isBooking {
+      color: $text-average-color;
     }
 
     &_menu {
@@ -141,16 +168,40 @@
     &__title {
       text-transform: uppercase;
       color: $text-light-color;
+
+      &.isBooking {
+        color: $text-average-color;
+
+        @media(max-width:700px) {
+          color: $text-light-color;
+        }
+      }
     }
 
     &__drop-down {
       color: $text-light-color;
+
+      &.isBooking {
+        color: $text-average-color;
+
+        @media(max-width:700px) {
+          color: $text-light-color;
+        }
+      }
     }
   }
 
   &__format-money {
     width: 64px;
     color: $text-light-color;
+
+    &.isBooking {
+      color: $text-average-color;
+    }
+
+    @media(max-width:700px) {
+      color: $text-light-color !important;
+    }
   }
 
   &__button-login {
@@ -160,8 +211,17 @@
     align-items: center;
     gap: 15px;
 
-    &__title {
+    &__title,
+    &__img {
       color: $text-light-color;
+
+      &.isBooking {
+        color: $text-average-color;
+
+        @media(max-width:700px) {
+          color: $text-light-color;
+        }
+      }
     }
   }
 

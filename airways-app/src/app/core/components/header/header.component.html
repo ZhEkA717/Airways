@@ -1,6 +1,12 @@
-<div class="header">
+<div
+  class="header"
+  [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+>
 <div class="container">
-  <div (click)="toMainPage()" class="header__logo">
+  <div
+    (click)="toMainPage()"
+    class="header__logo"
+  >
     <div class="header__logo__img">
       <img
         src="../../../../assets/icons/logo.svg"
@@ -9,17 +15,25 @@
     </div>
     <div class="header__logo__title">airways</div>
   </div>
+  <app-stepper
+    *ngIf="(headerService.isBooking$ | async) !== true"
+  ></app-stepper>
   <div class="wrapper-menu">
     <div
-    [ngClass]="{showMenu: menuShow}"
-    class="header__menu"
-  >
-    <div class="header__title">
-      <div>Book flights</div>
-      <button
-      (click)="menuShow = !menuShow"
-      class="button button_menu"
+      [ngClass]="{showMenu: menuShow}"
+      [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+      class="header__menu"
     >
+    <div class="header__title">
+      <div *ngIf="headerService.isBooking$ | async">Book flights</div>
+      <div
+        *ngIf="(headerService.isBooking$ | async) !== true
+        && menuShow"
+      >Book flights</div>
+      <button
+      (click)="menuShow = false"
+        class="button button_menu"
+      >
       <mat-icon>close</mat-icon>
     </button>
     </div>
@@ -27,8 +41,14 @@
       [matMenuTriggerFor]="menuFormatDate"
       class="button header__format-date"
     >
-      <span class="header__format-date__title">{{formatDate$ | async}}</span>
-      <mat-icon class="header__format-date__drop-down">arrow_drop_down</mat-icon>
+      <span
+        class="header__format-date__title"
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+      >{{formatDate$ | async}}</span>
+      <mat-icon
+        class="header__format-date__drop-down"
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+      >arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menuFormatDate="matMenu">
         <button
@@ -46,6 +66,7 @@
     <button
       [matMenuTriggerFor]="menuFormatMoney"
       class="button header__format-money"
+      [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
     >{{formatMoney$ | async}}</button>
     <mat-menu #menuFormatMoney="matMenu">
       <button
@@ -55,11 +76,14 @@
       >{{money.text}}</button>
     </mat-menu>
     <button class="button header__button-login">
-      <img class="header__button-login__img"
-        src="../../../../assets/icons/button-login-user-icon.svg"
-        alt="user-icon-button"
-      >
-      <div class="header__button-login__title">Sign in</div>
+      <mat-icon
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        class="header__button-login__img"
+      >person</mat-icon>
+      <div
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        class="header__button-login__title"
+      >Sign in</div>
     </button>
   </div>
   <div class="button-wrapper">
@@ -67,12 +91,18 @@
       <img
         class="header__basket__img"
         src="../../../../assets/icons/basket.svg"
+        [src]="
+          (headerService.isBooking$ | async)
+          ? '../../../../assets/icons/basket.svg'
+          : '../../../../assets/icons/basket-booking.svg'
+        "
         alt="basket"
       >
     </button>
     <button
-      (click)="menuShow = !menuShow"
+      (click)="menuShow = true"
       class="button button_menu"
+      [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
     >
       <mat-icon>menu</mat-icon>
     </button>
