@@ -76,7 +76,7 @@
       >{{money.text}}</button>
     </mat-menu>
     <button
-      (click)="openDialog('500ms', '500ms')"
+      (click)="openDialog('500ms', '0ms')"
       class="button header__button-login">
       <mat-icon
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"

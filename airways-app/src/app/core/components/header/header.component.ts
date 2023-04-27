@@ -34,6 +34,7 @@ export default class HeaderComponent {
     this.dialog.open(AuthDialogComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
+      maxHeight: '90vh',
     });
   }
 
