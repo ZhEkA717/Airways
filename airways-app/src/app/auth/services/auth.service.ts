@@ -7,7 +7,7 @@ import HttpApiService from '../../core/services/http-api.service';
   providedIn: 'root',
 })
 export default class AuthService {
-  private accessToken: string;
+  public accessToken: string;
 
   private userId: number;
 
@@ -34,12 +34,19 @@ export default class AuthService {
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage.next(error.error);
-        this.isLogged.next(false);
+        this.logout();
       },
     });
   }
 
+  public logout() {
+    this.accessToken = '';
+    this.userId = 0;
+    this.isLogged.next(false);
+  }
+
   private parseJwt(token:string) {
+    if (token === '') return 'Empty token';
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     try {
