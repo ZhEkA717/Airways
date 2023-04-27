@@ -1,14 +1,42 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import HttpApiService from '../../core/services/http-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export default class AuthService {
-  private authToken: string;
+  private accessToken: string;
 
-  constructor() {
-    this.authToken = '';
-    console.log(this.parseJwt('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1c3RvbWVyMUBhaXJ3YXlzLmNvbSIsImlhdCI6MTY4MjU5NzkzOSwiZXhwIjoxNjgyNjAxNTM5LCJzdWIiOiIyIn0.4GlrdumIVG9UujqefGXYBHo3V7QJtYYFZCgccQtep9Y'));
+  private userId: number;
+
+  private errorMessage: BehaviorSubject<string>;
+
+  private isLogged: BehaviorSubject<boolean>;
+
+  public isLogged$: Observable<boolean>;
+
+  constructor(private httpApi: HttpApiService) {
+    this.accessToken = '';
+    this.userId = 0;
+    this.isLogged = new BehaviorSubject(false);
+    this.isLogged$ = this.isLogged.asObservable();
+    this.errorMessage = new BehaviorSubject('');
+  }
+
+  public login(email: string, password: string) {
+    this.httpApi.loginUser(email, password).subscribe({
+      next: (data) => {
+        this.accessToken = data.accessToken;
+        this.userId = data.user.id ?? 0;
+        this.isLogged.next(true);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.errorMessage.next(error.error);
+        this.isLogged.next(false);
+      },
+    });
   }
 
   private parseJwt(token:string) {
