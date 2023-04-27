@@ -1,0 +1,35 @@
+<mat-button-toggle-group
+  name="fontStyle"
+  aria-label="Font Style"
+  class="button-toggle"
+  value="log in"
+  [(ngModel)]="toggle"
+>
+  <mat-button-toggle
+    class="button"
+    value="log in"
+  >Log in</mat-button-toggle>
+  <mat-button-toggle
+    class="button"
+    value="sign up"
+  >Sign Up</mat-button-toggle>
+</mat-button-toggle-group>
+
+<div class="continue-buttons">
+  <button class="button">
+    <img src="../../../../assets/icons/google.svg" alt="google">
+    Continue with Google
+  </button>
+  <button class="button">
+    <img src="../../../../assets/icons/facebbok.svg" alt="facebook">
+    Continue with Facebook
+  </button>
+</div>
+
+<div class="line">
+  <div class="text">or {{toggle}} with your email</div>
+</div>
+
+<app-login *ngIf="toggle === 'log in'"></app-login>
+<app-registration *ngIf="toggle === 'sign up'"></app-registration>
+

@@ -75,7 +75,9 @@
         (click)="formatService.switchFormatMoney(money.id)"
       >{{money.text}}</button>
     </mat-menu>
-    <button class="button header__button-login">
+    <button
+      (click)="openDialog('500ms', '500ms')"
+      class="button header__button-login">
       <mat-icon
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
         class="header__button-login__img"

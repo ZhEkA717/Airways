@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
+import { MatDialog } from '@angular/material/dialog';
+import AuthDialogComponent from 'src/app/auth/components/auth-dialog/auth-dialog.component';
 import FormatService from '../../services/format.service';
 import HeaderService from '../../services/header.service';
 
@@ -22,7 +24,18 @@ export default class HeaderComponent {
     public formatService: FormatService,
     public headerService: HeaderService,
     private store: Store,
+    public dialog: MatDialog,
   ) {}
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+  ): void {
+    this.dialog.open(AuthDialogComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 
   public toMainPage() {
     this.router.navigate(['main']);
