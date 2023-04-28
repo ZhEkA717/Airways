@@ -23,6 +23,16 @@
       "password": "$2a$10$r1PYAbUE90ab/DXF.7qdGu9O0DS/l431KkhKPZBPhkM7V6cPQa7vK",
       "userName": "mironovahl",
       "id": 4
+    },
+    {
+      "email": "admin@admin.ua",
+      "password": "$2a$10$va.uPBeZpAZgVyndWoSpauNrhb3fvTl8N6hohQKgcuYkTjalGrvr.",
+      "phone": "{ code:+7, number:208-335-5162 }",
+      "firstName": "Vadim",
+      "lastName": "Koloskov",
+      "birthDate": "08.04.1994",
+      "gender": "Male",
+      "id": 5
     }
   ],
   "posts": [
