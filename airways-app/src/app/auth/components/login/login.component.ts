@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
+import AuthService from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +29,16 @@ export default class LoginComponent {
     ]),
   });
 
-  constructor(public statisticsService: StatisticsService) {}
+  // eslint-disable-next-line max-len
+  constructor(public statisticsService: StatisticsService, private authService: AuthService, private dialog: MatDialog) {}
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
+    this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value);
+    this.authService.isLogged$.subscribe((isLogged) => (isLogged ? this.dialog.closeAll() : console.log('lll')));
     // eslint-disable-next-line no-useless-return
     if (this.form.invalid) return;
   }
