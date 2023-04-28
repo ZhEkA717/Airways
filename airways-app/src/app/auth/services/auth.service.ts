@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import HttpApiService from '../../core/services/http-api.service';
 import { AuthToken } from '../../shared/model/auth-token.model';
+import { User } from '../../shared/model/persons.model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +41,23 @@ export default class AuthService {
         this.accessToken = data.accessToken;
         this.userId = data.user.id ?? 0;
         this.isLogged.next(true);
+        this.errorMessage.next('');
+        localStorage.setItem('JWT', data.accessToken);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.errorMessage.next(error.error);
+        this.logout();
+      },
+    });
+  }
+
+  public register(user: User) {
+    this.httpApi.registerUser(user).subscribe({
+      next: (data) => {
+        this.accessToken = data.accessToken;
+        this.userId = data.user.id ?? 0;
+        this.isLogged.next(true);
+        this.errorMessage.next('');
         localStorage.setItem('JWT', data.accessToken);
       },
       error: (error: HttpErrorResponse) => {
