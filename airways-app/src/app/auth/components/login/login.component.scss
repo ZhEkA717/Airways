@@ -41,6 +41,22 @@
     }
   }
 
+  &__forgot {
+    width: 100%;
+    text-align: end;
+    a {
+      color: $base-primary-color;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   .statistics {
     display: flex;
     width: 100%;
@@ -90,7 +106,3 @@
   }
 
 }
-
-
-
-

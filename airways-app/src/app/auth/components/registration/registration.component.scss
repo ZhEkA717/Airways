@@ -1,0 +1,81 @@
+@import '../login/login.component.scss';
+@import '../../../../stylings/variables';
+
+.first-name,
+.last-name,
+.birth-date {
+  width: 100%;
+}
+
+.suffix-icon {
+  color: $text-average-color;
+}
+.suffix-icon-error {
+  color: $text-error-color;
+}
+
+.date-template{
+  font-size: 10px;
+  color: $text-average-color;
+}
+
+.error {
+  margin-left: 18px;
+  margin-top: -18px;
+
+  small {
+    margin-top: 4px;
+    display: block;
+    color: red;
+    font-size: 12px;
+    position: relative;
+  }
+
+  small:before {
+    content: '•';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -18px;
+    font-size: 16px;
+  }
+}
+
+.button-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+
+  .button {
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .mat-button-toggle-checked {
+    color: $base-primary-color;
+  }
+}
+
+.code-phone {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  gap: 8px;
+
+  .code,
+  .phone {
+    width: 50%;
+  }
+}
+
+.citizenship {
+  width: 100%;
+}
+
+.registration-button {
+  margin-top: 10px;
+  width: 100%;
+  height: 44px;
+}
