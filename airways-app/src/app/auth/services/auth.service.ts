@@ -22,17 +22,13 @@ export default class AuthService {
   public isLogged$: Observable<boolean>;
 
   constructor(private httpApi: HttpApiService) {
-    const token2 = localStorage.getItem('JWT');
-    this.accessToken = token2 ?? '';
-    // if (!this.parseJwt(this.accessToken).error) {
-    //   console.log('error');
-    // }
+    const token = localStorage.getItem('JWT');
+    this.accessToken = token ?? '';
     this.userId = 0;
     this.isLogged = new BehaviorSubject(false);
     this.isLogged$ = this.isLogged.asObservable();
     this.errorMessage = new BehaviorSubject('');
     this.errorMessage$ = this.errorMessage.asObservable();
-    console.log(this.parseJwt('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1c3RvbWVyMUBhaXJ3YXlzLmNvbSIsImlhdCI6MTY4MjU5NzkzOSwiZXhwIjoxNjgyNjAxNTM5LCJzdWIiOiIyIn0.4GlrdumIVG9UujqefGXYBHo3V7QJtYYFZCgccQtep9Y'));
   }
 
   public login(email: string, password: string) {
@@ -72,6 +68,10 @@ export default class AuthService {
     this.userId = 0;
     this.isLogged.next(false);
     localStorage.removeItem('JWT');
+  }
+
+  public getCurrentUser(): Observable<User> {
+    return this.httpApi.getUser(this.userId);
   }
 
   private parseJwt(token:string): string {

@@ -43,6 +43,11 @@ export default class HttpApiService {
     return this.http.get<User[]>(URL_USERS);
   }
 
+  getUser(id: number): Observable<User> {
+    return this.http.get<User[]>(`${URL_USERS}/${id}`)
+      .pipe(map((items) => items[0]));
+  }
+
   loginUser(email: string, password: string): Observable<UserResponse> {
     return this.http.post<UserResponse>(URL_LOGIN, { email, password });
   }
