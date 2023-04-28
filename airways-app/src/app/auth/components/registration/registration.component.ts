@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
+import AgreementValidator from '../../Validators/agreement.validator';
+import TextValidator from '../../Validators/text.validator';
 
 @Component({
   selector: 'app-registration',
@@ -40,9 +42,11 @@ export default class RegistrationComponent {
     ]),
     firstName: new FormControl('', [
       Validators.required,
+      TextValidator.validityText,
     ]),
     lastName: new FormControl('', [
       Validators.required,
+      TextValidator.validityText,
     ]),
     date: new FormControl('', [
       Validators.required,
@@ -51,7 +55,7 @@ export default class RegistrationComponent {
     gender: new FormControl('', [
       Validators.required,
     ]),
-    countryCode: new FormControl('375', [
+    countryCode: new FormControl('', [
       Validators.required,
     ]),
     phone: new FormControl('', [
@@ -60,9 +64,20 @@ export default class RegistrationComponent {
     citizenship: new FormControl('', [
       Validators.required,
     ]),
+    agreement: new FormControl('', [
+      Validators.required,
+      AgreementValidator.validityAgreement,
+    ]),
   });
 
   constructor(public statisticsService: StatisticsService) {}
+
+  phoneFormat(input: string) {
+    return input.replace(
+      /(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/,
+      '$1-$2-$3-$4-$5',
+    );
+  }
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);

@@ -193,7 +193,7 @@
         Female
       </mat-button-toggle>
     </mat-button-toggle-group>
-
+    {{phoneFormat(form.get('phone')?.value)}}
     <div class="code-phone">
       <mat-form-field
         class="code"
@@ -209,7 +209,6 @@
 
       <mat-form-field class="phone">
         <mat-label>Mobile phone number </mat-label>
-        <span matPrefix>+{{form.get('countryCode')?.value}} &nbsp;</span>
         <input formControlName="phone" type="tel" matInput>
       </mat-form-field>
     </div>
@@ -226,6 +225,15 @@
         </mat-select>
     </mat-form-field>
 
+    <div class="agreement">
+      <mat-checkbox
+        formControlName="agreement"
+        color="primary"
+      >I agree to Airway's
+      <a class="link" href="#">Privacy Policy</a> and
+      <a class="link" href="#">Terms of Use</a>
+      </mat-checkbox>
+    </div>
     <button
       class="registration-button"
       mat-raised-button

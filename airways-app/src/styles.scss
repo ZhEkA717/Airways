@@ -47,3 +47,14 @@ $airways-app-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.cdk-global-overlay-wrapper {
+  overflow: auto;
+  pointer-events:visible;
+}
+
+.mdc-dialog__container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}

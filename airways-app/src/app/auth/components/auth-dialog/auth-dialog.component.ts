@@ -1,3 +1,4 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export default class AuthDialogComponent {
   public toggle: 'log in' | 'sign up' = 'sign up';
+
+  constructor(public dialogRef: DialogRef) {}
 }
