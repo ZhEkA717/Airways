@@ -29,17 +29,20 @@ export default class LoginComponent {
     ]),
   });
 
-  // eslint-disable-next-line max-len
-  constructor(public statisticsService: StatisticsService, private authService: AuthService, private dialog: MatDialog) {}
+  constructor(
+    public statisticsService: StatisticsService,
+    private authService: AuthService,
+    private dialog: MatDialog,
+  ) {}
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
-    this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value);
-    this.authService.isLogged$.subscribe((isLogged) => (isLogged ? this.dialog.closeAll() : console.log('lll')));
-    // eslint-disable-next-line no-useless-return
-    if (this.form.invalid) return;
+    if (!this.form.invalid) {
+      this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value);
+      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialog.closeAll()));
+    }
   }
 }
