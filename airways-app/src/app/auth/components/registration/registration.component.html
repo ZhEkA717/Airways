@@ -116,6 +116,18 @@
       >error_outline</mat-icon>
       </ng-template>
     </mat-form-field>
+    <div
+      class="error"
+      *ngIf="form.get('firstName')?.invalid &&
+      form.get('firstName')?.touched"
+    >
+      <small *ngIf="form.get('firstName')?.errors?.['required']">
+        Please enter a first name
+      </small>
+      <small *ngIf="form.get('firstName')?.errors?.['validityText']">
+        It is forbidden to enter numbers
+      </small>
+    </div>
 
     <mat-form-field class="last-name">
       <mat-label>Last name</mat-label>
@@ -136,6 +148,18 @@
       >error_outline</mat-icon>
       </ng-template>
     </mat-form-field>
+    <div
+      class="error"
+      *ngIf="form.get('lastName')?.invalid &&
+      form.get('lastName')?.touched"
+    >
+      <small *ngIf="form.get('lastName')?.errors?.['required']">
+        Please enter a last name
+      </small>
+      <small *ngIf="form.get('lastName')?.errors?.['validityText']">
+        It is forbidden to enter numbers
+      </small>
+    </div>
 
     <mat-form-field class="birth-date">
       <mat-label>Date of birth</mat-label>
@@ -193,7 +217,6 @@
         Female
       </mat-button-toggle>
     </mat-button-toggle-group>
-    {{phoneFormat(form.get('phone')?.value)}}
     <div class="code-phone">
       <mat-form-field
         class="code"
