@@ -8,13 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
-import LoginComponent from './auth/components/login/login.component';
 import RegistrationComponent from './auth/components/registration/registration.component';
 import SharedModule from './shared/shared.module';
 import { metaReducers, reducers } from './redux';
 import AuthDialogComponent from './auth/components/auth-dialog/auth-dialog.component';
-import ReliableColorDirective from './auth/directives/reliable-color.directive';
 import TextColorDirective from './auth/directives/text-color.directive';
+import ReliableColorDirective from './auth/directives/reliable-color.directive';
+import LoginComponent from './auth/components/login/login.component';
 import StatisticsService from './auth/services/statistics.service';
 
 @NgModule({

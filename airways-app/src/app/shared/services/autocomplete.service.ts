@@ -15,8 +15,6 @@ export default class AutocompleteService {
     ]),
   });
 
-  public options: string[] = ['One', 'Two', 'Three'];
-
   onChangeDirection() {
     const fromValue = this.form.get('from')?.value;
     const destinationValue = this.form.get('destination')?.value;

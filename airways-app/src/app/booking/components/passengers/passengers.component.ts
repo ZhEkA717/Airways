@@ -11,7 +11,7 @@ export default class PassengersComponent implements OnInit {
 
   ngOnInit(): void {
     this.headerService.setStepper({
-      flight: false, passengers: true, review: false,
+      flight: true, passengers: true, review: false,
     });
   }
 }

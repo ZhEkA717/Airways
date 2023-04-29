@@ -5,10 +5,10 @@ import { saveDateFormat, saveMoneyFormat } from 'src/app/redux/actions/settings.
 @Injectable()
 export default class FormatService {
   public formatDate = [
-    { id: 1, text: 'MM/DD/YYYY', done: 'done' },
-    { id: 2, text: 'DD/MM/YYYY', done: '' },
-    { id: 3, text: 'YYYY/DD/MM', done: '' },
-    { id: 4, text: 'YYYY/MM/DD', done: '' },
+    { id: 1, text: 'MM/DD/YYYY' },
+    { id: 2, text: 'DD/MM/YYYY' },
+    { id: 3, text: 'YYYY/DD/MM' },
+    { id: 4, text: 'YYYY/MM/DD' },
   ];
 
   public formatMoney = [
@@ -23,17 +23,14 @@ export default class FormatService {
   ) {}
 
   public switchFormatDate(id: number) {
-    this.formatDate.forEach((item) => {
-      if (item.id === id) {
-        item.done = 'done';
-        this.store.dispatch(saveDateFormat({ dateFormat: item.text }));
-      } else item.done = '';
-    });
+    const dateFormat = this.formatDate
+      .find((item) => item.id === id)?.text as string;
+    this.store.dispatch(saveDateFormat({ dateFormat }));
   }
 
   public switchFormatMoney(id: number) {
-    const formatMoney = this.formatMoney
+    const moneyFormat = this.formatMoney
       .find((item) => item.id === id)?.text as string;
-    this.store.dispatch(saveMoneyFormat({ moneyFormat: formatMoney }));
+    this.store.dispatch(saveMoneyFormat({ moneyFormat }));
   }
 }

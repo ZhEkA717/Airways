@@ -1,1 +1,310 @@
-<p>registration works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div
+    class="form"
+  >
+    <mat-form-field class="form__login">
+        <mat-label>Email</mat-label>
+        <input
+          formControlName="email"
+          matInput
+        >
+    </mat-form-field>
+    <div
+      class="error-message error-message_email"
+      *ngIf="form.get('email')?.invalid &&
+      form.get('email')?.touched"
+    >
+        <small *ngIf="form.get('email')?.errors?.['required']">
+          Please enter a login email
+        </small>
+        <small *ngIf="form.get('email')?.errors?.['email']">
+          The login email is invalid
+        </small>
+    </div>
+    <mat-form-field class="form__password">
+      <mat-label>Password</mat-label>
+      <input
+        (input)="onUpdateStatistics()"
+        formControlName="password"
+        matInput
+        [type]="isHidePassword ? 'password' : 'text'"
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="isHidePassword = !isHidePassword"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="isHidePassword"
+      >
+        <mat-icon>
+          {{ isHidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </button>
+    </mat-form-field>
+    <div
+      class="statistics"
+      *ngIf="form.get('password')?.touched"
+    >
+      <svg
+        viewBox="10 10 20 20"
+        style="width: 15px; height: 15px;"
+      >
+        <circle
+          class="substrate-0-2-376"
+          r="8" cx="20" cy="20"
+          fill="none"
+          stroke="rgba(0, 16, 61, 0.06)"
+          stroke-width="4"
+        >
+        </circle>
+        <circle
+          appReliableColor
+          [valueReliable]="statisticsService.valueReliable"
+          r="8" cx="20" cy="20"
+          fill="none"
+          stroke-width="4"
+          style="stroke-dasharray: 50;
+                transition: .5s linear;"
+        >
+        </circle>
+      </svg>
+      <span appTextColor>
+        {{statisticsService.text}}
+      </span>
+    </div>
+    <div
+      class="error-message green"
+      *ngIf="form.get('password')?.invalid &&
+      form.get('password')?.touched"
+    >
+      <small *ngIf="form.get('password')?.errors?.['required']">
+        Please enter a password
+      </small>
+      <small  *ngIf="form.get('password')?.errors?.['lengthPassword']">
+        At least 8 characters
+      </small>
+      <small *ngIf="form.get('password')?.errors?.['mixtureLowerAndUpperLetter']">
+        A mixture of both uppercase and lowercase letters
+      </small>
+      <small *ngIf="form.get('password')?.errors?.['mixtureLettersAndNumbers']">
+        A mixture of letters and numbers
+      </small>
+      <small *ngIf="form.get('password')?.errors?.['specialSymbols']">
+        Inclusion of at least one special character: ! @ # ? ]
+      </small>
+    </div>
+
+    <mat-form-field class="first-name">
+      <mat-label>First name</mat-label>
+      <input
+        formControlName="firstName"
+        matInput
+      >
+      <mat-icon
+        class="suffix-icon-error"
+        matSuffix
+        *ngIf="form.get('firstName')?.invalid
+        && form.get('firstName')?.touched; else error_outline"
+      >error</mat-icon>
+      <ng-template #error_outline>
+        <mat-icon
+        class="suffix-icon"
+        matSuffix
+      >error_outline</mat-icon>
+      </ng-template>
+    </mat-form-field>
+    <div
+      class="error"
+      *ngIf="form.get('firstName')?.invalid &&
+      form.get('firstName')?.touched"
+    >
+      <small *ngIf="form.get('firstName')?.errors?.['required']">
+        Please enter a first name
+      </small>
+      <small *ngIf="form.get('firstName')?.errors?.['validityText']">
+        It is forbidden to enter numbers
+      </small>
+    </div>
+
+    <mat-form-field class="last-name">
+      <mat-label>Last name</mat-label>
+      <input
+        formControlName="lastName"
+        matInput
+      >
+      <mat-icon
+        class="suffix-icon-error"
+        matSuffix
+        *ngIf="form.get('lastName')?.invalid
+        && form.get('lastName')?.touched; else error_outline2"
+      >error</mat-icon>
+      <ng-template #error_outline2>
+        <mat-icon
+        class="suffix-icon"
+        matSuffix
+      >error_outline</mat-icon>
+      </ng-template>
+    </mat-form-field>
+    <div
+      class="error"
+      *ngIf="form.get('lastName')?.invalid &&
+      form.get('lastName')?.touched"
+    >
+      <small *ngIf="form.get('lastName')?.errors?.['required']">
+        Please enter a last name
+      </small>
+      <small *ngIf="form.get('lastName')?.errors?.['validityText']">
+        It is forbidden to enter numbers
+      </small>
+    </div>
+
+    <mat-form-field class="birth-date">
+      <mat-label>Date of birth</mat-label>
+      <input
+        formControlName="date"
+        matInput
+        [matDatepicker]="picker"
+      >
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      >
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div
+      class="error"
+      *ngIf="form.get('date')?.invalid &&
+      form.get('date')?.touched"
+    >
+      <small *ngIf="form.get('date')?.errors?.['required']">
+        Please enter a date of birth
+      </small>
+      <small *ngIf="form.get('date')?.errors?.['validityDate']">
+        The date is invalid
+      </small>
+    </div>
+
+    <mat-button-toggle-group
+      name="fontStyle"
+      class="button-toggle" value="log in"
+      formControlName = "gender"
+    >
+      <mat-button-toggle
+        #first
+        class="button"
+        value="Male"
+      >
+        <mat-icon
+          *ngIf="first.checked"
+          matPrefix
+        >done</mat-icon>
+        Male
+      </mat-button-toggle>
+      <mat-button-toggle
+        #second
+        class="button"
+        value="Female"
+      >
+        <mat-icon
+          *ngIf="second.checked"
+          matPrefix
+        >done</mat-icon>
+        Female
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="code-phone">
+      <div class="code">
+        <mat-form-field
+          appearance="fill"
+        >
+          <mat-label>Country code</mat-label>
+          <mat-select formControlName="countryCode" name="code">
+            <mat-option *ngFor="let code of codes" [value]="code.code">
+              {{code.country}} (+{{code.code}})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div
+          class="error"
+          *ngIf="form.get('countryCode')?.invalid &&
+          form.get('countryCode')?.touched"
+        >
+          <small *ngIf="form.get('countryCode')?.errors?.['required']">
+            Please enter a country code
+          </small>
+        </div>
+      </div>
+
+      <div class="phone">
+        <mat-form-field>
+          <mat-label>Mobile phone number </mat-label>
+          <input
+            formControlName="phone"
+            type="tel"
+            matInput
+          >
+        </mat-form-field>
+        <div
+          class="error"
+          *ngIf="form.get('phone')?.invalid &&
+          form.get('phone')?.touched"
+        >
+          <small *ngIf="form.get('phone')?.errors?.['required']">
+            Please enter a phone
+          </small>
+          <small *ngIf="form.get('phone')?.errors?.['pattern']">
+            Please enter a valid format
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <mat-form-field
+        class="citizenship"
+        appearance="fill"
+      >
+        <mat-label>Citizenship</mat-label>
+        <mat-select formControlName="citizenship" name="citizenship">
+          <mat-option *ngFor="let item of citizenship" [value]="item">
+            {{item}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div
+      class="error"
+      *ngIf="form.get('citizenship')?.invalid &&
+      form.get('citizenship')?.touched"
+    >
+      <small *ngIf="form.get('citizenship')?.errors?.['required']">
+        Please enter a citizenship
+      </small>
+    </div>
+
+    <div class="agreement">
+      <mat-checkbox
+        formControlName="agreement"
+        color="primary"
+      >I agree to Airway's
+      <a class="link" href="#">Privacy Policy</a> and
+      <a class="link" href="#">Terms of Use</a>
+      </mat-checkbox>
+    </div>
+    <button
+      class="registration-button"
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+    >Sign up</button>
+  </div>
+</form>
+
+
+
+
+
+

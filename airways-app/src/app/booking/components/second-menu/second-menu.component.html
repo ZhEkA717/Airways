@@ -24,12 +24,12 @@
         class="menu__change">
         <button
           (click)="isEdit = !isEdit"
-          *ngIf="!isEdit && stepper.flight; else save"
+          *ngIf="!isEdit && !stepper.passengers; else save"
           class="menu__change__button"
         >Edit</button>
         <ng-template #save>
           <button
-            *ngIf="stepper.flight;"
+            *ngIf="!stepper.passengers;"
             (click)="isEdit = !isEdit; submit()"
             class="menu__change__button"
             [disabled]="autocompleteService.form.invalid
@@ -40,9 +40,10 @@
       </div>
     </div>
   </div>
+
   <div
     *ngIf="headerService.stepper$ | async as stepper"
-    [ngClass]="{isEdit: isEdit && stepper.flight}"
+    [ngClass]="{isEdit: isEdit && !stepper.passengers}"
     class="edit"
   >
     <app-autocomplete-group

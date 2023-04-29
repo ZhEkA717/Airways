@@ -7,7 +7,7 @@
     #progressBar
   >
     <mat-form-field class="form__login">
-        <mat-label>Login</mat-label>
+        <mat-label>Email</mat-label>
         <input
           formControlName="email"
           matInput
@@ -45,6 +45,9 @@
           </mat-icon>
         </button>
       </mat-form-field>
+      <div class="form__forgot">
+        <a href="#">Forgot password?</a>
+      </div>
       <div
         class="statistics"
         *ngIf="form.get('password')?.touched"
@@ -102,7 +105,7 @@
         mat-raised-button
         color="primary"
         [disabled]="form.invalid"
-      >Log In</button>
+      >Log in</button>
   </div>
 </form>
 
