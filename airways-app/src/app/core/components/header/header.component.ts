@@ -35,6 +35,7 @@ export default class HeaderComponent {
       enterAnimationDuration,
       exitAnimationDuration,
       hasBackdrop: true,
+      position: { top: '0px' },
     });
   }
 
