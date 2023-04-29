@@ -23,11 +23,6 @@ export default class FormatService {
   ) {}
 
   public switchFormatDate(id: number) {
-    // this.formatDate.forEach((item) => {
-    //   if (item.id === id) {
-    //     this.store.dispatch(saveDateFormat({ dateFormat: item.text }));
-    //   } else item.done = '';
-    // });
     const dateFormat = this.formatDate
       .find((item) => item.id === id)?.text as string;
     this.store.dispatch(saveDateFormat({ dateFormat }));

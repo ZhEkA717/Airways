@@ -11,7 +11,7 @@ export default class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.headerService.setStepper({
-      flight: false, passengers: false, review: true,
+      flight: true, passengers: true, review: true,
     });
   }
 }

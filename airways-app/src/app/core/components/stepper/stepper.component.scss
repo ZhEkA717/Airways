@@ -41,7 +41,8 @@
     white-space: nowrap;
 
     .number,
-    .active {
+    .active,
+    .done {
       width: 16px;
       height: 16px;
       border-radius: 50%;
@@ -57,7 +58,8 @@
       }
     }
 
-    .active {
+    .active,
+    .done {
       background: $text-secondary-color;
     }
 
