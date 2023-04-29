@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import SelectPassengersComponent from './components/select-passengers/select-passengers.component';
 import SelectValidateDirective from './directives/select-validate.directive';
 import RangeDateComponent from './components/range-date/range-date.component';
@@ -43,6 +44,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
   ],
   exports: [
     FormsModule,
@@ -63,6 +65,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     AutocompleteGroupComponent,
     MatDialogModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
   ],
 })
 export default class SharedModule { }

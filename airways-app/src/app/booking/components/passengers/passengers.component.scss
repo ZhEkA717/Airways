@@ -2,13 +2,16 @@
 
 
 .form {
+  margin-bottom: 102px;
+
   .main-title {
     display: flex;
     gap: 12px;
-    width: 164px;
+    width: 200px;
     height: fit-content;
     align-items: center;
     margin-top: 40px;
+    white-space: nowrap;
 
     .icon {
       color: $logo-color;
@@ -26,10 +29,10 @@
   .form-group-wrapper {
     margin-top: 20px;
     padding-top: 32px;
+    padding-bottom: 32px;
     padding-left: 44px;
     padding-right: 44px;
     width: 100%;
-    height: 234px;
   }
 
   .form-group {
@@ -39,6 +42,11 @@
     align-items: center;
     width: 100%;
     height: 56px;
+    gap: 20px;
+
+    mat-form-field {
+      width: 100%;
+    }
   }
 
   .title {
@@ -47,22 +55,45 @@
     line-height: 28px;
     color: $logo-color;
   }
+
+  .slide-toggle {
+    margin-top: 24px;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    gap: 6px;
+  }
 }
 
 .button-toggle {
-  width: 200px;
+  width: 100%;
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  transform: translateY(-10px);
 
   .button {
     width: 100%;
     font-weight: 500;
     font-size: 14px;
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   .mat-button-toggle-checked {
     color: $base-primary-color;
+  }
+}
+
+.wrapper-buttons {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 40px;
+  margin-right: 0;
+
+  button {
+    width: 126px;
+    height: 60px;
   }
 }

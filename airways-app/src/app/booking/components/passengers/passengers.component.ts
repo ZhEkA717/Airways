@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormArray,
@@ -5,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
@@ -28,7 +30,12 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     passengers: new FormArray([]),
   });
 
-  constructor(private headerService: HeaderService, private store: Store) {}
+  constructor(
+    private headerService: HeaderService,
+    private store: Store,
+    private router: Router,
+    public location: Location,
+  ) {}
 
   ngOnInit(): void {
     this.headerService.setStepper({
@@ -80,10 +87,12 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       date: new FormControl('', [
         Validators.required,
       ]),
-      isCripple: new FormControl('', [
-        Validators.required,
-      ]),
+      isCripple: new FormControl(''),
     });
+  }
+
+  toFligth() {
+    this.router.navigate(['/booking/flight']);
   }
 
   submit() {
@@ -95,5 +104,8 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
     // eslint-disable-next-line no-console
     console.log(form);
+    if (this.form.valid) {
+      this.router.navigate(['/booking/review']);
+    }
   }
 }
