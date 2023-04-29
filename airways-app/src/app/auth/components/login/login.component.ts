@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { DialogRef } from '@angular/cdk/dialog';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import AuthService from '../../services/auth.service';
@@ -32,7 +32,7 @@ export default class LoginComponent {
   constructor(
     public statisticsService: StatisticsService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialogRef: DialogRef,
   ) {}
 
   public onUpdateStatistics() {
@@ -42,7 +42,7 @@ export default class LoginComponent {
   public submit() {
     if (!this.form.invalid) {
       this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value);
-      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialog.closeAll()));
+      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
     }
   }
 }

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DialogRef } from '@angular/cdk/dialog';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
 import AgreementValidator from '../../Validators/agreement.validator';
 import TextValidator from '../../Validators/text.validator';
+import AuthService from '../../services/auth.service';
+import { User } from '../../../shared/model/persons.model';
 
 @Component({
   selector: 'app-registration',
@@ -71,14 +74,29 @@ export default class RegistrationComponent {
     ]),
   });
 
-  constructor(public statisticsService: StatisticsService) {}
+  constructor(
+    public statisticsService: StatisticsService,
+    private authService: AuthService,
+    private dialogRef: DialogRef,
+  ) {}
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
-    // eslint-disable-next-line no-useless-return
-    if (this.form.invalid) return;
+    if (!this.form.invalid) {
+      const newUser: User = {
+        email: this.form.controls['email'].value,
+        password: this.form.controls['password'].value,
+        firstName: this.form.controls['firstName'].value,
+        lastName: this.form.controls['lastName'].value,
+        birthDate: this.form.controls['date'].value,
+        gender: this.form.controls['gender'].value,
+        phone: { code: this.form.controls['countryCode'].value, number: this.form.controls['phone'].value },
+      };
+      this.authService.register(newUser);
+      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
+    }
   }
 }
