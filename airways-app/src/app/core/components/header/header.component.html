@@ -55,12 +55,16 @@
           *ngFor="let date of formatService.formatDate"
           (click)="formatService.switchFormatDate(date.id)"
           mat-menu-item
-          style=" display: flex; flex-direction: row-reverse;"
+          [style]="
+            (formatDate$ | async) === date.text
+            ? 'display: flex; flex-direction: row-reverse;'
+            : ''
+          "
         >
-          <span style="font-size: 14px;">{{date.text}}</span>
-          <mat-icon
+          <div style="font-size: 14px;">{{date.text}}</div>
+          <mat-icon *ngIf="(formatDate$ | async) === date.text"
             style="transform: translate(18px); color:#11397E"
-          >{{date.done}}</mat-icon>
+          >done</mat-icon>
         </button>
     </mat-menu>
     <button
@@ -73,7 +77,17 @@
         *ngFor="let money of formatService.formatMoney"
         mat-menu-item
         (click)="formatService.switchFormatMoney(money.id)"
-      >{{money.text}}</button>
+        [style]="
+          (formatMoney$ | async) === money.text
+          ? 'display: flex; flex-direction: row-reverse; gap: 18px'
+          : 'display: flex;'
+        "
+      >
+          <div style="font-size: 14px;">{{money.text}}</div>
+          <mat-icon *ngIf="(formatMoney$ | async) === money.text"
+            style="transform: translate(18px); color:#11397E"
+          >done</mat-icon>
+      </button>
     </mat-menu>
     <button
       (click)="openDialog('500ms', '0ms')"
