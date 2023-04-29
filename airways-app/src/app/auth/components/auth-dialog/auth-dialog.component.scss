@@ -7,6 +7,10 @@
   padding-left: 24px;
   padding-right: 23px;
   padding-bottom: 34px;
+
+  @media (max-width: 620px) {
+    width: 100%;
+  }
 }
 
 .close-dialog {
@@ -59,6 +63,10 @@
     font-size: 16px;
     letter-spacing: 0.1px;
 
+    @media (max-width: 350px) {
+      font-size: 14px;
+    }
+
     &:hover {
       background-color: $button-hover-color;
     }
@@ -87,5 +95,9 @@
     width: fit-content;
     margin-left: 12px;
     margin-right: 12px;
+
+    @media (max-width: 450px) {
+      font-size: 12px;
+    }
   }
 }

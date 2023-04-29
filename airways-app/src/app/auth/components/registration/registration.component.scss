@@ -65,9 +65,21 @@
   margin-top: 20px;
   gap: 8px;
 
+  @media (max-width: 615px) {
+    flex-direction: column;
+  }
+
   .code,
   .phone {
     width: 50%;
+
+    @media (max-width: 615px) {
+      width: 100%;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
   }
 }
 
