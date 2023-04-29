@@ -1,1 +1,66 @@
-<p>passengers works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div
+    formArrayName="passengers"
+    *ngFor="let passenger of passengers.controls; let i = index">
+    {{passengersName[i]}}
+    <div [formGroupName]="i">
+      <mat-form-field>
+        <mat-label>FirstName</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>LastName</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+
+      <mat-button-toggle-group
+        name="fontStyle"
+        class="button-toggle" value="log in"
+        formControlName = "gender"
+      >
+        <mat-button-toggle
+          #first
+          class="button"
+          value="Male"
+        >
+          <mat-icon
+            *ngIf="first.checked"
+            matPrefix
+          >done</mat-icon>
+          Male
+        </mat-button-toggle>
+        <mat-button-toggle
+          #second
+          class="button"
+          value="Female"
+        >
+          <mat-icon
+            *ngIf="second.checked"
+            matPrefix
+          >done</mat-icon>
+          Female
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-form-field>
+        <mat-label>Date of birth</mat-label>
+        <input formControlName="date" matInput [matDatepicker]="picker">
+        <mat-hint>
+          <small>MM/DD/YYYY</small>
+        </mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-checkbox
+        *ngIf="passengersName[i] !== 'Infant' "
+        formControlName="isCripple"
+        color="primary"
+      >Disabled</mat-checkbox>
+    </div>
+  </div>
+  <button type="submit">Continue</button>
+</form>
