@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   height: 68px;
-  max-width: 520px;
+  max-width: 560px;
   justify-content: space-between;
   gap: 10px;
 
@@ -55,6 +55,7 @@
     }
 
     &__text {
+      white-space: nowrap;
       font-weight: 500;
       font-size: 16px;
       color: $text-dark-color;

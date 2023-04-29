@@ -1,23 +1,25 @@
 <div class="from">
   <mat-form-field
-  [formGroup]="autocompleteService.form"
-  class="autocomplete"
-  appearance="fill"
+    [formGroup]="autocompleteService.form"
+    class="autocomplete"
+    appearance="fill"
   >
-  <mat-label>From</mat-label>
-  <input type="text"
-       aria-label="from"
-       matInput
-       formControlName="from"
-       [matAutocomplete]="from">
-  <mat-autocomplete #from="matAutocomplete">
-    <mat-option
-      *ngFor="let option of autocompleteService.options"
-      [value]="option"
-    >
-      {{option}}
-    </mat-option>
-  </mat-autocomplete>
+    <mat-label>From</mat-label>
+    <input type="text"
+         aria-label="from"
+         matInput
+         formControlName="from"
+         [matAutocomplete]="from">
+    <mat-autocomplete
+      #from="matAutocomplete">
+      <mat-option
+        *ngFor="let option of options"
+        [value]="option.city + ' ' + option.code"
+      >
+        {{option.city}} ({{option.code}})
+        <small class="country">{{option.country}}</small>
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <div
     class="error-message"
@@ -50,10 +52,11 @@
          [matAutocomplete]="destination">
   <mat-autocomplete #destination="matAutocomplete">
     <mat-option
-      *ngFor="let option of autocompleteService.options"
-      [value]="option"
+      *ngFor="let option of options"
+      [value]="option.city + ' ' + option.code"
     >
-      {{option}}
+      {{option.city}} ({{option.code}})
+    <small class="country">{{option.country}}</small>
     </mat-option>
   </mat-autocomplete>
   </mat-form-field>
