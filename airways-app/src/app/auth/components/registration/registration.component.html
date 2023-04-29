@@ -243,7 +243,11 @@
       <div class="phone">
         <mat-form-field>
           <mat-label>Mobile phone number </mat-label>
-          <input placeholder="+000 (00) 000-00-00" formControlName="phone" type="tel" matInput>
+          <input
+            formControlName="phone"
+            type="tel"
+            matInput
+          >
         </mat-form-field>
         <div
           class="error"
@@ -253,9 +257,11 @@
           <small *ngIf="form.get('phone')?.errors?.['required']">
             Please enter a phone
           </small>
+          <small *ngIf="form.get('phone')?.errors?.['pattern']">
+            Please enter a valid format
+          </small>
         </div>
       </div>
-
     </div>
 
     <mat-form-field

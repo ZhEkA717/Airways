@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth-dialog.component.scss'],
 })
 export default class AuthDialogComponent {
-  public toggle: 'log in' | 'sign up' = 'sign up';
+  public toggle: 'log in' | 'sign up' = 'log in';
 
   constructor(public dialogRef: DialogRef) {}
 }

@@ -60,6 +60,7 @@ export default class RegistrationComponent {
     ]),
     phone: new FormControl('', [
       Validators.required,
+      Validators.pattern(/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g),
     ]),
     citizenship: new FormControl('', [
       Validators.required,
@@ -71,13 +72,6 @@ export default class RegistrationComponent {
   });
 
   constructor(public statisticsService: StatisticsService) {}
-
-  phoneFormat(input: string) {
-    return input.replace(
-      /(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/,
-      '$1-$2-$3-$4-$5',
-    );
-  }
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);

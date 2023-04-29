@@ -25,9 +25,7 @@ export default class HeaderComponent {
     public headerService: HeaderService,
     private store: Store,
     public dialog: MatDialog,
-  ) {
-    this.openDialog('500ms', '0ms');
-  }
+  ) {}
 
   openDialog(
     enterAnimationDuration: string,
