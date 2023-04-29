@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import HttpApiService from 'src/app/core/services/http-api.service';
+import { Subscription } from 'rxjs';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
@@ -11,22 +13,17 @@ import TextValidator from '../../Validators/text.validator';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export default class RegistrationComponent {
+export default class RegistrationComponent implements OnInit, OnDestroy {
   public isHidePassword = false;
 
   public bufferValue = 75;
 
-  public codes = [
-    { country: 'Abkhazia', code: '895' },
-    { country: 'Australia', code: '036' },
-    { country: 'Austria', code: '040' },
-  ];
+  public codes!: {
+    country: string,
+    phoneCode: string,
+  }[];
 
-  public citizenship = [
-    'Abkhazia',
-    'Australia',
-    'Austria',
-  ];
+  public citizenship!: string[];
 
   public form: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -71,7 +68,26 @@ export default class RegistrationComponent {
     ]),
   });
 
-  constructor(public statisticsService: StatisticsService) {}
+  private subAirport!: Subscription;
+
+  constructor(
+    public statisticsService: StatisticsService,
+    private httpApiService: HttpApiService,
+  ) {}
+
+  ngOnInit(): void {
+    this.subAirport = this.httpApiService.getAirports().subscribe((airports) => {
+      this.codes = airports.map((item) => ({
+        country: item.country,
+        phoneCode: item.phoneCode,
+      }));
+      this.citizenship = airports.map((item) => item.country);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subAirport.unsubscribe();
+  }
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
