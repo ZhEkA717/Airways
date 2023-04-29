@@ -1,12 +1,27 @@
 <form
+  class="form"
   [formGroup]="form"
   (ngSubmit)="submit()"
 >
-  <div
+  <div class="main-title">
+    <mat-icon class="icon">person</mat-icon>
+    <div class="title">Passengers</div>
+  </div>
+
+  <div class="subtitle">
+    Enter the passenger's names as they appear on document (passport or ID).
+  </div>
+
+  <mat-card
+    class="form-group-wrapper"
     formArrayName="passengers"
     *ngFor="let passenger of passengers.controls; let i = index">
-    {{passengersName[i]}}
-    <div [formGroupName]="i">
+    <div class="title">
+     {{i +1 }}. {{passengersName[i]}}
+    </div>
+    <div
+      class="form-group"
+      [formGroupName]="i">
       <mat-form-field>
         <mat-label>FirstName</mat-label>
         <input matInput formControlName="firstName">
@@ -61,6 +76,6 @@
         color="primary"
       >Disabled</mat-checkbox>
     </div>
-  </div>
+  </mat-card>
   <button type="submit">Continue</button>
 </form>
