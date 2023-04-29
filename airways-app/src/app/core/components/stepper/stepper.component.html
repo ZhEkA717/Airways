@@ -3,9 +3,17 @@
   class="stepper"
 >
 <div class="step">
-  <span *ngIf="!stepper.flight" class="number">1</span>
   <span
-    *ngIf="stepper.flight"
+    *ngIf="stepper.flight
+    && stepper.passengers"
+    class="done"
+  >
+    <img src="../../../../assets/icons/done.svg" alt="done">
+  </span>
+  <span
+    *ngIf="stepper.flight
+      && !stepper.passengers
+      && !stepper.review"
     class="active"
   >
     <img src="../../../../assets/icons/edit.svg" alt="edit">
@@ -17,8 +25,16 @@
   <span
     *ngIf="!stepper.passengers"
     class="number">2</span>
+  <span *ngIf="stepper.flight
+    && stepper.passengers
+    && stepper.review"
+    class="done">
+    <img src="../../../../assets/icons/done.svg" alt="done">
+  </span>
   <span
-    *ngIf="stepper.passengers"
+    *ngIf="stepper.flight
+    && stepper.passengers
+    && !stepper.review"
     class="active"
   >
   <img src="../../../../assets/icons/edit.svg" alt="edit">
