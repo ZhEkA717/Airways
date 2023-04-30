@@ -1,6 +1,6 @@
 <form
   [formGroup]="form"
-  (ngSubmit)="submit()"
+  (ngSubmit)="form.valid && submit()"
 >
   <div
     class="form"
@@ -224,8 +224,8 @@
         >
           <mat-label>Country code</mat-label>
           <mat-select formControlName="countryCode" name="code">
-            <mat-option *ngFor="let code of codes" [value]="code.code">
-              {{code.country}} (+{{code.code}})
+            <mat-option *ngFor="let code of codes" [value]="code.phoneCode">
+              {{code.country}} (+{{code.phoneCode}})
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -295,6 +295,7 @@
       </mat-checkbox>
     </div>
     <button
+      type="submit"
       class="registration-button"
       mat-raised-button
       color="primary"
