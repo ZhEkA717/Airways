@@ -1,6 +1,6 @@
 <form
   [formGroup]="form"
-  (ngSubmit)="submit()"
+  (ngSubmit)="form.valid && submit()"
 >
   <div
     class="form"
@@ -101,6 +101,7 @@
         </small>
       </div>
       <button
+        type="submit"
         class="login-button"
         mat-raised-button
         color="primary"
