@@ -86,14 +86,24 @@ export default class RegistrationComponent {
 
   public submit() {
     if (!this.form.invalid) {
+      const {
+        email,
+        password,
+        firstName,
+        lastName,
+        date,
+        gender,
+        countryCode,
+        phone,
+      } = this.form.value;
       const newUser: User = {
-        email: this.form.controls['email'].value,
-        password: this.form.controls['password'].value,
-        firstName: this.form.controls['firstName'].value,
-        lastName: this.form.controls['lastName'].value,
-        birthDate: this.form.controls['date'].value,
-        gender: this.form.controls['gender'].value,
-        phone: { code: this.form.controls['countryCode'].value, number: this.form.controls['phone'].value },
+        email,
+        password,
+        firstName,
+        lastName,
+        birthDate: date,
+        gender,
+        phone: { code: countryCode, number: phone },
       };
       this.authService.register(newUser);
       this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));

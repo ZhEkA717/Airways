@@ -41,7 +41,8 @@ export default class LoginComponent {
 
   public submit() {
     if (!this.form.invalid) {
-      this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value);
+      const { email, password } = this.form.value;
+      this.authService.login(email, password);
       this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
     }
   }
