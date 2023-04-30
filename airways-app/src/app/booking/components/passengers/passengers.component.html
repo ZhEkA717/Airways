@@ -144,7 +144,7 @@
         <div class="date">
           <mat-form-field>
             <mat-label>Date of birth</mat-label>
-            <input formControlName="date" matInput [matDatepicker]="picker">
+            <input readonly formControlName="date" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>

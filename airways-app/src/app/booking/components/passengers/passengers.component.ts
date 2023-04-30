@@ -17,9 +17,11 @@ import DateValidator from 'src/app/auth/Validators/dateValidator';
 import TextValidator from 'src/app/auth/Validators/text.validator';
 import HeaderService from 'src/app/core/services/header.service';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
+import { send } from 'src/app/redux/actions/passengers.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
 import { selectDateFormat } from 'src/app/redux/selectors/settings.selector';
 import { Passenger } from 'src/app/shared/model/persons.model';
+import { PassengersForm } from '../../models/passengers.model';
 
 export const MY_FORMAT = {
   display: {
@@ -109,17 +111,18 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
   }
 
-  public changeFormat(passenger: AbstractControl) {
-    const date = passenger.get('date')?.value;
-    if (date) passenger.get('date')?.setValue(date);
-  }
-
   ngOnDestroy(): void {
     this.subSearchForm.unsubscribe();
+    this.subDate.unsubscribe();
   }
 
   get passengers() {
     return this.form.get('passengers') as FormArray;
+  }
+
+  private changeFormat(passenger: AbstractControl) {
+    const date = passenger.get('date')?.value;
+    if (date) passenger.get('date')?.setValue(date);
   }
 
   private fillPassengersName(search: FlightSearch) {
@@ -149,7 +152,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       gender: new FormControl('', [
         Validators.required,
       ]),
-      baggage: new FormControl('', [
+      baggage: new FormControl('hand', [
         Validators.required,
       ]),
       date: new FormControl('', [
@@ -181,8 +184,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       passengers,
     };
 
-    // eslint-disable-next-line no-console
-    console.log(form);
+    this.store.dispatch(send(form as PassengersForm));
 
     if (this.form.valid) {
       this.toRewiew();
