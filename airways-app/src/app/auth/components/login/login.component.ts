@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DialogRef } from '@angular/cdk/dialog';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
+import AuthService from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -27,14 +29,21 @@ export default class LoginComponent {
     ]),
   });
 
-  constructor(public statisticsService: StatisticsService) {}
+  constructor(
+    public statisticsService: StatisticsService,
+    private authService: AuthService,
+    private dialogRef: DialogRef,
+  ) {}
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
-    // eslint-disable-next-line no-useless-return
-    if (this.form.invalid) return;
+    if (!this.form.invalid) {
+      const { email, password } = this.form.value;
+      this.authService.login(email, password);
+      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
+    }
   }
 }

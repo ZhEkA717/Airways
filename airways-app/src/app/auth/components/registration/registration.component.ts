@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DialogRef } from '@angular/cdk/dialog';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { Subscription } from 'rxjs';
 import PasswordValidators from '../../Validators/password.validator';
@@ -7,6 +8,8 @@ import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
 import AgreementValidator from '../../Validators/agreement.validator';
 import TextValidator from '../../Validators/text.validator';
+import AuthService from '../../services/auth.service';
+import { User } from '../../../shared/model/persons.model';
 
 @Component({
   selector: 'app-registration',
@@ -73,6 +76,8 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
   constructor(
     public statisticsService: StatisticsService,
     private httpApiService: HttpApiService,
+    private authService: AuthService,
+    private dialogRef: DialogRef,
   ) {}
 
   ngOnInit(): void {
@@ -94,7 +99,11 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
-    // eslint-disable-next-line no-useless-return
-    if (this.form.invalid) return;
+    if (!this.form.invalid) {
+      const { countryCode, phone } = this.form.value;
+      const newUser: User = { ...this.form.value, phone: { code: countryCode, number: phone } };
+      this.authService.register(newUser);
+      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
+    }
   }
 }
