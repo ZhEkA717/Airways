@@ -1,5 +1,9 @@
 <app-second-menu></app-second-menu>
-<router-outlet></router-outlet>
-<button [routerLink]="['flight']">step1</button>
-<button [routerLink]="['passengers']">step2</button>
-<button [routerLink]="['review']">step3</button>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<div style="position: fixed; top: 200px; right: 50px;">
+  <button [routerLink]="['flight']">step1</button>
+  <button [routerLink]="['passengers']">step2</button>
+  <button [routerLink]="['review']">step3</button>
+</div>

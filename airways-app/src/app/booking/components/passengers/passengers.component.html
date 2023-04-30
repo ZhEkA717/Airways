@@ -1,1 +1,330 @@
-<p>passengers works!</p>
+<form
+  class="form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="main-title">
+    <mat-icon class="icon">person</mat-icon>
+    <div class="title">Passengers</div>
+  </div>
+
+  <div class="subtitle">
+    Enter the passenger's names as they appear on document (passport or ID).
+  </div>
+
+  <mat-card
+    class="form-group-wrapper"
+    formArrayName="passengers"
+    *ngFor="let passenger of passengers.controls; let i = index">
+    <div class="title">
+     {{i +1 }}. {{passengersName[i]}}
+    </div>
+    <div [formGroupName]="i">
+      <div class="form-group">
+
+        <div class="firstName">
+          <mat-form-field>
+            <mat-label>FirstName</mat-label>
+            <input matInput formControlName="firstName">
+            <mat-icon
+              class="suffix-icon-error"
+              matSuffix
+              *ngIf="passenger.get('firstName')?.invalid
+              && passenger.get('firstName')?.touched; else error_outline"
+            >error</mat-icon>
+            <ng-template #error_outline>
+              <mat-icon
+                (mouseenter)="id = i; isTitleFirstName=!isTitleFirstName"
+                (mouseleave)="id = null; isTitleFirstName=!isTitleFirstName"
+                class="suffix-icon"
+                matSuffix
+              >error_outline</mat-icon>
+            </ng-template>
+          </mat-form-field>
+          <div
+            *ngIf="id === i && isTitleFirstName"
+            class="hint">
+            Add the passenger's first name as it is written on their documents (passport or ID). Do not use any accents or
+            special characters. Do not use a nickname.
+          </div>
+          <div
+            class="error"
+            *ngIf="passenger.get('firstName')?.invalid &&
+            passenger.get('firstName')?.touched"
+          >
+            <small *ngIf="passenger.get('firstName')?.errors?.['required']">
+              Please enter a first name
+            </small>
+            <small *ngIf="passenger.get('firstName')?.errors?.['validityText']">
+              It is forbidden to enter numbers
+            </small>
+          </div>
+        </div>
+
+        <div class="lastName">
+          <mat-form-field class="last-name">
+            <mat-label>Last name</mat-label>
+            <input
+              formControlName="lastName"
+              matInput
+            >
+            <mat-icon
+              class="suffix-icon-error"
+              matSuffix
+              *ngIf="passenger.get('lastName')?.invalid
+              && passenger.get('lastName')?.touched; else error_outline2"
+            >error</mat-icon>
+            <ng-template #error_outline2>
+              <mat-icon
+                (mouseenter)="id = i; isTitleLastName=!isTitleLastName"
+                (mouseleave)="id = null; isTitleLastName=!isTitleLastName"
+                class="suffix-icon"
+                matSuffix
+              >error_outline</mat-icon>
+            </ng-template>
+          </mat-form-field>
+          <div
+            *ngIf="id === i && isTitleLastName"
+            class="hint">
+            Add the passenger's last name as it is written on their documents (passport or ID). Do not use any accents or
+            special characters. Do not use a nickname.
+          </div>
+          <div
+            class="error"
+            *ngIf="passenger.get('lastName')?.invalid &&
+            passenger.get('lastName')?.touched"
+          >
+            <small *ngIf="passenger.get('lastName')?.errors?.['required']">
+              Please enter a last name
+            </small>
+            <small *ngIf="passenger.get('lastName')?.errors?.['validityText']">
+              It is forbidden to enter numbers
+            </small>
+          </div>
+        </div>
+        <div class="gender">
+          <mat-button-toggle-group
+          name="fontStyle"
+          class="button-toggle" value="log in"
+          formControlName = "gender"
+        >
+          <mat-button-toggle
+            #first
+            class="button"
+            value="Male"
+          >
+            <mat-icon
+              *ngIf="first.checked"
+              matPrefix
+            >done</mat-icon>
+            Male
+          </mat-button-toggle>
+          <mat-button-toggle
+            #second
+            class="button"
+            value="Female"
+          >
+            <mat-icon
+              *ngIf="second.checked"
+              matPrefix
+            >done</mat-icon>
+            Female
+          </mat-button-toggle>
+          </mat-button-toggle-group>
+          <div
+          class="error error_gender"
+          *ngIf="passenger.get('gender')?.invalid &&
+          passenger.get('gender')?.touched"
+        >
+          <small *ngIf="passenger.get('gender')?.errors?.['required']">
+            Please enter a gender
+          </small>
+          </div>
+        </div>
+        <div class="date">
+          <mat-form-field>
+            <mat-label>Date of birth</mat-label>
+            <input readonly formControlName="date" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div
+            class="error"
+            *ngIf="passenger.get('date')?.invalid &&
+            passenger.get('date')?.touched"
+          >
+            <small *ngIf="passenger.get('date')?.errors?.['required']">
+              Please enter a date of birth
+            </small>
+            <small *ngIf="passenger.get('date')?.errors?.['validityDate']">
+              The date is invalid
+            </small>
+          </div>
+        </div>
+
+      </div>
+
+      <mat-button-toggle-group
+        formControlName="baggage"
+        *ngIf="passengersName[i] !== 'Infant' "
+        appearance="legacy"
+        class="baggages"
+      >
+        <mat-button-toggle class="baggages__item" value="hand">
+          <div class="baggages__item__title">Hand luggage</div>
+          <div class="baggages__item__info">
+            <div class="img-wrapper">
+              <img src="../../../../assets/icons/hand.svg" alt="hand">
+            </div>
+            <div class="info">
+              <div class="info__title">Max. 5 kg</div>
+              <div class="info__size">56 x 45 x 20</div>
+            </div>
+          </div>
+          <hr>
+          <div class="pay">FREE</div>
+        </mat-button-toggle>
+        <mat-button-toggle class="baggages__item" value="hand+">
+          <div class="baggages__item__title">Hand luggage +</div>
+          <div class="baggages__item__info">
+            <div class="img-wrapper">
+              <img src="../../../../assets/icons/hand+.svg" alt="hand+">
+              <img
+                class="money"
+                [src]=" '../../../../assets/icons/' + moneyFormat.toLowerCase() + '.svg' " alt="money">
+            </div>
+            <div class="info">
+              <div class="info__title">Max. 10 kg</div>
+              <div class="info__size">56 x 45 x 20</div>
+            </div>
+          </div>
+          <hr>
+          <div class="pay">PAID</div>
+        </mat-button-toggle>
+        <mat-button-toggle class="baggages__item" value="baggage">
+          <div class="baggages__item__title">Checked baggage</div>
+          <div class="baggages__item__info">
+            <div class="img-wrapper">
+              <img src="../../../../assets/icons/baggage.svg" alt="baggage">
+              <img
+                class="money"
+                [src]=" '../../../../assets/icons/' + moneyFormat.toLowerCase() + '.svg' " alt="money">
+            </div>
+            <div class="info">
+              <div class="info__title">Max. 30 kg</div>
+              <div class="info__size">158 x 158 x 158</div>
+            </div>
+          </div>
+          <hr>
+          <div class="pay">PAID</div>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <div
+        class="slide-toggle"
+        *ngIf="passengersName[i] !== 'Infant' "
+      >
+        <mat-slide-toggle
+          formControlName="isCripple"
+          color="primary"
+      ></mat-slide-toggle>
+      <mat-icon>accessible</mat-icon>
+      <div class="cripple">Need special assistance?</div>
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="main-title">
+    <mat-icon class="icon">contacts</mat-icon>
+    <div class="title">Contact details</div>
+  </div>
+
+  <div class="subtitle">
+    We need contact details to be able to deliver the latest information regarding your flight.
+  </div>
+
+  <mat-card
+    class="form-contacts"
+  >
+    <div class="code">
+      <mat-form-field
+        appearance="fill"
+      >
+        <mat-label>Country code</mat-label>
+        <mat-select formControlName="countryCode" name="code">
+          <mat-option *ngFor="let code of codes" [value]="code.code">
+            {{code.country}} (+{{code.code}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div
+        class="error"
+        *ngIf="form.get('countryCode')?.invalid &&
+        form.get('countryCode')?.touched"
+      >
+        <small *ngIf="form.get('countryCode')?.errors?.['required']">
+          Please enter a country code
+        </small>
+      </div>
+    </div>
+
+    <div class="phone">
+      <mat-form-field>
+        <mat-label>Mobile phone number </mat-label>
+        <input
+          formControlName="phone"
+          type="tel"
+          matInput
+        >
+      </mat-form-field>
+      <div
+        class="error"
+        *ngIf="form.get('phone')?.invalid &&
+        form.get('phone')?.touched"
+      >
+        <small *ngIf="form.get('phone')?.errors?.['required']">
+          Please enter a phone
+        </small>
+        <small *ngIf="form.get('phone')?.errors?.['pattern']">
+          Please enter a valid format
+        </small>
+      </div>
+    </div>
+
+    <div class="email">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          formControlName="email"
+          matInput
+        >
+      </mat-form-field>
+      <div
+        class="error"
+        *ngIf="form.get('email')?.invalid &&
+        form.get('email')?.touched"
+      >
+        <small *ngIf="form.get('email')?.errors?.['required']">
+          Please enter a login email
+        </small>
+        <small *ngIf="form.get('email')?.errors?.['email']">
+          The login email is invalid
+        </small>
+      </div>
+    </div>
+
+  </mat-card>
+
+  <div class="wrapper-buttons">
+    <button
+      mat-button
+      (click)="toFlight()"
+    >Back</button>
+    <button
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >Continue</button>
+  </div>
+</form>
