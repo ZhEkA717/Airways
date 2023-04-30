@@ -1,25 +1,46 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormArray,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import * as moment from 'moment';
+import { Observable, Subscription } from 'rxjs';
 import DateValidator from 'src/app/auth/Validators/dateValidator';
 import TextValidator from 'src/app/auth/Validators/text.validator';
 import HeaderService from 'src/app/core/services/header.service';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
+import { selectDateFormat } from 'src/app/redux/selectors/settings.selector';
 import { Passenger } from 'src/app/shared/model/persons.model';
+
+export const MY_FORMAT = {
+  display: {
+    dateInput: 'MM/DD/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+  },
+};
 
 @Component({
   selector: 'app-passengers',
   templateUrl: './passengers.component.html',
   styleUrls: ['./passengers.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
+  ],
 })
 export default class PassengersComponent implements OnInit, OnDestroy {
   private searchForm$ = this.store.select(selectSearch);
@@ -33,6 +54,10 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   public isTitleFirstName = false;
 
   public isTitleLastName = false;
+
+  public dateFormat$!: Observable<string>;
+
+  private subDate!: Subscription;
 
   public form = new FormGroup({
     passengers: new FormArray([]),
@@ -55,12 +80,6 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     { country: 'Austria', code: '040' },
   ];
 
-  public citizenship = [
-    'Abkhazia',
-    'Australia',
-    'Austria',
-  ];
-
   constructor(
     private headerService: HeaderService,
     private store: Store,
@@ -80,6 +99,19 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
 
     this.fillPassengersFormGroup();
+
+    this.dateFormat$ = this.store.select(selectDateFormat);
+    this.subDate = this.dateFormat$.subscribe((formatDate) => {
+      MY_FORMAT.display.dateInput = formatDate;
+      this.passengers.controls.forEach((item) => {
+        this.changeFormat(item);
+      });
+    });
+  }
+
+  public changeFormat(passenger: AbstractControl) {
+    const date = passenger.get('date')?.value;
+    if (date) passenger.get('date')?.setValue(date);
   }
 
   ngOnDestroy(): void {
@@ -124,12 +156,17 @@ export default class PassengersComponent implements OnInit, OnDestroy {
         Validators.required,
         DateValidator.validityDate,
       ]),
+      dateFormat: new FormControl(moment()),
       isCripple: new FormControl(''),
     });
   }
 
   toFlight() {
     this.router.navigate(['/booking/flight']);
+  }
+
+  toRewiew() {
+    this.router.navigate(['/booking/review']);
   }
 
   submit() {
@@ -148,7 +185,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     console.log(form);
 
     if (this.form.valid) {
-      this.router.navigate(['/booking/review']);
+      this.toRewiew();
     }
   }
 }
