@@ -111,6 +111,9 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       gender: new FormControl('', [
         Validators.required,
       ]),
+      baggage: new FormControl('', [
+        Validators.required,
+      ]),
       date: new FormControl('', [
         Validators.required,
         DateValidator.validityDate,

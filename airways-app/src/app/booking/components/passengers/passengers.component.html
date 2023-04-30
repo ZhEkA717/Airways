@@ -121,6 +121,58 @@
 
       </div>
 
+      <mat-button-toggle-group
+        formControlName="baggage"
+        *ngIf="passengersName[i] !== 'Infant' "
+        appearance="legacy"
+        class="baggages"
+      >
+        <mat-button-toggle class="baggages__item" value="hand">
+          <div class="baggages__item__title">Hand luggage</div>
+          <div class="baggages__item__info">
+            <div class="img-wrapper">
+              <img src="../../../../assets/icons/hand.svg" alt="hand">
+            </div>
+            <div class="info">
+              <div class="info__title">Max. 5 kg</div>
+              <div class="info__size">56 x 45 x 20</div>
+            </div>
+          </div>
+          <hr>
+          <div class="pay pay_green">FREE</div>
+        </mat-button-toggle>
+        <mat-button-toggle class="baggages__item" value="hand+">
+          <div class="baggages__item__title">Hand luggage +</div>
+          <div class="baggages__item__info">
+            <div class="img-wrapper">
+              <img src="../../../../assets/icons/hand+.svg" alt="hand+">
+              <img class="money" src="../../../../assets/icons/money.svg" alt="money">
+            </div>
+            <div class="info">
+              <div class="info__title">Max. 10 kg</div>
+              <div class="info__size">56 x 45 x 20</div>
+            </div>
+          </div>
+          <hr>
+          <div class="pay">PAID</div>
+        </mat-button-toggle>
+        <mat-button-toggle class="baggages__item" value="baggage">
+          <div class="baggages__item__title">Checked baggage</div>
+          <div class="baggages__item__info">
+            <div class="img-wrapper">
+              <img src="../../../../assets/icons/baggage.svg" alt="baggage">
+              <img class="money" src="../../../../assets/icons/money.svg" alt="money">
+            </div>
+            <div class="info">
+              <div class="info__title">Max. 30 kg</div>
+              <div class="info__size">158 x 158 x 158</div>
+            </div>
+          </div>
+          <hr>
+          <div class="pay">PAID</div>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
       <div
         class="slide-toggle"
         *ngIf="passengersName[i] !== 'Infant' "
@@ -222,6 +274,7 @@
       (click)="toFlight()"
     >Back</button>
     <button
+      [disabled]="form.invalid"
       mat-raised-button
       color="primary"
       type="submit"
