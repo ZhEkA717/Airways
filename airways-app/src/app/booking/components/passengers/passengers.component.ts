@@ -19,7 +19,7 @@ import HeaderService from 'src/app/core/services/header.service';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
 import { send } from 'src/app/redux/actions/passengers.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
-import { selectDateFormat } from 'src/app/redux/selectors/settings.selector';
+import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import { Passenger } from 'src/app/shared/model/persons.model';
 import { PassengersForm } from '../../models/passengers.model';
 
@@ -47,7 +47,15 @@ export const MY_FORMAT = {
 export default class PassengersComponent implements OnInit, OnDestroy {
   private searchForm$ = this.store.select(selectSearch);
 
+  private moneyFormat$ = this.store.select(selectMoneyFormat);
+
+  private dateFormat$!: Observable<string>;
+
   private subSearchForm!: Subscription;
+
+  private subDate!: Subscription;
+
+  private subMoneyFormat!: Subscription;
 
   public passengersName: string[] = [];
 
@@ -57,9 +65,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   public isTitleLastName = false;
 
-  public dateFormat$!: Observable<string>;
-
-  private subDate!: Subscription;
+  public moneyFormat!: string;
 
   public form = new FormGroup({
     passengers: new FormArray([]),
@@ -109,11 +115,16 @@ export default class PassengersComponent implements OnInit, OnDestroy {
         this.changeFormat(item);
       });
     });
+
+    this.subMoneyFormat = this.moneyFormat$.subscribe((moneyFormat) => {
+      this.moneyFormat = moneyFormat;
+    });
   }
 
   ngOnDestroy(): void {
     this.subSearchForm.unsubscribe();
     this.subDate.unsubscribe();
+    this.subMoneyFormat.unsubscribe();
   }
 
   get passengers() {
