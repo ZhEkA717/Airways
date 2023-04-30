@@ -28,6 +28,12 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   public passengersName: string[] = [];
 
+  public id!: number | null;
+
+  public isTitleFirstName = false;
+
+  public isTitleLastName = false;
+
   public form = new FormGroup({
     passengers: new FormArray([]),
     countryCode: new FormControl('', [

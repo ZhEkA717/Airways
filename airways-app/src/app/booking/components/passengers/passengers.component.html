@@ -26,7 +26,27 @@
           <mat-form-field>
             <mat-label>FirstName</mat-label>
             <input matInput formControlName="firstName">
+            <mat-icon
+              class="suffix-icon-error"
+              matSuffix
+              *ngIf="passenger.get('firstName')?.invalid
+              && passenger.get('firstName')?.touched; else error_outline"
+            >error</mat-icon>
+            <ng-template #error_outline>
+              <mat-icon
+                (mouseenter)="id = i; isTitleFirstName=!isTitleFirstName"
+                (mouseleave)="id = null; isTitleFirstName=!isTitleFirstName"
+                class="suffix-icon"
+                matSuffix
+              >error_outline</mat-icon>
+            </ng-template>
           </mat-form-field>
+          <div
+            *ngIf="id === i && isTitleFirstName"
+            class="hint">
+            Add the passenger's first name as it is written on their documents (passport or ID). Do not use any accents or
+            special characters. Do not use a nickname.
+          </div>
           <div
             class="error"
             *ngIf="passenger.get('firstName')?.invalid &&
@@ -42,10 +62,33 @@
         </div>
 
         <div class="lastName">
-          <mat-form-field>
-            <mat-label>LastName</mat-label>
-            <input matInput formControlName="lastName">
+          <mat-form-field class="last-name">
+            <mat-label>Last name</mat-label>
+            <input
+              formControlName="lastName"
+              matInput
+            >
+            <mat-icon
+              class="suffix-icon-error"
+              matSuffix
+              *ngIf="passenger.get('lastName')?.invalid
+              && passenger.get('lastName')?.touched; else error_outline2"
+            >error</mat-icon>
+            <ng-template #error_outline2>
+              <mat-icon
+                (mouseenter)="id = i; isTitleLastName=!isTitleLastName"
+                (mouseleave)="id = null; isTitleLastName=!isTitleLastName"
+                class="suffix-icon"
+                matSuffix
+              >error_outline</mat-icon>
+            </ng-template>
           </mat-form-field>
+          <div
+            *ngIf="id === i && isTitleLastName"
+            class="hint">
+            Add the passenger's last name as it is written on their documents (passport or ID). Do not use any accents or
+            special characters. Do not use a nickname.
+          </div>
           <div
             class="error"
             *ngIf="passenger.get('lastName')?.invalid &&
