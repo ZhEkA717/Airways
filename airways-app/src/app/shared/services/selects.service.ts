@@ -17,7 +17,7 @@ export default class SelectsService {
   public passengers = [
     {
       id: 0,
-      view: 'Adults',
+      view: 'Adult',
       description: '14+ years',
       value: 0,
     },

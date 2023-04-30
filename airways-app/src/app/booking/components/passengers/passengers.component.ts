@@ -9,6 +9,8 @@ import {
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import DateValidator from 'src/app/auth/Validators/dateValidator';
+import TextValidator from 'src/app/auth/Validators/text.validator';
 import HeaderService from 'src/app/core/services/header.service';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
@@ -28,7 +30,30 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   public form = new FormGroup({
     passengers: new FormArray([]),
+    countryCode: new FormControl('', [
+      Validators.required,
+    ]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g),
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]),
   });
+
+  public codes = [
+    { country: 'Abkhazia', code: '895' },
+    { country: 'Australia', code: '036' },
+    { country: 'Austria', code: '040' },
+  ];
+
+  public citizenship = [
+    'Abkhazia',
+    'Australia',
+    'Austria',
+  ];
 
   constructor(
     private headerService: HeaderService,
@@ -77,33 +102,42 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     return new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
+        TextValidator.validityText,
       ]),
       lastName: new FormControl('', [
         Validators.required,
+        TextValidator.validityText,
       ]),
       gender: new FormControl('', [
         Validators.required,
       ]),
       date: new FormControl('', [
         Validators.required,
+        DateValidator.validityDate,
       ]),
       isCripple: new FormControl(''),
     });
   }
 
-  toFligth() {
+  toFlight() {
     this.router.navigate(['/booking/flight']);
   }
 
   submit() {
-    const form = this.passengers.value
+    const passengers = this.passengers.value
       .map((item: Passenger, i: number) => ({
         ...item,
         type: this.passengersName[i],
       }));
 
+    const form = {
+      ...this.form.value,
+      passengers,
+    };
+
     // eslint-disable-next-line no-console
     console.log(form);
+
     if (this.form.valid) {
       this.router.navigate(['/booking/review']);
     }
