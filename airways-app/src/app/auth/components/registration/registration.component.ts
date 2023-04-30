@@ -100,25 +100,8 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
 
   public submit() {
     if (!this.form.invalid) {
-      const {
-        email,
-        password,
-        firstName,
-        lastName,
-        date,
-        gender,
-        countryCode,
-        phone,
-      } = this.form.value;
-      const newUser: User = {
-        email,
-        password,
-        firstName,
-        lastName,
-        birthDate: date,
-        gender,
-        phone: { code: countryCode, number: phone },
-      };
+      const { countryCode, phone } = this.form.value;
+      const newUser: User = { ...this.form.value, phone: { code: countryCode, number: phone } };
       this.authService.register(newUser);
       this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
     }
