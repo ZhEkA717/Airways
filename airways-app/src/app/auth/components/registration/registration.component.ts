@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
@@ -78,6 +79,7 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
     private httpApiService: HttpApiService,
     private authService: AuthService,
     private dialogRef: DialogRef,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -99,11 +101,13 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
-    if (!this.form.invalid) {
+    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 3000 }));
+    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
+
+    if (this.form.valid) {
       const { countryCode, phone } = this.form.value;
       const newUser: User = { ...this.form.value, phone: { code: countryCode, number: phone } };
       this.authService.register(newUser);
-      this.authService.isLogged$.subscribe((isLogged) => (!isLogged || this.dialogRef.close()));
     }
   }
 }
