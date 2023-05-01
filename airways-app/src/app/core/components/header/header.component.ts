@@ -34,6 +34,7 @@ export default class HeaderComponent {
     public dialog: MatDialog,
     private logoutBar: MatSnackBar,
   ) {
+    authService.checkLogin();
     authService.isLogged$.subscribe((isLogged) => {
       this.isLogged = isLogged;
       this.loginButtonCaption = authService.userName || 'Sign in';

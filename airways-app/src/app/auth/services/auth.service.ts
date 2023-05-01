@@ -85,6 +85,26 @@ export default class AuthService {
     return this.httpApi.getUser(this.userId);
   }
 
+  public checkLogin() {
+    const token = localStorage.getItem('JWT');
+    if (token) {
+      const id = parseInt(this.parseJwt(token), 10);
+      this.userId = id;
+      if (id) {
+        this.httpApi.getUser(id)
+          .subscribe({
+            next: (user) => {
+              this.saveLoginInfo({ accessToken: token, user });
+            },
+            error: (error: HttpErrorResponse) => {
+              this.errorMessage.next(error.error);
+              this.logout();
+            },
+          });
+      }
+    }
+  }
+
   private parseJwt(token:string): string {
     if (token === '') return 'Empty token';
 
