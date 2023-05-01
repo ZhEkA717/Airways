@@ -43,7 +43,7 @@ export default class LoginComponent {
     if (!this.form.invalid) {
       const { email, password } = this.form.value;
       this.authService.login(email, password);
-      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
+      this.authService.isLogged$.subscribe((isLogged) => (!isLogged || this.dialogRef.close()));
     }
   }
 }
