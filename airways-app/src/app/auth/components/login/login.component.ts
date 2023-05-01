@@ -11,7 +11,7 @@ import AuthService from '../../services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export default class LoginComponent {
-  public isHidePassword = false;
+  public isHidePassword = true;
 
   public bufferValue = 75;
 
