@@ -16,6 +16,8 @@ export default class AuthService {
 
   public userName: string;
 
+  public userEmail: string;
+
   private errorMessage: BehaviorSubject<string>;
 
   public errorMessage$: Observable<string>;
@@ -29,6 +31,7 @@ export default class AuthService {
     this.accessToken = token ?? '';
     this.userId = 0;
     this.userName = '';
+    this.userEmail = '';
     this.isLogged = new BehaviorSubject(false);
     this.isLogged$ = this.isLogged.asObservable();
     this.errorMessage = new BehaviorSubject('');
@@ -63,6 +66,7 @@ export default class AuthService {
     this.accessToken = data.accessToken;
     this.userId = data.user.id ?? 0;
     this.userName = `${data.user.firstName} ${data.user.lastName}`;
+    this.userEmail = data.user.email;
     this.isLogged.next(true);
     this.errorMessage.next('');
     localStorage.setItem('JWT', data.accessToken);
@@ -72,6 +76,7 @@ export default class AuthService {
     this.accessToken = '';
     this.userId = 0;
     this.userName = '';
+    this.userEmail = '';
     this.isLogged.next(false);
     localStorage.removeItem('JWT');
   }

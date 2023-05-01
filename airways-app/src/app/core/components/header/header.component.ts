@@ -54,7 +54,8 @@ export default class HeaderComponent {
 
   public auth() {
     if (this.isLogged) {
-      this.logoutBar.open('logout', 'ok', { horizontalPosition: 'end', verticalPosition: 'top' });
+      const snackBarRef = this.logoutBar.open(`You loged as ${this.authService.userEmail}`, 'Logout', { horizontalPosition: 'end', verticalPosition: 'top', duration: 1500 });
+      snackBarRef.onAction().subscribe(() => { this.authService.logout(); });
     } else {
       this.openDialog('500ms', '0ms');
     }
