@@ -89,8 +89,8 @@
           >done</mat-icon>
       </button>
     </mat-menu>
-    <button
-      (click)="openDialog('500ms', '0ms')"
+    <button 
+    (click)="auth()"
       class="button header__button-login">
       <mat-icon
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
@@ -99,7 +99,7 @@
       <div
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
         class="header__button-login__title"
-      >Sign in</div>
+      >{{loginButtonCaption}}</div>
     </button>
   </div>
   <div class="button-wrapper">
