@@ -9,7 +9,7 @@
   >
     <div class="header__logo__img">
       <img
-        src="../../../../assets/icons/logo.svg"
+        src="assets/icons/logo.svg"
         alt="logo-icon"
       >
     </div>
@@ -106,11 +106,11 @@
     <button class="button header__basket">
       <img
         class="header__basket__img"
-        src="../../../../assets/icons/basket.svg"
+        src="assets/icons/basket.svg"
         [src]="
           (headerService.isBooking$ | async)
-          ? '../../../../assets/icons/basket.svg'
-          : '../../../../assets/icons/basket-booking.svg'
+          ? 'assets/icons/basket.svg'
+          : 'assets/icons/basket-booking.svg'
         "
         alt="basket"
       >
