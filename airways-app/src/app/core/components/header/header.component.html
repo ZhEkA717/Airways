@@ -89,8 +89,8 @@
           >done</mat-icon>
       </button>
     </mat-menu>
-    <button 
-    (click)="auth()"
+    <button cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+      (click)="auth()"
       class="button header__button-login">
       <mat-icon
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
@@ -101,6 +101,18 @@
         class="header__button-login__title"
       >{{loginButtonCaption}}</div>
     </button>
+    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayOpen" (overlayOutsideClick)="isOverlayOpen = false">
+      <button (click)="logout()" class="button header__button-logout">
+        <mat-icon
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        class="header__button-login__img"
+      >power_settings_new</mat-icon>
+      <div
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        class="header__button-login__title"
+      >Logout</div>
+      </button>
+    </ng-template>
   </div>
   <div class="button-wrapper">
     <button class="button header__basket">

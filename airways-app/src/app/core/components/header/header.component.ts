@@ -23,6 +23,8 @@ export default class HeaderComponent {
 
   public isLogged = false;
 
+  public isOverlayOpen = false;
+
   public loginButtonCaption = 'Sign in';
 
   constructor(
@@ -55,11 +57,15 @@ export default class HeaderComponent {
 
   public auth() {
     if (this.isLogged) {
-      const snackBarRef = this.logoutBar.open(`You loged as ${this.authService.userEmail}`, 'Logout', { horizontalPosition: 'end', verticalPosition: 'top', duration: 1500 });
-      snackBarRef.onAction().subscribe(() => { this.authService.logout(); });
+      this.isOverlayOpen = !this.isOverlayOpen;
     } else {
       this.openDialog('500ms', '0ms');
     }
+  }
+
+  public logout() {
+    this.isOverlayOpen = false;
+    this.authService.logout();
   }
 
   public toMainPage() {
