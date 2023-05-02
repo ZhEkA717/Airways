@@ -1,5 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { saveDateFormat, saveMoneyFormat } from '../actions/settings.action';
+import { Airport } from 'src/app/shared/model/airport.model';
+import {
+  getAirportError,
+  getAirportSuccess,
+  saveDateFormat,
+  saveMoneyFormat,
+} from '../actions/settings.action';
 
 export const SETTINGS_REDUCER_KEY = 'settings';
 
@@ -7,7 +13,8 @@ export interface SettingsState {
   format: {
     dateFormat: string,
     moneyFormat: string,
-  }
+  },
+  airports: Airport[],
 }
 
 export const initialState: SettingsState = {
@@ -15,6 +22,7 @@ export const initialState: SettingsState = {
     dateFormat: 'MM/DD/YYYY',
     moneyFormat: 'EUR',
   },
+  airports: [],
 };
 
 export const settingsReducer = createReducer(
@@ -32,5 +40,13 @@ export const settingsReducer = createReducer(
       ...state.format,
       moneyFormat: action.moneyFormat,
     },
+  })),
+  on(getAirportSuccess, (state, action):SettingsState => ({
+    ...state,
+    airports: action.airports,
+  })),
+  on(getAirportError, (state):SettingsState => ({
+    ...state,
+    airports: [],
   })),
 );

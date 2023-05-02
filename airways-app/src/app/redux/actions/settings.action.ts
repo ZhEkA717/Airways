@@ -1,8 +1,11 @@
 import { createAction, props } from '@ngrx/store';
+import { Airport } from 'src/app/shared/model/airport.model';
 
 export enum SettingsAction {
   saveDateFormat = '[SETTINGS] save date format',
   saveMoneyFormat = '[SETTINGS] save money format',
+  getAirportSuccess = '[Airports] get airports success',
+  getAirportError = '[Airports] get airports error',
 }
 
 export const saveDateFormat = createAction(
@@ -13,4 +16,15 @@ export const saveDateFormat = createAction(
 export const saveMoneyFormat = createAction(
   SettingsAction.saveMoneyFormat,
   props<{ moneyFormat: string }>(),
+);
+
+export const getAirportSuccess = createAction(
+  SettingsAction.getAirportSuccess,
+  props<{
+    airports: Airport[],
+  }>(),
+);
+
+export const getAirportError = createAction(
+  SettingsAction.getAirportError,
 );
