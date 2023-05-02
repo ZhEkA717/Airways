@@ -27,12 +27,44 @@
     {
       "email": "admin@admin.ua",
       "password": "$2a$10$va.uPBeZpAZgVyndWoSpauNrhb3fvTl8N6hohQKgcuYkTjalGrvr.",
-      "phone": "{ code:+7, number:208-335-5162 }",
+      "phone": { "code":"+7", "number":"2083355162" },
       "firstName": "Vadim",
       "lastName": "Koloskov",
       "birthDate": "08.04.1994",
       "gender": "Male",
       "id": 5
+    },
+    {
+      "email": "sundarpichai@google.com",
+      "password": "$2a$10$znW.mMGa0QTSt4qJS0WmOeg0q7SmDeqNwqiNQqW9Oj0TVVTN5nl5O",
+      "firstName": "Sundar",
+      "lastName": "Pachai",
+      "date": "1972-10-05T21:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "044",
+      "phone": {
+        "code": "044",
+        "number": "066123456"
+      },
+      "citizenship": "England",
+      "agreement": true,
+      "id": 6
+    },
+    {
+      "email": "markzuckerberg@fb.com",
+      "password": "$2a$10$Z4gXX7tyjsLh7UCtVsrpP.k6WQ5Ll5pBvnX9geHsWDtMA6jpuKReu",
+      "firstName": "Mark",
+      "lastName": "Zuckerberg",
+      "date": "1984-05-13T20:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "335462189"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 7
     }
   ],
   "posts": [
@@ -53,32 +85,162 @@
     "name": "typicode"
   },
   "airports": [
-    { "city": "Vienna", "country": "Austria", "code": "VIE", "phoneCode": "043" },
-    { "city": "Minsk", "country": "Belarus", "code": "MHP", "phoneCode": "375" },
-    { "city": "Brussels", "country": "Belgium", "code": "BRU", "phoneCode": "032" },
-    { "city": "Sofia", "country": "Bulgaria", "code": "SOF", "phoneCode": "359" },
-    { "city": "Prague", "country": "Czech Republic", "code": "PRG", "phoneCode": "420" },
-    { "city": "Copenhagen", "country": "Denmark", "code": "CPH", "phoneCode": "45" },
-    { "city": "London", "country": "England", "code": "LCY", "phoneCode": "044" },
-    { "city": "Helsinki", "country": "Finland", "code": "HEL", "phoneCode": "358" },
-    { "city": "Paris", "country": "France", "code": "CDG", "phoneCode": "033" },
-    { "city": "Berlin", "country": "Germany", "code": "SXF", "phoneCode": "049" },
-    { "city": "Athens", "country": "Greece", "code": "ATH", "phoneCode": "030" },
-    { "city": "Budapest", "country": "Hungary", "code": "BUD", "phoneCode": "036" },
-    { "city": "Reykjavik", "country": "Iceland", "code": "KEF", "phoneCode": "354" },
-    { "city": "Dublin", "country": "Ireland", "code": "DUB", "phoneCode": "353" },
-    { "city": "Tel Aviv", "country": "Israel", "code": "TLV", "phoneCode": "972" },
-    { "city": "Rome", "country": "Italy", "code": "CIA", "phoneCode": "039" },
-    { "city": "Riga", "country": "Latvia", "code": "RIX", "phoneCode": "371" },
-    { "city": "Vilnius", "country": "Lithuania", "code": "VNO", "phoneCode": "370" },
-    { "city": "Amsterdam", "country": "Netherlands", "code": "AMS", "phoneCode": "031" },
-    { "city": "Oslo", "country": "Norway", "code": "OSL", "phoneCode": "047" },
-    { "city": "Warsaw", "country": "Poland", "code": "WAW", "phoneCode": "048" },
-    { "city": "Moscow", "country": "Russia", "code": "SVO", "phoneCode": "007" },
-    { "city": "Barcelona", "country": "Spain", "code": "BCN", "phoneCode": "034" },
-    { "city": "Stockholm", "country": "Sweden", "code": "ARN", "phoneCode": "46" },
-    { "city": "Geneva", "country": "Switzerland", "code": "GVA", "phoneCode": "041" },
-    { "city": "Kiev", "country": "Ukraine", "code": "KBP", "phoneCode": "380" }
+    {
+      "city": "Vienna",
+      "country": "Austria",
+      "code": "VIE",
+      "phoneCode": "043"
+    },
+    {
+      "city": "Minsk",
+      "country": "Belarus",
+      "code": "MHP",
+      "phoneCode": "375"
+    },
+    {
+      "city": "Brussels",
+      "country": "Belgium",
+      "code": "BRU",
+      "phoneCode": "032"
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "code": "SOF",
+      "phoneCode": "359"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "code": "PRG",
+      "phoneCode": "420"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "code": "CPH",
+      "phoneCode": "45"
+    },
+    {
+      "city": "London",
+      "country": "England",
+      "code": "LCY",
+      "phoneCode": "044"
+    },
+    {
+      "city": "Helsinki",
+      "country": "Finland",
+      "code": "HEL",
+      "phoneCode": "358"
+    },
+    {
+      "city": "Paris",
+      "country": "France",
+      "code": "CDG",
+      "phoneCode": "033"
+    },
+    {
+      "city": "Berlin",
+      "country": "Germany",
+      "code": "SXF",
+      "phoneCode": "049"
+    },
+    {
+      "city": "Athens",
+      "country": "Greece",
+      "code": "ATH",
+      "phoneCode": "030"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "code": "BUD",
+      "phoneCode": "036"
+    },
+    {
+      "city": "Reykjavik",
+      "country": "Iceland",
+      "code": "KEF",
+      "phoneCode": "354"
+    },
+    {
+      "city": "Dublin",
+      "country": "Ireland",
+      "code": "DUB",
+      "phoneCode": "353"
+    },
+    {
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "code": "TLV",
+      "phoneCode": "972"
+    },
+    {
+      "city": "Rome",
+      "country": "Italy",
+      "code": "CIA",
+      "phoneCode": "039"
+    },
+    {
+      "city": "Riga",
+      "country": "Latvia",
+      "code": "RIX",
+      "phoneCode": "371"
+    },
+    {
+      "city": "Vilnius",
+      "country": "Lithuania",
+      "code": "VNO",
+      "phoneCode": "370"
+    },
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "code": "AMS",
+      "phoneCode": "031"
+    },
+    {
+      "city": "Oslo",
+      "country": "Norway",
+      "code": "OSL",
+      "phoneCode": "047"
+    },
+    {
+      "city": "Warsaw",
+      "country": "Poland",
+      "code": "WAW",
+      "phoneCode": "048"
+    },
+    {
+      "city": "Moscow",
+      "country": "Russia",
+      "code": "SVO",
+      "phoneCode": "007"
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "code": "BCN",
+      "phoneCode": "034"
+    },
+    {
+      "city": "Stockholm",
+      "country": "Sweden",
+      "code": "ARN",
+      "phoneCode": "46"
+    },
+    {
+      "city": "Geneva",
+      "country": "Switzerland",
+      "code": "GVA",
+      "phoneCode": "041"
+    },
+    {
+      "city": "Kiev",
+      "country": "Ukraine",
+      "code": "KBP",
+      "phoneCode": "380"
+    }
   ],
   "trips": [
     {
