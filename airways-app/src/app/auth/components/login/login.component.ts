@@ -35,16 +35,16 @@ export default class LoginComponent {
     private authService: AuthService,
     private dialogRef: DialogRef,
     private snackBar: MatSnackBar,
-  ) {}
+  ) {
+    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
+    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
+  }
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
-    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
-    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 3000 }));
-
     if (this.form.valid) {
       const { email, password } = this.form.value;
       this.authService.login(email, password);

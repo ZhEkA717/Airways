@@ -90,6 +90,8 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
       }));
       this.citizenship = airports.map((item) => item.country);
     });
+    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
+    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
   }
 
   ngOnDestroy(): void {
@@ -101,9 +103,6 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
-    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 3000 }));
-    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
-
     if (this.form.valid) {
       const { countryCode, phone } = this.form.value;
       const newUser: User = { ...this.form.value, phone: { code: countryCode, number: phone } };
