@@ -13,7 +13,7 @@
     <mat-autocomplete
       #from="matAutocomplete">
       <mat-option
-        *ngFor="let option of options"
+        *ngFor="let option of airportsService.airport"
         [value]="option.city + ' ' + option.code"
       >
         {{option.city}} ({{option.code}})
@@ -52,7 +52,7 @@
          [matAutocomplete]="destination">
   <mat-autocomplete #destination="matAutocomplete">
     <mat-option
-      *ngFor="let option of options"
+      *ngFor="let option of airportsService.airport"
       [value]="option.city + ' ' + option.code"
     >
       {{option.city}} ({{option.code}})

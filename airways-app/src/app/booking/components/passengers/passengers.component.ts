@@ -21,6 +21,7 @@ import { send } from 'src/app/redux/actions/passengers.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import { Passenger } from 'src/app/shared/model/persons.model';
+import AirportsService from 'src/app/shared/services/airports.service';
 import { PassengersForm } from '../../models/passengers.model';
 
 export const MY_FORMAT = {
@@ -82,17 +83,12 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     ]),
   });
 
-  public codes = [
-    { country: 'Abkhazia', code: '895' },
-    { country: 'Australia', code: '036' },
-    { country: 'Austria', code: '040' },
-  ];
-
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private router: Router,
     public location: Location,
+    public airportsService: AirportsService,
   ) {}
 
   ngOnInit(): void {
@@ -179,7 +175,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.router.navigate(['/booking/flight']);
   }
 
-  toRewiew() {
+  toReview() {
     this.router.navigate(['/booking/review']);
   }
 
@@ -198,7 +194,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.store.dispatch(send(form as PassengersForm));
 
     if (this.form.valid) {
-      this.toRewiew();
+      this.toReview();
     }
   }
 }
