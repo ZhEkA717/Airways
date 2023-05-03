@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { PassengersForm } from 'src/app/booking/models/passengers.model';
-import { send } from '../actions/passengers.action';
+import {
+  send,
+} from '../actions/passengers.action';
 
 export const PASSENGERS_REDUCER_KEY = 'passengers-form';
 

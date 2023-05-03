@@ -174,7 +174,7 @@
           <div class="baggages__item__title">Hand luggage</div>
           <div class="baggages__item__info">
             <div class="img-wrapper">
-              <img src="../../../../assets/icons/hand.svg" alt="hand">
+              <img src="assets/icons/hand.svg" alt="hand">
             </div>
             <div class="info">
               <div class="info__title">Max. 5 kg</div>
@@ -188,10 +188,10 @@
           <div class="baggages__item__title">Hand luggage +</div>
           <div class="baggages__item__info">
             <div class="img-wrapper">
-              <img src="../../../../assets/icons/hand+.svg" alt="hand+">
+              <img src="assets/icons/hand+.svg" alt="hand+">
               <img
                 class="money"
-                [src]=" '../../../../assets/icons/' + moneyFormat.toLowerCase() + '.svg' " alt="money">
+                [src]=" 'assets/icons/' + moneyFormat.toLowerCase() + '.svg' " alt="money">
             </div>
             <div class="info">
               <div class="info__title">Max. 10 kg</div>
@@ -205,10 +205,10 @@
           <div class="baggages__item__title">Checked baggage</div>
           <div class="baggages__item__info">
             <div class="img-wrapper">
-              <img src="../../../../assets/icons/baggage.svg" alt="baggage">
+              <img src="assets/icons/baggage.svg" alt="baggage">
               <img
                 class="money"
-                [src]=" '../../../../assets/icons/' + moneyFormat.toLowerCase() + '.svg' " alt="money">
+                [src]=" 'assets/icons/' + moneyFormat.toLowerCase() + '.svg' " alt="money">
             </div>
             <div class="info">
               <div class="info__title">Max. 30 kg</div>
@@ -252,8 +252,8 @@
       >
         <mat-label>Country code</mat-label>
         <mat-select formControlName="countryCode" name="code">
-          <mat-option *ngFor="let code of codes" [value]="code.code">
-            {{code.country}} (+{{code.code}})
+          <mat-option *ngFor="let code of airportsService.airport" [value]="code.phoneCode">
+            {{code.country}} (+{{code.phoneCode}})
           </mat-option>
         </mat-select>
       </mat-form-field>

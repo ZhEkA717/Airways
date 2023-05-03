@@ -26,12 +26,12 @@
 </mat-button-toggle-group>
 
 <div class="continue-buttons">
-  <button class="button">
-    <img src="../../../../assets/icons/google.svg" alt="google">
+  <button class="button" (click)="socialNetLogin('google')">
+    <img src="assets/icons/google.svg" alt="google">
     Continue with Google
   </button>
-  <button class="button">
-    <img src="../../../../assets/icons/facebbok.svg" alt="facebook">
+  <button class="button" (click)="socialNetLogin('facebook')">
+    <img src="assets/icons/facebbok.svg" alt="facebook">
     Continue with Facebook
   </button>
 </div>

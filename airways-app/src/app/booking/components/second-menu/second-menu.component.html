@@ -6,7 +6,7 @@
         [ngClass]="{'one': tripWay}"
         class="menu__direction__img"
       >
-        <img src="../../../../assets/icons/directions.svg" alt="directions">
+        <img src="assets/icons/directions.svg" alt="directions">
       </div>
       <span class="menu__direction__text">{{destination}}</span>
     </div>
@@ -17,7 +17,7 @@
         <span>{{startDate | date:'d MMM'}}</span> - <span>{{endDate | date:'d MMM'}}</span>
         <span class="dot">&bull;</span>
         <span>{{count}}</span>
-        <img src="../../../../assets/icons/user-icon.svg" alt="user-icon">
+        <img src="assets/icons/user-icon.svg" alt="user-icon">
       </div>
       <div
         *ngIf="headerService.stepper$ | async as stepper"

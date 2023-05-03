@@ -234,3 +234,52 @@
     }
   }
 }
+.button {
+  background: $button-background-color;
+  border: 0.5px solid $button-border-color;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .5s;
+  
+  width: 114px;
+  gap: 15px;
+
+  &__title,
+  &__img {
+    color: $text-light-color;
+
+    &.isBooking {
+      color: $text-average-color;
+
+      @media(max-width:700px) {
+        color: $text-light-color;
+      }
+    }
+  }
+
+  @media(max-width:700px) {
+    width: 100%;
+  }
+
+  &.isBooking {
+    color: $text-average-color;
+  }
+
+  &_menu {
+    width: 60px;
+    color: $text-light-color;
+    display: none;
+    @media(max-width:700px) {
+      display: block;
+    }
+  }
+
+  &:hover {
+    opacity: .7;
+  }
+}

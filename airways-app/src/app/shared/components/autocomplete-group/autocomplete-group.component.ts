@@ -1,26 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import HttpApiService from 'src/app/core/services/http-api.service';
+import { Component, Input } from '@angular/core';
 import AutocompleteService from '../../services/autocomplete.service';
-import { Airport } from '../../model/airport.model';
+import AirportsService from '../../services/airports.service';
 
 @Component({
   selector: 'app-autocomplete-group',
   templateUrl: './autocomplete-group.component.html',
   styleUrls: ['./autocomplete-group.component.scss'],
 })
-export default class AutocompleteGroupComponent implements OnInit {
+export default class AutocompleteGroupComponent {
   @Input() directionVisibility!: boolean;
-
-  public options: Airport[] = [];
 
   constructor(
     public autocompleteService: AutocompleteService,
-    private httpApiService: HttpApiService,
+    public airportsService: AirportsService,
   ) {}
-
-  ngOnInit(): void {
-    this.httpApiService.getAirports().subscribe((res) => {
-      this.options = res;
-    });
-  }
 }
