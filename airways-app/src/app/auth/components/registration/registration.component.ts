@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import AirportsService from 'src/app/shared/services/airports.service';
+import HttpApiService from 'src/app/core/services/http-api.service';
+import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
@@ -70,16 +73,23 @@ export default class RegistrationComponent {
     public airportsService: AirportsService,
   ) {}
 
+    private snackBar: MatSnackBar,
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
+    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
+  }
+
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
-    if (!this.form.invalid) {
+    if (this.form.valid) {
       const { countryCode, phone } = this.form.value;
       const newUser: User = { ...this.form.value, phone: { code: countryCode, number: phone } };
       this.authService.register(newUser);
-      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
     }
   }
 }

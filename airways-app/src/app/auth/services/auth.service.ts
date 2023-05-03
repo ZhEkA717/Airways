@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import HttpApiService from '../../core/services/http-api.service';
 import { AuthToken } from '../../shared/model/auth-token.model';
 import { User } from '../../shared/model/persons.model';
+import { UserResponse } from '../../shared/model/response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,10 @@ export default class AuthService {
   public accessToken: string;
 
   private userId: number;
+
+  public userName: string;
+
+  public userEmail: string;
 
   private errorMessage: BehaviorSubject<string>;
 
@@ -25,6 +30,8 @@ export default class AuthService {
     const token = localStorage.getItem('JWT');
     this.accessToken = token ?? '';
     this.userId = 0;
+    this.userName = '';
+    this.userEmail = '';
     this.isLogged = new BehaviorSubject(false);
     this.isLogged$ = this.isLogged.asObservable();
     this.errorMessage = new BehaviorSubject('');
@@ -34,11 +41,7 @@ export default class AuthService {
   public login(email: string, password: string) {
     this.httpApi.loginUser(email, password).subscribe({
       next: (data) => {
-        this.accessToken = data.accessToken;
-        this.userId = data.user.id ?? 0;
-        this.isLogged.next(true);
-        this.errorMessage.next('');
-        localStorage.setItem('JWT', data.accessToken);
+        this.saveLoginInfo(data);
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage.next(error.error);
@@ -50,11 +53,7 @@ export default class AuthService {
   public register(user: User) {
     this.httpApi.registerUser(user).subscribe({
       next: (data) => {
-        this.accessToken = data.accessToken;
-        this.userId = data.user.id ?? 0;
-        this.isLogged.next(true);
-        this.errorMessage.next('');
-        localStorage.setItem('JWT', data.accessToken);
+        this.saveLoginInfo(data);
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage.next(error.error);
@@ -63,15 +62,47 @@ export default class AuthService {
     });
   }
 
+  private saveLoginInfo(data: UserResponse) {
+    this.accessToken = data.accessToken;
+    this.userId = data.user.id ?? 0;
+    this.userName = `${data.user.firstName} ${data.user.lastName}`;
+    this.userEmail = data.user.email;
+    this.isLogged.next(true);
+    this.errorMessage.next('');
+    localStorage.setItem('JWT', data.accessToken);
+  }
+
   public logout() {
     this.accessToken = '';
     this.userId = 0;
+    this.userName = '';
+    this.userEmail = '';
     this.isLogged.next(false);
     localStorage.removeItem('JWT');
   }
 
   public getCurrentUser(): Observable<User> {
     return this.httpApi.getUser(this.userId);
+  }
+
+  public checkLogin() {
+    const token = localStorage.getItem('JWT');
+    if (token) {
+      const id = parseInt(this.parseJwt(token), 10);
+      this.userId = id;
+      if (id) {
+        this.httpApi.getUser(id)
+          .subscribe({
+            next: (user) => {
+              this.saveLoginInfo({ accessToken: token, user });
+            },
+            error: (error: HttpErrorResponse) => {
+              this.errorMessage.next(error.error);
+              this.logout();
+            },
+          });
+      }
+    }
   }
 
   private parseJwt(token:string): string {

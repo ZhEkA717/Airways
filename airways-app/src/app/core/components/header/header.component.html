@@ -9,7 +9,7 @@
   >
     <div class="header__logo__img">
       <img
-        src="../../../../assets/icons/logo.svg"
+        src="assets/icons/logo.svg"
         alt="logo-icon"
       >
     </div>
@@ -89,8 +89,8 @@
           >done</mat-icon>
       </button>
     </mat-menu>
-    <button
-      (click)="openDialog('500ms', '0ms')"
+    <button cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+      (click)="auth()"
       class="button header__button-login">
       <mat-icon
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
@@ -99,18 +99,30 @@
       <div
         [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
         class="header__button-login__title"
-      >Sign in</div>
+      >{{loginButtonCaption}}</div>
     </button>
+    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayOpen" (overlayOutsideClick)="isOverlayOpen = false">
+      <button (click)="logout()" class="button header__button-logout">
+        <mat-icon
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        class="header__button-login__img"
+      >power_settings_new</mat-icon>
+      <div
+        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        class="header__button-login__title"
+      >Logout</div>
+      </button>
+    </ng-template>
   </div>
   <div class="button-wrapper">
     <button class="button header__basket">
       <img
         class="header__basket__img"
-        src="../../../../assets/icons/basket.svg"
+        src="assets/icons/basket.svg"
         [src]="
           (headerService.isBooking$ | async)
-          ? '../../../../assets/icons/basket.svg'
-          : '../../../../assets/icons/basket-booking.svg'
+          ? 'assets/icons/basket.svg'
+          : 'assets/icons/basket-booking.svg'
         "
         alt="basket"
       >

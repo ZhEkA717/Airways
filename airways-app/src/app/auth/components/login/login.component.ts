@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import AuthService from '../../services/auth.service';
@@ -11,7 +12,7 @@ import AuthService from '../../services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export default class LoginComponent {
-  public isHidePassword = false;
+  public isHidePassword = true;
 
   public bufferValue = 75;
 
@@ -33,17 +34,20 @@ export default class LoginComponent {
     public statisticsService: StatisticsService,
     private authService: AuthService,
     private dialogRef: DialogRef,
-  ) {}
+    private snackBar: MatSnackBar,
+  ) {
+    this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
+    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
+  }
 
   public onUpdateStatistics() {
     this.statisticsService.reliableStatistics(this.form);
   }
 
   public submit() {
-    if (!this.form.invalid) {
+    if (this.form.valid) {
       const { email, password } = this.form.value;
       this.authService.login(email, password);
-      this.authService.isLogged$.subscribe((isLogged) => (isLogged ?? this.dialogRef.close()));
     }
   }
 }
