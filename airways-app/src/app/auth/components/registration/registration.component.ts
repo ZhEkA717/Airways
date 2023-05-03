@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import AirportsService from 'src/app/shared/services/airports.service';
-import HttpApiService from 'src/app/core/services/http-api.service';
-import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
@@ -18,7 +16,7 @@ import { User } from '../../../shared/model/persons.model';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export default class RegistrationComponent {
+export default class RegistrationComponent implements OnInit {
   public isHidePassword = false;
 
   public bufferValue = 75;
@@ -71,8 +69,6 @@ export default class RegistrationComponent {
     private authService: AuthService,
     private dialogRef: DialogRef,
     public airportsService: AirportsService,
-  ) {}
-
     private snackBar: MatSnackBar,
   ) {}
 
