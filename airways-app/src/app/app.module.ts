@@ -16,6 +16,7 @@ import TextColorDirective from './auth/directives/text-color.directive';
 import ReliableColorDirective from './auth/directives/reliable-color.directive';
 import LoginComponent from './auth/components/login/login.component';
 import StatisticsService from './auth/services/statistics.service';
+import SettingsEffects from './redux/effects/settings.effect';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import StatisticsService from './auth/services/statistics.service';
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot(),
+    EffectsModule.forRoot([SettingsEffects]),
   ],
   providers: [StatisticsService],
   bootstrap: [AppComponent],

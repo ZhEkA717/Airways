@@ -11,3 +11,7 @@ export const selectMoneyFormat = createSelector(
   selectFeatureSettings,
   (settings: SettingsState) => settings.format.moneyFormat,
 );
+export const selectAirports = createSelector(
+  selectFeatureSettings,
+  (settings: SettingsState) => settings.airports,
+);

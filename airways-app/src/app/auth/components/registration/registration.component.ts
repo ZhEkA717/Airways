@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
+import AirportsService from 'src/app/shared/services/airports.service';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,17 +18,10 @@ import { User } from '../../../shared/model/persons.model';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export default class RegistrationComponent implements OnInit, OnDestroy {
+export default class RegistrationComponent {
   public isHidePassword = false;
 
   public bufferValue = 75;
-
-  public codes!: {
-    country: string,
-    phoneCode: string,
-  }[];
-
-  public citizenship!: string[];
 
   public form: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -72,30 +66,19 @@ export default class RegistrationComponent implements OnInit, OnDestroy {
     ]),
   });
 
-  private subAirport!: Subscription;
-
   constructor(
     public statisticsService: StatisticsService,
-    private httpApiService: HttpApiService,
     private authService: AuthService,
     private dialogRef: DialogRef,
+    public airportsService: AirportsService,
+  ) {}
+
     private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
-    this.subAirport = this.httpApiService.getAirports().subscribe((airports) => {
-      this.codes = airports.map((item) => ({
-        country: item.country,
-        phoneCode: item.phoneCode,
-      }));
-      this.citizenship = airports.map((item) => item.country);
-    });
     this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
     this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
-  }
-
-  ngOnDestroy(): void {
-    this.subAirport.unsubscribe();
   }
 
   public onUpdateStatistics() {
