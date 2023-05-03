@@ -40,6 +40,16 @@ export default class FlightComponent implements OnInit, OnDestroy, AfterViewInit
     'December',
   ];
 
+  private days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+
   public prevMonthDays:number[] = [];
 
   public monthDays:number[] = [];
@@ -165,14 +175,15 @@ export default class FlightComponent implements OnInit, OnDestroy, AfterViewInit
   ngOnInit(): void {
     this.initCalendar();
 
-
     this.headerService.setStepper({
       flight: true, passengers: false, review: false,
     });
 
     this.subSearch = this.search$.subscribe((search) => {
       const { from, destination, startDate } = search;
+
       this.date = new Date(startDate);
+
       this.httpApiService.getAvailableTrips(
         from.slice(-3),
         destination.slice(-3),
@@ -182,6 +193,18 @@ export default class FlightComponent implements OnInit, OnDestroy, AfterViewInit
           console.log(res);
         });
     });
+  }
+
+  dayOfWeek(day: number, month: string, year: string) {
+    return this.days[new Date(`${day}${month}${year}`).getDay()];
+  }
+
+  getDate(
+    day: number,
+    month: string,
+    year = new Date().getFullYear().toString(),
+  ) {
+    return new Date(new Date(`${day}${month}${year}`));
   }
 
   ngOnDestroy(): void {
