@@ -1,4 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
@@ -10,14 +18,14 @@ import { selectSearch } from 'src/app/redux/selectors/search.selector';
   templateUrl: './flight.component.html',
   styleUrls: ['./flight.component.scss'],
 })
-export default class FlightComponent implements OnInit, OnDestroy {
+export default class FlightComponent implements OnInit, OnDestroy, AfterViewInit {
   private search$ = this.store.select(selectSearch);
 
   private subSearch!: Subscription;
 
   public date = new Date();
 
-  public month = [
+  public months = [
     'January',
     'February',
     'March',
@@ -32,91 +40,139 @@ export default class FlightComponent implements OnInit, OnDestroy {
     'December',
   ];
 
-  public lastDay!: number;
+  public prevMonthDays:number[] = [];
 
-  public prevLastDay!: number;
+  public monthDays:number[] = [];
 
-  public firstDayIndex!: number;
+  public nextMonthDays:number[] = [];
 
-  public lastDayIndex!: number;
+  private dayContainer!: HTMLElement;
 
-  public nextDays!: number;
+  private viewSliderCount = 0;
 
-  public monthDays: number[] = [];
+  count = 4;
 
-  public prevMonthDays: number[] = [];
-
-  public nextMonthDays: number[] = [];
-
-  public fromDay = 1;
-
-  public toDay = 7;
+  private interval = 100 / 7;
 
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private httpApiService: HttpApiService,
+    private r: Renderer2,
   ) {}
 
+  ngAfterViewInit(): void {
+    this.dayContainer = this.daysWrapper.nativeElement;
+  }
+
   initCalendar() {
-    this.date.setDate(1);
+    const { date } = this;
 
-    this.monthDays = [];
-    this.prevMonthDays = [];
-    this.nextMonthDays = [];
+    date.setDate(1);
 
-    this.lastDay = new Date(
-      this.date.getFullYear(),
-      this.date.getMonth() + 1,
+    const lastDay = new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
       0,
     ).getDate();
 
-    this.prevLastDay = new Date(
-      this.date.getFullYear(),
-      this.date.getMonth(),
+    const prevLastDay = new Date(
+      date.getFullYear(),
+      date.getMonth(),
       0,
     ).getDate();
 
-    this.firstDayIndex = this.date.getDay();
+    const firstDayIndex = date.getDay();
 
-    this.date.setDate(this.lastDay);
-
-    this.lastDayIndex = new Date(
-      this.date.getFullYear(),
-      this.date.getMonth() + 1,
+    const lastDayIndex = new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
       0,
     ).getDay();
 
-    this.nextDays = 7 - this.lastDayIndex;
+    const nextDays = 7 - lastDayIndex - 1;
 
-    for (let i = 1; i <= this.lastDay; i += 1) {
+    this.prevMonthDays = [];
+    this.monthDays = [];
+    this.nextMonthDays = [];
+
+    for (let x = firstDayIndex - 1; x > 0; x -= 1) {
+      this.prevMonthDays.push(prevLastDay - x + 1);
+    }
+
+    for (let i = 1; i <= lastDay; i += 1) {
       this.monthDays.push(i);
     }
 
-    for (let i = this.firstDayIndex - 1; i > 0; i -= 1) {
-      this.prevMonthDays.push(this.prevLastDay - i + 1);
+    for (let j = 0; j <= nextDays; j += 1) {
+      this.nextMonthDays.push(j + 1);
     }
-    for (let i = 1; i <= this.nextDays; i += 1) {
-      this.nextMonthDays.push(i);
+
+    if (this.prevMonthDays.length === 7) this.prevMonthDays = [];
+    if (this.nextMonthDays.length === 7) this.nextMonthDays = [];
+  }
+
+  prev() {
+    this.viewSliderCount += this.interval;
+
+    if (this.viewSliderCount > 0) {
+      this.date.setMonth(this.date.getMonth() - 1);
+      this.initCalendar();
+      this.changedWidthViewSlider();
+      if (this.nextLength) {
+        this.viewSliderCount = -(this.interval * (this.count - 1));
+      } else {
+        this.viewSliderCount = -(this.interval * this.count);
+      }
     }
-    this.monthDays = [
+    this.r.setStyle(this.dayContainer, 'transform', `translateX(${this.viewSliderCount}%)`);
+  }
+
+  next() {
+    this.viewSliderCount -= this.interval;
+
+    if (this.viewSliderCount < -(this.interval * this.count)) {
+      this.date.setMonth(this.date.getMonth() + 1);
+      this.initCalendar();
+      this.changedWidthViewSlider();
+      this.viewSliderCount = this.prevLength ? -this.interval : 0;
+    }
+    this.r.setStyle(this.dayContainer, 'transform', `translateX(${this.viewSliderCount}%)`);
+  }
+
+  changedWidthViewSlider() {
+    this.count = Math.round(this.calendarDays / 7) - 1;
+  }
+
+  private get calendarDays() {
+    return [
       ...this.prevMonthDays,
       ...this.monthDays,
       ...this.nextMonthDays,
-    ];
-
-    console.log(this.monthDays);
+    ].length;
   }
+
+  get prevLength() {
+    return this.prevMonthDays.length;
+  }
+
+  get nextLength() {
+    return this.nextMonthDays.length;
+  }
+
+  @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
     this.initCalendar();
+
 
     this.headerService.setStepper({
       flight: true, passengers: false, review: false,
     });
 
     this.subSearch = this.search$.subscribe((search) => {
-      const { from, destination } = search;
+      const { from, destination, startDate } = search;
+      this.date = new Date(startDate);
       this.httpApiService.getAvailableTrips(
         from.slice(-3),
         destination.slice(-3),
@@ -130,31 +186,5 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subSearch?.unsubscribe();
-  }
-
-  prev() {
-    if (this.fromDay === 1) {
-      this.date.setMonth(this.date.getMonth() - 1);
-      this.initCalendar();
-      this.fromDay = 1;
-      this.toDay = 7;
-    }
-
-    this.fromDay -= 7;
-    this.toDay -= 7;
-  }
-
-  next() {
-    if (this.toDay >= this.lastDay) {
-      console.log('next');
-      this.date.setMonth(this.date.getMonth() + 1);
-      this.initCalendar();
-      this.fromDay = 1;
-      this.toDay = 7;
-      console.log(this.date);
-    }
-
-    this.fromDay += 7;
-    this.toDay += 7;
   }
 }

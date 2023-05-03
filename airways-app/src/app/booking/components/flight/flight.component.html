@@ -1,12 +1,26 @@
 <div class="container">
   <button class="prev" (click)="prev()">prev</button>
   <button class="next" (click)="next()">next</button>
-  <div class="days">
+ <div class="calendar">
+  <div #daysWrapper class="days">
     <div
-      *ngFor="let day of monthDays.slice(fromDay - 1, toDay),
+      *ngFor="let day of prevMonthDays,
       let i = index"
-      class="days__item">
-      {{day}} {{month[date.getMonth()]}}
+      class="days__prev">
+      {{day}} {{months[date.getMonth() - 1]}}
+    </div>
+    <div
+      *ngFor="let day of monthDays,
+      let i = index"
+      class="days__curr">
+      {{day}} {{months[date.getMonth()]}}
+    </div>
+    <div
+      *ngFor="let day of nextMonthDays,
+      let i = index"
+      class="days__next">
+      {{day}} {{months[date.getMonth() + 1]}}
     </div>
   </div>
+ </div>
 </div>

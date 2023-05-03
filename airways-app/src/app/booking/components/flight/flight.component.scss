@@ -1,13 +1,37 @@
+.calendar {
+  position: relative;
+  overflow: hidden;
+  height: 56px;
+  margin-top: 90px;
+}
+
+.container {
+  width: 1190px;
+}
+
 .days {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
-  width: 100%;
   height: 56px;
+  width: 700%;
+  transition: transform .5s;
 
-  &__item {
-    width: calc(100% / 7);
-    height: 100%;
+  &__curr,
+  &__prev,
+  &__next {
+    width: 170px;
+    height: 56px;
     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__prev {
+    color: grey;
   }
 }
 
