@@ -1,1 +1,12 @@
-<p>flight works!</p>
+<div class="container">
+  <button class="prev" (click)="prev()">prev</button>
+  <button class="next" (click)="next()">next</button>
+  <div class="days">
+    <div
+      *ngFor="let day of monthDays.slice(fromDay - 1, toDay),
+      let i = index"
+      class="days__item">
+      {{day}} {{month[date.getMonth()]}}
+    </div>
+  </div>
+</div>

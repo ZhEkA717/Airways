@@ -1,0 +1,14 @@
+.days {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 56px;
+
+  &__item {
+    width: calc(100% / 7);
+    height: 100%;
+    border: 1px solid black;
+  }
+}
+
+
