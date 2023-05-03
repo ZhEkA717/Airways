@@ -70,9 +70,10 @@
   top: 0;
   left: 0;
   display: flex;
+  align-items: center;
   flex-direction: row;
   width: 700%;
-  height: 70px;
+  height: 100px;
   transition: transform .2s;
 
   &__curr,
@@ -87,6 +88,16 @@
     padding: 4px 0px;
     background: $text-light-color;
     border-left: 1px solid $button-border-color;
+    transition: height .2s;
+
+    cursor: pointer;
+
+      &:hover {
+        height: 100px;
+        border-top: 1px solid $button-border-color;
+        box-shadow: 1px 0px 0px 0px $button-border-color;
+        border-bottom: 35px solid $base-primary-color;
+      }
 
       .date {
         font-size: 14px;
@@ -105,6 +116,10 @@
 
         @media (max-width: 560px) {
           font-size: 10px;
+        }
+
+        @media (max-width: 440px) {
+          font-size: 8px;
         }
     }
 
