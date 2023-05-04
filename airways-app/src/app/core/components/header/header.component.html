@@ -1,10 +1,10 @@
 <div
   class="header"
-  [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+  [class.isBooking] = "isNotMain"
 >
 <div class="container">
   <div
-    (click)="toMainPage()"
+    [routerLink]="['/']"
     class="header__logo"
   >
     <div class="header__logo__img">
@@ -16,19 +16,18 @@
     <div class="header__logo__title">airways</div>
   </div>
   <app-stepper
-    *ngIf="(headerService.isBooking$ | async) !== true"
+    *ngIf="stepperShow"
   ></app-stepper>
   <div class="wrapper-menu">
     <div
       [ngClass]="{showMenu: menuShow}"
-      [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+      [class.isBooking] = "isNotMain"
       class="header__menu"
     >
     <div class="header__title">
-      <div *ngIf="headerService.isBooking$ | async">Book flights</div>
+      <div *ngIf="!isNotMain">Book flights</div>
       <div
-        *ngIf="(headerService.isBooking$ | async) !== true
-        && menuShow"
+        *ngIf="isNotMain && menuShow"
       >Book flights</div>
       <button
       (click)="menuShow = false"
@@ -43,11 +42,11 @@
     >
       <span
         class="header__format-date__title"
-        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        [class.isBooking] = "isNotMain"
       >{{formatDate$ | async}}</span>
       <mat-icon
         class="header__format-date__drop-down"
-        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        [class.isBooking] = "isNotMain"
       >arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menuFormatDate="matMenu">
@@ -70,7 +69,7 @@
     <button
       [matMenuTriggerFor]="menuFormatMoney"
       class="button header__format-money"
-      [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+      [class.isBooking] = "isNotMain"
     >{{formatMoney$ | async}}</button>
     <mat-menu #menuFormatMoney="matMenu">
       <button
@@ -93,36 +92,36 @@
       (click)="auth()"
       class="button header__button-login">
       <mat-icon
-        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        [class.isBooking] = "isNotMain"
         class="header__button-login__img"
       >person</mat-icon>
       <div
-        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        [class.isBooking] = "isNotMain"
         class="header__button-login__title"
       >{{loginButtonCaption}}</div>
     </button>
     <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayOpen" (overlayOutsideClick)="isOverlayOpen = false">
       <button (click)="logout()" class="button header__button-logout">
         <mat-icon
-        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        [class.isBooking] = "isNotMain"
         class="header__button-login__img"
       >power_settings_new</mat-icon>
       <div
-        [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+        [class.isBooking] = "isNotMain"
         class="header__button-login__title"
       >Logout</div>
       </button>
     </ng-template>
   </div>
   <div class="button-wrapper">
-    <button class="button header__basket">
+    <button [routerLink]="['/cart']" class="button header__basket">
       <img
         class="header__basket__img"
         src="assets/icons/basket.svg"
         [src]="
-          (headerService.isBooking$ | async)
-          ? 'assets/icons/basket.svg'
-          : 'assets/icons/basket-booking.svg'
+          (isNotMain)
+          ? 'assets/icons/basket-booking.svg'
+          : 'assets/icons/basket.svg'
         "
         alt="basket"
       >
@@ -130,7 +129,7 @@
     <button
       (click)="menuShow = true"
       class="button button_menu"
-      [ngClass]="{isBooking: (headerService.isBooking$ | async) !== true}"
+      [class.isBooking] = "isNotMain"
     >
       <mat-icon>menu</mat-icon>
     </button>

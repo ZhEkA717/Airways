@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import HeaderService from 'src/app/core/services/header.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-flight-search-page',
   templateUrl: './flight-search-page.component.html',
   styleUrls: ['./flight-search-page.component.scss'],
 })
-export default class FlightSearchPageComponent implements OnInit {
-  constructor(private headerService: HeaderService) {}
+export default class FlightSearchPageComponent {
 
-  ngOnInit(): void {
-    this.headerService.setIsBooking(true);
-  }
 }

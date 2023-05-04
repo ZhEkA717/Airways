@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import { MatDialog } from '@angular/material/dialog';
 import AuthDialogComponent from 'src/app/auth/components/auth-dialog/auth-dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { filter, map } from 'rxjs/operators';
 import FormatService from '../../services/format.service';
 import HeaderService from '../../services/header.service';
 import AuthService from '../../../auth/services/auth.service';
@@ -16,6 +16,10 @@ import AuthService from '../../../auth/services/auth.service';
 })
 export default class HeaderComponent {
   public menuShow = false;
+
+  public isNotMain = true;
+
+  public stepperShow = false;
 
   public formatDate$ = this.store.select(selectDateFormat);
 
@@ -34,13 +38,23 @@ export default class HeaderComponent {
     public authService: AuthService,
     private store: Store,
     public dialog: MatDialog,
-    private logoutBar: MatSnackBar,
   ) {
     authService.checkLogin();
     authService.isLogged$.subscribe((isLogged) => {
       this.isLogged = isLogged;
       this.loginButtonCaption = authService.userName || 'Sign in';
     });
+    this.getRouterUrl().subscribe((url) => {
+      this.isNotMain = url !== 'main';
+      this.stepperShow = url === 'booking';
+    });
+  }
+
+  getRouterUrl() {
+    return this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map((event) => event.urlAfterRedirects.split('/')[1]),
+    );
   }
 
   openDialog(
@@ -66,9 +80,5 @@ export default class HeaderComponent {
   public logout() {
     this.isOverlayOpen = false;
     this.authService.logout();
-  }
-
-  public toMainPage() {
-    this.router.navigate(['main']);
   }
 }
