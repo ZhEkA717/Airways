@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import {
   AfterViewInit,
   Component,
@@ -7,6 +8,8 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { Trip } from 'src/app/shared/model/trip.model';
+import CalendarService from '../../services/calendar.service';
 
 @Component({
   selector: 'app-calendar',
@@ -16,33 +19,39 @@ import {
 export default class CalendarComponent implements OnInit, AfterViewInit {
   @Input() date!: Date;
 
+  public arriveDates: Trip[] = [];
+
   private dayContainer!: HTMLElement;
 
   constructor(
     private r: Renderer2,
+    private calendarService: CalendarService,
   ) {}
 
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
-    this.initCalendar();
+    this.calendarService.arriveDates$.subscribe((res) => {
+      this.arriveDates = res;
+      this.initCalendar();
+    });
   }
 
   ngAfterViewInit(): void {
     this.dayContainer = this.daysWrapper.nativeElement;
   }
 
-  public prevMonthDays:number[] = [];
+  public prevMonthDays:Trip[] = [];
 
-  public monthDays:number[] = [];
+  public monthDays:Trip[] = [];
 
-  public nextMonthDays:number[] = [];
-
-  public viewSliderCount = 0;
+  public nextMonthDays:Trip[] = [];
 
   private count = 4;
 
   private interval = 100 / 7;
+
+  public viewSliderCount = 0;
 
   initCalendar() {
     const { date } = this;
@@ -76,19 +85,68 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
     this.nextMonthDays = [];
 
     for (let x = firstDayIndex - 1; x > 0; x -= 1) {
-      this.prevMonthDays.push(prevLastDay - x + 1);
+      this.prevMonthDays.push({
+        ...this.calendarService.defaultTrip,
+        day: (prevLastDay - x + 1).toString(),
+        arriveDate: this.calendarService.getDate(
+          (prevLastDay - x + 1).toString(),
+          date.getMonth() - 1,
+          date.getFullYear().toString(),
+        ).toString(),
+      });
     }
 
     for (let i = 1; i <= lastDay; i += 1) {
-      this.monthDays.push(i);
+      this.monthDays.push({
+        ...this.calendarService.defaultTrip,
+        day: i.toString(),
+        arriveDate: this.calendarService.getDate(
+          (i).toString(),
+          date.getMonth(),
+          date.getFullYear().toString(),
+        ).toString(),
+      });
     }
 
     for (let j = 0; j <= nextDays; j += 1) {
-      this.nextMonthDays.push(j + 1);
+      this.nextMonthDays.push({
+        ...this.calendarService.defaultTrip,
+        day: (j + 1).toString(),
+        arriveDate: this.calendarService.getDate(
+          (j + 1).toString(),
+          date.getMonth() + 1,
+          date.getFullYear().toString(),
+        ).toString(),
+      });
     }
 
     if (this.prevMonthDays.length === 7) this.prevMonthDays = [];
     if (this.nextMonthDays.length === 7) this.nextMonthDays = [];
+
+    this.setArrives(this.prevMonthDays);
+    this.setArrives(this.monthDays);
+    this.setArrives(this.nextMonthDays);
+  }
+
+  setArrives(months: Trip[]) {
+    let count = 1;
+    this.arriveDates.forEach((arrive) => {
+      const dateArr = arrive.arriveDate.slice(0, -9).split('.');
+      const date = this.calendarService.getDate(dateArr[0], +dateArr[1] - 1, dateArr[2]);
+      months.forEach((item, i) => {
+        if (date.toString() === item.arriveDate) {
+          months[i] = {
+            ...item,
+            ...arrive,
+          };
+
+          if (count) {
+            this.calendarService.setTrip(this.monthDays[i]);
+            count = 0;
+          }
+        }
+      });
+    });
   }
 
   private changedWidthViewSlider() {
@@ -145,5 +203,11 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
       'transform',
       `translateX(${this.viewSliderCount}%)`,
     );
+  }
+
+  changeTrip(i: number) {
+    this.calendarService.setTrip(this.monthDays[i]);
+    // eslint-disable-next-line no-console
+    console.log(this.monthDays[i]);
   }
 }

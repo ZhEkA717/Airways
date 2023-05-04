@@ -11,6 +11,7 @@ import ReviewComponent from './components/review/review.component';
 import OneDateComponent from './components/one-date/one-date.component';
 import CalendarComponent from './components/calendar/calendar.component';
 import CalendarService from './services/calendar.service';
+import SelectTripComponent from './components/select-trip/select-trip.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import CalendarService from './services/calendar.service';
     ReviewComponent,
     OneDateComponent,
     CalendarComponent,
+    SelectTripComponent,
   ],
   imports: [
     CommonModule,

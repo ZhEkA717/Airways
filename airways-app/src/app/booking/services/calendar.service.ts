@@ -1,7 +1,38 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Trip } from 'src/app/shared/model/trip.model';
 
 @Injectable()
 export default class CalendarService {
+  private arriveDates = new BehaviorSubject<Trip[]>([]);
+
+  public arriveDates$ = this.arriveDates.asObservable();
+
+  public setArriveDates(newValue: Trip[]) {
+    this.arriveDates.next(newValue);
+  }
+
+  public defaultTrip:Trip = {
+    arriveDate: '',
+    departDate: '',
+    flightNo: '',
+    flightTime: '',
+    id: '',
+    from: '',
+    to: '',
+    price: 0,
+    seats: 0,
+    day: '',
+  };
+
+  private trip = new BehaviorSubject<Trip>(this.defaultTrip);
+
+  public trip$ = this.trip.asObservable();
+
+  public setTrip(newValue: Trip) {
+    this.trip.next(newValue);
+  }
+
   public months = [
     'January',
     'February',
@@ -27,15 +58,19 @@ export default class CalendarService {
     'Saturday',
   ];
 
-  public dayOfWeek(day: number, month: string, year: string) {
-    return this.days[new Date(`${day}${month}${year}`).getDay()];
+  public dayOfWeek(
+    day: string | undefined,
+    month: number,
+    year: string,
+  ) {
+    return this.days[new Date(`${day}${this.months[month]}${year}`).getDay()];
   }
 
   public getDate(
-    day: number,
-    month: string,
-    year = new Date().getFullYear().toString(),
+    day: string | undefined,
+    month: number,
+    year: string,
   ) {
-    return new Date(new Date(`${day}${month}${year}`));
+    return new Date(new Date(`${day}${this.months[month]}${year}`));
   }
 }

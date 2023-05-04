@@ -9,9 +9,9 @@
       [day] = "day"
       [date] = "date"
       [numMonth] = "-1"
-      [unActive] = "true"
-    ></app-one-date>
+    >{{day | json}}</app-one-date>
     <app-one-date
+      (click)="changeTrip(i)"
       *ngFor="let day of monthDays,
       let i = index"
       class="days__item"
@@ -26,7 +26,6 @@
       [day] = "day"
       [date] = "date"
       [numMonth] = "1"
-      [unActive] = "true"
     ></app-one-date>
   </div>
  </div>

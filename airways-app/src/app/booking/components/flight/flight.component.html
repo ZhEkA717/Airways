@@ -1,4 +1,23 @@
-<div class="container">
+<div
+  *ngIf="search$ | async as search"
+  class="container">
+  <div
+    class="title"
+  >
+    <mat-icon>airplanemode_active</mat-icon>
+    {{search.from.slice(0, -3)}} to {{search.destination.slice(0, -3)}}
+  </div>
   <app-calendar [date]="date"></app-calendar>
-  <app-calendar [date]="date1"></app-calendar>
+  <app-select-trip></app-select-trip>
+  <div *ngIf="search.tripWay === 'round'">
+    <div
+      *ngIf="search$ | async as search"
+      class="title title_reverse"
+    >
+      <mat-icon>airplanemode_active</mat-icon>
+      {{search.destination.slice(0, -3)}} to {{search.from.slice(0, -3)}}
+    </div>
+    <app-calendar [date]="date1"></app-calendar>
+    <app-select-trip></app-select-trip>
+  </div>
 </div>

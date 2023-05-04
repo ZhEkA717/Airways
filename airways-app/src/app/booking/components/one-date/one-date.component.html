@@ -1,21 +1,32 @@
 <div
   class="date"
-  [ngClass]="{unActive}"
+  [ngClass]="{unActive: !day.price}"
 >
   {{
     calendarService.getDate(
-    day,
-    calendarService.months[date.getMonth() + numMonth]) | date: 'dd MMM'
+      day.day,
+      date.getMonth() + numMonth,
+      date.getFullYear().toString()
+    ) | date: 'dd MMM'
   }}
 </div>
 <div
   class="day-of-week"
-  [ngClass]="{unActive}"
+  [ngClass]="{unActive: !day.price}"
 >
   {{
     calendarService.dayOfWeek(
-      day,
-      calendarService.months[date.getMonth() + numMonth],
+      day.day,
+      date.getMonth() + numMonth,
       date.getFullYear().toString())
   }}
 </div>
+<div
+  *ngIf="day.price; else noFlight"
+  class="price">
+   <span class="price__format">{{money}}</span>
+   <span class="price__value">{{day.price}}</span>
+</div>
+<ng-template #noFlight>
+    <mat-icon class="no-flight">airplanemode_inactive</mat-icon>
+</ng-template>
