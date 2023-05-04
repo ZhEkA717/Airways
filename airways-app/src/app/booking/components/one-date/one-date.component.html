@@ -1,0 +1,21 @@
+<div
+  class="date"
+  [ngClass]="{unActive}"
+>
+  {{
+    calendarService.getDate(
+    day,
+    calendarService.months[date.getMonth() + numMonth]) | date: 'dd MMM'
+  }}
+</div>
+<div
+  class="day-of-week"
+  [ngClass]="{unActive}"
+>
+  {{
+    calendarService.dayOfWeek(
+      day,
+      calendarService.months[date.getMonth() + numMonth],
+      date.getFullYear().toString())
+  }}
+</div>

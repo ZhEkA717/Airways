@@ -8,6 +8,9 @@ import SharedModule from '../shared/shared.module';
 import FlightComponent from './components/flight/flight.component';
 import PassengersComponent from './components/passengers/passengers.component';
 import ReviewComponent from './components/review/review.component';
+import OneDateComponent from './components/one-date/one-date.component';
+import CalendarComponent from './components/calendar/calendar.component';
+import CalendarService from './services/calendar.service';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import ReviewComponent from './components/review/review.component';
     FlightComponent,
     PassengersComponent,
     ReviewComponent,
+    OneDateComponent,
+    CalendarComponent,
   ],
   imports: [
     CommonModule,
     BookingRoutingModule,
     SharedModule,
   ],
+  providers: [CalendarService],
 })
 export default class BookingModule { }

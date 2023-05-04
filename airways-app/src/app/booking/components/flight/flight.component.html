@@ -1,43 +1,4 @@
 <div class="container">
- <div class="calendar">
-  <button class="prev-button" (click)="prev()"><</button>
-  <button class="next-button" (click)="next()">></button>
-  <div #daysWrapper class="days">
-    <div
-      *ngFor="let day of prevMonthDays,
-      let i = index"
-      class="days__prev"
-    >
-      <div class="date">
-        {{getDate(day,months[date.getMonth() - 1]) | date: 'dd MMM'}}
-      </div>
-      <div class="day-of-week">
-        {{dayOfWeek(day, months[date.getMonth() - 1], date.getFullYear().toString())}}
-      </div>
-    </div>
-    <div
-      *ngFor="let day of monthDays,
-      let i = index"
-      class="days__curr"
-    >
-      <div class="date">
-        {{getDate(day,months[date.getMonth()]) | date: 'dd MMM'}}
-      </div>
-      <div class="day-of-week">
-        {{dayOfWeek(day, months[date.getMonth()], date.getFullYear().toString())}}
-      </div>
-    </div>
-    <div
-      *ngFor="let day of nextMonthDays,
-      let i = index"
-      class="days__next">
-      <div class="date">
-        {{getDate(day,months[date.getMonth() + 1]) | date: 'dd MMM'}}
-      </div>
-      <div class="day-of-week">
-        {{dayOfWeek(day, months[date.getMonth() + 1], date.getFullYear().toString())}}
-      </div>
-    </div>
-  </div>
- </div>
+  <app-calendar [date]="date"></app-calendar>
+  <app-calendar [date]="date1"></app-calendar>
 </div>
