@@ -22,4 +22,18 @@
   }
 }
 
+.wrapper-buttons {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 40px;
+  margin-right: 0;
+
+  button {
+    width: 126px;
+    height: 60px;
+  }
+}
+
 

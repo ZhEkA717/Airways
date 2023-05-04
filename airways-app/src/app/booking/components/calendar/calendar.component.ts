@@ -130,9 +130,10 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
 
   setArrives(months: Trip[]) {
     let count = 1;
+    let isTrip = true;
     this.arriveDates.forEach((arrive) => {
-      const dateArr = arrive.arriveDate.slice(0, -9).split('.');
-      const date = this.calendarService.getDate(dateArr[0], +dateArr[1] - 1, dateArr[2]);
+      const dateWithoutTime = arrive.arriveDate.slice(0, 10);
+      const date = new Date(dateWithoutTime);
       months.forEach((item, i) => {
         if (date.toString() === item.arriveDate) {
           months[i] = {
@@ -143,7 +144,10 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
           if (count) {
             this.calendarService.setTrip(this.monthDays[i]);
             count = 0;
+            isTrip = !isTrip;
           }
+
+          if (isTrip) this.calendarService.setTrip(this.monthDays[0]);
         }
       });
     });
@@ -206,8 +210,11 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   changeTrip(i: number) {
-    this.calendarService.setTrip(this.monthDays[i]);
-    // eslint-disable-next-line no-console
-    console.log(this.monthDays[i]);
+    const isTrip = this.monthDays[i].flightNo;
+    if (isTrip) {
+      this.calendarService.setTrip(this.monthDays[i]);
+      // eslint-disable-next-line no-console
+      console.log(this.monthDays[i]);
+    }
   }
 }

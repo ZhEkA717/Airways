@@ -18,6 +18,16 @@
       {{search.destination.slice(0, -3)}} to {{search.from.slice(0, -3)}}
     </div>
     <app-calendar [date]="date1"></app-calendar>
-    <app-select-trip></app-select-trip>
+    <app-select-trip [isRound]="true"></app-select-trip>
   </div>
+</div>
+<div class="wrapper-buttons">
+  <button
+    mat-button
+  >Back</button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+  >Continue</button>
 </div>

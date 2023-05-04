@@ -6,7 +6,7 @@
     <div class="from">
       <div class="from__date">{{dateDepart | date}}</div>
       <div class="from__time">
-        8:40 <span>UTC +0</span>
+        {{timeDepart}} <span>UTC +0</span>
       </div>
       <div class="from__location">Dublin</div>
     </div>
@@ -14,8 +14,8 @@
     <div class="flight-time">
         <div class="line"></div>
         <div class="time-info">
-          <span>{{getTime}}</span>
-          <img src="../../../../assets/icons/to-plane.svg" alt="">
+          <span>{{getFlightTime}}</span>
+          <img [ngClass]="{isRound}" src="../../../../assets/icons/to-plane.svg" alt="">
           <span>Direct</span>
         </div>
         <div class="line"></div>
@@ -24,7 +24,7 @@
     <div class="to">
       <div class="to__date">{{dateArrive | date}}</div>
       <div class="to__time">
-        12:00 <span>UTC +0</span>
+        {{timeArrive}} <span>UTC +0</span>
       </div>
       <div class="to__location">Warsaw Modlin</div>
     </div>
