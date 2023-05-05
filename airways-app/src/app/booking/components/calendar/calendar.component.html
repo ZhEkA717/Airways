@@ -3,6 +3,7 @@
   <button class="next-button" (click)="next()">></button>
   <div #daysWrapper class="days">
     <app-one-date
+      appSeatsCount
       (click)="changeTrip(i, prevMonthDays)"
       *ngFor="let day of prevMonthDays,
       let i = index"
@@ -10,8 +11,10 @@
       [day] = "day"
       [date] = "date"
       [numMonth] = "-1"
+      [isRound]="isRound"
     >{{day | json}}</app-one-date>
     <app-one-date
+    appSeatsCount
       (click)="changeTrip(i, monthDays)"
       *ngFor="let day of monthDays,
       let i = index"
@@ -19,8 +22,10 @@
       [day] = "day"
       [date] = "date"
       [numMonth] = "0"
+      [isRound]="isRound"
     ></app-one-date>
     <app-one-date
+    appSeatsCount
       (click)="changeTrip(i, nextMonthDays)"
       *ngFor="let day of nextMonthDays,
       let i = index"
@@ -28,6 +33,7 @@
       [day] = "day"
       [date] = "date"
       [numMonth] = "1"
+      [isRound]="isRound"
     ></app-one-date>
   </div>
  </div>

@@ -180,6 +180,7 @@ implements OnInit, AfterViewInit, OnDestroy {
 
           if (count) {
             this.selectTrip = months[i];
+            this.saveTrips(months[i]);
             this.isTripObject = true;
             this.weekIndex$.next(this.calendarService.week(
               new Date(months[i].departDate),
@@ -251,11 +252,19 @@ implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  changeTrip(i: number, month: Trip[]) {
+  public changeTrip(i: number, month: Trip[]) {
     const isTrip = month[i].flightNo;
     if (isTrip) {
       this.selectTrip = month[i];
-      console.log(this.isRound);
+      this.saveTrips(this.selectTrip);
+    }
+  }
+
+  private saveTrips(trip: Trip) {
+    if (this.isRound) {
+      this.calendarService.setTripBack(trip);
+    } else {
+      this.calendarService.setTripThere(trip);
     }
   }
 }

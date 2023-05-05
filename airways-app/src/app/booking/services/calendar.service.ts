@@ -20,15 +20,25 @@ export default class CalendarService {
     this.departDatesBack.next(newValue);
   }
 
-  // public defaultTrip:Trip = <Trip>{};
+  public defaultTripThere:Trip = <Trip>{};
 
-  // private trip = new BehaviorSubject<Trip>(this.defaultTrip);
+  private tripThere = new BehaviorSubject<Trip>(this.defaultTripThere);
 
-  // public trip$ = this.trip.asObservable();
+  public tripThere$ = this.tripThere.asObservable();
 
-  // public setTrip(newValue: Trip) {
-  //   this.trip.next(newValue);
-  // }
+  public setTripThere(newValue: Trip) {
+    this.tripThere.next(newValue);
+  }
+
+  public defaultTripBack:Trip = <Trip>{};
+
+  private tripBack = new BehaviorSubject<Trip>(this.defaultTripBack);
+
+  public tripBack$ = this.tripBack.asObservable();
+
+  public setTripBack(newValue: Trip) {
+    this.tripBack.next(newValue);
+  }
 
   public months = [
     'January',

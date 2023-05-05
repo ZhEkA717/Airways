@@ -13,6 +13,7 @@ import CalendarComponent from './components/calendar/calendar.component';
 import CalendarService from './services/calendar.service';
 import SelectTripComponent from './components/select-trip/select-trip.component';
 import ToFloorPipe from './pipes/to-floor.pipe';
+import SeatsCountDirective from './directives/seats-count.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import ToFloorPipe from './pipes/to-floor.pipe';
     CalendarComponent,
     SelectTripComponent,
     ToFloorPipe,
+    SeatsCountDirective,
   ],
   imports: [
     CommonModule,

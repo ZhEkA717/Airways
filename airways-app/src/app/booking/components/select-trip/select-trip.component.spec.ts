@@ -8,9 +8,9 @@ describe('SelectTripComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectTripComponent ]
+      declarations: [SelectTripComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SelectTripComponent);
     component = fixture.componentInstance;
