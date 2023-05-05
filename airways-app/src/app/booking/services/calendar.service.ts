@@ -20,15 +20,15 @@ export default class CalendarService {
     this.departDatesBack.next(newValue);
   }
 
-  public defaultTrip:Trip = <Trip>{};
+  // public defaultTrip:Trip = <Trip>{};
 
-  private trip = new BehaviorSubject<Trip>(this.defaultTrip);
+  // private trip = new BehaviorSubject<Trip>(this.defaultTrip);
 
-  public trip$ = this.trip.asObservable();
+  // public trip$ = this.trip.asObservable();
 
-  public setTrip(newValue: Trip) {
-    this.trip.next(newValue);
-  }
+  // public setTrip(newValue: Trip) {
+  //   this.trip.next(newValue);
+  // }
 
   public months = [
     'January',
@@ -69,5 +69,12 @@ export default class CalendarService {
     year: string,
   ) {
     return new Date(new Date(`${day}${this.months[month]}${year}`));
+  }
+
+  public week(date: Date) {
+    const dayOfMonth = date.getDate();
+    const day = date.getDay();
+
+    return Math.abs(Math.ceil((dayOfMonth - 1 - day) / 7));
   }
 }

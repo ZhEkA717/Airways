@@ -12,6 +12,7 @@ import OneDateComponent from './components/one-date/one-date.component';
 import CalendarComponent from './components/calendar/calendar.component';
 import CalendarService from './services/calendar.service';
 import SelectTripComponent from './components/select-trip/select-trip.component';
+import ToFloorPipe from './pipes/to-floor.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import SelectTripComponent from './components/select-trip/select-trip.component'
     OneDateComponent,
     CalendarComponent,
     SelectTripComponent,
+    ToFloorPipe,
   ],
   imports: [
     CommonModule,

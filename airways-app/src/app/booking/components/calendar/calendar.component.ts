@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Trip } from 'src/app/shared/model/trip.model';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -36,6 +36,10 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   private subThere!: Subscription;
 
+  private subWeek!: Subscription;
+
+  private weekIndex$ = new Subject<number>();
+
   constructor(
     private r: Renderer2,
     private calendarService: CalendarService,
@@ -59,11 +63,20 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.dayContainer = this.daysWrapper.nativeElement;
+
+    this.weekIndex$.subscribe((index) => {
+      this.r.setStyle(
+        this.dayContainer,
+        'transform',
+        `translateX(${index * (-this.interval)}%)`,
+      );
+    });
   }
 
   ngOnDestroy(): void {
     this.subBack?.unsubscribe();
     this.subThere?.unsubscribe();
+    this.subWeek?.unsubscribe();
   }
 
   public prevMonthDays:Trip[] = [];
@@ -111,7 +124,7 @@ implements OnInit, AfterViewInit, OnDestroy {
 
     for (let x = firstDayIndex - 1; x > 0; x -= 1) {
       this.prevMonthDays.push({
-        ...this.calendarService.defaultTrip,
+        ...<Trip>{},
         day: (prevLastDay - x + 1).toString(),
         departDate: this.calendarService.getDate(
           (prevLastDay - x + 1).toString(),
@@ -123,7 +136,7 @@ implements OnInit, AfterViewInit, OnDestroy {
 
     for (let i = 1; i <= lastDay; i += 1) {
       this.monthDays.push({
-        ...this.calendarService.defaultTrip,
+        ...<Trip>{},
         day: i.toString(),
         departDate: this.calendarService.getDate(
           (i).toString(),
@@ -135,7 +148,7 @@ implements OnInit, AfterViewInit, OnDestroy {
 
     for (let j = 0; j <= nextDays; j += 1) {
       this.nextMonthDays.push({
-        ...this.calendarService.defaultTrip,
+        ...<Trip>{},
         day: (j + 1).toString(),
         departDate: this.calendarService.getDate(
           (j + 1).toString(),
@@ -168,6 +181,9 @@ implements OnInit, AfterViewInit, OnDestroy {
           if (count) {
             this.selectTrip = months[i];
             this.isTripObject = true;
+            this.weekIndex$.next(this.calendarService.week(
+              new Date(months[i].departDate),
+            ));
             count = 0;
           }
         }
@@ -239,6 +255,7 @@ implements OnInit, AfterViewInit, OnDestroy {
     const isTrip = month[i].flightNo;
     if (isTrip) {
       this.selectTrip = month[i];
+      console.log(this.isRound);
     }
   }
 }
