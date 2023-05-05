@@ -7,7 +7,8 @@ import {
   Renderer2,
 } from '@angular/core';
 import { Trip } from 'src/app/shared/model/trip.model';
-import CalendarService from '../services/calendar.service';
+import { Store } from '@ngrx/store';
+import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
 
 const SEATS_ALL = 140;
 
@@ -24,13 +25,13 @@ export default class SeatsCountDirective implements OnInit {
   private thereSelect!: string | undefined;
 
   constructor(
-    private calendarService: CalendarService,
+    private store: Store,
     private r: Renderer2,
     private el: ElementRef,
   ) {}
 
   ngOnInit(): void {
-    this.calendarService.tripBack$.subscribe((back) => {
+    this.store.select(selectBackTrip).subscribe((back) => {
       const { day, seats } = back;
       this.backSelect = day;
       if (this.isRound) {
@@ -41,7 +42,7 @@ export default class SeatsCountDirective implements OnInit {
         }
       }
     });
-    this.calendarService.tripThere$.subscribe((there) => {
+    this.store.select(selectThereTrip).subscribe((there) => {
       const { day, seats } = there;
       this.thereSelect = day;
       if (!this.isRound) {

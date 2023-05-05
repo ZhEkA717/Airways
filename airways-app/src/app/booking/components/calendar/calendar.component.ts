@@ -11,6 +11,9 @@ import {
 } from '@angular/core';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { Subject, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { saveBackTrip, saveThereTrip } from 'src/app/redux/actions/flight.action';
+import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -40,14 +43,31 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   private weekIndex$ = new Subject<number>();
 
+  private thereTrip$ = this.store.select(selectThereTrip);
+
+  private thereTrip!:Trip;
+
+  private backTrip$ = this.store.select(selectBackTrip);
+
+  private backTrip!:Trip;
+
   constructor(
     private r: Renderer2,
     private calendarService: CalendarService,
+    private store: Store,
   ) {}
 
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
+    this.thereTrip$.subscribe((there) => {
+      this.thereTrip = there;
+    });
+
+    this.backTrip$.subscribe((back) => {
+      this.backTrip = back;
+    });
+
     if (this.isRound) {
       this.subBack = this.calendarService.departDatesBack$.subscribe((res) => {
         this.departDates = res;
@@ -180,10 +200,10 @@ implements OnInit, AfterViewInit, OnDestroy {
 
           if (count) {
             this.selectTrip = months[i];
-            this.saveTrips(months[i]);
+            this.saveTrips(this.selectTrip);
             this.isTripObject = true;
             this.weekIndex$.next(this.calendarService.week(
-              new Date(months[i].departDate),
+              new Date(this.selectTrip.departDate),
             ));
             count = 0;
           }
@@ -262,9 +282,9 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   private saveTrips(trip: Trip) {
     if (this.isRound) {
-      this.calendarService.setTripBack(trip);
+      this.store.dispatch(saveBackTrip(trip));
     } else {
-      this.calendarService.setTripThere(trip);
+      this.store.dispatch(saveThereTrip(trip));
     }
   }
 }
