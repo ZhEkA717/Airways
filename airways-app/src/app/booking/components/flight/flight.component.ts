@@ -37,9 +37,12 @@ export default class FlightComponent implements OnInit, OnDestroy {
     });
 
     this.subSearch = this.search$.subscribe((search) => {
-      const { from, destination, startDate } = search;
+      const {
+        from, destination,
+        startDate, endDate,
+      } = search;
       this.date = new Date(startDate);
-      this.date1 = new Date(startDate);
+      this.date1 = new Date(endDate);
 
       this.httpApiService.getAvailableTrips(
         from.slice(-3),

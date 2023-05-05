@@ -1,46 +1,46 @@
-import { Component, Input, OnInit } from '@angular/core';
-import CalendarService from '../../services/calendar.service';
+import { Component, DoCheck, Input } from '@angular/core';
+import { Trip } from 'src/app/shared/model/trip.model';
 
 @Component({
   selector: 'app-select-trip',
   templateUrl: './select-trip.component.html',
   styleUrls: ['./select-trip.component.scss'],
 })
-export default class SelectTripComponent implements OnInit {
+export default class SelectTripComponent implements DoCheck {
   @Input() isRound!: boolean;
 
-  public dateDepart: Date = new Date();
+  @Input() selectTrip: Trip = <Trip>{};
 
-  public dateArrive: Date = new Date();
+  public dateDepart!: Date;
+
+  public dateArrive!: Date;
 
   public timeDepart!: string;
 
   public timeArrive!: string;
 
-  public min!: number;
+  public min!: string;
 
-  constructor(public calendarService: CalendarService) {}
+  public flightNo!: string;
 
-  ngOnInit(): void {
-    this.calendarService.trip$.subscribe((item) => {
-      const isTrip = !!item.flightNo;
+  public price!: number;
 
-      this.dateDepart = isTrip ? new Date(item.departDate) : new Date();
-      this.dateArrive = isTrip ? new Date(item.arriveDate) : new Date();
+  public seats!: number;
 
-      this.timeDepart = isTrip
-        ? item.departDate.split(' ')[1]?.slice(0, -3)
-        : '';
-      this.timeArrive = isTrip
-        ? item.arriveDate.split(' ')[1]?.slice(0, -3)
-        : '';
-
-      this.min = +item.flightTime;
-    });
+  ngDoCheck(): void {
+    const isTrip = !!this.selectTrip?.flightNo;
+    this.dateDepart = isTrip ? new Date(this.selectTrip.departDate) : new Date();
+    this.dateArrive = isTrip ? new Date(this.selectTrip.arriveDate) : new Date();
+    this.timeDepart = isTrip ? this.selectTrip.departDate.split(' ')[1]?.slice(0, -3) : '';
+    this.timeArrive = isTrip ? this.selectTrip.arriveDate.split(' ')[1]?.slice(0, -3) : '';
+    this.min = this.selectTrip?.flightTime;
+    this.flightNo = isTrip ? this.selectTrip.flightNo : '0';
+    this.price = isTrip ? this.selectTrip.price : 0;
+    this.seats = isTrip ? this.selectTrip.seats : 0;
   }
 
   public get getFlightTime() {
-    const minutes = this.min;
+    const minutes = +this.min;
     const hh = Math.floor(minutes / 60);
     const mm = minutes - hh * 60;
     return `${hh}h ${mm}m`;

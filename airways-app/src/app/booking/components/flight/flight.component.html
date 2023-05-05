@@ -8,7 +8,6 @@
     {{search.from.slice(0, -3)}} to {{search.destination.slice(0, -3)}}
   </div>
   <app-calendar [date]="date"></app-calendar>
-  <app-select-trip></app-select-trip>
   <div *ngIf="search.tripWay === 'round'">
     <div
       *ngIf="search$ | async as search"
@@ -17,8 +16,7 @@
       <mat-icon>airplanemode_active</mat-icon>
       {{search.destination.slice(0, -3)}} to {{search.from.slice(0, -3)}}
     </div>
-    <app-calendar [date]="date1"></app-calendar>
-    <app-select-trip [isRound]="true"></app-select-trip>
+    <app-calendar [isRound]="true" [date]="date1"></app-calendar>
   </div>
 </div>
 <div class="wrapper-buttons">

@@ -1,7 +1,4 @@
-<mat-card
-  *ngIf="calendarService.trip$ | async as trip"
-  class="trip"
->
+<mat-card class="trip">
   <div class="trip__info">
     <div class="from">
       <div class="from__date">{{dateDepart | date}}</div>
@@ -30,15 +27,15 @@
     </div>
   </div>
   <div class="flight-number">
-    <span>Flight no.</span> <span>{{trip.flightNo}}</span>
+    <span>Flight no.</span> <span>{{selectTrip.flightNo}}</span>
   </div>
   <div class="dotted"></div>
   <div class="trip__select">
     <div class="select">
-      <div class="seats">{{trip.seats}} seats<br>available</div>
+      <div class="seats">{{selectTrip.seats}} seats<br>available</div>
       <div class="price">
         <div class="price__text">Price</div>
-        <div class="price__value">€{{trip.price}}</div>
+        <div class="price__value">€{{selectTrip.price}}</div>
       </div>
     </div>
     <div class="button">
