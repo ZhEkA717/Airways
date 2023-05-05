@@ -1,0 +1,76 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- No Column -->
+  <ng-container matColumnDef="flightNo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
+  </ng-container>
+
+  <!-- Flight Column -->
+  <ng-container matColumnDef="flight">
+    <th mat-header-cell *matHeaderCellDef> Flight </th>
+    <td mat-cell *matCellDef="let element"> {{element.to.city}} - {{element.from.city}}  </td>
+  </ng-container>
+
+  <!-- TripType Column -->
+  <ng-container matColumnDef="typetrip">
+    <th mat-header-cell *matHeaderCellDef> Type trip </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <!-- DateTime Column -->
+  <ng-container matColumnDef="datetime">
+    <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
+  </ng-container>
+
+  <!-- Passengers Column -->
+  <ng-container matColumnDef="passengers">
+    <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.passengers}} </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <!-- Edit menu button -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>                  
+    <td mat-cell *matCellDef="let element">
+       <button mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="">
+           <mat-icon>more_vert</mat-icon>
+       </button>
+       <mat-menu #appMenu="matMenu">
+         <button mat-menu-item>Delete</button>
+         <button mat-menu-item>Edit</button>
+       </mat-menu>  
+   </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+
+</table>
