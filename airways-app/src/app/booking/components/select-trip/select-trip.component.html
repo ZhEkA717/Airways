@@ -1,11 +1,11 @@
-<mat-card class="trip">
+<mat-card *ngIf="isTrip" class="trip">
   <div class="trip__info">
     <div class="from">
       <div class="from__date">{{dateDepart | date}}</div>
       <div class="from__time">
         {{timeDepart}} <span>UTC +0</span>
       </div>
-      <div class="from__location">Dublin</div>
+      <div class="from__location">{{selectTrip.from}}</div>
     </div>
 
     <div class="flight-time">
@@ -23,7 +23,7 @@
       <div class="to__time">
         {{timeArrive}} <span>UTC +0</span>
       </div>
-      <div class="to__location">Warsaw Modlin</div>
+      <div class="to__location">{{selectTrip.to}}</div>
     </div>
   </div>
   <div class="flight-number">
@@ -35,7 +35,10 @@
       <div class="seats">{{selectTrip.seats}} seats<br>available</div>
       <div class="price">
         <div class="price__text">Price</div>
-        <div class="price__value">€{{selectTrip.price}}</div>
+        <div class="price__value">
+          {{convertMoneyService.moneyIcon}}
+          {{(selectTrip.price * convertMoneyService.moneyRatio).toFixed(1)}}
+        </div>
       </div>
     </div>
     <div class="button">

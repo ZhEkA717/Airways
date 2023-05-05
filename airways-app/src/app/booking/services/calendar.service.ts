@@ -4,26 +4,23 @@ import { Trip } from 'src/app/shared/model/trip.model';
 
 @Injectable()
 export default class CalendarService {
-  private arriveDates = new BehaviorSubject<Trip[]>([]);
+  private departDatesThere = new BehaviorSubject<Trip[]>([]);
 
-  public arriveDates$ = this.arriveDates.asObservable();
+  public departDatesThere$ = this.departDatesThere.asObservable();
 
-  public setArriveDates(newValue: Trip[]) {
-    this.arriveDates.next(newValue);
+  public setDepartDatesThere(newValue: Trip[]) {
+    this.departDatesThere.next(newValue);
   }
 
-  public defaultTrip:Trip = {
-    arriveDate: '',
-    departDate: '',
-    flightNo: '',
-    flightTime: '',
-    id: '',
-    from: '',
-    to: '',
-    price: 0,
-    seats: 0,
-    day: '',
-  };
+  private departDatesBack = new BehaviorSubject<Trip[]>([]);
+
+  public departDatesBack$ = this.departDatesBack.asObservable();
+
+  public setDepartDatesBack(newValue: Trip[]) {
+    this.departDatesBack.next(newValue);
+  }
+
+  public defaultTrip:Trip = <Trip>{};
 
   private trip = new BehaviorSubject<Trip>(this.defaultTrip);
 

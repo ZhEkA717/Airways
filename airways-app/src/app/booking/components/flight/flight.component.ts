@@ -48,7 +48,14 @@ export default class FlightComponent implements OnInit, OnDestroy {
         from.slice(-3),
         destination.slice(-3),
       ).subscribe((res) => {
-        this.calendarService.setArriveDates(res);
+        this.calendarService.setDepartDatesThere(res);
+      });
+
+      this.httpApiService.getAvailableTrips(
+        destination.slice(-3),
+        from.slice(-3),
+      ).subscribe((res) => {
+        this.calendarService.setDepartDatesBack(res);
       });
     });
   }

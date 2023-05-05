@@ -24,8 +24,10 @@
 <div
   *ngIf="day.price; else noFlight"
   class="price">
-   <span class="price__format">{{money}}</span>
-   <span class="price__value">{{day.price}}</span>
+   <span class="price__format">{{convertMoneyService.moneyIcon}}</span>
+   <span class="price__value">
+    {{(day.price * convertMoneyService.moneyRatio).toFixed(1)}}
+   </span>
 </div>
 <ng-template #noFlight>
     <mat-icon class="no-flight">airplanemode_inactive</mat-icon>

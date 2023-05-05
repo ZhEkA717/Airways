@@ -4,11 +4,13 @@ import {
   Component,
   ElementRef,
   Input,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
 import { Trip } from 'src/app/shared/model/trip.model';
+import { Subscription } from 'rxjs';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -16,16 +18,23 @@ import CalendarService from '../../services/calendar.service';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
 })
-export default class CalendarComponent implements OnInit, AfterViewInit {
+export default class CalendarComponent
+implements OnInit, AfterViewInit, OnDestroy {
   @Input() date!: Date;
 
   @Input() isRound!: boolean;
 
-  public arriveDates: Trip[] = [];
+  public departDates: Trip[] = [];
 
   private dayContainer!: HTMLElement;
 
   public selectTrip: Trip = <Trip>{};
+
+  public isTripObject!: boolean;
+
+  private subBack!: Subscription;
+
+  private subThere!: Subscription;
 
   constructor(
     private r: Renderer2,
@@ -35,14 +44,26 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
-    this.calendarService.arriveDates$.subscribe((res) => {
-      this.arriveDates = res;
-      this.initCalendar();
-    });
+    if (this.isRound) {
+      this.subBack = this.calendarService.departDatesBack$.subscribe((res) => {
+        this.departDates = res;
+        this.initCalendar();
+      });
+    } else {
+      this.subThere = this.calendarService.departDatesThere$.subscribe((res) => {
+        this.departDates = res;
+        this.initCalendar();
+      });
+    }
   }
 
   ngAfterViewInit(): void {
     this.dayContainer = this.daysWrapper.nativeElement;
+  }
+
+  ngOnDestroy(): void {
+    this.subBack?.unsubscribe();
+    this.subThere?.unsubscribe();
   }
 
   public prevMonthDays:Trip[] = [];
@@ -92,7 +113,7 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
       this.prevMonthDays.push({
         ...this.calendarService.defaultTrip,
         day: (prevLastDay - x + 1).toString(),
-        arriveDate: this.calendarService.getDate(
+        departDate: this.calendarService.getDate(
           (prevLastDay - x + 1).toString(),
           date.getMonth() - 1,
           date.getFullYear().toString(),
@@ -104,7 +125,7 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
       this.monthDays.push({
         ...this.calendarService.defaultTrip,
         day: i.toString(),
-        arriveDate: this.calendarService.getDate(
+        departDate: this.calendarService.getDate(
           (i).toString(),
           date.getMonth(),
           date.getFullYear().toString(),
@@ -116,7 +137,7 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
       this.nextMonthDays.push({
         ...this.calendarService.defaultTrip,
         day: (j + 1).toString(),
-        arriveDate: this.calendarService.getDate(
+        departDate: this.calendarService.getDate(
           (j + 1).toString(),
           date.getMonth() + 1,
           date.getFullYear().toString(),
@@ -127,31 +148,35 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
     if (this.prevMonthDays.length === 7) this.prevMonthDays = [];
     if (this.nextMonthDays.length === 7) this.nextMonthDays = [];
 
-    this.setArrives(this.prevMonthDays);
-    this.setArrives(this.monthDays);
-    this.setArrives(this.nextMonthDays);
+    this.setDepartDates(this.prevMonthDays);
+    this.setDepartDates(this.nextMonthDays);
+    this.setDepartDates(this.monthDays); // last call
   }
 
-  setArrives(months: Trip[]) {
+  setDepartDates(months: Trip[]) {
     let count = 1;
-    this.arriveDates.forEach((arrive) => {
-      const dateWithoutTime = arrive.arriveDate.slice(0, 10);
+    this.departDates.forEach((depart) => {
+      const dateWithoutTime = depart.departDate.slice(0, 10);
       const date = new Date(dateWithoutTime);
       months.forEach((item, i) => {
-        if (date.toString() === item.arriveDate) {
+        if (date.toString() === item.departDate) {
           months[i] = {
             ...item,
-            ...arrive,
+            ...depart,
           };
 
           if (count) {
-            this.selectTrip = this.monthDays[i];
-            console.log(this.selectTrip);
+            this.selectTrip = months[i];
+            this.isTripObject = true;
             count = 0;
           }
         }
       });
     });
+    if (count) {
+      this.selectTrip = <Trip>{};
+      this.isTripObject = false;
+    }
   }
 
   private changedWidthViewSlider() {
@@ -210,10 +235,10 @@ export default class CalendarComponent implements OnInit, AfterViewInit {
     );
   }
 
-  changeTrip(i: number) {
-    const isTrip = this.monthDays[i].flightNo;
+  changeTrip(i: number, month: Trip[]) {
+    const isTrip = month[i].flightNo;
     if (isTrip) {
-      this.selectTrip = this.monthDays[i];
+      this.selectTrip = month[i];
     }
   }
 }
