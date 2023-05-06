@@ -1,0 +1,60 @@
+.cart__table-col {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0.5px;
+
+  &-flight {
+    color: #0090BD;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+  &-price {
+    color: #7F8906;
+  }
+
+}
+
+.cart__table-edit {
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+  &:active {
+    background-color: gray;
+  }
+}
+
+.cart__table-footer {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+
+  &-addtrip {
+    font-weight: 500;
+    font-size: 16px;
+    color: #11397E;
+  }
+
+  &-total {
+    text-align: right;
+  }
+
+  &-price {
+    font-size: 30px;
+    line-height: 36px;
+    background: linear-gradient(90deg, #11397E 0%, #005ABC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
