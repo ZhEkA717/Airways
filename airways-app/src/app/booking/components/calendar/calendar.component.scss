@@ -10,6 +10,10 @@
   width: 1190px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
+  &.choiceTrip {
+    display: none;
+  }
+
   @media (max-width: 1190px) {
     width: 980px;
   }

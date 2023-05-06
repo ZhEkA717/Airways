@@ -1,4 +1,6 @@
-<div class="calendar">
+<div
+  [ngClass]="{choiceTrip: !choiceTrip}"
+  class="calendar">
   <button class="prev-button" (click)="prev()"><</button>
   <button class="next-button" (click)="next()">></button>
   <div #daysWrapper class="days">
@@ -14,7 +16,7 @@
       [isRound]="isRound"
     >{{day | json}}</app-one-date>
     <app-one-date
-    appSeatsCount
+      appSeatsCount
       (click)="changeTrip(i, monthDays)"
       *ngFor="let day of monthDays,
       let i = index"
@@ -25,7 +27,7 @@
       [isRound]="isRound"
     ></app-one-date>
     <app-one-date
-    appSeatsCount
+      appSeatsCount
       (click)="changeTrip(i, nextMonthDays)"
       *ngFor="let day of nextMonthDays,
       let i = index"
@@ -38,6 +40,7 @@
   </div>
  </div>
  <app-select-trip
+  (onSelectEvent)="onSelectEvent($event)"
   *ngIf="isTripObject"
   [isRound]="isRound"
   [selectTrip]="selectTrip"

@@ -20,6 +20,8 @@ export default class SeatsCountDirective implements OnInit {
 
   @Input() isRound!: boolean;
 
+  @Input() date!: Date;
+
   private backSelect!: string | undefined;
 
   private thereSelect!: string | undefined;

@@ -21,11 +21,15 @@
 </div>
 <div class="wrapper-buttons">
   <button
-    mat-button
+    (click)="toMain()"
+    color="primary"
+    mat-stroked-button
   >Back</button>
   <button
+    (click)="toPassengers()"
     mat-raised-button
     color="primary"
     type="submit"
+    [disabled]="isBackSelect || isThereSelect"
   >Continue</button>
 </div>

@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
+import { Router } from '@angular/router';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -24,11 +25,16 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   public date1 = new Date();
 
+  public isBackSelect!: boolean;
+
+  public isThereSelect!: boolean;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private httpApiService: HttpApiService,
     private calendarService: CalendarService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -58,9 +64,27 @@ export default class FlightComponent implements OnInit, OnDestroy {
         this.calendarService.setDepartDatesBack(res);
       });
     });
+
+    this.calendarService.setBackSelect(true);
+    this.calendarService.setThereSelect(true);
+
+    this.calendarService.isBackSelect$.subscribe((res) => {
+      this.isBackSelect = res;
+    });
+    this.calendarService.isThereSelect$.subscribe((res) => {
+      this.isThereSelect = res;
+    });
   }
 
   ngOnDestroy(): void {
     this.subSearch?.unsubscribe();
+  }
+
+  toMain() {
+    this.router.navigate(['main']);
+  }
+
+  toPassengers() {
+    this.router.navigate(['booking', 'passengers']);
   }
 }

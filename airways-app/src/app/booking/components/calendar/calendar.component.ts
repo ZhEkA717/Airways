@@ -85,11 +85,9 @@ implements OnInit, AfterViewInit, OnDestroy {
     this.dayContainer = this.daysWrapper.nativeElement;
 
     this.weekIndex$.subscribe((index) => {
-      this.r.setStyle(
-        this.dayContainer,
-        'transform',
-        `translateX(${index * (-this.interval)}%)`,
-      );
+      for (let i = 0; i < index; i += 1) {
+        this.next();
+      }
     });
   }
 
@@ -110,6 +108,8 @@ implements OnInit, AfterViewInit, OnDestroy {
   private interval = 100 / 7;
 
   public viewSliderCount = 0;
+
+  public choiceTrip = true;
 
   initCalendar() {
     const { date } = this;
@@ -285,6 +285,15 @@ implements OnInit, AfterViewInit, OnDestroy {
       this.store.dispatch(saveBackTrip(trip));
     } else {
       this.store.dispatch(saveThereTrip(trip));
+    }
+  }
+
+  public onSelectEvent(choiceTrip: boolean) {
+    this.choiceTrip = choiceTrip;
+    if (this.isRound) {
+      this.calendarService.setBackSelect(this.choiceTrip);
+    } else {
+      this.calendarService.setThereSelect(this.choiceTrip);
     }
   }
 }

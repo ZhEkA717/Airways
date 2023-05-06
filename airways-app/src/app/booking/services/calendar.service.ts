@@ -20,6 +20,22 @@ export default class CalendarService {
     this.departDatesBack.next(newValue);
   }
 
+  private isBackSelect = new BehaviorSubject<boolean>(true);
+
+  public isBackSelect$ = this.isBackSelect.asObservable();
+
+  public setBackSelect(newValue: boolean) {
+    this.isBackSelect.next(newValue);
+  }
+
+  private isThereSelect = new BehaviorSubject<boolean>(true);
+
+  public isThereSelect$ = this.isThereSelect.asObservable();
+
+  public setThereSelect(newValue: boolean) {
+    this.isThereSelect.next(newValue);
+  }
+
   public months = [
     'January',
     'February',

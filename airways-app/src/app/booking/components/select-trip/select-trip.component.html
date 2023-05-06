@@ -42,7 +42,17 @@
       </div>
     </div>
     <div class="button">
-      <button mat-raised-button color="primary">Select</button>
+      <button
+        *ngIf="choiceTrip; else edit"
+        (click)="onSelectTrip()"
+        mat-raised-button
+        color="primary">Select</button>
+        <ng-template #edit>
+          <button
+          (click)="onSelectTrip()"
+          mat-stroked-button
+          color="primary">Edit</button>
+        </ng-template>
     </div>
   </div>
 </mat-card>
