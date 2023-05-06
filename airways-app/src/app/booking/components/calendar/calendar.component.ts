@@ -51,6 +51,20 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   private backTrip!:Trip;
 
+  public prevMonthDays:Trip[] = [];
+
+  public monthDays:Trip[] = [];
+
+  public nextMonthDays:Trip[] = [];
+
+  private count = 4;
+
+  private interval = 100 / 7;
+
+  public viewSliderCount = 0;
+
+  public choiceTrip = true;
+
   constructor(
     private r: Renderer2,
     private calendarService: CalendarService,
@@ -85,6 +99,7 @@ implements OnInit, AfterViewInit, OnDestroy {
     this.dayContainer = this.daysWrapper.nativeElement;
 
     this.weekIndex$.subscribe((index) => {
+      this.viewSliderCount = 0;
       for (let i = 0; i < index; i += 1) {
         this.next();
       }
@@ -96,20 +111,6 @@ implements OnInit, AfterViewInit, OnDestroy {
     this.subThere?.unsubscribe();
     this.subWeek?.unsubscribe();
   }
-
-  public prevMonthDays:Trip[] = [];
-
-  public monthDays:Trip[] = [];
-
-  public nextMonthDays:Trip[] = [];
-
-  private count = 4;
-
-  private interval = 100 / 7;
-
-  public viewSliderCount = 0;
-
-  public choiceTrip = true;
 
   initCalendar() {
     const { date } = this;
