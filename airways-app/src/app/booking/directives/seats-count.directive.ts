@@ -20,8 +20,6 @@ export default class SeatsCountDirective implements OnInit {
 
   @Input() isRound!: boolean;
 
-  @Input() date!: Date;
-
   private backSelect!: string | undefined;
 
   private thereSelect!: string | undefined;
@@ -37,7 +35,7 @@ export default class SeatsCountDirective implements OnInit {
       const { day, seats } = back;
       this.backSelect = day;
       if (this.isRound) {
-        if (this.day.day === day) {
+        if (this.day.day === day && this.day.price) {
           this.setStyleTrip(seats);
         } else {
           this.resetStyleTrip();
@@ -48,7 +46,7 @@ export default class SeatsCountDirective implements OnInit {
       const { day, seats } = there;
       this.thereSelect = day;
       if (!this.isRound) {
-        if (this.day.day === day) {
+        if (this.day.day === day && this.day.price) {
           this.setStyleTrip(seats);
         } else {
           this.resetStyleTrip();
