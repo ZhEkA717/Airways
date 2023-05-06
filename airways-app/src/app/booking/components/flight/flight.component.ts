@@ -29,6 +29,8 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   public isThereSelect!: boolean;
 
+  public tripWay!: string;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
@@ -43,6 +45,7 @@ export default class FlightComponent implements OnInit, OnDestroy {
     });
 
     this.subSearch = this.search$.subscribe((search) => {
+      this.tripWay = search.tripWay;
       const {
         from, destination,
         startDate, endDate,
@@ -86,5 +89,13 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   toPassengers() {
     this.router.navigate(['booking', 'passengers']);
+  }
+
+  public get isContinue() {
+    if (this.tripWay === 'one') {
+      return this.isThereSelect;
+    }
+
+    return this.isBackSelect || this.isThereSelect;
   }
 }
