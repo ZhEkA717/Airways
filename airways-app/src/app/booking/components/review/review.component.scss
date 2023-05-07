@@ -24,7 +24,7 @@
   justify-content: space-between;
   gap: 24px;
 
-  @media (max-width:800px) {
+  @media (max-width:840px) {
     flex-wrap: wrap;
   }
 }
@@ -32,6 +32,7 @@
 .wrapper-buttons {
   width: 100%;
   margin-top: 40px;
+  margin-bottom: 40px;
   display: flex;
   gap: 40px;
   justify-content: flex-end;

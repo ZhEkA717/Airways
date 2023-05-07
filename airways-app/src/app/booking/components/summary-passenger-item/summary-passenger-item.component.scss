@@ -1,5 +1,8 @@
+@import '../../../../stylings/variables';
+
 .passenger {
   padding: 20px 24px;
+  background: $text-light-color;
 
   &__name {
     font-weight: 400;

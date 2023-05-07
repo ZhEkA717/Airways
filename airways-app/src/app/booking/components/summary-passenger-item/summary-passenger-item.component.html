@@ -1,8 +1,13 @@
 <div class="passenger">
-  <div class="passenger__name">Harry Potter</div>
+  <div class="passenger__name">
+    {{passenger.firstName}} {{passenger.lastName}}
+  </div>
   <ul class="passenger__options">
-    <li>1checked bag (total 23 kg) included</li>
-    <li>1 cabin bag + 1 personal item (max. 8 kg) included</li>
+    <li *ngIf="passenger.baggage.type !== 'hand' ">
+      1 {{passenger.baggage.text}} (max {{passenger.baggage.weight}} kg) included
+    </li>
+    <li>1 hand luggage (max 5kg) included</li>
+    <li *ngIf="passenger.baggage.price">Price {{passenger.baggage.price}} $</li>
     <li>Seat 19E</li>
   </ul>
 </div>

@@ -20,9 +20,8 @@ import { FlightSearch } from 'src/app/main/model/flight-search.model';
 import { send } from 'src/app/redux/actions/passengers.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
-import { Passenger } from 'src/app/shared/model/persons.model';
 import AirportsService from 'src/app/shared/services/airports.service';
-import { PassengersForm } from '../../models/passengers.model';
+import { Baggage, PassengersForm, PassengersInfo } from '../../models/passengers.model';
 
 export const MY_FORMAT = {
   display: {
@@ -179,11 +178,45 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.router.navigate(['/booking/review']);
   }
 
+  public getBaggage(type: string): Baggage {
+    let baggage: Baggage = <Baggage>{};
+
+    switch (type) {
+      case 'baggage': baggage = {
+        type,
+        text: 'checked baggage',
+        weight: 30,
+        size: '158 x 158 x 158',
+        price: 15,
+      };
+        break;
+      case 'hand+': baggage = {
+        type,
+        text: 'hand luggage +',
+        weight: 10,
+        size: '56 x 45 x 20',
+        price: 10,
+      };
+        break;
+      case 'hand': baggage = {
+        type,
+        text: 'hand luggage',
+        weight: 5,
+        size: '56 x 45 x 20',
+        price: 0,
+      };
+        break;
+      default: <Baggage>{};
+    }
+    return baggage;
+  }
+
   submit() {
     const passengers = this.passengers.value
-      .map((item: Passenger, i: number) => ({
+      .map((item: PassengersInfo, i: number) => ({
         ...item,
         type: this.passengersName[i],
+        baggage: this.getBaggage(this.passengers.value[i].baggage),
       }));
 
     const form = {

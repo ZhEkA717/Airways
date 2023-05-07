@@ -10,5 +10,7 @@
     </div>
   </div>
   <app-summary-passenger-item
+    *ngFor="let passenger of passengers$ | async"
+    [passenger]="passenger"
   ></app-summary-passenger-item>
 </mat-card>

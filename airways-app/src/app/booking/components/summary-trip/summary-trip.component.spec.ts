@@ -8,9 +8,9 @@ describe('SummaryTripComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SummaryTripComponent ]
+      declarations: [SummaryTripComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SummaryTripComponent);
     component = fixture.componentInstance;
