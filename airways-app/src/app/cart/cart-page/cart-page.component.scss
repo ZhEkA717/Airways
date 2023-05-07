@@ -1,3 +1,17 @@
+@import '../../../stylings/variables';
+
 :host {
-  margin-top: 88px;
+  width: 85%;
+  margin: 90px auto;
+  border: 2px solid #E1E5EB;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.cart__main-title {
+  margin: 30px 30px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: $logo-color;
 }
