@@ -1,0 +1,62 @@
+<mat-card *ngIf="isTrip" class="trip">
+  <div class="trip__info">
+    <div class="from">
+      <div class="from__date">{{selectTrip.departDate | date}}</div>
+      <div class="from__time">
+        {{selectTrip.departDate | date: 'h:mm'}} <span>UTC +0</span>
+      </div>
+      <div class="from__location">{{selectTrip.from}}</div>
+    </div>
+
+    <div class="flight-time">
+        <div class="line"></div>
+        <div class="time-info">
+          <span>{{selectTrip.flightTime | toTime}}</span>
+          <img [ngClass]="{isRound}" src="../../../../assets/icons/to-plane.svg" alt="">
+          <span>Direct</span>
+        </div>
+        <div class="line"></div>
+    </div>
+
+    <div class="to">
+      <div class="to__date">{{selectTrip.arriveDate | date}}</div>
+      <div class="to__time">
+        {{selectTrip.arriveDate | date: 'h:mm'}} <span>UTC +0</span>
+      </div>
+      <div class="to__location">{{selectTrip.to}}</div>
+    </div>
+  </div>
+  <div class="flight-number">
+    <span>Flight no.</span> <span>{{selectTrip.flightNo}}</span>
+  </div>
+  <div class="dotted"></div>
+  <div class="trip__select">
+    <div class="select">
+      <div
+        appSelectSeats
+        [seats]="selectTrip.seats"
+        [isRound]="isRound"
+        class="seats">{{selectTrip.seats}} seats<br>available</div>
+      <div class="price">
+        <div class="price__text">Price</div>
+        <div class="price__value">
+          {{convertMoneyService.moneyIcon}}
+          {{(selectTrip.price * convertMoneyService.moneyRatio).toFixed(1)}}
+        </div>
+      </div>
+    </div>
+    <div class="button">
+      <button
+        *ngIf="choiceTrip; else edit"
+        (click)="onSelectTrip()"
+        mat-raised-button
+        color="primary">Select</button>
+        <ng-template #edit>
+          <button
+          (click)="onSelectTrip()"
+          mat-stroked-button
+          color="primary">Edit</button>
+        </ng-template>
+    </div>
+  </div>
+</mat-card>

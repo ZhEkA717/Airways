@@ -5,7 +5,8 @@ export interface Trip {
   to: string;
   departDate: string;
   flightTime: string;
-  arrivDate: string;
+  arriveDate: string;
   seats: number;
   price: number;
+  day?: string;
 }

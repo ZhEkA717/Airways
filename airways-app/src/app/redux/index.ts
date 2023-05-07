@@ -5,11 +5,13 @@ import { State } from './state.model';
 import { SETTINGS_REDUCER_KEY, settingsReducer } from './reducers/settings.reducer';
 import { hydrationMetaReducer } from './reducers/hydration.reducer';
 import { PASSENGERS_REDUCER_KEY, passengersReducer } from './reducers/passengers.reducer';
+import { TRIP_REDUCER_KEY, flightReducer } from './reducers/flight.reducer';
 
 export const reducers: ActionReducerMap<State> = {
   [SEARCH_REDUCER_KEY]: searchReducer,
   [SETTINGS_REDUCER_KEY]: settingsReducer,
   [PASSENGERS_REDUCER_KEY]: passengersReducer,
+  [TRIP_REDUCER_KEY]: flightReducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = isDevMode()

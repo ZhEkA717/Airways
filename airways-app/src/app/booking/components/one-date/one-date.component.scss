@@ -1,0 +1,74 @@
+@import "../../../../stylings/variables";
+
+.date {
+  font-size: 14px;
+  font-weight: 500px;
+  color: $text-secondary-color;
+
+
+  @media (max-width: 440px) {
+    font-size: 12px;
+  }
+}
+
+.day-of-week {
+  font-weight: 100;
+  font-size: 12px;
+  height: 12px;
+  color: $text-average-color;
+
+  @media (max-width: 560px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 440px) {
+    font-size: 8px;
+  }
+}
+
+.price {
+  font-size: 18px;
+  color: $logo-color;
+  font-weight: 700;
+  display: flex;
+  gap: 5px;
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 580px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 10px;
+  }
+}
+
+
+
+.date,
+.day-of-week {
+  &.unActive {
+    color: #D0D9DF;
+  }
+}
+
+.no-flight {
+  margin-top: 2px;
+  font-size: 16px;
+  color: #D0D9DF;
+  border: 1px solid #D0D9DF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transform: rotate(90deg);
+  width: fit-content;
+  height: fit-content;
+}
