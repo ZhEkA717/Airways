@@ -30,6 +30,11 @@
   gap: 40px;
   margin-right: 0;
 
+  @media (max-width: 1230px) {
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
+
   button {
     width: 126px;
     height: 60px;

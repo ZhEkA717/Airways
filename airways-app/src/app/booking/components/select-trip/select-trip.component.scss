@@ -8,11 +8,26 @@
   height: 130px;
   align-items: center;
 
+  @media (max-width: 950px) {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  @media (max-width: 600px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  };
+
   &__info {
     flex-grow: 4;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media (max-width: 950px) {
+      flex-grow: 1;
+      width: 100%;
+    }
 
     img.isRound {
       transform: scale(-1,1);
@@ -23,11 +38,24 @@
       width: 167px;
       padding-left: 40px;
 
+      @media (max-width: 950px) {
+        width: fit-content;
+      }
+
+      @media (max-width: 600px) {
+        padding-left: 0px;
+      }
+
       &__date {
         width: 167px;
         font-weight: 400;
         font-size: 16px;
         color: $text-average-color;
+
+        @media (max-width: 600px) {
+          width: fit-content;
+          white-space: nowrap;
+        }
       }
 
       &__time {
@@ -38,6 +66,9 @@
         gap: 16px;
 
         span {
+          @media (max-width: 600px) {
+            display: none;
+          }
           font-weight: 400;
           font-size: 8px;
           color: $text-average-color;
@@ -56,6 +87,10 @@
       gap: 21px;
       width: 100%;
 
+      @media (max-width: 600px) {
+        justify-content: center;
+      };
+
       .time-info {
         display: flex;
         flex-direction: column;
@@ -73,6 +108,10 @@
       .line {
         border-top: 2px solid $change-destination-border-color;
         width: 90%;
+
+        @media (max-width: 600px) {
+          display: none;
+        };
       }
     }
   }
@@ -85,6 +124,10 @@
     gap: 12px;
     padding-left: 20px;
     padding-right: 28px;
+
+    @media (max-width: 950px) {
+      margin-top: 10px;
+    }
 
     span {
       font-size: 14px;
@@ -99,7 +142,11 @@
 
   .dotted {
     height: 130px;
-    border: 2px dashed $change-destination-border-color;;
+    border: 2px dashed $change-destination-border-color;
+
+    @media (max-width: 950px) {
+      display: none;
+    }
   }
 
   &__select {
@@ -110,7 +157,20 @@
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 950px) {
+      border-top: 2px dashed $change-destination-border-color;
+      height: 60px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
     .select {
+      @media (max-width: 950px) {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
       .seats {
         padding: 4px 8px 4px 32px;
         width: 133px;
@@ -120,6 +180,11 @@
         background: rgba(241, 201, 51, 0.3);
         border-radius: 2px;
         font-size: 12px;
+        white-space: nowrap;
+
+        @media (max-width: 600px) {
+          width: fit-content;
+        }
       }
     }
 
@@ -129,10 +194,20 @@
       flex-direction: column;
       margin-top: 6px;
 
+      @media (max-width: 950px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        height: 100%;
+        gap: 10px;
+      }
+
       &__text {
         align-self: end;
         font-size: 12px;
         color: $text-average-color;
+        white-space: nowrap;
       }
 
       &__value {
@@ -140,6 +215,11 @@
         font-size: 30px;
         color: $logo-color;
         align-self: end;
+        white-space: nowrap;
+
+        @media (max-width: 400px) {
+          font-size: 20px;
+        }
       }
     }
   }
