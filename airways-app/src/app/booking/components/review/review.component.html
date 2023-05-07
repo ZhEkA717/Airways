@@ -4,8 +4,13 @@
     <span class="title__text">Summary</span>
   </div>
   <div class="summary-flight">
-    <app-summary-trip></app-summary-trip>
-    <app-summary-trip></app-summary-trip>
+    <app-summary-trip
+      [thereTrip]="thereTrip"
+    ></app-summary-trip>
+    <app-summary-trip
+      [isRound]="true"
+      [backTrip]="backTrip"
+    ></app-summary-trip>
   </div>
   <div class="wrapper-buttons">
     <button
