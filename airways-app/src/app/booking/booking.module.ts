@@ -14,6 +14,8 @@ import CalendarService from './services/calendar.service';
 import SelectTripComponent from './components/select-trip/select-trip.component';
 import ToFloorPipe from './pipes/to-floor.pipe';
 import SeatsCountDirective from './directives/seats-count.directive';
+import SelectSeatsDirective from './directives/select-seats.directive';
+import SeatsCountService from './services/seats-count.service';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,13 @@ import SeatsCountDirective from './directives/seats-count.directive';
     SelectTripComponent,
     ToFloorPipe,
     SeatsCountDirective,
+    SelectSeatsDirective,
   ],
   imports: [
     CommonModule,
     BookingRoutingModule,
     SharedModule,
   ],
-  providers: [CalendarService],
+  providers: [CalendarService, SeatsCountService],
 })
 export default class BookingModule { }

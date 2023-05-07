@@ -9,8 +9,7 @@ import {
 import { Trip } from 'src/app/shared/model/trip.model';
 import { Store } from '@ngrx/store';
 import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
-
-const SEATS_ALL = 140;
+import SeatsCountService from '../services/seats-count.service';
 
 @Directive({
   selector: '[appSeatsCount]',
@@ -28,6 +27,7 @@ export default class SeatsCountDirective implements OnInit {
     private store: Store,
     private r: Renderer2,
     private el: ElementRef,
+    private seatsCountService: SeatsCountService,
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export default class SeatsCountDirective implements OnInit {
 
   @HostListener('mouseenter', ['$event.target'])
   onMouseEnter(el: HTMLElement) {
-    this.r.setStyle(el, 'borderTop', `${this.getColor(this.day.seats)}`);
+    this.r.setStyle(el, 'borderTop', `${this.seatsCountService.getColor(this.day.seats)}`);
   }
 
   @HostListener('mouseleave', ['$event.target'])
@@ -69,7 +69,7 @@ export default class SeatsCountDirective implements OnInit {
   }
 
   setStyleTrip(seatsFree: number) {
-    this.r.setStyle(this.el.nativeElement, 'borderTop', `${this.getColor(seatsFree)}`);
+    this.r.setStyle(this.el.nativeElement, 'borderTop', `${this.seatsCountService.getColor(seatsFree)}`);
     this.r.setStyle(this.el.nativeElement, 'height', '100px');
     this.r.setStyle(this.el.nativeElement, 'boxShadow', '1px 0 0 0 #CECECE');
     this.r.setStyle(this.el.nativeElement, 'gap', '6px');
@@ -80,13 +80,5 @@ export default class SeatsCountDirective implements OnInit {
     this.r.setStyle(this.el.nativeElement, 'height', '');
     this.r.setStyle(this.el.nativeElement, 'boxShadow', '');
     this.r.setStyle(this.el.nativeElement, 'gap', '');
-  }
-
-  private getColor(seatsFree: number, seats = SEATS_ALL) {
-    const half = seats / 2;
-    if (seatsFree > half) return '3px solid green';
-    if (seatsFree < half) return '3px solid orange';
-    if (seatsFree < 10) return '3px solid red';
-    return '1px solid #CECECE';
   }
 }

@@ -32,7 +32,11 @@
   <div class="dotted"></div>
   <div class="trip__select">
     <div class="select">
-      <div class="seats">{{selectTrip.seats}} seats<br>available</div>
+      <div
+        appSelectSeats
+        [seats]="selectTrip.seats"
+        [isRound]="isRound"
+        class="seats">{{selectTrip.seats}} seats<br>available</div>
       <div class="price">
         <div class="price__text">Price</div>
         <div class="price__value">
