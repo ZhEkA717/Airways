@@ -6,12 +6,31 @@
   border: 2px solid #E1E5EB;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  
 }
 
 .cart__main-title {
   margin: 30px 30px;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 28px;
   color: $logo-color;
+}
+
+.cart__bottom-panel {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+
+.cart__bottom-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #74767A;
+  gap: 30px;
 }

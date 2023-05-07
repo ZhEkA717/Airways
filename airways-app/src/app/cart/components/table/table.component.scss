@@ -11,8 +11,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 32px;
+  font-size: 1.25rem;
+  line-height: 2rem;
   letter-spacing: 0.5px;
 
   &-flight {
@@ -45,12 +45,12 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
 
   &-addtrip {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     color: #11397E;
   }
 
@@ -59,8 +59,8 @@
   }
 
   &-price {
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
     background: linear-gradient(90deg, #11397E 0%, #005ABC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

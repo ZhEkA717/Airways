@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent {
-
+  selected = 0;
 }
