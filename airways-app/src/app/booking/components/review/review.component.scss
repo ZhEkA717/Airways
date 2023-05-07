@@ -1,0 +1,55 @@
+@import '../../../../stylings/variables';
+
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.title {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 48px;
+
+  &__text {
+    font-weight: 700;
+    font-size: 24px;
+    color: $logo-color;
+  }
+}
+
+.summary-flight {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width:800px) {
+    flex-wrap: wrap;
+  }
+}
+
+.wrapper-buttons {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+
+  .back-button,
+  .buy-button,
+  .cart-button
+   {
+    width: 126px;
+    height: 60px;
+    font-size: 16px;
+    letter-spacing: .1;
+    font-weight: 500;
+  }
+
+  .cart-button {
+    width: 171px;
+    height: 60px;
+    border: 1px solid $base-primary-color;
+  }
+}

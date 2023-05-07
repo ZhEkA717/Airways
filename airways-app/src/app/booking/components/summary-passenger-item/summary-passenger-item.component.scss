@@ -1,0 +1,25 @@
+.passenger {
+  padding: 20px 24px;
+
+  &__name {
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  &__options {
+    margin-top: 12px;
+    padding: 0px 0px 0px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    li {
+      list-style-type: none;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+  }
+}

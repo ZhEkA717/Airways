@@ -8,6 +8,8 @@ import SharedModule from '../shared/shared.module';
 import FlightComponent from './components/flight/flight.component';
 import PassengersComponent from './components/passengers/passengers.component';
 import ReviewComponent from './components/review/review.component';
+import SummaryTripComponent from './components/summary-trip/summary-trip.component';
+import SummaryPassengerItemComponent from './components/summary-passenger-item/summary-passenger-item.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import ReviewComponent from './components/review/review.component';
     FlightComponent,
     PassengersComponent,
     ReviewComponent,
+    SummaryTripComponent,
+    SummaryPassengerItemComponent,
   ],
   imports: [
     CommonModule,

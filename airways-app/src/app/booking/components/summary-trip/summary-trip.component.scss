@@ -1,0 +1,48 @@
+@import '../../../../stylings/variables';
+
+:host {
+  width: 100%;
+}
+
+.summary {
+  width: 100%;
+  margin-top: 28px;
+  border-top: 3px solid $logo-color;
+
+  .title-block {
+    background: #F1F3F6;
+    padding: 20px 24px;
+    height: 100px;
+
+    .number-destination,
+    .date-time {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .number,
+    .destination {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      color: $logo-color;
+    }
+
+    .destination {
+      color: $text-dark-color;
+    }
+
+    .date-time {
+      gap: 36px;
+      margin-top: 8px;
+    }
+
+    .date,
+    .time {
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+  }
+}
