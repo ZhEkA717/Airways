@@ -17,7 +17,7 @@
     formArrayName="passengers"
     *ngFor="let passenger of passengers.controls; let i = index">
     <div class="title">
-     {{i +1 }}. {{passengersName[i]}}
+     {{i + 1 }}. {{passengersName[i]}}
     </div>
     <div [formGroupName]="i">
       <div class="form-group">
@@ -316,7 +316,8 @@
 
   <div class="wrapper-buttons">
     <button
-      mat-button
+      mat-stroked-button
+      color="primary"
       (click)="toFlight()"
     >Back</button>
     <button

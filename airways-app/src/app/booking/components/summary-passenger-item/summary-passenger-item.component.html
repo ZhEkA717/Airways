@@ -7,7 +7,10 @@
       1 {{passenger.baggage.text}} (max {{passenger.baggage.weight}} kg) included
     </li>
     <li>1 hand luggage (max 5kg) included</li>
-    <li *ngIf="passenger.baggage.price">Price {{passenger.baggage.price}} $</li>
+    <li *ngIf="passenger.baggage.price">
+      Price {{(passenger.baggage.price * convertMoneyService.moneyRatio).toFixed(1)}}
+      {{convertMoneyService.moneyIcon}}
+    </li>
     <li>Seat 19E</li>
   </ul>
 </div>

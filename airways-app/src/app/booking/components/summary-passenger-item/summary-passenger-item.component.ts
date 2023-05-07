@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PassengersInfo } from '../../models/passengers.model';
+import ConvertMoneyService from '../../services/convert-money.service';
 
 @Component({
   selector: 'app-summary-passenger-item',
@@ -8,4 +9,8 @@ import { PassengersInfo } from '../../models/passengers.model';
 })
 export default class SummaryPassengerItemComponent {
   @Input() passenger!: PassengersInfo;
+
+  constructor(
+    public convertMoneyService: ConvertMoneyService,
+  ) {}
 }

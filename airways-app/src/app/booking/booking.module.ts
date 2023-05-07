@@ -10,6 +10,14 @@ import PassengersComponent from './components/passengers/passengers.component';
 import ReviewComponent from './components/review/review.component';
 import SummaryTripComponent from './components/summary-trip/summary-trip.component';
 import SummaryPassengerItemComponent from './components/summary-passenger-item/summary-passenger-item.component';
+import OneDateComponent from './components/one-date/one-date.component';
+import CalendarComponent from './components/calendar/calendar.component';
+import CalendarService from './services/calendar.service';
+import SelectTripComponent from './components/select-trip/select-trip.component';
+import ToFloorPipe from './pipes/to-floor.pipe';
+import SeatsCountDirective from './directives/seats-count.directive';
+import SelectSeatsDirective from './directives/select-seats.directive';
+import SeatsCountService from './services/seats-count.service';
 
 @NgModule({
   declarations: [
@@ -20,11 +28,18 @@ import SummaryPassengerItemComponent from './components/summary-passenger-item/s
     ReviewComponent,
     SummaryTripComponent,
     SummaryPassengerItemComponent,
+    OneDateComponent,
+    CalendarComponent,
+    SelectTripComponent,
+    ToFloorPipe,
+    SeatsCountDirective,
+    SelectSeatsDirective,
   ],
   imports: [
     CommonModule,
     BookingRoutingModule,
     SharedModule,
   ],
+  providers: [CalendarService, SeatsCountService],
 })
 export default class BookingModule { }

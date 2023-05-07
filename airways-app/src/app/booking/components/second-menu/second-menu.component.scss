@@ -125,7 +125,7 @@
 
   &.isEdit {
     top: 68px;
-    z-index: auto;
+    z-index: 11;
   }
 
   @media(max-width: 990px) {

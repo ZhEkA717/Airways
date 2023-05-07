@@ -1,0 +1,44 @@
+@import '../../../../stylings/variables';
+
+.title {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: fit-content;
+  font-weight: 700;
+  font-size: 24px;
+  color: $logo-color;
+
+  mat-icon {
+    transform: rotate(90deg);
+  }
+
+  &_reverse {
+    mat-icon {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.wrapper-buttons {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 40px;
+  margin-right: 0;
+
+  @media (max-width: 1230px) {
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
+
+  button {
+    width: 126px;
+    height: 60px;
+  }
+}
+
+
