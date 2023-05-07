@@ -41,7 +41,13 @@
  </div>
  <app-select-trip
   (onSelectEvent)="onSelectEvent($event)"
-  *ngIf="isTripObject"
+  *ngIf="isTripObject; else notFound"
   [isRound]="isRound"
   [selectTrip]="selectTrip"
 ></app-select-trip>
+<ng-template #notFound>
+  <mat-card class="notFound">
+      <mat-icon>airplanemode_inactive</mat-icon>
+      No flights found...
+  </mat-card>
+</ng-template>

@@ -124,4 +124,42 @@
   }
 }
 
+.notFound {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  height: 50px;
+  padding-left: 20px;
+
+  mat-icon {
+    color: $logo-color;
+  }
+
+  @media (max-width: 1190px) {
+    width: 980px;
+  }
+
+  @media (max-width: 1020px) {
+    width: 840px;
+  }
+
+  @media (max-width: 870px) {
+    width: 700px;
+  }
+
+  @media (max-width: 750px) {
+    width: 560px;
+  }
+
+  @media (max-width: 580px) {
+    width: 420px;
+  }
+
+  @media (max-width: 440px) {
+    width: 315px;
+  }
+}
+
 
