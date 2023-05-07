@@ -25,7 +25,7 @@ export default class HttpApiService {
 
   getAvailableTrips(from: string, to: string): Observable<Trip[]> {
     if (!from || from === to) return EMPTY;
-    const params = new HttpParams().appendAll({ from, to });
+    const params = new HttpParams().appendAll({ 'from.code': from, 'to.code': to });
     return this.http.get<Trip[]>(URL_TRIPS, { params });
   }
 

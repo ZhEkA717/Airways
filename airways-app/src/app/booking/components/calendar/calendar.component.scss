@@ -1,0 +1,165 @@
+@import '../../../../stylings/variables';
+
+.calendar {
+  position: relative;
+  overflow: hidden;
+  height: 70px;
+  margin: 8px auto;
+  display: flex;
+  justify-content: center;
+  width: 1190px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  &.choiceTrip {
+    display: none;
+  }
+
+  @media (max-width: 1190px) {
+    width: 980px;
+  }
+
+  @media (max-width: 1020px) {
+    width: 840px;
+  }
+
+  @media (max-width: 870px) {
+    width: 700px;
+  }
+
+  @media (max-width: 750px) {
+    width: 560px;
+  }
+
+  @media (max-width: 580px) {
+    width: 420px;
+  }
+
+  @media (max-width: 440px) {
+    width: 315px;
+  }
+
+  .prev-button,
+  .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: none;
+    z-index: 1;
+    font-weight: 500;
+    cursor: pointer;
+
+    @media (max-width: 750px) {
+      top: calc(50% + 10px);
+    }
+
+    &:hover {
+      background: $button-hover-color;
+    }
+  }
+
+  .prev-button {
+    left: 3px;
+  }
+  .next-button {
+    right: 3px;
+  }
+}
+
+
+.days {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 700%;
+  height: 100px;
+  transition: transform .2s;
+
+  &__item {
+    width: 170px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 4px 0px;
+    background: $text-light-color;
+    border-left: 1px solid $button-border-color;
+    cursor: pointer;
+    transition: height .3s;
+
+      &:hover {
+        height: 100px;
+        border-top: 1px solid $button-border-color;
+        box-shadow: 1px 0px 0px 0px $button-border-color;
+      }
+
+    @media (max-width: 1190px) {
+      width: 140px;
+    }
+
+    @media (max-width: 1020px) {
+      width: 120px;
+    }
+    @media (max-width: 870px) {
+      width: 100px;
+    }
+
+    @media (max-width: 750px) {
+      width: 80px;
+    }
+
+    @media (max-width: 580px) {
+      width: 60px;
+    }
+
+    @media (max-width: 440px) {
+      width: 45px;
+    }
+  }
+}
+
+.notFound {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  height: 50px;
+  padding-left: 20px;
+
+  mat-icon {
+    color: $logo-color;
+  }
+
+  @media (max-width: 1190px) {
+    width: 980px;
+  }
+
+  @media (max-width: 1020px) {
+    width: 840px;
+  }
+
+  @media (max-width: 870px) {
+    width: 700px;
+  }
+
+  @media (max-width: 750px) {
+    width: 560px;
+  }
+
+  @media (max-width: 580px) {
+    width: 420px;
+  }
+
+  @media (max-width: 440px) {
+    width: 315px;
+  }
+}
+
+

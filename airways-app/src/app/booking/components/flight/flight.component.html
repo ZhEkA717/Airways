@@ -1,1 +1,35 @@
-<p>flight works!</p>
+<div
+  *ngIf="search$ | async as search"
+  class="container">
+  <div
+    class="title"
+  >
+    <mat-icon>airplanemode_active</mat-icon>
+    {{search.from.slice(0, -3)}} to {{search.destination.slice(0, -3)}}
+  </div>
+  <app-calendar [date]="date"></app-calendar>
+  <div *ngIf="search.tripWay === 'round'">
+    <div
+      *ngIf="search$ | async as search"
+      class="title title_reverse"
+    >
+      <mat-icon>airplanemode_active</mat-icon>
+      {{search.destination.slice(0, -3)}} to {{search.from.slice(0, -3)}}
+    </div>
+    <app-calendar [isRound]="true" [date]="date1"></app-calendar>
+  </div>
+</div>
+<div class="wrapper-buttons">
+  <button
+    (click)="toMain()"
+    color="primary"
+    mat-stroked-button
+  >Back</button>
+  <button
+    (click)="toPassengers()"
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="isContinue"
+  >Continue</button>
+</div>

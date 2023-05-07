@@ -1,9 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
+import { Router } from '@angular/router';
+import CalendarService from '../../services/calendar.service';
 
 @Component({
   selector: 'app-flight',
@@ -11,14 +17,26 @@ import { selectSearch } from 'src/app/redux/selectors/search.selector';
   styleUrls: ['./flight.component.scss'],
 })
 export default class FlightComponent implements OnInit, OnDestroy {
-  private search$ = this.store.select(selectSearch);
+  public search$ = this.store.select(selectSearch);
 
   private subSearch!: Subscription;
+
+  public date = new Date();
+
+  public date1 = new Date();
+
+  public isBackSelect!: boolean;
+
+  public isThereSelect!: boolean;
+
+  public tripWay!: string;
 
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private httpApiService: HttpApiService,
+    private calendarService: CalendarService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -27,19 +45,57 @@ export default class FlightComponent implements OnInit, OnDestroy {
     });
 
     this.subSearch = this.search$.subscribe((search) => {
-      const { from, destination } = search;
+      this.tripWay = search.tripWay;
+      const {
+        from, destination,
+        startDate, endDate,
+      } = search;
+      this.date = new Date(startDate);
+      this.date1 = new Date(endDate);
+
       this.httpApiService.getAvailableTrips(
         from.slice(-3),
         destination.slice(-3),
-      )
-        .subscribe((res) => {
-          // eslint-disable-next-line no-console
-          console.log(res);
-        });
+      ).subscribe((res) => {
+        this.calendarService.setDepartDatesThere(res);
+      });
+
+      this.httpApiService.getAvailableTrips(
+        destination.slice(-3),
+        from.slice(-3),
+      ).subscribe((res) => {
+        this.calendarService.setDepartDatesBack(res);
+      });
+    });
+
+    this.calendarService.setBackSelect(true);
+    this.calendarService.setThereSelect(true);
+
+    this.calendarService.isBackSelect$.subscribe((res) => {
+      this.isBackSelect = res;
+    });
+    this.calendarService.isThereSelect$.subscribe((res) => {
+      this.isThereSelect = res;
     });
   }
 
   ngOnDestroy(): void {
     this.subSearch?.unsubscribe();
+  }
+
+  toMain() {
+    this.router.navigate(['main']);
+  }
+
+  toPassengers() {
+    this.router.navigate(['booking', 'passengers']);
+  }
+
+  public get isContinue() {
+    if (this.tripWay === 'one') {
+      return this.isThereSelect;
+    }
+
+    return this.isBackSelect || this.isThereSelect;
   }
 }
