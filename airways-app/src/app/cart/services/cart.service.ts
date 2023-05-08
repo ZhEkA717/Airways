@@ -39,4 +39,9 @@ export class CartService {
   getTotalPrice() {
     return 764.49;
   }
+
+  delete(row: Flight) {
+    this.table = this.table.filter((fligth) => fligth.id !== row.id);
+    console.log('after delete', row.id, this.table);
+  }
 }

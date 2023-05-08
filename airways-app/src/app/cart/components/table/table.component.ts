@@ -46,4 +46,10 @@ export class TableComponent {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
+
+  /** Delete row from table */
+  delete(row: Flight) {
+    this.cartService.delete(row);
+    this.dataSource.data = this.cartService.table;
+  }
 }
