@@ -127,6 +127,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
         this.passengers.controls[i].get('gender')?.setValue(item.gender);
         this.passengers.controls[i].get('isCripple')?.setValue(item.isCripple);
         this.passengers.controls[i].get('date')?.setValue(item.date);
+        this.passengers.controls[i].get('baggage')?.setValue(item.baggage.type);
       });
     });
   }
