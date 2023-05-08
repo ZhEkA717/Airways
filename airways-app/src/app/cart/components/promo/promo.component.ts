@@ -9,6 +9,6 @@ export class PromoComponent {
   value = '';
 
   onApply() {
-    console.log('promo added');
+    console.log(`promo ${this.value} added`);
   }
 }

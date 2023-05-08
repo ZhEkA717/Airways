@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService, Flight } from '../../services/cart.service';
 
@@ -15,8 +15,11 @@ export class TableComponent {
 
   selection = new SelectionModel<Flight>(true, []);
 
+  @Output() selectionEvent = new EventEmitter<Flight[]>();
+
   constructor(public cartService: CartService) {
     this.dataSource = new MatTableDataSource<Flight>(cartService.table);
+    this.selection.changed.subscribe((sel) => this.selectionEvent.emit(sel.source.selected));
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
