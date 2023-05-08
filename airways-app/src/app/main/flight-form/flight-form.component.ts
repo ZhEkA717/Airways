@@ -6,6 +6,8 @@ import AutocompleteService from 'src/app/shared/services/autocomplete.service';
 import RangeDateService from 'src/app/shared/services/range-date.service';
 import SelectsService from 'src/app/shared/services/selects.service';
 import { Router } from '@angular/router';
+import { send as sendPassengerForm } from 'src/app/redux/actions/passengers.action';
+import { PassengersForm } from 'src/app/booking/models/passengers.model';
 import { FlightSearch, TripWay } from '../model/flight-search.model';
 
 @Component({
@@ -41,6 +43,7 @@ export default class FlightFormComponent {
       passengers,
     };
     this.store.dispatch(send(search));
+    this.store.dispatch(sendPassengerForm(<PassengersForm>{}));
     this.router.navigate(['booking', 'flight']);
   }
 }

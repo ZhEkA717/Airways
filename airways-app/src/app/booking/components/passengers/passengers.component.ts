@@ -21,6 +21,7 @@ import { send } from 'src/app/redux/actions/passengers.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import AirportsService from 'src/app/shared/services/airports.service';
+import { selectPassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { Baggage, PassengersForm, PassengersInfo } from '../../models/passengers.model';
 
 export const MY_FORMAT = {
@@ -74,7 +75,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     ]),
     phone: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g),
+      // Validators.pattern(/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g),
     ]),
     email: new FormControl('', [
       Validators.required,
@@ -113,6 +114,20 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
     this.subMoneyFormat = this.moneyFormat$.subscribe((moneyFormat) => {
       this.moneyFormat = moneyFormat;
+    });
+
+    this.store.select(selectPassengerForm).subscribe((form) => {
+      this.form.get('phone')?.setValue(form.phone);
+      this.form.get('countryCode')?.setValue(form.countryCode);
+      this.form.get('email')?.setValue(form.email);
+
+      form.passengers?.forEach((item, i) => {
+        this.passengers.controls[i].get('firstName')?.setValue(item.firstName);
+        this.passengers.controls[i].get('lastName')?.setValue(item.lastName);
+        this.passengers.controls[i].get('gender')?.setValue(item.gender);
+        this.passengers.controls[i].get('isCripple')?.setValue(item.isCripple);
+        this.passengers.controls[i].get('date')?.setValue(item.date);
+      });
     });
   }
 
