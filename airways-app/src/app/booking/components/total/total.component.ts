@@ -84,10 +84,12 @@ export default class TotalComponent implements OnInit, OnDestroy {
 
   private getPassengersInfo(type: string) {
     const passengers = this.passengers.filter((passenger) => passenger.type === type);
-
+    const baggageSummary = this.getBaggage(passengers);
     return {
       amount: passengers.length,
-      baggageSummary: this.getBaggage(passengers),
+      baggageSummary: this.backPrice
+        ? baggageSummary * 2
+        : baggageSummary,
     };
   }
 
