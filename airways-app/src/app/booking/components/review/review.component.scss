@@ -44,6 +44,11 @@
   gap: 40px;
   justify-content: flex-end;
 
+  @media (max-width: 500px) {
+    gap: 5px;
+    justify-content: space-between;
+  }
+
   .back-button,
   .buy-button,
   .cart-button
@@ -53,11 +58,29 @@
     font-size: 16px;
     letter-spacing: .1;
     font-weight: 500;
+    white-space: nowrap;
+
+    @media (max-width: 340px) {
+      font-size: 14px;
+    }
   }
 
   .cart-button {
     width: 171px;
     height: 60px;
     border: 1px solid $base-primary-color;
+  }
+
+  .back-button,
+  .buy-button {
+    @media (max-width: 430px) {
+      width: 100px;
+    }
+  }
+
+  .back-button {
+    @media (max-width: 360px) {
+      width: 70px;
+    }
   }
 }
