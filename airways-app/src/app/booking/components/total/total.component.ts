@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { selectBackPrice, selectTherePrice } from 'src/app/redux/selectors/flight.selector';
 import { selectPassengers } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersInfo } from '../../models/passengers.model';
+import ConvertMoneyService from '../../services/convert-money.service';
 
 const ADULT_RATIO = 0.55;
 const CHILD_RATIO = 0.85;
@@ -45,6 +46,7 @@ export default class TotalComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
+    public convertMoneyService: ConvertMoneyService,
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +79,6 @@ export default class TotalComponent implements OnInit, OnDestroy {
     const passengers = this.passengers.filter((passenger) => passenger.type === type);
 
     return {
-
       amount: passengers.length,
       baggageSummary: this.getBaggage(passengers),
     };

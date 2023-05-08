@@ -6,26 +6,41 @@
   >
     <div class="title">
       <div class="type">{{item.amount}} x {{item.type}} Fare</div>
-      <div class="price">${{item.price.toFixed(2)}}</div>
+      <div class="price">
+        {{convertMoneyService.moneyIcon}}
+        {{(item.price * convertMoneyService.moneyRatio).toFixed(2)}}
+      </div>
     </div>
     <div class="prices">
       <div class="fare">
         <div class="fare__title">Fare</div>
-        <div class="fare__price">${{item.fare.toFixed(2)}}</div>
+        <div class="fare__price">
+          {{convertMoneyService.moneyIcon}}
+          {{(item.fare * convertMoneyService.moneyRatio).toFixed(2)}}
+        </div>
       </div>
       <div class="tax">
         <div class="tax__title">Tax & Service Charge  </div>
-        <div class="tax__price">${{item.tax.toFixed(2)}}</div>
+        <div class="tax__price">
+          {{convertMoneyService.moneyIcon}}
+          {{(item.tax * convertMoneyService.moneyRatio).toFixed(2)}}
+        </div>
       </div>
       <div class="baggage">
         <div class="tax__title">Baggage</div>
-        <div class="tax__price">${{item.baggageSummary.toFixed(2)}}</div>
+        <div class="tax__price">
+          {{convertMoneyService.moneyIcon}}
+          {{(item.baggageSummary * convertMoneyService.moneyRatio).toFixed(2)}}
+        </div>
       </div>
     </div>
   </div>
 
   <div class="total">
     <div class="total__title">Total:</div>
-    <div class="total__price">${{getTotal.toFixed(2)}}</div>
+    <div class="total__price">
+      {{convertMoneyService.moneyIcon}}
+      {{(getTotal * convertMoneyService.moneyRatio).toFixed(2)}}
+    </div>
   </div>
 </mat-card>
