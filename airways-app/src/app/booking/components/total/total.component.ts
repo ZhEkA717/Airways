@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectBackPrice, selectTherePrice } from 'src/app/redux/selectors/flight.selector';
+import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
 import { selectPassengers } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersInfo } from '../../models/passengers.model';
 import ConvertMoneyService from '../../services/convert-money.service';
+import TotalService from '../../services/total.service';
 
 const ADULT_RATIO = 0.55;
 const CHILD_RATIO = 0.85;
@@ -20,15 +21,15 @@ const INFANT_RATIO_TYPE = 0.92;
   styleUrls: ['./total.component.scss'],
 })
 export default class TotalComponent implements OnInit, OnDestroy {
-  private therePrice$ = this.store.select(selectTherePrice);
+  private there$ = this.store.select(selectThereTrip);
 
-  private backPrice$ = this.store.select(selectBackPrice);
+  private back$ = this.store.select(selectBackTrip);
 
   private passengers$ = this.store.select(selectPassengers);
 
-  private subTherePrice!: Subscription;
+  private subThere!: Subscription;
 
-  private subBackPrice!: Subscription;
+  private subBack!: Subscription;
 
   private subPassengers!: Subscription;
 
@@ -46,26 +47,32 @@ export default class TotalComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
+    private totalService: TotalService,
     public convertMoneyService: ConvertMoneyService,
   ) { }
 
   ngOnInit(): void {
-    this.subTherePrice = this.therePrice$.subscribe((price) => {
-      this.therePrice = price;
+    this.subThere = this.there$.subscribe((there) => {
+      this.therePrice = there.price;
     });
 
-    this.subBackPrice = this.backPrice$.subscribe((price) => {
-      this.backPrice = price;
+    this.subBack = this.back$.subscribe((back) => {
+      this.backPrice = back.price;
     });
 
     this.subPassengers = this.passengers$.subscribe((passengers) => {
       this.passengers = passengers;
     });
+
+    this.totalService.setTotalInfo({
+      price: this.getTotal,
+      passengers: this.typeAmountPassengers,
+    });
   }
 
   ngOnDestroy(): void {
-    this.subTherePrice?.unsubscribe();
-    this.subBackPrice?.unsubscribe();
+    this.subThere?.unsubscribe();
+    this.subBack?.unsubscribe();
     this.subPassengers?.unsubscribe();
   }
 
@@ -111,6 +118,8 @@ export default class TotalComponent implements OnInit, OnDestroy {
   }
 
   private get typeAmountPassengers() {
-    return this.getPrices.map((item) => `${item.amount} x ${item.type}`);
+    return this.getPrices
+      .filter((item) => item.amount !== 0)
+      .map((item) => `${item.amount} x ${item.type}`);
   }
 }

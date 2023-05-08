@@ -19,6 +19,7 @@ import SeatsCountDirective from './directives/seats-count.directive';
 import SelectSeatsDirective from './directives/select-seats.directive';
 import SeatsCountService from './services/seats-count.service';
 import TotalComponent from './components/total/total.component';
+import TotalService from './services/total.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,10 @@ import TotalComponent from './components/total/total.component';
     BookingRoutingModule,
     SharedModule,
   ],
-  providers: [CalendarService, SeatsCountService],
+  providers: [
+    CalendarService,
+    SeatsCountService,
+    TotalService,
+  ],
 })
 export default class BookingModule { }

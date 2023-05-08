@@ -8,7 +8,7 @@
       [thereTrip]="thereTrip"
     ></app-summary-trip>
     <app-summary-trip
-      *ngIf="isOneTripWay"
+      *ngIf="!isOneTripWay"
       [isRound]="true"
       [backTrip]="backTrip"
     ></app-summary-trip>
@@ -26,6 +26,7 @@
       color="primary"
     >Back</button>
     <button
+      (click) = "addToCart()"
       class="cart-button"
       mat-stroked-button
       color="primary"
