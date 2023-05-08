@@ -7,7 +7,7 @@
   border-bottom: 1px solid #E1E5EB;
   padding-bottom: 30px;
 }
-.cart__table-col {
+.cart__table-cell {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -24,7 +24,14 @@
   &-price {
     color: #7F8906;
   }
+}
 
+.cart__table-header {
+  @media (max-width: 768px) {
+    font-size: 12px;
+    line-height: 12px;
+    padding: 0 5px;
+  }
 }
 
 .cart__table-edit {
@@ -38,6 +45,14 @@
 
   &:active {
     background-color: gray;
+  }
+}
+
+.mdc-data-table__cell {
+  @media (max-width: 768px) {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0 5px;
   }
 }
 
@@ -65,5 +80,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 0 5px;
   }
 }
