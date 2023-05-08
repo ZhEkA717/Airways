@@ -9,6 +9,7 @@ import AutocompleteService from 'src/app/shared/services/autocomplete.service';
 import RangeDateService from 'src/app/shared/services/range-date.service';
 import SelectsService from 'src/app/shared/services/selects.service';
 import { send as sendPassengerForm } from 'src/app/redux/actions/passengers.action';
+import { resetFlight } from 'src/app/redux/actions/flight.action';
 import { PassengersForm } from '../../models/passengers.model';
 
 @Component({
@@ -72,5 +73,6 @@ export default class SecondMenuComponent implements OnInit {
     };
     this.store.dispatch(send(search));
     this.store.dispatch(sendPassengerForm(<PassengersForm>{}));
+    this.store.dispatch(resetFlight());
   }
 }

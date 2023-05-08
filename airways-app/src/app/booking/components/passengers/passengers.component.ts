@@ -117,9 +117,9 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
 
     this.store.select(selectPassengerForm).subscribe((form) => {
-      this.form.get('phone')?.setValue(form.phone);
-      this.form.get('countryCode')?.setValue(form.countryCode);
-      this.form.get('email')?.setValue(form.email);
+      this.form?.get('phone')?.setValue(form.phone);
+      this.form?.get('countryCode')?.setValue(form.countryCode);
+      this.form?.get('email')?.setValue(form.email);
 
       form.passengers?.forEach((item, i) => {
         this.passengers.controls[i].get('firstName')?.setValue(item.firstName);

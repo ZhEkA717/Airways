@@ -12,8 +12,16 @@ import {
 import { Trip } from 'src/app/shared/model/trip.model';
 import { Subject, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { saveBackTrip, saveThereTrip } from 'src/app/redux/actions/flight.action';
-import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
+import {
+  backSelect,
+  saveBackTrip,
+  saveThereTrip,
+  thereSelect,
+} from 'src/app/redux/actions/flight.action';
+import {
+  selectBackChoise, selectBackTrip,
+  selectThereChoise, selectThereTrip,
+} from 'src/app/redux/selectors/flight.selector';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -40,6 +48,10 @@ implements OnInit, AfterViewInit, OnDestroy {
   private subThere!: Subscription;
 
   private subWeek!: Subscription;
+
+  private subSelectThere!: Subscription;
+
+  private subSelectBack!: Subscription;
 
   private weekIndex$ = new Subject<number>();
 
@@ -93,6 +105,14 @@ implements OnInit, AfterViewInit, OnDestroy {
         this.initCalendar();
       });
     }
+
+    this.subSelectThere = this.store.select(selectThereChoise).subscribe((res) => {
+      if (!this.isRound) this.choiceTrip = res;
+    });
+
+    this.subSelectBack = this.store.select(selectBackChoise).subscribe((res) => {
+      if (this.isRound) this.choiceTrip = res;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -110,6 +130,8 @@ implements OnInit, AfterViewInit, OnDestroy {
     this.subBack?.unsubscribe();
     this.subThere?.unsubscribe();
     this.subWeek?.unsubscribe();
+    this.subSelectThere?.unsubscribe();
+    this.subSelectBack?.unsubscribe();
   }
 
   initCalendar() {
@@ -200,7 +222,8 @@ implements OnInit, AfterViewInit, OnDestroy {
           };
 
           if (count) {
-            this.selectTrip = months[i];
+            this.selectTrip = (this.isRound ? this.backTrip : this.thereTrip) || months[i];
+            this.selectTrip = this.selectTrip.flightNo ? this.selectTrip : months[i];
             this.saveTrips(this.selectTrip);
             this.isTripObject = true;
             this.weekIndex$.next(this.calendarService.week(
@@ -292,8 +315,10 @@ implements OnInit, AfterViewInit, OnDestroy {
   public onSelectEvent(choiceTrip: boolean) {
     this.choiceTrip = choiceTrip;
     if (this.isRound) {
+      this.store.dispatch(backSelect({ back: this.choiceTrip }));
       this.calendarService.setBackSelect(this.choiceTrip);
     } else {
+      this.store.dispatch(thereSelect({ there: this.choiceTrip }));
       this.calendarService.setThereSelect(this.choiceTrip);
     }
   }
