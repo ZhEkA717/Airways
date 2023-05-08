@@ -7,3 +7,8 @@ export const selectSearch = createSelector(
   selectFeatureSearch,
   (search: SearchState) => search.searchForm,
 );
+
+export const selectTripWay = createSelector(
+  selectFeatureSearch,
+  (search: SearchState) => search.searchForm.tripWay,
+);

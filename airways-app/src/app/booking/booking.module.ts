@@ -18,6 +18,7 @@ import ToFloorPipe from './pipes/to-floor.pipe';
 import SeatsCountDirective from './directives/seats-count.directive';
 import SelectSeatsDirective from './directives/select-seats.directive';
 import SeatsCountService from './services/seats-count.service';
+import TotalComponent from './components/total/total.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import SeatsCountService from './services/seats-count.service';
     ToFloorPipe,
     SeatsCountDirective,
     SelectSeatsDirective,
+    TotalComponent,
   ],
   imports: [
     CommonModule,

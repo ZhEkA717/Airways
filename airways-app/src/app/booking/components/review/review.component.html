@@ -8,10 +8,16 @@
       [thereTrip]="thereTrip"
     ></app-summary-trip>
     <app-summary-trip
+      *ngIf="isOneTripWay"
       [isRound]="true"
       [backTrip]="backTrip"
     ></app-summary-trip>
   </div>
+
+  <div class="total">
+    <app-total></app-total>
+  </div>
+
   <div class="wrapper-buttons">
     <button
       (click)="toPassengers()"

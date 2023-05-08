@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
+import { saveBackTrip } from 'src/app/redux/actions/flight.action';
 import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
+import { selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { Trip } from 'src/app/shared/model/trip.model';
 
 @Component({
@@ -12,6 +14,8 @@ import { Trip } from 'src/app/shared/model/trip.model';
   styleUrls: ['./review.component.scss'],
 })
 export default class ReviewComponent implements OnInit, OnDestroy {
+  public isOneTripWay = false;
+
   public thereTrip: Trip = <Trip>{};
 
   public backTrip: Trip = <Trip>{};
@@ -19,6 +23,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
   private thereTrip$ = this.store.select(selectThereTrip);
 
   private backTrip$ = this.store.select(selectBackTrip);
+
+  private tripWay$ = this.store.select(selectTripWay);
 
   subThere!: Subscription;
 
@@ -41,6 +47,15 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
     this.subBack = this.backTrip$.subscribe((back) => {
       this.backTrip = back;
+    });
+
+    this.tripWay$.subscribe((tripWay) => {
+      if (tripWay === 'one') {
+        this.isOneTripWay = false;
+        this.store.dispatch(saveBackTrip(<Trip>{}));
+      } else {
+        this.isOneTripWay = true;
+      }
     });
   }
 

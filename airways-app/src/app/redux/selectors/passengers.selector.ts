@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { PassengersForm } from 'src/app/booking/models/passengers.model';
 import { PASSENGERS_REDUCER_KEY, PassengersState } from '../reducers/passengers.reducer';
 
 export const passengerFeatureSearch = createFeatureSelector<PassengersState>(
@@ -7,10 +8,10 @@ export const passengerFeatureSearch = createFeatureSelector<PassengersState>(
 
 export const selectPassengerForm = createSelector(
   passengerFeatureSearch,
-  (form: PassengersState) => form.passengersForm,
+  (state: PassengersState) => state.passengersForm,
 );
 
 export const selectPassengers = createSelector(
-  passengerFeatureSearch,
-  (form: PassengersState) => form.passengersForm.passengers,
+  selectPassengerForm,
+  (form: PassengersForm) => form.passengers,
 );
