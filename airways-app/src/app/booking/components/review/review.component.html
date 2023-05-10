@@ -1,1 +1,40 @@
-<p>review works!</p>
+<div class="container">
+  <div class="title">
+    <img class="title__img" src="assets/icons/summary-icon.svg" alt="summary">
+    <span class="title__text">Summary</span>
+  </div>
+  <div class="summary-flight">
+    <app-summary-trip
+      [thereTrip]="thereTrip"
+    ></app-summary-trip>
+    <app-summary-trip
+      *ngIf="!isOneTripWay"
+      [isRound]="true"
+      [backTrip]="backTrip"
+    ></app-summary-trip>
+  </div>
+
+  <div class="total">
+    <app-total></app-total>
+  </div>
+
+  <div class="wrapper-buttons">
+    <button
+      (click)="toPassengers()"
+      class="back-button"
+      mat-stroked-button
+      color="primary"
+    >Back</button>
+    <button
+      (click) = "addToCart()"
+      class="cart-button"
+      mat-stroked-button
+      color="primary"
+    >Add to order cart</button>
+    <button
+      class="buy-button"
+      mat-raised-button
+      color="primary"
+    >Buy now</button>
+  </div>
+</div>

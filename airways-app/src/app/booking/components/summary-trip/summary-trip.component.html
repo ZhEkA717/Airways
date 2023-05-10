@@ -1,0 +1,28 @@
+<mat-card class="summary">
+  <div class="title-block">
+    <div class="number-destination">
+      <div class="number">
+        {{isRound ? backTrip.flightNo : thereTrip.flightNo}}
+      </div>
+      <div class="destination">
+        {{isRound ? backTrip.from.city : thereTrip.from.city}}
+        —
+        {{isRound ? backTrip.to.city : thereTrip.to.city}}
+      </div>
+    </div>
+    <div class="date-time">
+      <div class="date">
+        {{(isRound ? backTrip.departDate : thereTrip.departDate) | date:'EEEE, d MMMM, y'}}
+      </div>
+      <div class="time">
+        {{(isRound ? backTrip.departDate : thereTrip.departDate) | date:'h:mm'}}
+        —
+        {{(isRound ? backTrip.arriveDate : thereTrip.arriveDate) | date:'h:mm'}}
+      </div>
+    </div>
+  </div>
+  <app-summary-passenger-item
+    *ngFor="let passenger of passengers$ | async"
+    [passenger]="passenger"
+  ></app-summary-passenger-item>
+</mat-card>
