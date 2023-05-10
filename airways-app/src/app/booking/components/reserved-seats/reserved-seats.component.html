@@ -1,6 +1,5 @@
-<div class="title">Keys</div>
-
-<mat-card class="container keys">
+<mat-card class="card-keys">
+  <div class="title">Keys</div>
   <div class="seat-keys">
     <div class="key">
       <div class="seat regular"></div>
@@ -16,12 +15,13 @@
     </div>
   </div>
 </mat-card>
-<mat-card class="container">
-  <div
-    class="seats"
-    *ngFor="let seats of arraySeats;
-    let i = index"
-  >
+<div class="container">
+  <mat-card class="card-seats">
+    <div
+      class="seats"
+      *ngFor="let seats of arraySeats;
+      let i = index"
+    >
    <div class="seat-column-letters">
     {{seatsNumbers[i]}}
    </div>
@@ -47,4 +47,5 @@
       </div>
     </div>
   </div>
-</mat-card>
+  </mat-card>
+</div>

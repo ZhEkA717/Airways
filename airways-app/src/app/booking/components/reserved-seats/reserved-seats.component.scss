@@ -1,77 +1,82 @@
 @import '../../../../stylings/variables';
 
-.title {
-  font-size: 20px;
-  color: $logo-color;
-  font-weight: 600;
+.card-keys {
   margin-top: 20px;
-  margin-bottom: -18px;
-}
+  padding: 15px 44px 32px;
 
-.seat-keys {
-  margin-top: 20px;
-  display: flex;
-  width: 100%;
-  gap: 15px;
-
-  @media (max-width: 1000px) {
-    flex-direction: column;
+  .title {
+    font-size: 20px;
+    color: $logo-color;
+    font-weight: 600;
   }
 
-  .text {
-    color: $logo-color;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 500;
+  .seat-keys {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    gap: 15px;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+    }
+
+    .text {
+      color: $logo-color;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 500;
+    }
   }
 
   .key {
     display: flex;
     align-items: flex-end;
-    gap: 10px;
+    gap: 15px;
 
-    .seat {
-      width: 30px;
-      height: 30px;
-      border-radius: 2px;
-      position: relative;
-      color: $light-color;
+  }
 
-      &.regular {
-        background: $base-primary-color;
+  .seat {
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    position: relative;
+    color: $button-border-color;
 
-        &:before {
-          content: '';
-        }
-      }
 
-      &.reserved {
-        background: orange;
-
-        &:before {
-          content: '';
-        }
-      }
-
-      &.disabled {
-        background: #8e2929;
-        &:before {
-          content: '☒';
-        }
-      }
+    &.regular {
+      background: $base-primary-color;
 
       &:before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 18px;
+        content: '';
       }
+    }
+
+    &.reserved {
+      background: orange;
+
+      &:before {
+        content: '';
+      }
+    }
+
+    &.disabled {
+      background: #8e2929;
+      &:before {
+        content: '☒';
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
     }
   }
 }
 
-.container {
+.card-seats {
   display: flex;
   flex-direction: column-reverse;
   margin-top: 20px;

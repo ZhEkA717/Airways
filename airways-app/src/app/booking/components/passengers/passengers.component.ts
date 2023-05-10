@@ -21,9 +21,8 @@ import { send } from 'src/app/redux/actions/passengers.action';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import AirportsService from 'src/app/shared/services/airports.service';
-import { PassengersForm } from '../../models/passengers.model';
-import ReserveSeatService from '../../services/reserve-seat.service';
 import { selectPassengerForm } from 'src/app/redux/selectors/passengers.selector';
+import ReserveSeatService from '../../services/reserve-seat.service';
 import { Baggage, PassengersForm, PassengersInfo } from '../../models/passengers.model';
 
 export const MY_FORMAT = {
@@ -138,12 +137,12 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       this.form?.get('email')?.setValue(form.email);
 
       form.passengers?.forEach((item, i) => {
-        this.passengers.controls[i].get('firstName')?.setValue(item.firstName);
-        this.passengers.controls[i].get('lastName')?.setValue(item.lastName);
-        this.passengers.controls[i].get('gender')?.setValue(item.gender);
-        this.passengers.controls[i].get('isCripple')?.setValue(item.isCripple);
-        this.passengers.controls[i].get('date')?.setValue(item.date);
-        this.passengers.controls[i].get('baggage')?.setValue(item.baggage.type);
+        this.passengers?.controls[i]?.get('firstName')?.setValue(item.firstName);
+        this.passengers?.controls[i]?.get('lastName')?.setValue(item.lastName);
+        this.passengers?.controls[i]?.get('gender')?.setValue(item.gender);
+        this.passengers?.controls[i]?.get('isCripple')?.setValue(item.isCripple);
+        this.passengers?.controls[i]?.get('date')?.setValue(item.date);
+        this.passengers?.controls[i]?.get('baggage')?.setValue(item.baggage.type);
       });
     });
   }
