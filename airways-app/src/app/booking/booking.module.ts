@@ -18,6 +18,9 @@ import ToFloorPipe from './pipes/to-floor.pipe';
 import SeatsCountDirective from './directives/seats-count.directive';
 import SelectSeatsDirective from './directives/select-seats.directive';
 import SeatsCountService from './services/seats-count.service';
+import ReservedSeatsComponent from './components/reserved-seats/reserved-seats.component';
+import ReserveSeatDirective from './directives/reserve-seat.directive';
+import ReserveSeatService from './services/reserve-seat.service';
 import TotalComponent from './components/total/total.component';
 import TotalService from './services/total.service';
 
@@ -36,6 +39,8 @@ import TotalService from './services/total.service';
     ToFloorPipe,
     SeatsCountDirective,
     SelectSeatsDirective,
+    ReservedSeatsComponent,
+    ReserveSeatDirective,
     TotalComponent,
   ],
   imports: [
@@ -47,6 +52,7 @@ import TotalService from './services/total.service';
     CalendarService,
     SeatsCountService,
     TotalService,
+    ReserveSeatService,
   ],
 })
 export default class BookingModule { }
