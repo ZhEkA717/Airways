@@ -81,6 +81,6 @@ export default class CalendarService {
     const dayOfMonth = date.getDate();
     const day = date.getDay();
 
-    return Math.abs(Math.ceil((dayOfMonth - 1 - day) / 7));
+    return Math.abs(Math.ceil((dayOfMonth - 1 - (day || 7)) / 7));
   }
 }

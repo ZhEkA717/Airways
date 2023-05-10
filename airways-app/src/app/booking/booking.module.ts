@@ -8,6 +8,8 @@ import SharedModule from '../shared/shared.module';
 import FlightComponent from './components/flight/flight.component';
 import PassengersComponent from './components/passengers/passengers.component';
 import ReviewComponent from './components/review/review.component';
+import SummaryTripComponent from './components/summary-trip/summary-trip.component';
+import SummaryPassengerItemComponent from './components/summary-passenger-item/summary-passenger-item.component';
 import OneDateComponent from './components/one-date/one-date.component';
 import CalendarComponent from './components/calendar/calendar.component';
 import CalendarService from './services/calendar.service';
@@ -19,6 +21,8 @@ import SeatsCountService from './services/seats-count.service';
 import ReservedSeatsComponent from './components/reserved-seats/reserved-seats.component';
 import ReserveSeatDirective from './directives/reserve-seat.directive';
 import ReserveSeatService from './services/reserve-seat.service';
+import TotalComponent from './components/total/total.component';
+import TotalService from './services/total.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import ReserveSeatService from './services/reserve-seat.service';
     FlightComponent,
     PassengersComponent,
     ReviewComponent,
+    SummaryTripComponent,
+    SummaryPassengerItemComponent,
     OneDateComponent,
     CalendarComponent,
     SelectTripComponent,
@@ -35,12 +41,18 @@ import ReserveSeatService from './services/reserve-seat.service';
     SelectSeatsDirective,
     ReservedSeatsComponent,
     ReserveSeatDirective,
+    TotalComponent,
   ],
   imports: [
     CommonModule,
     BookingRoutingModule,
     SharedModule,
   ],
-  providers: [CalendarService, SeatsCountService, ReserveSeatService],
+  providers: [
+    CalendarService,
+    SeatsCountService,
+    TotalService,
+    ReserveSeatService,
+  ],
 })
 export default class BookingModule { }

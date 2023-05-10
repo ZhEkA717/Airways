@@ -124,6 +124,7 @@
 
   .button-wrapper {
     display: flex;
+    align-items: center;
     gap: 30px;
   }
 
@@ -226,6 +227,7 @@
   }
 
   &__basket {
+    height: fit-content !important;
     cursor: pointer;
     border: none !important;
     background: transparent !important;
@@ -245,7 +247,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: opacity .5s;
-  
+
   width: 114px;
   gap: 15px;
 

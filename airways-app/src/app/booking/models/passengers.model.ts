@@ -10,7 +10,15 @@ export interface PassengersInfo {
   firstName: string,
   lastName: string,
   gender: string,
-  baggage: string,
+  baggage: Baggage,
   date: string,
   isCripple: boolean,
+}
+
+export interface Baggage {
+  type: string,
+  weight: number,
+  size: string,
+  text: string,
+  price: number,
 }
