@@ -19,6 +19,7 @@ import SeatsCountService from './services/seats-count.service';
 import ReservedSeatsComponent from './components/reserved-seats/reserved-seats.component';
 import ReserveSeatDirective from './directives/reserve-seat.directive';
 import ReserveSeatService from './services/reserve-seat.service';
+import SeatsStyleDirective from './directives/seats-style.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import ReserveSeatService from './services/reserve-seat.service';
     SelectSeatsDirective,
     ReservedSeatsComponent,
     ReserveSeatDirective,
+    SeatsStyleDirective,
   ],
   imports: [
     CommonModule,

@@ -14,7 +14,7 @@ export default class ReservedSeatsComponent implements OnInit {
 
   private columnSeats = SEATS_ALL / this.seatNumber;
 
-  private seatsNumbers = ['A', 'B', 'C', 'D', 'E', 'F'];
+  public seatsNumbers = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   public arraySeats: string[][] = [];
 

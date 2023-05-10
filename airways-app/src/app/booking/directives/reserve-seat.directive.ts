@@ -42,7 +42,7 @@ export default class ReserveSeatDirective {
     if (this.reserveSeatService.getReservedLength
       !== this.passengerLength && !this.elSeat.classList.contains('disabled')) {
       this.reserveSeatService.setReserved(`${this.k + 1}${this.seat}`);
-      this.r.setStyle(this.el.nativeElement, 'background', '#9d3f3f');
+      this.r.setStyle(this.el.nativeElement, 'background', 'orange');
       this.r.setStyle(this.el.nativeElement, 'color', '#ffffff');
     }
   }
