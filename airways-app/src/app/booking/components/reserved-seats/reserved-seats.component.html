@@ -1,0 +1,26 @@
+<mat-card class="container">
+  <div
+    class="seats"
+    *ngFor="let seats of arraySeats;
+    let i = index"
+  >
+    <div
+      class="seat-wrapper"
+      *ngFor="let seat of seats;
+      let k = index">
+      <div
+        [ngClass]="{hide: (i !== 2)}"
+        class="seat-column-number">
+        {{i === 2 ? k + 1 : ''}}
+      </div>
+      <div
+        appReserveSeat
+        [passengerLength]="passengerLength"
+        [seat]="seat"
+        [k] = "k"
+        class="seat">
+        <span>{{seat}}</span>
+      </div>
+    </div>
+  </div>
+</mat-card>

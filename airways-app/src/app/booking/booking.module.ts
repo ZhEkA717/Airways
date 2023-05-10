@@ -16,6 +16,9 @@ import ToFloorPipe from './pipes/to-floor.pipe';
 import SeatsCountDirective from './directives/seats-count.directive';
 import SelectSeatsDirective from './directives/select-seats.directive';
 import SeatsCountService from './services/seats-count.service';
+import ReservedSeatsComponent from './components/reserved-seats/reserved-seats.component';
+import ReserveSeatDirective from './directives/reserve-seat.directive';
+import ReserveSeatService from './services/reserve-seat.service';
 
 @NgModule({
   declarations: [
@@ -30,12 +33,14 @@ import SeatsCountService from './services/seats-count.service';
     ToFloorPipe,
     SeatsCountDirective,
     SelectSeatsDirective,
+    ReservedSeatsComponent,
+    ReserveSeatDirective,
   ],
   imports: [
     CommonModule,
     BookingRoutingModule,
     SharedModule,
   ],
-  providers: [CalendarService, SeatsCountService],
+  providers: [CalendarService, SeatsCountService, ReserveSeatService],
 })
 export default class BookingModule { }

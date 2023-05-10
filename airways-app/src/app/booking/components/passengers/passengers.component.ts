@@ -23,6 +23,7 @@ import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/set
 import { Passenger } from 'src/app/shared/model/persons.model';
 import AirportsService from 'src/app/shared/services/airports.service';
 import { PassengersForm } from '../../models/passengers.model';
+import ReserveSeatService from '../../services/reserve-seat.service';
 
 export const MY_FORMAT = {
   display: {
@@ -58,7 +59,11 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   private subMoneyFormat!: Subscription;
 
+  private subSeats!: Subscription;
+
   public passengersName: string[] = [];
+
+  public passengersWithoutInfant: string[] = [];
 
   public id!: number | null;
 
@@ -67,6 +72,8 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   public isTitleLastName = false;
 
   public moneyFormat!: string;
+
+  public seats: string[] = [];
 
   public form = new FormGroup({
     passengers: new FormArray([]),
@@ -89,6 +96,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     private router: Router,
     public location: Location,
     public airportsService: AirportsService,
+    public reserveSeatService: ReserveSeatService,
   ) {}
 
   ngOnInit(): void {
@@ -100,6 +108,8 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
     this.subSearchForm = this.searchForm$.subscribe((res) => {
       this.fillPassengersName(res);
+      this.passengersWithoutInfant = this.passengersName
+        .filter((item) => item !== 'Infant');
     });
 
     this.fillPassengersFormGroup();
@@ -115,12 +125,18 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.subMoneyFormat = this.moneyFormat$.subscribe((moneyFormat) => {
       this.moneyFormat = moneyFormat;
     });
+
+    this.subSeats = this.reserveSeatService.reservedSeats$
+      .subscribe((seats) => {
+        this.seats = seats;
+      });
   }
 
   ngOnDestroy(): void {
     this.subSearchForm.unsubscribe();
     this.subDate.unsubscribe();
     this.subMoneyFormat.unsubscribe();
+    this.subSeats?.unsubscribe();
   }
 
   get passengers() {
