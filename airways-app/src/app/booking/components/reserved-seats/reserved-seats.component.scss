@@ -12,6 +12,11 @@
     justify-content: center;
     gap: 10px;
   }
+
+  @media (max-width: 500px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .seats {
@@ -21,8 +26,9 @@
 
   @media (max-width: 1000px) {
     flex-direction: column;
+    width: 100%;
     &:nth-child(3) {
-      width: 100px;
+      width: 200%;
       margin-right: -10px;
 
       .seat-wrapper {
@@ -35,7 +41,7 @@
     width: 100%;
 
     @media (max-width: 1000px) {
-      width: 50px;
+      // width: 50px;
       display: flex;
       flex-direction: row-reverse;
     }
@@ -50,8 +56,11 @@
       transform: rotate(-90deg);
 
       @media (max-width: 1000px) {
-        width: 50px;
         transform: rotate(0deg);
+      }
+
+      @media (max-width: 560px) {
+        height: 30px
       }
 
       &.hide {
@@ -70,6 +79,10 @@
       cursor: pointer;
       transition: background .3s;
 
+      @media (max-width: 560px) {
+        height: 30px;
+      }
+
       span {
         transform: rotate(-90deg);
 
@@ -80,7 +93,8 @@
 
 
       @media (max-width: 1000px) {
-        width: 50px;
+        // width: 50px;
+
       }
 
       border: none;
