@@ -13,6 +13,8 @@ import ReserveSeatService from '../services/reserve-seat.service';
 export default class ReserveSeatDirective {
   @Input() passengerLength!: number;
 
+  @Input() elSeat!: HTMLElement;
+
   @Input() seat!: string;
 
   @Input() k!: number;
@@ -38,7 +40,7 @@ export default class ReserveSeatDirective {
 
   private setReservedStyle() {
     if (this.reserveSeatService.getReservedLength
-      !== this.passengerLength) {
+      !== this.passengerLength && !this.elSeat.classList.contains('disabled')) {
       this.reserveSeatService.setReserved(`${this.k + 1}${this.seat}`);
       this.r.setStyle(this.el.nativeElement, 'background', '#9d3f3f');
       this.r.setStyle(this.el.nativeElement, 'color', '#ffffff');
@@ -46,8 +48,10 @@ export default class ReserveSeatDirective {
   }
 
   private resetReservedStyle() {
-    this.reserveSeatService.deleteReserved(`${this.k + 1}${this.seat}`);
-    this.r.setStyle(this.el.nativeElement, 'background', '');
-    this.r.setStyle(this.el.nativeElement, 'color', '');
+    if (!this.elSeat.classList.contains('disabled')) {
+      this.reserveSeatService.deleteReserved(`${this.k + 1}${this.seat}`);
+      this.r.setStyle(this.el.nativeElement, 'background', '');
+      this.r.setStyle(this.el.nativeElement, 'color', '');
+    }
   }
 }
