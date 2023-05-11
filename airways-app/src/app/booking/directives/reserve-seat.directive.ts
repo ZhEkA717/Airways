@@ -42,7 +42,9 @@ export default class ReserveSeatDirective implements OnInit, OnDestroy {
       seats?.forEach((item) => {
         const number = item?.slice(0, -1);
         const letter = item?.substring(item.length - 1);
-        if (this.seat === letter && this.k + 1 === +number) {
+        if (this.seat === letter
+            && this.k + 1 === +number
+            && this.reserveSeatService.getReservedLength) {
           this.isReserved = true;
           this.r.setStyle(this.el.nativeElement, 'background', 'orange');
           this.r.setStyle(this.el.nativeElement, 'color', '#ffffff');

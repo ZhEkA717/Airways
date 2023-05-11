@@ -2,7 +2,7 @@
   <div
     *ngFor="let item of getPrices"
     class="type-passenger"
-    [ngClass]="{isVisiable: !item.isVisiable}"
+    [ngClass]="{isVisible: !item.isVisible}"
   >
     <div class="title">
       <div class="type">{{item.amount}} x {{item.type}} Fare</div>
