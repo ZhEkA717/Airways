@@ -47,7 +47,8 @@ export default class FlightFormComponent {
     };
     this.store.dispatch(send(search));
     this.store.dispatch(sendPassengerForm(<PassengersForm>{}));
-    this.reserveSeatService.resetReservedSeats();
+    this.reserveSeatService.resetReservedSeatsThere();
+    this.reserveSeatService.resetReservedSeatsBack();
     this.store.dispatch(resetFlight());
     this.router.navigate(['booking', 'flight']);
   }

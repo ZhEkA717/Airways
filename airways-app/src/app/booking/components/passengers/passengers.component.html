@@ -239,15 +239,29 @@
   </div>
 
   <div
-    *ngIf="reserveSeatService.reservedSeats$ | async as reservedSeats"
+    *ngIf="reserveSeatService.reservedSeatsThere$ | async as reservedSeatsThere"
     class="subtitle">
-    You have reserved {{reservedSeats.length}}
-    / {{passengersWithoutInfant.length}} tickets.
+    You have booked {{reservedSeatsThere.length}}
+    / {{ passengersWithoutInfant.length}} seats in the direct direction.
   </div>
 
   <app-reserved-seats
     [passengerLength]="passengersWithoutInfant.length"
   ></app-reserved-seats>
+
+  <div *ngIf="tripWay === 'round' ">
+    <div
+      *ngIf="reserveSeatService.reservedSeatsBack$ | async as reservedSeatsBack"
+      class="subtitle">
+       You have booked {{reservedSeatsBack.length}}
+      / {{ passengersWithoutInfant.length}} seats in the opposite direction.
+    </div>
+
+    <app-reserved-seats
+      [isRound]="true"
+      [passengerLength]="passengersWithoutInfant.length"
+    ></app-reserved-seats>
+  </div>
 
 
   <div class="main-title">
@@ -338,9 +352,11 @@
       (click)="toFlight()"
     >Back</button>
     <button
-      *ngIf="reserveSeatService.reservedSeats$ | async as reservedSeats"
       [disabled]="form.invalid
-        || reservedSeats.length !== passengersWithoutInfant.length"
+        || seatsThere.length !== passengersWithoutInfant.length
+        || tripWay === 'round'
+          ? seatsBack.length !== passengersWithoutInfant.length
+          : false"
       mat-raised-button
       color="primary"
       type="submit"

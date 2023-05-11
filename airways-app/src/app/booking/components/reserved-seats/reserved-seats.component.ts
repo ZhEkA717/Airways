@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import ReserveSeatService from '../../services/reserve-seat.service';
-
-const SEATS_ALL = 144;
+import { SEATS_ALL } from '../../services/seats-count.service';
 
 @Component({
   selector: 'app-reserved-seats',
@@ -11,6 +9,8 @@ const SEATS_ALL = 144;
 export default class ReservedSeatsComponent implements OnInit {
   @Input() passengerLength!: number;
 
+  @Input() isRound!: boolean;
+
   private seatNumber = 6;
 
   private columnSeats = SEATS_ALL / this.seatNumber;
@@ -18,8 +18,6 @@ export default class ReservedSeatsComponent implements OnInit {
   public seatsNumbers = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   public arraySeats: string[][] = [];
-
-  constructor(private reserveSeatService: ReserveSeatService) {}
 
   private get getArraySeats() {
     const arr: string[][] = [];

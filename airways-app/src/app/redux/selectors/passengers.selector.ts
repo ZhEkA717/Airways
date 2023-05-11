@@ -15,8 +15,3 @@ export const selectPassengers = createSelector(
   selectPassengerForm,
   (form: PassengersForm) => form.passengers,
 );
-
-export const selectSeats = createSelector(
-  selectPassengerForm,
-  (form: PassengersForm) => form.passengers?.map((item) => item.seat),
-);

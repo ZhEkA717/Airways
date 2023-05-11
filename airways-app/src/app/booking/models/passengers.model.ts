@@ -13,7 +13,6 @@ export interface PassengersInfo {
   baggage: Baggage,
   date: string,
   isCripple: boolean,
-  seat: string,
 }
 
 export interface Baggage {

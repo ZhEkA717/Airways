@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const SEATS_ALL = 140;
+export const SEATS_ALL = 144;
 
 @Injectable()
 export default class SeatsCountService {

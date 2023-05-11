@@ -5,33 +5,57 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export default class ReserveSeatService {
-  private reserve = new BehaviorSubject<string[]>([]);
+  // there
 
-  public reservedSeats$ = this.reserve.asObservable();
+  private reservedSeatsThere = new BehaviorSubject<string[]>([]);
 
-  private reservedSeats: string[] = [];
+  public reservedSeatsThere$ = this.reservedSeatsThere.asObservable();
 
-  public setReserved(seat: string) {
-    this.reservedSeats.push(seat);
-    this.reserve.next(this.reservedSeats);
+  public setReservedThere(seat: string) {
+    this.reservedSeatsThere.next([...this.reservedSeatsThere.getValue(), seat]);
   }
 
-  public deleteReserved(seat: string) {
-    this.reservedSeats = this.reservedSeats
-      .filter((item) => item !== seat);
-    this.reserve.next(this.reservedSeats);
+  public deleteReservedThere(seat: string) {
+    this.reservedSeatsThere.next(this.reservedSeatsThere.getValue()
+      .filter((item) => item !== seat));
   }
 
-  public resetReservedSeats() {
-    this.reservedSeats = [];
-    this.reserve.next(this.reservedSeats);
+  public resetReservedSeatsThere() {
+    this.reservedSeatsThere.next([]);
   }
 
-  public get getReservedSeats() {
-    return this.reservedSeats;
+  public get getReservedSeatsThere() {
+    return this.reservedSeatsThere.getValue();
   }
 
-  public get getReservedLength() {
-    return this.reservedSeats.length;
+  public get getReservedLengthThere() {
+    return this.reservedSeatsThere.getValue().length;
+  }
+
+  // back
+
+  private reservedSeatsBack = new BehaviorSubject<string[]>([]);
+
+  public reservedSeatsBack$ = this.reservedSeatsBack.asObservable();
+
+  public setReservedBack(seat: string) {
+    this.reservedSeatsBack.next([...this.reservedSeatsBack.getValue(), seat]);
+  }
+
+  public deleteReservedBack(seat: string) {
+    this.reservedSeatsBack.next(this.reservedSeatsBack.getValue()
+      .filter((item) => item !== seat));
+  }
+
+  public resetReservedSeatsBack() {
+    this.reservedSeatsBack.next([]);
+  }
+
+  public get getReservedSeatsBack() {
+    return this.reservedSeatsBack.getValue();
+  }
+
+  public get getReservedLengthBack() {
+    return this.reservedSeatsBack.getValue().length;
   }
 }

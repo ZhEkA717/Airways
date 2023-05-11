@@ -7,6 +7,8 @@ export enum FlightAction {
   thereSelect = '[FLIGHT] save there select',
   backSelect = '[FLIGHT] save back select',
   resetFlight = '[FLIGHT] reset flight state',
+  thereSeats = '[FLIGHT] save there seats',
+  backSeats = '[FLIGHT] save back seats',
 }
 
 export const saveThereTrip = createAction(
@@ -27,6 +29,16 @@ export const thereSelect = createAction(
 export const backSelect = createAction(
   FlightAction.backSelect,
   props<{ back: boolean }>(),
+);
+
+export const thereSeats = createAction(
+  FlightAction.thereSeats,
+  props<{ thereSeats: string[] }>(),
+);
+
+export const backSeats = createAction(
+  FlightAction.backSeats,
+  props<{ backSeats: string[] }>(),
 );
 
 export const resetFlight = createAction(
