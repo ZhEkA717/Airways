@@ -33,3 +33,13 @@ export const selectBackChoise = createSelector(
   selectFlight,
   (trip: TripState) => trip.backSelect,
 );
+
+export const selectThereSeats = createSelector(
+  selectFlight,
+  (trip: TripState) => trip.thereSeats,
+);
+
+export const selectBackSeats = createSelector(
+  selectFlight,
+  (trip: TripState) => trip.backSeats,
+);
