@@ -18,6 +18,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatBadgeModule } from '@angular/material/badge';
 import SelectPassengersComponent from './components/select-passengers/select-passengers.component';
 import SelectValidateDirective from './directives/select-validate.directive';
 import RangeDateComponent from './components/range-date/range-date.component';
@@ -51,6 +52,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     MatSnackBarModule,
     MatTableModule,
     OverlayModule,
+    MatBadgeModule,
   ],
   exports: [
     FormsModule,
@@ -75,6 +77,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     MatSlideToggleModule,
     MatSnackBarModule,
     MatTableModule,
+    MatBadgeModule,
   ],
 })
 export default class SharedModule { }

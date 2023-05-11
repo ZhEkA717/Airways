@@ -5,6 +5,7 @@ import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/set
 import { MatDialog } from '@angular/material/dialog';
 import AuthDialogComponent from 'src/app/auth/components/auth-dialog/auth-dialog.component';
 import { filter, map } from 'rxjs/operators';
+import { selectAmountCart } from 'src/app/redux/selectors/cart.selector';
 import FormatService from '../../services/format.service';
 import HeaderService from '../../services/header.service';
 import AuthService from '../../../auth/services/auth.service';
@@ -30,6 +31,8 @@ export default class HeaderComponent {
   public isOverlayOpen = false;
 
   public loginButtonCaption = 'Sign in';
+
+  public cartAmount$ = this.store.select(selectAmountCart);
 
   constructor(
     private router: Router,

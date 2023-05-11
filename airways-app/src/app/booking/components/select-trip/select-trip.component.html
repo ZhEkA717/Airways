@@ -5,7 +5,7 @@
       <div class="from__time">
         {{selectTrip.departDate | date: 'h:mm'}} <span>UTC +0</span>
       </div>
-      <div class="from__location">{{selectTrip.from}}</div>
+      <div class="from__location">{{selectTrip.from.city}}</div>
     </div>
 
     <div class="flight-time">
@@ -23,7 +23,7 @@
       <div class="to__time">
         {{selectTrip.arriveDate | date: 'h:mm'}} <span>UTC +0</span>
       </div>
-      <div class="to__location">{{selectTrip.to}}</div>
+      <div class="to__location">{{selectTrip.to.city}}</div>
     </div>
   </div>
   <div class="flight-number">

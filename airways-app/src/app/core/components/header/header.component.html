@@ -114,7 +114,12 @@
     </ng-template>
   </div>
   <div class="button-wrapper">
-    <button [routerLink]="['/cart']" class="button header__basket">
+    <button
+      [matBadge]="cartAmount$ | async"
+      matBadgeColor="warn"
+      [matBadgeHidden]="!!(cartAmount$ | async) !== true"
+      [routerLink]="['/cart']" class="button header__basket"
+    >
       <img
         class="header__basket__img"
         src="assets/icons/basket.svg"

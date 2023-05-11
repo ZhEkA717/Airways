@@ -219,7 +219,6 @@
           <div class="pay">PAID</div>
         </mat-button-toggle>
       </mat-button-toggle-group>
-
       <div
         class="slide-toggle"
         *ngIf="passengersName[i] !== 'Infant' "
@@ -233,6 +232,23 @@
       </div>
     </div>
   </mat-card>
+
+  <div class="main-title">
+    <mat-icon class="icon">event_seat</mat-icon>
+    <div class="title">Reserved Seats</div>
+  </div>
+
+  <div
+    *ngIf="reserveSeatService.reservedSeats$ | async as reservedSeats"
+    class="subtitle">
+    You have reserved {{reservedSeats.length}}
+    / {{passengersWithoutInfant.length}} tickets.
+  </div>
+
+  <app-reserved-seats
+    [passengerLength]="passengersWithoutInfant.length"
+  ></app-reserved-seats>
+
 
   <div class="main-title">
     <mat-icon class="icon">contacts</mat-icon>
@@ -322,7 +338,9 @@
       (click)="toFlight()"
     >Back</button>
     <button
-      [disabled]="form.invalid"
+      *ngIf="reserveSeatService.reservedSeats$ | async as reservedSeats"
+      [disabled]="form.invalid
+        || reservedSeats.length !== passengersWithoutInfant.length"
       mat-raised-button
       color="primary"
       type="submit"
