@@ -11,6 +11,6 @@
       Baggage price {{(passenger.baggage.price * convertMoneyService.moneyRatio).toFixed(1)}}
       {{convertMoneyService.moneyIcon}}
     </li>
-    <li>Seat 19E</li>
+    <li *ngIf="passenger.seat">Seat {{passenger.seat}}</li>
   </ul>
 </div>

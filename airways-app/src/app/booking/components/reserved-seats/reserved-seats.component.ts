@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import ReserveSeatService from '../../services/reserve-seat.service';
 
 const SEATS_ALL = 144;
 
@@ -17,6 +18,8 @@ export default class ReservedSeatsComponent implements OnInit {
   public seatsNumbers = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   public arraySeats: string[][] = [];
+
+  constructor(private reserveSeatService: ReserveSeatService) {}
 
   private get getArraySeats() {
     const arr: string[][] = [];

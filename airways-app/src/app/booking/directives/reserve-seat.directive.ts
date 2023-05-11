@@ -3,14 +3,19 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnDestroy,
+  OnInit,
   Renderer2,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectSeats } from 'src/app/redux/selectors/passengers.selector';
+import { Subscription } from 'rxjs';
 import ReserveSeatService from '../services/reserve-seat.service';
 
 @Directive({
   selector: '[appReserveSeat]',
 })
-export default class ReserveSeatDirective {
+export default class ReserveSeatDirective implements OnInit, OnDestroy {
   @Input() passengerLength!: number;
 
   @Input() elSeat!: HTMLElement;
@@ -21,11 +26,34 @@ export default class ReserveSeatDirective {
 
   public isReserved = false;
 
+  private seats$ = this.store.select(selectSeats);
+
+  private subSeats!: Subscription;
+
   constructor(
     private el: ElementRef,
     private r: Renderer2,
+    private store: Store,
     private reserveSeatService: ReserveSeatService,
   ) {}
+
+  ngOnInit(): void {
+    this.subSeats = this.seats$.subscribe((seats) => {
+      seats?.forEach((item) => {
+        const number = item?.slice(0, -1);
+        const letter = item?.substring(item.length - 1);
+        if (this.seat === letter && this.k + 1 === +number) {
+          this.isReserved = true;
+          this.r.setStyle(this.el.nativeElement, 'background', 'orange');
+          this.r.setStyle(this.el.nativeElement, 'color', '#ffffff');
+        }
+      });
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subSeats?.unsubscribe();
+  }
 
   @HostListener('click')
   onClick() {

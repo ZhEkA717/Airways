@@ -2,7 +2,7 @@ export interface PassengersForm {
   countryCode: string,
   phone: string,
   email: string
-  passengers: PassengersInfo[]
+  passengers: PassengersInfo[],
 }
 
 export interface PassengersInfo {
@@ -13,6 +13,7 @@ export interface PassengersInfo {
   baggage: Baggage,
   date: string,
   isCripple: boolean,
+  seat: string,
 }
 
 export interface Baggage {

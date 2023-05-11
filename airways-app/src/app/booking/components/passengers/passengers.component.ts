@@ -249,6 +249,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
         ...item,
         type: this.passengersName[i],
         baggage: this.getBaggage(this.passengers.value[i].baggage),
+        seat: this.seats?.[i],
       }));
 
     const form = {

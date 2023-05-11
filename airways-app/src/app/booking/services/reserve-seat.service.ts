@@ -9,14 +9,19 @@ export default class ReserveSeatService {
 
   private reservedSeats: string[] = [];
 
-  setReserved(seat: string) {
+  public setReserved(seat: string) {
     this.reservedSeats.push(seat);
     this.reserve.next(this.reservedSeats);
   }
 
-  deleteReserved(seat: string) {
+  public deleteReserved(seat: string) {
     this.reservedSeats = this.reservedSeats
       .filter((item) => item !== seat);
+    this.reserve.next(this.reservedSeats);
+  }
+
+  public resetReservedSeats() {
+    this.reservedSeats = [];
     this.reserve.next(this.reservedSeats);
   }
 
