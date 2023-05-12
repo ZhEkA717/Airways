@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { send as sendPassengerForm } from 'src/app/redux/actions/passengers.action';
 import { PassengersForm } from 'src/app/booking/models/passengers.model';
 import { resetFlight } from 'src/app/redux/actions/flight.action';
+import ReserveSeatService from 'src/app/booking/services/reserve-seat.service';
 import { FlightSearch, TripWay } from '../model/flight-search.model';
 
 @Component({
@@ -23,6 +24,7 @@ export default class FlightFormComponent {
     public selectService: SelectsService,
     public rangeDateService: RangeDateService,
     public autocompleteService: AutocompleteService,
+    private reserveSeatService: ReserveSeatService,
     private router: Router,
     private store: Store,
   ) { }
@@ -45,6 +47,8 @@ export default class FlightFormComponent {
     };
     this.store.dispatch(send(search));
     this.store.dispatch(sendPassengerForm(<PassengersForm>{}));
+    this.reserveSeatService.resetReservedSeatsThere();
+    this.reserveSeatService.resetReservedSeatsBack();
     this.store.dispatch(resetFlight());
     this.router.navigate(['booking', 'flight']);
   }

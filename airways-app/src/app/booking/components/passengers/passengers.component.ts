@@ -16,12 +16,14 @@ import { Observable, Subscription } from 'rxjs';
 import DateValidator from 'src/app/auth/Validators/dateValidator';
 import TextValidator from 'src/app/auth/Validators/text.validator';
 import HeaderService from 'src/app/core/services/header.service';
-import { FlightSearch } from 'src/app/main/model/flight-search.model';
+import { FlightSearch, TripWay } from 'src/app/main/model/flight-search.model';
 import { send } from 'src/app/redux/actions/passengers.action';
-import { selectSearch } from 'src/app/redux/selectors/search.selector';
+import { selectSearch, selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
 import AirportsService from 'src/app/shared/services/airports.service';
 import { selectPassengerForm } from 'src/app/redux/selectors/passengers.selector';
+import { backSeats, thereSeats } from 'src/app/redux/actions/flight.action';
+import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
 import ReserveSeatService from '../../services/reserve-seat.service';
 import { Baggage, PassengersForm, PassengersInfo } from '../../models/passengers.model';
 
@@ -59,7 +61,9 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   private subMoneyFormat!: Subscription;
 
-  private subSeats!: Subscription;
+  private subSeatsThere!: Subscription;
+
+  private subSeatsBack!: Subscription;
 
   public passengersName: string[] = [];
 
@@ -73,7 +77,9 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   public moneyFormat!: string;
 
-  public seats: string[] = [];
+  public seatsThere: string[] = [];
+
+  public seatsBack: string[] = [];
 
   public form = new FormGroup({
     passengers: new FormArray([]),
@@ -90,6 +96,16 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     ]),
   });
 
+  public flightThere$ = this.store.select(selectThereTrip);
+
+  public flightBack$ = this.store.select(selectBackTrip);
+
+  private tripWay$ = this.store.select(selectTripWay);
+
+  public tripWay!: TripWay;
+
+  private subTripWay!: Subscription;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
@@ -104,6 +120,10 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       flight: true,
       passengers: true,
       review: false,
+    });
+
+    this.subTripWay = this.tripWay$.subscribe((way) => {
+      this.tripWay = way;
     });
 
     this.subSearchForm = this.searchForm$.subscribe((res) => {
@@ -126,9 +146,14 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       this.moneyFormat = moneyFormat;
     });
 
-    this.subSeats = this.reserveSeatService.reservedSeats$
+    this.subSeatsThere = this.reserveSeatService.reservedSeatsThere$
       .subscribe((seats) => {
-        this.seats = seats;
+        this.seatsThere = seats;
+      });
+
+    this.subSeatsBack = this.reserveSeatService.reservedSeatsBack$
+      .subscribe((seats) => {
+        this.seatsBack = seats;
       });
 
     this.store.select(selectPassengerForm).subscribe((form) => {
@@ -151,7 +176,9 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.subSearchForm.unsubscribe();
     this.subDate.unsubscribe();
     this.subMoneyFormat.unsubscribe();
-    this.subSeats?.unsubscribe();
+    this.subSeatsThere?.unsubscribe();
+    this.subSeatsBack?.unsubscribe();
+    this.subTripWay?.unsubscribe();
   }
 
   get passengers() {
@@ -257,6 +284,9 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     };
 
     this.store.dispatch(send(form as PassengersForm));
+
+    this.store.dispatch(thereSeats({ thereSeats: this.seatsThere }));
+    this.store.dispatch(backSeats({ backSeats: this.seatsBack }));
 
     if (this.form.valid) {
       this.toReview();

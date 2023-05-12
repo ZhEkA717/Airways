@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-const SEATS_ALL = 144;
+import { SEATS_ALL } from '../../services/seats-count.service';
 
 @Component({
   selector: 'app-reserved-seats',
@@ -9,6 +8,8 @@ const SEATS_ALL = 144;
 })
 export default class ReservedSeatsComponent implements OnInit {
   @Input() passengerLength!: number;
+
+  @Input() isRound!: boolean;
 
   private seatNumber = 6;
 

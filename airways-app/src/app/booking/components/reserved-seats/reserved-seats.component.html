@@ -1,20 +1,3 @@
-<mat-card class="card-keys">
-  <div class="title">Keys</div>
-  <div class="seat-keys">
-    <div class="key">
-      <div class="seat regular"></div>
-      <div class="text">Regular</div>
-    </div>
-    <div class="key">
-      <div class="seat reserved"></div>
-      <div class="text">Selected</div>
-    </div>
-    <div class="key">
-      <div class="seat disabled"></div>
-      <div class="text">Already reserved</div>
-    </div>
-  </div>
-</mat-card>
 <div class="container">
   <mat-card class="card-seats">
     <div
@@ -37,8 +20,8 @@
       <div
         #elSeat
         appReserveSeat
-        appSeatsStyle
         [passengerLength]="passengerLength"
+        [isRound]="isRound"
         [elSeat]="elSeat"
         [seat]="seat"
         [k] = "k"

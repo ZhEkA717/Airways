@@ -22,7 +22,9 @@
     </div>
   </div>
   <app-summary-passenger-item
-    *ngFor="let passenger of passengers$ | async"
+    *ngFor="let passenger of (passengers$ | async); let i = index"
     [passenger]="passenger"
+    [i]="i"
+    [seats]="isRound ? backSeats : thereSeats"
   ></app-summary-passenger-item>
 </mat-card>

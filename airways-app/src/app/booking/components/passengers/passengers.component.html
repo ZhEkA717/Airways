@@ -238,16 +238,58 @@
     <div class="title">Reserved Seats</div>
   </div>
 
+  <mat-card class="card-keys">
+    <div class="title">Keys</div>
+    <div class="seat-keys">
+      <div class="key">
+        <div class="seat regular"></div>
+        <div class="text">Regular</div>
+      </div>
+      <div class="key">
+        <div class="seat reserved"></div>
+        <div class="text">Selected</div>
+      </div>
+      <div class="key">
+        <div class="seat disabled"></div>
+        <div class="text">Already reserved</div>
+      </div>
+    </div>
+  </mat-card>
+
   <div
-    *ngIf="reserveSeatService.reservedSeats$ | async as reservedSeats"
+    *ngIf="reserveSeatService.reservedSeatsThere$ | async as reservedSeatsThere"
     class="subtitle">
-    You have reserved {{reservedSeats.length}}
-    / {{passengersWithoutInfant.length}} tickets.
+    You have booked {{reservedSeatsThere.length}}
+    / {{ passengersWithoutInfant.length}} seats
+    <span
+      class="direction"
+      *ngIf="flightThere$ | async as there">
+      ( {{there.from.city}} &mdash; {{there.to.city}} ).
+    </span>
   </div>
 
   <app-reserved-seats
     [passengerLength]="passengersWithoutInfant.length"
   ></app-reserved-seats>
+
+  <div *ngIf="tripWay === 'round' ">
+    <div
+      *ngIf="reserveSeatService.reservedSeatsBack$ | async as reservedSeatsBack"
+      class="subtitle">
+       You have booked {{reservedSeatsBack.length}}
+      / {{ passengersWithoutInfant.length}} seats
+      <span
+        class="direction"
+        *ngIf="flightBack$ | async as back">
+        ( {{back.from.city}} &mdash; {{back.to.city}} ).
+      </span>
+    </div>
+
+    <app-reserved-seats
+      [isRound]="true"
+      [passengerLength]="passengersWithoutInfant.length"
+    ></app-reserved-seats>
+  </div>
 
 
   <div class="main-title">
@@ -338,9 +380,11 @@
       (click)="toFlight()"
     >Back</button>
     <button
-      *ngIf="reserveSeatService.reservedSeats$ | async as reservedSeats"
       [disabled]="form.invalid
-        || reservedSeats.length !== passengersWithoutInfant.length"
+        || (tripWay === 'round'
+          ? (seatsBack.length !== passengersWithoutInfant.length
+          || seatsThere.length !== passengersWithoutInfant.length)
+          : seatsThere.length !== passengersWithoutInfant.length)"
       mat-raised-button
       color="primary"
       type="submit"

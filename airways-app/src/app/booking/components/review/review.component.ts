@@ -4,7 +4,12 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
 import { saveBackTrip } from 'src/app/redux/actions/flight.action';
-import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
+import {
+  selectBackSeats,
+  selectBackTrip,
+  selectThereSeats,
+  selectThereTrip,
+} from 'src/app/redux/selectors/flight.selector';
 import { selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { TripWay } from 'src/app/main/model/flight-search.model';
@@ -25,11 +30,19 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   public backTrip: Trip = <Trip>{};
 
+  public thereSeats: string[] = [];
+
+  public backSeats: string[] = [];
+
   private thereTrip$ = this.store.select(selectThereTrip);
 
   private backTrip$ = this.store.select(selectBackTrip);
 
   private tripWay$ = this.store.select(selectTripWay);
+
+  public thereSeats$ = this.store.select(selectThereSeats);
+
+  public backSeats$ = this.store.select(selectBackSeats);
 
   private totalInfo: TotalInfo = <TotalInfo>{};
 
@@ -59,6 +72,14 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
     this.subBack = this.backTrip$.subscribe((back) => {
       this.backTrip = back;
+    });
+
+    this.thereSeats$.subscribe((there) => {
+      this.thereSeats = there;
+    });
+
+    this.backSeats$.subscribe((back) => {
+      this.backSeats = back;
     });
 
     this.tripWay$.subscribe((tripWay) => {
