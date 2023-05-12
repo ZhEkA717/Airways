@@ -3,15 +3,19 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnDestroy,
+  OnInit,
   Renderer2,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { selectBackSeats, selectThereSeats } from 'src/app/redux/selectors/flight.selector';
+import { Subscription } from 'rxjs';
 import ReserveSeatService from '../services/reserve-seat.service';
 
 @Directive({
   selector: '[appReserveSeat]',
 })
-export default class ReserveSeatDirective {
+export default class ReserveSeatDirective implements OnInit, OnDestroy {
   @Input() passengerLength!: number;
 
   @Input() isRound!: boolean;
@@ -24,6 +28,18 @@ export default class ReserveSeatDirective {
 
   public isReserved = false;
 
+  private thereSeats$ = this.store.select(selectThereSeats);
+
+  private backSeats$ = this.store.select(selectBackSeats);
+
+  private subThereSeats!: Subscription;
+
+  private subBackSeats!: Subscription;
+
+  private thereSeats: string[] = [];
+
+  private backSeats: string[] = [];
+
   constructor(
     private el: ElementRef,
     private r: Renderer2,
@@ -31,16 +47,37 @@ export default class ReserveSeatDirective {
     private reserveSeatService: ReserveSeatService,
   ) {}
 
-  // ngOnInit(): void {
-  //   const number = item?.slice(0, -1);
-  //   const letter = item?.substring(item.length - 1);
-  //   if (this.seat === letter
-  //       && this.k + 1 === +number
-  //       && this.reserveSeatService.getReservedLengthThere) {
-  //     this.isReserved = true;
-  //     this.setStyle();
-  //   }
-  // }
+  ngOnInit(): void {
+    this.subThereSeats = this.thereSeats$.subscribe((seats) => {
+      this.thereSeats = seats;
+    });
+    this.subBackSeats = this.backSeats$.subscribe((seats) => {
+      this.backSeats = seats;
+    });
+
+    this.saveStateSeats(this.isRound ? this.backSeats : this.thereSeats);
+  }
+
+  ngOnDestroy(): void {
+    this.subBackSeats?.unsubscribe();
+    this.subThereSeats?.unsubscribe();
+  }
+
+  private saveStateSeats(seats: string[]) {
+    seats.forEach((item) => {
+      const number = item?.slice(0, -1);
+      const letter = item?.substring(item.length - 1);
+      const length = this.isRound
+        ? this.reserveSeatService.getReservedLengthBack
+        : this.reserveSeatService.getReservedLengthThere;
+      if (this.seat === letter
+          && this.k + 1 === +number
+          && length) {
+        this.isReserved = true;
+        this.setStyle();
+      }
+    });
+  }
 
   @HostListener('click')
   onClick() {

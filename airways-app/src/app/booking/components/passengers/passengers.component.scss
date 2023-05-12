@@ -56,6 +56,11 @@
     font-size: 16px;
     letter-spacing: 0.5px;
     color: $text-average-color;
+
+    .direction {
+      white-space: nowrap;
+      font-weight: 500;
+    }
   }
 
   .form-group-wrapper {
@@ -324,5 +329,81 @@
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 16px;
+  }
+}
+
+.card-keys {
+  margin-top: 20px;
+  padding: 15px 44px 32px;
+
+  .title {
+    font-size: 20px;
+    color: $logo-color;
+    font-weight: 600;
+  }
+
+  .seat-keys {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    gap: 15px;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+    }
+
+    .text {
+      color: $logo-color;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .key {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+
+  }
+
+  .seat {
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    position: relative;
+    color: $button-border-color;
+
+
+    &.regular {
+      background: $base-primary-color;
+
+      &:before {
+        content: '';
+      }
+    }
+
+    &.reserved {
+      background: orange;
+
+      &:before {
+        content: '';
+      }
+    }
+
+    &.disabled {
+      background: #8e2929;
+      &:before {
+        content: '☒';
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+    }
   }
 }

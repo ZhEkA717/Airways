@@ -23,6 +23,7 @@ import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/set
 import AirportsService from 'src/app/shared/services/airports.service';
 import { selectPassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { backSeats, thereSeats } from 'src/app/redux/actions/flight.action';
+import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
 import ReserveSeatService from '../../services/reserve-seat.service';
 import { Baggage, PassengersForm, PassengersInfo } from '../../models/passengers.model';
 
@@ -94,6 +95,10 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       Validators.email,
     ]),
   });
+
+  public flightThere$ = this.store.select(selectThereTrip);
+
+  public flightBack$ = this.store.select(selectBackTrip);
 
   private tripWay$ = this.store.select(selectTripWay);
 

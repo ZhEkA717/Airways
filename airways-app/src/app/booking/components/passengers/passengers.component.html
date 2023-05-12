@@ -238,11 +238,34 @@
     <div class="title">Reserved Seats</div>
   </div>
 
+  <mat-card class="card-keys">
+    <div class="title">Keys</div>
+    <div class="seat-keys">
+      <div class="key">
+        <div class="seat regular"></div>
+        <div class="text">Regular</div>
+      </div>
+      <div class="key">
+        <div class="seat reserved"></div>
+        <div class="text">Selected</div>
+      </div>
+      <div class="key">
+        <div class="seat disabled"></div>
+        <div class="text">Already reserved</div>
+      </div>
+    </div>
+  </mat-card>
+
   <div
     *ngIf="reserveSeatService.reservedSeatsThere$ | async as reservedSeatsThere"
     class="subtitle">
     You have booked {{reservedSeatsThere.length}}
-    / {{ passengersWithoutInfant.length}} seats in the direct direction.
+    / {{ passengersWithoutInfant.length}} seats
+    <span
+      class="direction"
+      *ngIf="flightThere$ | async as there">
+      ( {{there.from.city}} &mdash; {{there.to.city}} ).
+    </span>
   </div>
 
   <app-reserved-seats
@@ -254,7 +277,12 @@
       *ngIf="reserveSeatService.reservedSeatsBack$ | async as reservedSeatsBack"
       class="subtitle">
        You have booked {{reservedSeatsBack.length}}
-      / {{ passengersWithoutInfant.length}} seats in the opposite direction.
+      / {{ passengersWithoutInfant.length}} seats
+      <span
+        class="direction"
+        *ngIf="flightBack$ | async as back">
+        ( {{back.from.city}} &mdash; {{back.to.city}} ).
+      </span>
     </div>
 
     <app-reserved-seats
@@ -353,10 +381,10 @@
     >Back</button>
     <button
       [disabled]="form.invalid
-        || seatsThere.length !== passengersWithoutInfant.length
-        || tripWay === 'round'
-          ? seatsBack.length !== passengersWithoutInfant.length
-          : false"
+        || (tripWay === 'round'
+          ? (seatsBack.length !== passengersWithoutInfant.length
+          || seatsThere.length !== passengersWithoutInfant.length)
+          : seatsThere.length !== passengersWithoutInfant.length)"
       mat-raised-button
       color="primary"
       type="submit"
