@@ -25,7 +25,13 @@
         [elSeat]="elSeat"
         [seat]="seat"
         [k] = "k"
-        class="seat">
+        class="seat"
+        [ngClass]="{
+          'disabled': isRound
+            ? reservedBack.includes(k+1 + seat)
+            : reservedThere.includes(k+1 + seat)
+          }"
+      >
         <span>{{seat}}</span>
       </div>
     </div>
