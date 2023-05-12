@@ -9,9 +9,9 @@ import { selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { TripWay } from 'src/app/main/model/flight-search.model';
 import { addToCart } from 'src/app/redux/actions/cart.action';
+import { CartItem } from 'src/app/shared/model/cart.model';
 import TotalService from '../../services/total.service';
 import { TotalInfo } from '../../models/total-info.model';
-import { CartItem } from '../../models/cart.model';
 
 @Component({
   selector: 'app-review',
