@@ -55,4 +55,8 @@ export default class HttpApiService {
     delete user.id;
     return this.http.post<UserResponse>(URL_REGISTER, user);
   }
+
+  setBookedSeats(tripId: number, seats: string[]) {
+    return this.http.patch<Trip>(`${URL_TRIPS}/${tripId}`, { seats: 144 - seats.length, bookedSeats: seats });
+  }
 }

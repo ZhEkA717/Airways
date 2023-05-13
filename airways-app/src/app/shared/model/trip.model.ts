@@ -7,6 +7,7 @@ export interface Trip {
   flightTime: string;
   arriveDate: string;
   seats: number;
+  bookedSeats: string[];
   price: number;
   day?: string;
 }
