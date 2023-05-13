@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectCartItems } from '../../redux/selectors/cart.selector';
 
 // TODO: Need to move to external model files
 export type FlightType = 'One way' | 'Round trip';
@@ -32,8 +34,9 @@ const MOCK_DATA: Flight[] = [
 export class CartService {
   public table: Flight[] = [];
 
-  constructor() {
+  constructor(private store: Store) {
     this.table = MOCK_DATA;
+    store.select(selectCartItems).subscribe((res) => console.log(res));
   }
 
   getTotalPrice() {
