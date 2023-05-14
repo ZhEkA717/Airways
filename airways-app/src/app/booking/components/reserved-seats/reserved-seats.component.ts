@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { selectBookedBack, selectBookedThere } from 'src/app/redux/selectors/flight.selector';
+import { Store } from '@ngrx/store';
 import { SEATS_ALL } from '../../services/seats-count.service';
 
 @Component({
@@ -19,9 +21,11 @@ export default class ReservedSeatsComponent implements OnInit {
 
   public arraySeats: string[][] = [];
 
-  public reservedThere = ['1A', '1B', '1C', '2E', '2F', '12C', '14D', '18F']; // mock data
+  public bookedThere$ = this.store.select(selectBookedThere);
 
-  public reservedBack = ['1A', '15E', '15F', '14C', '14D', '20F', '20E']; // mock data
+  public bookedBack$ = this.store.select(selectBookedBack);
+
+  constructor(private store: Store) {}
 
   private get getArraySeats() {
     const arr: string[][] = [];
