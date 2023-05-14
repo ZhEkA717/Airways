@@ -3,6 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../../shared/model/cart.model';
+import ConvertMoneyService from '../../../booking/services/convert-money.service';
 
 @Component({
   selector: 'app-table',
@@ -18,7 +19,7 @@ export class TableComponent {
 
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
-  constructor(public cartService: CartService) {
+  constructor(public cartService: CartService, public currencyService: ConvertMoneyService) {
     this.dataSource = new MatTableDataSource<CartItem>(cartService.table);
     this.selection.changed.subscribe((sel) => this.selectionEvent.emit(sel.source.selected));
   }
