@@ -29,7 +29,7 @@
   <!-- Flight Column -->
   <ng-container matColumnDef="flight">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Flight </th>
-    <td td-title="Flight: " class="cart__table-cell" mat-cell *matCellDef="let element">{{element.forward.flight}} <br> {{element.backward.flight}} </td>
+    <td td-title="Flight: " class="cart__table-cell" mat-cell *matCellDef="let element">{{element.flight[0]}} <br> {{element.flight[1]}} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef style="display: none;"></td>
   </ng-container>
 
@@ -43,7 +43,7 @@
   <!-- DateTime Column -->
   <ng-container matColumnDef="datetime">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
-    <td td-title="Date & Time: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.forward.datetime}} <br> {{element.backward.datetime}}  </td>
+    <td td-title="Date & Time: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.date.thereDepartDate}} <br> {{element.date.backDepartDate}}  </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 

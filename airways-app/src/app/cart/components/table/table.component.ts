@@ -1,7 +1,8 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CartService, Flight } from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../../shared/model/cart.model';
 
 @Component({
   selector: 'app-table',
@@ -11,14 +12,14 @@ import { CartService, Flight } from '../../services/cart.service';
 export class TableComponent {
   displayedColumns: string[] = ['select', 'flightNo', 'flight', 'typetrip', 'datetime', 'passengers', 'price', 'actions'];
 
-  dataSource: MatTableDataSource<Flight>;
+  dataSource: MatTableDataSource<CartItem>;
 
-  selection = new SelectionModel<Flight>(true, []);
+  selection = new SelectionModel<CartItem>(true, []);
 
-  @Output() selectionEvent = new EventEmitter<Flight[]>();
+  @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
   constructor(public cartService: CartService) {
-    this.dataSource = new MatTableDataSource<Flight>(cartService.table);
+    this.dataSource = new MatTableDataSource<CartItem>(cartService.table);
     this.selection.changed.subscribe((sel) => this.selectionEvent.emit(sel.source.selected));
   }
 
@@ -40,15 +41,15 @@ export class TableComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Flight): string {
+  checkboxLabel(row?: CartItem): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${0 + 1}`;
   }
 
   /** Delete row from table */
-  delete(row: Flight) {
+  delete(row: CartItem) {
     this.cartService.delete(row);
     this.dataSource.data = this.cartService.table;
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Flight } from '../services/cart.service';
+import { CartItem } from '../../shared/model/cart.model';
 
 @Component({
   selector: 'app-cart-page',
@@ -7,9 +7,9 @@ import { Flight } from '../services/cart.service';
   styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent {
-  selected: Flight[] = [];
+  selected: CartItem[] = [];
 
-  setSelected(selection: Flight[]) {
+  setSelected(selection: CartItem[]) {
     this.selected = selection;
   }
 }
