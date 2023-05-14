@@ -10,12 +10,11 @@ export class CartService {
   public table: CartItem[] = [];
 
   constructor(private store: Store) {
-    // this.table = MOCK_DATA;
     store.select(selectCartItems).subscribe((res) => { this.table = res; });
   }
 
   getTotalPrice() {
-    return 764.49;
+    return this.table.map((item) => item.price).reduce((acc, cur) => acc + cur);
   }
 
   delete(row: CartItem) {

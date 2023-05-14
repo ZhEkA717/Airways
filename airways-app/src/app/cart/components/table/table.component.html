@@ -36,14 +36,14 @@
   <!-- TripType Column -->
   <ng-container matColumnDef="typetrip">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Type trip </th>
-    <td td-title="Type trip: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.type}} </td>
+    <td td-title="Type trip: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.type === 'round'?'Round trip':'One way'}} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <!-- DateTime Column -->
   <ng-container matColumnDef="datetime">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
-    <td td-title="Date & Time: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.date.thereDepartDate}} <br> {{element.date.backDepartDate}}  </td>
+    <td td-title="Date & Time: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.date[0].thereDepartDate}} - {{element.date[0].thereArriveDate.split(' ')[1]}}  <br> {{element.date[1].backDepartDate}} - {{element.date[1].backArriveDate.split(' ')[1]}} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
@@ -57,8 +57,8 @@
   <!-- Price Column -->
   <ng-container matColumnDef="price">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Price </th>
-    <td td-title="Price: " class="cart__table-cell cart__table-cell-price" mat-cell *matCellDef="let element"> {{element.price}} </td>
-    <td class="cart__table-footer cart__table-footer-price" mat-footer-cell *matFooterCellDef> {{cartService.getTotalPrice()}} </td>
+    <td td-title="Price: " class="cart__table-cell cart__table-cell-price" mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
+    <td class="cart__table-footer cart__table-footer-price" mat-footer-cell *matFooterCellDef> {{cartService.getTotalPrice() | currency}} </td>
   </ng-container>
 
   <!-- Edit menu button -->
