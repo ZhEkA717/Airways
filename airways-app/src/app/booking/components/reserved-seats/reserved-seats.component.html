@@ -18,6 +18,10 @@
         {{i === 2 ? k + 1 : ''}}
       </div>
       <div
+        *ngIf="{
+          bookedThere: bookedThere$ | async,
+          bookedBack: bookedBack$ | async,
+        } as bookedSeats"
         #elSeat
         appReserveSeat
         [passengerLength]="passengerLength"
@@ -28,8 +32,8 @@
         class="seat"
         [ngClass]="{
           'disabled': isRound
-            ? reservedBack.includes(k+1 + seat)
-            : reservedThere.includes(k+1 + seat)
+            ? bookedSeats.bookedBack?.includes(k+1 + seat)
+            : bookedSeats.bookedThere?.includes(k+1 + seat)
           }"
       >
         <span>{{seat}}</span>

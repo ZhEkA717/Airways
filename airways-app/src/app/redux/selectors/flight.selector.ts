@@ -23,6 +23,15 @@ export const selectTherePrice = createSelector(
   selectThereTrip,
   (there: Trip) => there.price,
 );
+export const selectBookedBack = createSelector(
+  selectBackTrip,
+  (back: Trip) => back.bookedSeats,
+);
+
+export const selectBookedThere = createSelector(
+  selectThereTrip,
+  (there: Trip) => there.bookedSeats,
+);
 
 export const selectThereChoise = createSelector(
   selectFlight,
