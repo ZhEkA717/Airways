@@ -19,8 +19,10 @@ import {
   thereSelect,
 } from 'src/app/redux/actions/flight.action';
 import {
-  selectBackChoise, selectBackTrip,
-  selectThereChoise, selectThereTrip,
+  selectBackChoice,
+  selectBackTrip,
+  selectThereChoice,
+  selectThereTrip,
 } from 'src/app/redux/selectors/flight.selector';
 import CalendarService from '../../services/calendar.service';
 
@@ -106,11 +108,11 @@ implements OnInit, AfterViewInit, OnDestroy {
       });
     }
 
-    this.subSelectThere = this.store.select(selectThereChoise).subscribe((res) => {
+    this.subSelectThere = this.store.select(selectThereChoice).subscribe((res) => {
       if (!this.isRound) this.choiceTrip = res;
     });
 
-    this.subSelectBack = this.store.select(selectBackChoise).subscribe((res) => {
+    this.subSelectBack = this.store.select(selectBackChoice).subscribe((res) => {
       if (this.isRound) this.choiceTrip = res;
     });
   }

@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { Store } from '@ngrx/store';
-import { selectBackChoise, selectThereChoise } from 'src/app/redux/selectors/flight.selector';
 import { Subscription } from 'rxjs';
+import { selectBackChoice, selectThereChoice } from 'src/app/redux/selectors/flight.selector';
 import ConvertMoneyService from '../../services/convert-money.service';
 
 @Component({
@@ -41,14 +41,14 @@ export default class SelectTripComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isTrip = !!this.selectTrip.flightNo;
 
-    this.subSelectThere = this.store.select(selectThereChoise)
-      .subscribe((theteSelect) => {
+    this.subSelectThere = this.store.select(selectThereChoice)
+      .subscribe((thereSelect) => {
         if (!this.isRound) {
-          this.choiceTrip = theteSelect;
+          this.choiceTrip = thereSelect;
         }
       });
 
-    this.subSelectBack = this.store.select(selectBackChoise)
+    this.subSelectBack = this.store.select(selectBackChoice)
       .subscribe((backSelect) => {
         if (this.isRound) {
           this.choiceTrip = backSelect;
