@@ -59,7 +59,8 @@
   font-size: 1.25rem;
   line-height: 1.25rem;
 
-  &-addtrip {
+  &-addtrip a {
+    text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
     color: #11397E;

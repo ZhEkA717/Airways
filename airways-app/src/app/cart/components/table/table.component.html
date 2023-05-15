@@ -23,7 +23,7 @@
   <ng-container matColumnDef="flightNo">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef mat-sort-header> No. </th>
     <td td-title="FlightNo: " class="cart__table-cell cart__table-cell-flight" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
-    <td colspan="2" class="cart__table-footer cart__table-footer-addtrip" mat-footer-cell *matFooterCellDef>+ Add new trip</td>
+    <td colspan="2" class="cart__table-footer cart__table-footer-addtrip" mat-footer-cell *matFooterCellDef><a [routerLink]="['/']">+ Add new trip</a></td>
   </ng-container>
 
   <!-- Flight Column -->
