@@ -1,21 +1,9 @@
-import { TripWay } from 'src/app/main/model/flight-search.model';
-
 export interface CartItem {
-  id?: number;
+  id: number;
   flightNo: string;
-  flight: string | string[];
-  type: TripWay;
-  date: TripDateThere | [TripDateThere, TripDateBack];
+  forward: { flight: string, datetime: string };
+  backward: { flight: string, datetime: string };
+  type: 'Round trip' | 'One way';
   passengers: string[];
   price: number;
-}
-
-interface TripDateThere {
-  thereDepartDate: string;
-  thereArriveDate: string;
-}
-
-interface TripDateBack {
-  backDepartDate: string;
-  backArriveDate: string;
 }

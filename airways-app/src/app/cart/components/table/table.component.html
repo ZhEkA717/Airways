@@ -29,21 +29,21 @@
   <!-- Flight Column -->
   <ng-container matColumnDef="flight">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Flight </th>
-    <td td-title="Flight: " class="cart__table-cell" mat-cell *matCellDef="let element">{{element.flight[0]}} <br> {{element.flight[1]}} </td>
+    <td td-title="Flight: " class="cart__table-cell" mat-cell *matCellDef="let element">{{element.forward.flight}} <br> {{element.backward.flight}} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef style="display: none;"></td>
   </ng-container>
 
   <!-- TripType Column -->
   <ng-container matColumnDef="typetrip">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Type trip </th>
-    <td td-title="Type trip: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.type === 'round'?'Round trip':'One way'}} </td>
+    <td td-title="Type trip: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.type}} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <!-- DateTime Column -->
   <ng-container matColumnDef="datetime">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
-    <td td-title="Date & Time: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.date[0].thereDepartDate}} - {{element.date[0].thereArriveDate.split(' ')[1]}}  <br> {{element.date[1].backDepartDate}} - {{element.date[1].backArriveDate.split(' ')[1]}} </td>
+    <td td-title="Date & Time: " class="cart__table-cell" mat-cell *matCellDef="let element"> {{element.forward.datetime}} <br> {{element.backward.datetime}} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
