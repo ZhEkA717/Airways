@@ -86,6 +86,9 @@
 }
 
  @media (max-width: 560px) {
+  .cart__table {
+    padding-bottom: 5px;
+  }
   .cart__table-header,
   .cart__table-select,
   .mdc-data-table__header-row {
