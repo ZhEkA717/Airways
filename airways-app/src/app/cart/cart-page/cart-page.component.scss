@@ -7,7 +7,7 @@
   border-radius: 8px;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
     border: none;
     overflow: hidden;
   }
@@ -15,7 +15,7 @@
 }
 
 .cart__main-title {
-  margin: 30px 30px;
+  margin: 30px ;
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 28px;
@@ -34,4 +34,15 @@
   align-items: center;
   color: #74767A;
   gap: 30px;
+}
+
+@media (max-width: 570px) {
+  .cart__bottom-panel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart__bottom-right {
+    justify-content: space-between;
+  }
 }

@@ -5,3 +5,14 @@
     color: #11397E;
   }
 }
+
+@media (max-width: 660px) {
+  .cart__promo {
+    width: auto;
+  }
+}
+@media (max-width: 570px) {
+  .cart__promo {
+    margin: 0 auto;
+  }
+}

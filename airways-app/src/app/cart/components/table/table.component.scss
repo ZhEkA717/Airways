@@ -45,7 +45,7 @@
 }
 
 .mdc-data-table__cell {
-  @media (max-width: 768px) {
+  @media (max-width: 885px) {
     font-size: 12px;
     line-height: 14px;
     padding: 0 5px;
@@ -79,14 +79,16 @@
     background-clip: text;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 885px) {
     font-size: 16px;
     padding: 0 5px;
   }
 }
 
- @media (max-width: 500px) {
-  .cart__table-header, .cart__table-select {
+ @media (max-width: 560px) {
+  .cart__table-header,
+  .cart__table-select,
+  .mdc-data-table__header-row {
     display:none;
   }
   .cart__table-cell {
@@ -102,13 +104,26 @@
       float: left;
     }
 
-    &.isSelected {
+    &.isSelected-head {
       background-color:  #005ABC;
+    }
+
+    &.isSelected {
+      background-color:  #82d9f3;
     }
   }
   .cart__table-edit {
     display:block;
     text-align: center;
+    margin-bottom: 10px;
+    &-button {
+      rotate: 90deg;
+      scale: 0.7;
+      padding: 0;
+    }
+    &.isSelected {
+      background-color: #0090BD;;
+    }
   }
   .cart__table-row {
     
