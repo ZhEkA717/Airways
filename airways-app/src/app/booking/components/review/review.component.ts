@@ -133,11 +133,13 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       flightNo,
       forward: {
         flight: `${thereFrom.city} - ${thereTo.city}`,
-        datetime: `${thereDepartDate} - ${thereArriveDate.split(' ')[1]}`,
+        departDate: thereDepartDate,
+        arriveDate: thereArriveDate,
       },
       backward: {
         flight: !this.isOneTripWay ? `${backFrom.city} - ${backTo.city}` : '',
-        datetime: !this.isOneTripWay ? `${backDepartDate} - ${backArriveDate?.split(' ')[1]}` : '',
+        departDate: !this.isOneTripWay ? backDepartDate : '',
+        arriveDate: !this.isOneTripWay ? backArriveDate : '',
       },
       passengers,
       price,

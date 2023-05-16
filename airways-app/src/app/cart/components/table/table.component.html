@@ -43,7 +43,7 @@
   <!-- DateTime Column -->
   <ng-container matColumnDef="datetime">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
-    <td td-title="Date & Time: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.forward.datetime}} <br> {{element.backward.datetime}} </td>
+    <td td-title="Date & Time: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.forward.arriveDate | date }} {{element.forward.arriveDate | date: 'hh:mm' }} - {{element.forward.departDate | date: 'hh:mm' }} <br> {{element.backward.arriveDate | date }} {{element.backward.arriveDate | date: 'hh:mm' }} - {{element.backward.departDate | date: 'hh:mm' }} </td>
     <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
