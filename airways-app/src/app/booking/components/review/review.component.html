@@ -6,11 +6,13 @@
   <div class="summary-flight">
     <app-summary-trip
       [thereTrip]="thereTrip"
+      [thereSeats]="thereSeats"
     ></app-summary-trip>
     <app-summary-trip
       *ngIf="!isOneTripWay"
       [isRound]="true"
       [backTrip]="backTrip"
+      [backSeats]="backSeats"
     ></app-summary-trip>
   </div>
 

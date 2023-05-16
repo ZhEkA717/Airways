@@ -11,6 +11,7 @@ import SelectsService from 'src/app/shared/services/selects.service';
 import { send as sendPassengerForm } from 'src/app/redux/actions/passengers.action';
 import { resetFlight } from 'src/app/redux/actions/flight.action';
 import { PassengersForm } from '../../models/passengers.model';
+import ReserveSeatService from '../../services/reserve-seat.service';
 
 @Component({
   selector: 'app-second-menu',
@@ -39,6 +40,7 @@ export default class SecondMenuComponent implements OnInit {
     public rangeDateService: RangeDateService,
     public autocompleteService: AutocompleteService,
     public headerService: HeaderService,
+    private reserveSeatService: ReserveSeatService,
     private store: Store,
   ) {}
 
@@ -73,6 +75,8 @@ export default class SecondMenuComponent implements OnInit {
     };
     this.store.dispatch(send(search));
     this.store.dispatch(sendPassengerForm(<PassengersForm>{}));
+    this.reserveSeatService.resetReservedSeatsThere();
+    this.reserveSeatService.resetReservedSeatsBack();
     this.store.dispatch(resetFlight());
   }
 }

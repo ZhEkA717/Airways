@@ -104,7 +104,7 @@ export default class TotalComponent implements OnInit, OnDestroy {
       const price = this.getPrice(option.ratioType);
       const fare = price / (1 + option.ratio);
       return {
-        isVisiable: !!amount,
+        isVisible: !!amount,
         type: option.type,
         amount,
         price: (price * amount) + baggageSummary,

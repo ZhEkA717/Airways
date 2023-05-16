@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-const SEATS_ALL = 144;
+import { selectBookedBack, selectBookedThere } from 'src/app/redux/selectors/flight.selector';
+import { Store } from '@ngrx/store';
+import { SEATS_ALL } from '../../services/seats-count.service';
 
 @Component({
   selector: 'app-reserved-seats',
@@ -10,6 +11,8 @@ const SEATS_ALL = 144;
 export default class ReservedSeatsComponent implements OnInit {
   @Input() passengerLength!: number;
 
+  @Input() isRound!: boolean;
+
   private seatNumber = 6;
 
   private columnSeats = SEATS_ALL / this.seatNumber;
@@ -17,6 +20,12 @@ export default class ReservedSeatsComponent implements OnInit {
   public seatsNumbers = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   public arraySeats: string[][] = [];
+
+  public bookedThere$ = this.store.select(selectBookedThere);
+
+  public bookedBack$ = this.store.select(selectBookedBack);
+
+  constructor(private store: Store) {}
 
   private get getArraySeats() {
     const arr: string[][] = [];

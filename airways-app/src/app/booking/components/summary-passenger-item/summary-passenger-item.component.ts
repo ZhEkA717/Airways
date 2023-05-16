@@ -10,6 +10,10 @@ import ConvertMoneyService from '../../services/convert-money.service';
 export default class SummaryPassengerItemComponent {
   @Input() passenger!: PassengersInfo;
 
+  @Input() i!: number;
+
+  @Input() seats: string[] = [];
+
   constructor(
     public convertMoneyService: ConvertMoneyService,
   ) {}

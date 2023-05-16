@@ -15,6 +15,10 @@ export default class SummaryTripComponent {
 
   @Input() backTrip!: Trip;
 
+  @Input() thereSeats!: string[];
+
+  @Input() backSeats!: string[];
+
   public passengers$ = this.store.select(selectPassengers);
 
   constructor(

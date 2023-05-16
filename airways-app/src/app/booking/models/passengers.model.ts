@@ -2,7 +2,7 @@ export interface PassengersForm {
   countryCode: string,
   phone: string,
   email: string
-  passengers: PassengersInfo[]
+  passengers: PassengersInfo[],
 }
 
 export interface PassengersInfo {
