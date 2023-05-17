@@ -1,12 +1,15 @@
 .cart__promo {
-  width: 300px;
+  width: 374px;
+  margin-top: 46px;
 
   &-button {
     color: #11397E;
+    font-weight: 600;
+    font-size: 16px;
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 760px) {
   .cart__promo {
     width: auto;
   }

@@ -10,6 +10,8 @@
   font-size: 1.25rem;
   line-height: 2rem;
   letter-spacing: 0.5px;
+  display: table-cell;
+  vertical-align: middle;
 
   &-flight {
     color: #0090BD;
@@ -19,6 +21,10 @@
 
   &-price {
     color: #7F8906;
+  }
+
+  .passengers {
+    white-space: nowrap;
   }
 }
 
@@ -81,7 +87,6 @@
 
   @media (max-width: 885px) {
     font-size: 16px;
-    padding: 0 5px;
   }
 }
 
@@ -99,7 +104,7 @@
     display: block;
     font-size: 16px;
     line-height: 18px;
-    border: none;  
+    border: none;
     padding: .5em;
 
     &::before {
@@ -129,7 +134,7 @@
     }
   }
   .cart__table-row {
-    
+
     //display: block;
     //padding-bottom: 10px;
 
@@ -150,4 +155,3 @@
   }
 
  }
- 

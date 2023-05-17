@@ -50,7 +50,11 @@
   <!-- Passengers Column -->
   <ng-container matColumnDef="passengers">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Passengers </th>
-    <td td-title="Passengers: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.passengers[0]}} <br> {{element.passengers[1]}} <br> {{element.passengers[2]}} </td>
+    <td td-title="Passengers: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">
+      <div class="passengers">{{element.passengers[0]}}</div>
+      <div class="passengers">{{element.passengers[1]}}</div>
+      <div class="passengers">{{element.passengers[2]}}</div>
+    </td>
     <td class="cart__table-footer cart__table-footer-total" mat-footer-cell *matFooterCellDef>Total: </td>
   </ng-container>
 
@@ -63,7 +67,7 @@
 
   <!-- Edit menu button -->
   <ng-container matColumnDef="actions">
-    <th mat-header-cell class="cart__table-header" *matHeaderCellDef mat-sort-header> </th>                  
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef mat-sort-header> </th>
     <td mat-cell class="cart__table-edit" [class.isSelected]="selection.isSelected(element)" *matCellDef="let element">
        <button (click)="$event.stopPropagation()" class="cart__table-edit-button" mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="edit">
            <mat-icon>more_vert</mat-icon>
@@ -71,7 +75,7 @@
        <mat-menu #appMenu="matMenu">
          <button mat-menu-item (click)="delete(element)">Delete</button>
          <button mat-menu-item>Edit</button>
-       </mat-menu>  
+       </mat-menu>
     </td>
     <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>

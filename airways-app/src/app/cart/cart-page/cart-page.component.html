@@ -1,4 +1,4 @@
-<div class="container">
+<mat-card class="container">
   <div class="cart__main-title">
     Cart
   </div>
@@ -9,7 +9,11 @@
     <app-promo></app-promo>
     <div class="cart__bottom-right">
       <div class="cart__bottom-selected">{{selected.length}} selected</div>
-      <button mat-raised-button color="primary" [disabled]="!selected.length">Payment</button>
+      <button
+        class="cart__bottom-payment"
+        mat-raised-button color="primary"
+        [disabled]="!selected.length"
+      >Payment</button>
     </div>
   </div>
-</div>
+</mat-card>
