@@ -1,10 +1,14 @@
 @import '../../../stylings/variables';
 
 .container {
-  margin: 90px auto;
+  margin-top: 90px;
+
+  @media(max-width: 1230px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
   @media (max-width: 768px) {
-    width: 90%;
     border: none;
     overflow: hidden;
   }
@@ -23,6 +27,10 @@
   display: flex;
   justify-content: space-between;
   margin: 0 30px;
+
+  @media (max-width: 605px) {
+    margin: 0 10px;
+  }
 }
 
 .cart__bottom-right {
@@ -33,6 +41,12 @@
   gap: 30px;
   margin-top: 40px;
   margin-bottom: 45px;
+
+  @media (max-width: 605px) {
+    margin-top: 10px;
+    width: 100%;
+    gap: auto;
+  }
 }
 
 .cart__bottom-payment {
@@ -40,7 +54,7 @@
   height: 60px;
 }
 
-@media (max-width: 570px) {
+@media (max-width: 605px) {
   .cart__bottom-panel {
     flex-direction: column;
     align-items: center;

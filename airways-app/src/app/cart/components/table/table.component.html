@@ -27,7 +27,12 @@
   <!-- Flight Column -->
   <ng-container matColumnDef="flight">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Flight </th>
-    <td td-title="Flight: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">{{element.forward.flight}} <br> {{element.backward.flight}} </td>
+    <td td-title="Flight: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">
+      <div class="flight-items">
+        <div class="flight-item">{{element.forward.flight}}</div>
+        <div class="flight-item">{{element.backward.flight}}</div>
+      </div>
+    </td>
   </ng-container>
 
   <!-- TripType Column -->
@@ -39,7 +44,16 @@
   <!-- DateTime Column -->
   <ng-container matColumnDef="datetime">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
-    <td td-title="Date & Time: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.forward.arriveDate | date }} {{element.forward.arriveDate | date: 'hh:mm' }} - {{element.forward.departDate | date: 'hh:mm' }} <br> {{element.backward.arriveDate | date }} {{element.backward.arriveDate | date: 'hh:mm' }} - {{element.backward.departDate | date: 'hh:mm' }} </td>
+    <td td-title="Date & Time: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">
+      <div class="date-time">
+        <div class="date-time__item">{{element.forward.departDate | date }}</div>
+        <div class="date-time__item">{{element.forward.departDate | date: 'hh:mm' }} - {{element.forward.arriveDate | date: 'hh:mm' }}</div>
+      </div>
+       <div class="date-time">
+        <div class="date-time__item">{{element.backward.departDate | date }}</div>
+        <div class="date-time__item">{{element.backward.departDate | date: 'hh:mm' }} <span *ngIf="element.type === 'Round trip'"> - </span> {{element.backward.arriveDate | date: 'hh:mm' }}</div>
+      </div>
+    </td>
   </ng-container>
 
   <!-- Passengers Column -->
@@ -79,6 +93,6 @@
 </table>
 
 <div class="cart__table-footer">
-  <div class="cart__table-footer-addtrip"><a [routerLink]="['/']">+ Add new trip</a></div>
+  <button color="primary" mat-button [routerLink]="['/']" class="cart__table-footer-addtrip">+ Add new trip</button>
   <div class="cart__table-footer-total">Total <span class="cart__table-footer-price"> {{currencyService.moneyIcon}}{{(cartService.getTotalPrice() * currencyService.moneyRatio).toFixed(1)}} </span> </div>
 </div>

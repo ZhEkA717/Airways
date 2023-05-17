@@ -12,6 +12,27 @@
   display: table-cell;
   vertical-align: middle;
 
+  .date-time {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+
+    &__item {
+      white-space: nowrap;
+    }
+
+    @media (max-width:1230px) {
+      display: block;
+    }
+  }
+
+  .flight-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   &-flight {
     color: #0090BD;
     line-height: 24px;
@@ -28,6 +49,8 @@
 }
 
 .cart__table-header {
+  white-space: nowrap;
+
   @media (max-width: 768px) {
     font-size: 12px;
     line-height: 12px;
@@ -50,29 +73,42 @@
 }
 
 .mdc-data-table__cell {
-  @media (max-width: 885px) {
-    font-size: 12px;
+  @media (max-width: 1020px) {
+    font-size: 16px;
     line-height: 14px;
     padding: 0 5px;
+  }
+  @media (max-width: 885px) {
+    font-size: 14px;
+  }
+  @media (max-width: 660px) {
+    font-size: 12px;
   }
 }
 
 .cart__table-footer {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.25rem;
-  width: 90%;
-  margin: 20px auto;
-  display:flex;
+  width: 100%;
+  display: flex;
   justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 33px;
+  border-bottom: 1px solid #80808059;
+  height: 104px;
+  align-items: center;
 
-  &-addtrip a {
-    text-decoration: none;
+  @media (max-width: 500px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &-addtrip {
     font-weight: 500;
     font-size: 1rem;
-    color: #11397E;
     line-height: 37px;
   }
 
@@ -89,15 +125,21 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @media (max-width: 400px) {
+      font-size: 1.3rem;
+
+    }
   }
 
-  @media (max-width: 885px) {
+  @media (max-width: 1020px) {
     font-size: 16px;
   }
 }
 
- @media (max-width: 560px) {
+ @media (max-width: 605px) {
   .cart__table {
+    padding: 10px;
     padding-bottom: 5px;
   }
   .cart__table-header,
@@ -110,8 +152,9 @@
     display: block;
     font-size: 16px;
     line-height: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: none;
-    padding: .5em;
 
     &::before {
       content: attr(td-title);
@@ -130,19 +173,21 @@
     display:block;
     text-align: center;
     margin-bottom: 10px;
+
     &-button {
+      margin-bottom: 5px;
+    }
+
+    mat-icon {
       rotate: 90deg;
       scale: 0.7;
-      padding: 0;
     }
+
     &.isSelected {
       background-color: #0090BD;;
     }
   }
   .cart__table-row {
-
-    //display: block;
-    //padding-bottom: 10px;
 
     &.isSelected {
       border: 1px solid #005ABC;
