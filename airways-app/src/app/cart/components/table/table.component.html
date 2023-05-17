@@ -16,35 +16,30 @@
                     [aria-label]="checkboxLabel(row)">
       </mat-checkbox>
     </td>
-    <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <!-- No Column -->
   <ng-container matColumnDef="flightNo">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef mat-sort-header> No. </th>
     <td td-title="FlightNo: " class="cart__table-cell cart__table-cell-flight" [class.isSelected-head]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
-    <td colspan="2" class="cart__table-footer cart__table-footer-addtrip" mat-footer-cell *matFooterCellDef><a [routerLink]="['/']">+ Add new trip</a></td>
   </ng-container>
 
   <!-- Flight Column -->
   <ng-container matColumnDef="flight">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Flight </th>
     <td td-title="Flight: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">{{element.forward.flight}} <br> {{element.backward.flight}} </td>
-    <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef style="display: none;"></td>
   </ng-container>
 
   <!-- TripType Column -->
   <ng-container matColumnDef="typetrip">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Type trip </th>
     <td td-title="Type trip: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.type}} </td>
-    <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <!-- DateTime Column -->
   <ng-container matColumnDef="datetime">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
     <td td-title="Date & Time: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.forward.arriveDate | date }} {{element.forward.arriveDate | date: 'hh:mm' }} - {{element.forward.departDate | date: 'hh:mm' }} <br> {{element.backward.arriveDate | date }} {{element.backward.arriveDate | date: 'hh:mm' }} - {{element.backward.departDate | date: 'hh:mm' }} </td>
-    <td class="cart__table-footer cart__table-footer-empty" mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <!-- Passengers Column -->
@@ -55,14 +50,12 @@
       <div class="passengers">{{element.passengers[1]}}</div>
       <div class="passengers">{{element.passengers[2]}}</div>
     </td>
-    <td class="cart__table-footer cart__table-footer-total" mat-footer-cell *matFooterCellDef>Total: </td>
   </ng-container>
 
   <!-- Price Column -->
   <ng-container matColumnDef="price">
     <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Price </th>
     <td td-title="Price: " class="cart__table-cell cart__table-cell-price" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{currencyService.moneyIcon}}{{(element.price * currencyService.moneyRatio).toFixed(1)}} </td>
-    <td class="cart__table-footer cart__table-footer-price" mat-footer-cell *matFooterCellDef> {{currencyService.moneyIcon}}{{(cartService.getTotalPrice() * currencyService.moneyRatio).toFixed(1)}} </td>
   </ng-container>
 
   <!-- Edit menu button -->
@@ -77,12 +70,15 @@
          <button mat-menu-item>Edit</button>
        </mat-menu>
     </td>
-    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr class="cart__table-row" [class.isSelected]="selection.isSelected(row)" mat-row *matRowDef="let row; columns: displayedColumns;"
       (click)="selection.toggle(row)">
   </tr>
-  <tr mat-footer-row class="cart__table-footer cart__table-footer-empty" *matFooterRowDef="displayedColumns" class="cart__table-footer"></tr>
 </table>
+
+<div class="cart__table-footer">
+  <div class="cart__table-footer-addtrip"><a [routerLink]="['/']">+ Add new trip</a></div>
+  <div class="cart__table-footer-total">Total <span class="cart__table-footer-price"> {{currencyService.moneyIcon}}{{(cartService.getTotalPrice() * currencyService.moneyRatio).toFixed(1)}} </span> </div>
+</div>

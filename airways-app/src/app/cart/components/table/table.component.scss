@@ -1,7 +1,6 @@
 .cart__table {
   box-shadow: none;
   border-bottom: 1px solid #E1E5EB;
-  padding-bottom: 30px;
 }
 .cart__table-cell {
   font-family: 'Roboto';
@@ -64,19 +63,26 @@
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.25rem;
+  width: 90%;
+  margin: 20px auto;
+  display:flex;
+  justify-content: space-between;
 
   &-addtrip a {
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
     color: #11397E;
+    line-height: 37px;
   }
 
   &-total {
     text-align: right;
+    line-height: 37px;
   }
 
   &-price {
+    padding-left: 10px;
     font-size: 1.875rem;
     line-height: 2.25rem;
     background: linear-gradient(90deg, #11397E 0%, #005ABC 100%);
@@ -143,15 +149,7 @@
     }
   }
   .cart__table-footer {
-    display: block;
     text-align: right;
-
-    &-empty, &-addtrip {
-      display: none;
-    }
-    &-total, &-price {
-      display: inline-block;
-    }
   }
 
  }
