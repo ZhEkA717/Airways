@@ -17,11 +17,20 @@ export class TableComponent {
 
   selection = new SelectionModel<CartItem>(true, []);
 
+  total = 0;
+
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
   constructor(public cartService: CartService, public currencyService: ConvertMoneyService) {
     this.dataSource = new MatTableDataSource<CartItem>(cartService.table);
-    this.selection.changed.subscribe((sel) => this.selectionEvent.emit(sel.source.selected));
+
+    /** Selection event to get total price and count of selected */
+    this.selection.changed.subscribe((sel) => {
+      this.selectionEvent.emit(sel.source.selected);
+      this.total = sel.source.selected.length
+        ? sel.source.selected.map((item) => item.price).reduce((acc, cur) => acc + cur)
+        : 0;
+    });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
