@@ -21,6 +21,6 @@ export const cartReducer = createReducer(
 
   on(deleteFromCart, (state, action): CartState => ({
     ...state,
-    items: state.items.filter((item, i) => i !== action.id),
+    items: state.items.filter((item) => item.id !== action.id),
   })),
 );
