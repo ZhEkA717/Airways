@@ -1,0 +1,61 @@
+<table mat-table [dataSource]="dataSource" class="account__table">
+
+  <!-- No Column -->
+  <ng-container matColumnDef="flightNo">
+    <th mat-header-cell class="account__table-header" *matHeaderCellDef mat-sort-header> No. </th>
+    <td td-title="FlightNo: " class="account__table-cell cart__table-cell-flight" mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
+  </ng-container>
+
+  <!-- Flight Column -->
+  <ng-container matColumnDef="flight">
+    <th mat-header-cell class="account__table-header" *matHeaderCellDef> Flight </th>
+    <td td-title="Flight: " class="account__table-cell" mat-cell *matCellDef="let element">
+      <div class="flight-items">
+        <div class="flight-item">{{element.forward.flight}}</div>
+        <div class="flight-item">{{element.backward.flight}}</div>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- TripType Column -->
+  <ng-container matColumnDef="typetrip">
+    <th mat-header-cell class="account__table-header" *matHeaderCellDef> Type trip </th>
+    <td td-title="Type trip: " class="account__table-cell" mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <!-- DateTime Column -->
+  <ng-container matColumnDef="datetime">
+    <th mat-header-cell class="account__table-header" *matHeaderCellDef> Date & Time </th>
+    <td td-title="Date & Time: " class="account__table-cell" mat-cell *matCellDef="let element">
+      <div class="date-time">
+        <div class="date-time__item">{{element.forward.departDate | date }}</div>
+        <div class="date-time__item">{{element.forward.departDate | date: 'hh:mm' }} - {{element.forward.arriveDate | date: 'hh:mm' }}</div>
+      </div>
+       <div class="date-time">
+        <div class="date-time__item">{{element.backward.departDate | date }}</div>
+        <div class="date-time__item">{{element.backward.departDate | date: 'hh:mm' }} <span *ngIf="element.type === 'Round trip'"> - </span> {{element.backward.arriveDate | date: 'hh:mm' }}</div>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Passengers Column -->
+  <ng-container matColumnDef="passengers">
+    <th mat-header-cell class="account__table-header" *matHeaderCellDef> Passengers </th>
+    <td td-title="Passengers: " class="account__table-cell" mat-cell *matCellDef="let element">
+      <div class="passengers">{{element.passengers[0]}}</div>
+      <div class="passengers">{{element.passengers[1]}}</div>
+      <div class="passengers">{{element.passengers[2]}}</div>
+    </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell class="account__table-header" *matHeaderCellDef> Price </th>
+    <td td-title="Price: " class="account__table-cell cart__table-cell-price" mat-cell *matCellDef="let element"> {{currencyService.moneyIcon}}{{(element.price * currencyService.moneyRatio).toFixed(1)}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr class="account__table-row" mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="goSummary(row)">
+  </tr>
+</table>
