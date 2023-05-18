@@ -1,0 +1,32 @@
+:host {
+  @media (max-width:605px) {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.cart__promo {
+  width: 374px;
+  margin-top: 46px;
+
+  @media (max-width:605px) {
+    width: 100%;
+  }
+
+  &-button {
+    color: #11397E;
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 760px) {
+  .cart__promo {
+    width: 100%;
+  }
+}
+@media (max-width: 570px) {
+  .cart__promo {
+    margin: 0 auto;
+  }
+}

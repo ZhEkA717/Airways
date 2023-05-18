@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () => import('./booking/booking.module').then((bookingPage) => bookingPage.default),
     title: 'booking',
   },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then((cartPage) => cartPage.default),
+    title: 'cart',
+  },
 ];
 
 @NgModule({
