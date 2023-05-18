@@ -3,8 +3,7 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
-  "overrides": [
-    {
+  "overrides": [{
       "files": [
         "*.ts"
       ],
@@ -45,7 +44,8 @@
         "class-methods-use-this": "off",
         "no-underscore-dangle": "off",
         "linebreak-style": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-unused-expressions": "off"
       }
     },
     {

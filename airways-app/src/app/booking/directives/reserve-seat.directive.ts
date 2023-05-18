@@ -81,11 +81,7 @@ export default class ReserveSeatDirective implements OnInit, OnDestroy {
 
   @HostListener('click')
   onClick() {
-    if (this.isReserved) {
-      this.resetReservedStyle();
-    } else {
-      this.setReservedStyle();
-    }
+    this.isReserved ? this.resetReservedStyle() : this.setReservedStyle();
 
     this.isReserved = !this.isReserved;
   }
