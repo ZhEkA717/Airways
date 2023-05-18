@@ -1,3 +1,5 @@
+@import '../../../../stylings/variables';
+
 .cart__table {
   box-shadow: none;
   border-bottom: 1px solid #E1E5EB;
@@ -62,16 +64,15 @@
   border-radius: 50%;
   border: none;
   background-color: transparent;
-
-  &:hover {
-    background-color: lightgray;
-  }
-
-  &:active {
-    background-color: gray;
-  }
 }
 
+.mdc-data-table__header-cell {
+  padding: 0 0px 0 16px;
+
+  @media (max-width: 1020px) {
+    padding: 0 0px 0 5px;
+  }
+}
 .mdc-data-table__cell {
   @media (max-width: 1020px) {
     font-size: 16px;
@@ -141,6 +142,7 @@
   .cart__table {
     padding: 10px;
     padding-bottom: 5px;
+    cursor: pointer;
   }
   .cart__table-header,
   .cart__table-select,
@@ -162,20 +164,23 @@
     }
 
     &.isSelected-head {
-      background-color:  #005ABC;
+      background-color: $base-primary-color;
+      color: $light-color;
     }
 
     &.isSelected {
-      background-color:  #82d9f3;
+      background-color:  whitesmoke;
     }
   }
   .cart__table-edit {
     display:block;
     text-align: center;
     margin-bottom: 10px;
+    padding: 5px auto;
+    height: 50px;
 
     &-button {
-      margin-bottom: 5px;
+      margin-top: 1px;
     }
 
     mat-icon {
@@ -184,13 +189,14 @@
     }
 
     &.isSelected {
-      background-color: #0090BD;;
+      background-color: $base-primary-color;
+      color: $light-color;
     }
   }
   .cart__table-row {
 
     &.isSelected {
-      border: 1px solid #005ABC;
+      color: $light-color;
     }
   }
   .cart__table-footer {

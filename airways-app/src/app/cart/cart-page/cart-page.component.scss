@@ -2,6 +2,7 @@
 
 .container {
   margin-top: 90px;
+  margin-bottom: 40px;
 
   @media(max-width: 1230px) {
     padding-left: 10px;
@@ -16,6 +17,10 @@
   font-size: 1.5rem;
   line-height: 28px;
   color: $logo-color;
+
+  @media (max-width: 605px) {
+    margin-left: 10px;
+  }
 }
 
 .cart__bottom-panel {
