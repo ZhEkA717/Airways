@@ -17,7 +17,7 @@ import { addToCart } from 'src/app/redux/actions/cart.action';
 import { CartItem } from 'src/app/shared/model/cart.model';
 import TotalService from '../../services/total.service';
 import { TotalInfo } from '../../models/total-info.model';
-import { selectCartItems } from '../../../redux/selectors/cart.selector';
+import { selectMaxId } from '../../../redux/selectors/cart.selector';
 
 @Component({
   selector: 'app-review',
@@ -111,9 +111,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   addToCart() {
     let id = 0;
-    this.store.select(selectCartItems).subscribe((val) => {
-      id = Math.max(...val.map((it) => it.id)) + 1;
-    });
+    this.store.select(selectMaxId).subscribe((val) => { id = val + 1; });
     const {
       flightNo,
       from: thereFrom, to: thereTo,

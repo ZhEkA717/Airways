@@ -60,6 +60,7 @@ export class TableComponent {
 
   /** Delete row from table */
   delete(row: CartItem) {
+    this.selection.deselect(row);
     this.cartService.delete(row);
     this.dataSource.data = this.cartService.table;
   }

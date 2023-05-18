@@ -13,3 +13,8 @@ export const selectAmountCart = createSelector(
   selectCartItems,
   (items: CartItem[]) => items.length,
 );
+
+export const selectMaxId = createSelector(
+  selectCartItems,
+  (items: CartItem[]) => Math.max(...items.map((item) => item.id), 0),
+);
