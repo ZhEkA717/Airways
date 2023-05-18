@@ -86,12 +86,12 @@ implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
-    this.thereTrip$.subscribe((there) => {
-      this.thereTrip = there;
+    this.thereTrip$.subscribe((trip) => {
+      this.thereTrip = trip;
     });
 
-    this.backTrip$.subscribe((back) => {
-      this.backTrip = back;
+    this.backTrip$.subscribe((trip) => {
+      this.backTrip = trip;
     });
 
     if (this.isRound) {

@@ -34,25 +34,24 @@ export default class SeatsCountDirective implements OnInit {
     this.store.select(selectBackTrip).subscribe((back) => {
       const { day, seats } = back;
       this.backSelect = day;
-      if (this.isRound) {
-        if (this.day.day === day && this.day.price) {
-          this.setStyleTrip(seats);
-        } else {
-          this.resetStyleTrip();
-        }
-      }
+      if (this.isRound) this.selectTripStyle(day, seats);
     });
     this.store.select(selectThereTrip).subscribe((there) => {
       const { day, seats } = there;
       this.thereSelect = day;
-      if (!this.isRound) {
-        if (this.day.day === day && this.day.price) {
-          this.setStyleTrip(seats);
-        } else {
-          this.resetStyleTrip();
-        }
-      }
+      if (!this.isRound) this.selectTripStyle(day, seats);
     });
+  }
+
+  private selectTripStyle(
+    day: string | undefined,
+    seats: number,
+  ) {
+    if (this.day.day === day && this.day.price) {
+      this.setStyleTrip(seats);
+    } else {
+      this.resetStyleTrip();
+    }
   }
 
   @HostListener('mouseenter', ['$event.target'])
