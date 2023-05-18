@@ -4,6 +4,7 @@ import BookingPageComponent from './booking-page/booking-page.component';
 import FlightComponent from './components/flight/flight.component';
 import PassengersComponent from './components/passengers/passengers.component';
 import ReviewComponent from './components/review/review.component';
+import { AuthGuard } from '../core/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,11 +19,13 @@ const routes: Routes = [
       {
         path: 'passengers',
         component: PassengersComponent,
+        canActivate: [AuthGuard],
         title: 'passengers',
       },
       {
         path: 'review',
         component: ReviewComponent,
+        canActivate: [AuthGuard],
         title: 'review',
       },
     ],
