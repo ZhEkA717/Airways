@@ -38,7 +38,7 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   private subAvailableBack!: Subscription;
 
-  public startDate = new Date();
+  public startDate!: Date;
 
   public endDate = new Date();
 

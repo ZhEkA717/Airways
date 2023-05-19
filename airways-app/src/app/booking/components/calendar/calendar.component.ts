@@ -22,6 +22,7 @@ import {
   selectBackChoice, selectBackTrip,
   selectThereChoice, selectThereTrip,
 } from 'src/app/redux/selectors/flight.selector';
+import { ActivatedRoute } from '@angular/router';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -81,21 +82,36 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   public choiceTrip = true;
 
+  private isNavigatePassenger!: boolean;
+
   constructor(
     private r: Renderer2,
     private calendarService: CalendarService,
     private store: Store,
+    private route: ActivatedRoute,
   ) {}
 
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.isNavigatePassenger = params?.['isNavigatePassenger'];
+    });
+
     this.subTripThere = this.thereTrip$.subscribe((trip) => {
-      this.thereTrip = trip;
+      if (this.isNavigatePassenger) this.thereTrip = trip;
     });
 
     this.subTripBack = this.backTrip$.subscribe((trip) => {
-      this.backTrip = trip;
+      if (this.isNavigatePassenger) this.backTrip = trip;
+    });
+
+    this.subSelectThere = this.store.select(selectThereChoice).subscribe((res) => {
+      if (!this.isRound && this.isNavigatePassenger) this.choiceTrip = res;
+    });
+
+    this.subSelectBack = this.store.select(selectBackChoice).subscribe((res) => {
+      if (this.isRound && this.isNavigatePassenger) this.choiceTrip = res;
     });
 
     if (this.isRound) {
@@ -109,14 +125,6 @@ implements OnInit, AfterViewInit, OnDestroy {
         this.initCalendar();
       });
     }
-
-    this.subSelectThere = this.store.select(selectThereChoice).subscribe((res) => {
-      if (!this.isRound) this.choiceTrip = res;
-    });
-
-    this.subSelectBack = this.store.select(selectBackChoice).subscribe((res) => {
-      if (this.isRound) this.choiceTrip = res;
-    });
   }
 
   ngAfterViewInit(): void {

@@ -232,7 +232,11 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   }
 
   toFlight() {
-    this.router.navigate(['/booking/flight']);
+    this.router.navigate(['/booking/flight'], {
+      queryParams: {
+        isNavigatePassenger: true,
+      },
+    });
   }
 
   toReview() {
