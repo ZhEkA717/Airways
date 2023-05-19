@@ -22,6 +22,6 @@ export class TableComponent {
 
   /** Onclick row from table */
   goSummary(row: CartItem) {
-    console.log(row);
+    console.log('Need to implement goSummary', row);
   }
 }

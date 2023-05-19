@@ -11,7 +11,8 @@
 
 }
 
-.account__main-title {
+.account__main-title,
+.account__table-title {
   margin: 30px ;
   font-weight: 700;
   font-size: 1.5rem;
@@ -21,4 +22,9 @@
   @media (max-width: 605px) {
     margin-left: 10px;
   }
+}
+
+.acccount__user-container {
+  display: flex;
+  justify-content: space-between;
 }

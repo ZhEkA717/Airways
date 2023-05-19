@@ -3,6 +3,13 @@
     <div class="account__main-title">
       User account
     </div>
+    <div class="acccount__user-container">
+      <app-user-avatar [gender]="user.gender" [userName]="user.firstName + ' ' + user.lastName"></app-user-avatar>
+      <app-user-info></app-user-info>
+    </div>
+    <div class="account__table-title">
+      Booked trips
+    </div>
     <div class="account__table-container">
       <app-account-table></app-account-table>
     </div>

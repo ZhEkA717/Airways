@@ -1,0 +1,17 @@
+@import '../../../../stylings/variables';
+
+mat-card{
+  width: 500px;
+  height: 200px;
+}
+
+.avatar__image-male {
+  max-width: 300px;
+  color:aqua;
+  background-color: $logo-color;
+  border-radius: 50%;
+}
+.avatar__image {
+  width: 150px;
+  height: 150px;
+}
