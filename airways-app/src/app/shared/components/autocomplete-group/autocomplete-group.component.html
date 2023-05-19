@@ -11,9 +11,10 @@
          formControlName="from"
          [matAutocomplete]="from">
     <mat-autocomplete
+      autoActiveFirstOption
       #from="matAutocomplete">
       <mat-option
-        *ngFor="let option of airportsService.airport"
+        *ngFor="let option of filteredOptionsFrom | async"
         [value]="option.city + ' ' + option.code"
       >
         {{option.city}} ({{option.code}})
@@ -52,7 +53,7 @@
          [matAutocomplete]="destination">
   <mat-autocomplete #destination="matAutocomplete">
     <mat-option
-      *ngFor="let option of airportsService.airport"
+      *ngFor="let option of filteredOptionsDestination | async"
       [value]="option.city + ' ' + option.code"
     >
       {{option.city}} ({{option.code}})
