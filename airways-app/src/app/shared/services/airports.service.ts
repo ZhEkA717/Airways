@@ -20,6 +20,14 @@ export default class AirportsService implements OnDestroy {
     });
   }
 
+  public filter(value: string): Airport[] {
+    const filterValue = value.toLowerCase();
+
+    return this.airport
+      .filter((option) => `${option.city.toLowerCase()} ${option.code.toLowerCase()}`
+        .includes(filterValue));
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

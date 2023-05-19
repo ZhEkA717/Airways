@@ -68,6 +68,22 @@
       "citizenship": "Belarus",
       "agreement": true,
       "id": 7
+    },
+    {
+      "email": "grushevskiy.yevgeniy@mail.ru",
+      "password": "$2a$10$0r1TxUYyUGzac/0voJX3/uwAAz5TJE6SxMBhu9rNpOgiW3v2m3kR.",
+      "firstName": "Евгений",
+      "lastName": "Грушевский",
+      "date": "2023-05-18T21:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "+375295237498"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 8
     }
   ],
   "posts": [
