@@ -11,18 +11,18 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./main/main.module').then((mainPage) => mainPage.default),
-    title: 'main',
+    title: 'AIRWAYS | Main',
   },
   {
     path: 'booking',
     loadChildren: () => import('./booking/booking.module').then((bookingPage) => bookingPage.default),
-    title: 'booking',
+    title: 'AIRWAYS | Booking',
   },
   {
     path: 'cart',
     loadChildren: () => import('./cart/cart.module').then((cartPage) => cartPage.default),
     canActivate: [AuthGuard],
-    title: 'cart',
+    title: 'AIRWAYS | Cart',
   },
 ];
 

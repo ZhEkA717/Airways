@@ -9,6 +9,7 @@
     {{seatsNumbers[i]}}
    </div>
     <div
+      [title]="k + 1 + seat"
       class="seat-wrapper"
       *ngFor="let seat of seats;
       let k = index">
