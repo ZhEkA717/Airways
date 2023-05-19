@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import BookingPageComponent from './booking-page/booking-page.component';
-import FlightComponent from './components/flight/flight.component';
-import PassengersComponent from './components/passengers/passengers.component';
-import ReviewComponent from './components/review/review.component';
+import BookingPageComponent from './pages/booking-page/booking-page.component';
+import FlightComponent from './pages/flight/flight.component';
+import PassengersComponent from './pages/passengers/passengers.component';
+import ReviewComponent from './pages/review/review.component';
 import { AuthGuard } from '../core/services/auth.guard';
 
 const routes: Routes = [
