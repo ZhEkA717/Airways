@@ -149,11 +149,13 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.subSeatsThere = this.reserveSeatService.reservedSeatsThere$
       .subscribe((seats) => {
         this.seatsThere = seats;
+        this.store.dispatch(thereSeats({ thereSeats: seats }));
       });
 
     this.subSeatsBack = this.reserveSeatService.reservedSeatsBack$
       .subscribe((seats) => {
         this.seatsBack = seats;
+        this.store.dispatch(backSeats({ backSeats: seats }));
       });
 
     this.store.select(selectPassengerForm).subscribe((form) => {
@@ -285,8 +287,8 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(send(form as PassengersForm));
 
-    this.store.dispatch(thereSeats({ thereSeats: this.seatsThere }));
-    this.store.dispatch(backSeats({ backSeats: this.seatsBack }));
+    // this.store.dispatch(thereSeats({ thereSeats: this.seatsThere }));
+    // this.store.dispatch(backSeats({ backSeats: this.seatsBack }));
 
     if (this.form.valid) {
       this.toReview();

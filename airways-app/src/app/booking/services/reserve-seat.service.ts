@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export default class ReserveSeatService {
-  // there
+  // there seats
 
   private reservedSeatsThere = new BehaviorSubject<string[]>([]);
 
@@ -32,7 +32,7 @@ export default class ReserveSeatService {
     return this.reservedSeatsThere.getValue().length;
   }
 
-  // back
+  // back seats
 
   private reservedSeatsBack = new BehaviorSubject<string[]>([]);
 

@@ -33,12 +33,12 @@ export const selectBookedThere = createSelector(
   (there: Trip) => there.bookedSeats,
 );
 
-export const selectThereChoise = createSelector(
+export const selectThereChoice = createSelector(
   selectFlight,
   (trip: TripState) => trip.thereSelect,
 );
 
-export const selectBackChoise = createSelector(
+export const selectBackChoice = createSelector(
   selectFlight,
   (trip: TripState) => trip.backSelect,
 );

@@ -9,7 +9,7 @@ import HeaderService from 'src/app/core/services/header.service';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
 import { Router } from '@angular/router';
-import { selectBackChoise, selectThereChoise } from 'src/app/redux/selectors/flight.selector';
+import { selectBackChoice, selectThereChoice } from 'src/app/redux/selectors/flight.selector';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -20,9 +20,9 @@ import CalendarService from '../../services/calendar.service';
 export default class FlightComponent implements OnInit, OnDestroy {
   public search$ = this.store.select(selectSearch);
 
-  private thereSelect$ = this.store.select(selectThereChoise);
+  private thereSelect$ = this.store.select(selectThereChoice);
 
-  private backSelect$ = this.store.select(selectBackChoise);
+  private backSelect$ = this.store.select(selectBackChoice);
 
   private subSearch!: Subscription;
 
@@ -34,9 +34,9 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   private subIsBackSelect!: Subscription;
 
-  private subAvailablesThere!: Subscription;
+  private subAvailableThere!: Subscription;
 
-  private subAvailablesBack!: Subscription;
+  private subAvailableBack!: Subscription;
 
   public date = new Date();
 
@@ -70,14 +70,14 @@ export default class FlightComponent implements OnInit, OnDestroy {
       this.date = new Date(startDate);
       this.date1 = new Date(endDate);
 
-      this.subAvailablesThere = this.httpApiService.getAvailableTrips(
+      this.subAvailableThere = this.httpApiService.getAvailableTrips(
         from.slice(-3),
         destination.slice(-3),
       ).subscribe((res) => {
         this.calendarService.setDepartDatesThere(res);
       });
 
-      this.subAvailablesBack = this.httpApiService.getAvailableTrips(
+      this.subAvailableBack = this.httpApiService.getAvailableTrips(
         destination.slice(-3),
         from.slice(-3),
       ).subscribe((res) => {
@@ -112,8 +112,8 @@ export default class FlightComponent implements OnInit, OnDestroy {
     this.subBackSelect?.unsubscribe();
     this.subIsThereSelect?.unsubscribe();
     this.subIsBackSelect?.unsubscribe();
-    this.subAvailablesThere?.unsubscribe();
-    this.subAvailablesBack?.unsubscribe();
+    this.subAvailableThere?.unsubscribe();
+    this.subAvailableBack?.unsubscribe();
   }
 
   toMain() {
