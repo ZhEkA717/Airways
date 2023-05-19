@@ -38,9 +38,9 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   private subAvailableBack!: Subscription;
 
-  public date = new Date();
+  public startDate = new Date();
 
-  public date1 = new Date();
+  public endDate = new Date();
 
   public isBackSelect!: boolean;
 
@@ -67,8 +67,8 @@ export default class FlightComponent implements OnInit, OnDestroy {
         from, destination,
         startDate, endDate,
       } = search;
-      this.date = new Date(startDate);
-      this.date1 = new Date(endDate);
+      this.startDate = new Date(startDate);
+      this.endDate = new Date(endDate);
 
       this.subAvailableThere = this.httpApiService.getAvailableTrips(
         from.slice(-3),

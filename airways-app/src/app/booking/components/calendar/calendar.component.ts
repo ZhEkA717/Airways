@@ -43,6 +43,10 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   public isTripObject!: boolean;
 
+  private subTripThere!: Subscription;
+
+  private subTripBack!: Subscription;
+
   private subBack!: Subscription;
 
   private subThere!: Subscription;
@@ -86,11 +90,11 @@ implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
-    this.thereTrip$.subscribe((trip) => {
+    this.subTripThere = this.thereTrip$.subscribe((trip) => {
       this.thereTrip = trip;
     });
 
-    this.backTrip$.subscribe((trip) => {
+    this.subTripBack = this.backTrip$.subscribe((trip) => {
       this.backTrip = trip;
     });
 
@@ -118,7 +122,7 @@ implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.dayContainer = this.daysWrapper.nativeElement;
 
-    this.weekIndex$.subscribe((index) => {
+    this.subWeek = this.weekIndex$.subscribe((index) => {
       this.viewSliderCount = 0;
       for (let i = 0; i < index; i += 1) {
         this.next();
@@ -130,6 +134,8 @@ implements OnInit, AfterViewInit, OnDestroy {
     this.subBack?.unsubscribe();
     this.subThere?.unsubscribe();
     this.subWeek?.unsubscribe();
+    this.subTripBack?.unsubscribe();
+    this.subTripThere?.unsubscribe();
     this.subSelectThere?.unsubscribe();
     this.subSelectBack?.unsubscribe();
   }
@@ -210,7 +216,7 @@ implements OnInit, AfterViewInit, OnDestroy {
   }
 
   setDepartDates(months: Trip[]) {
-    let count = 1;
+    let isFirstTrip = true;
     this.departDates.forEach((depart) => {
       const dateWithoutTime = depart.departDate.slice(0, 10);
       const date = new Date(dateWithoutTime);
@@ -221,7 +227,7 @@ implements OnInit, AfterViewInit, OnDestroy {
             ...depart,
           };
 
-          if (count) {
+          if (isFirstTrip) {
             this.selectTrip = (this.isRound ? this.backTrip : this.thereTrip) || months[i];
             this.selectTrip = this.selectTrip.flightNo ? this.selectTrip : months[i];
             this.saveTrips(this.selectTrip);
@@ -229,12 +235,12 @@ implements OnInit, AfterViewInit, OnDestroy {
             this.weekIndex$.next(this.calendarService.week(
               new Date(this.selectTrip.departDate),
             ));
-            count = 0;
+            isFirstTrip = false;
           }
         }
       });
     });
-    if (count) {
+    if (isFirstTrip) {
       this.selectTrip = <Trip>{};
       this.isTripObject = false;
     }
