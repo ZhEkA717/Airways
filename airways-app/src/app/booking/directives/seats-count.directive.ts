@@ -47,11 +47,9 @@ export default class SeatsCountDirective implements OnInit {
     day: string | undefined,
     seats: number,
   ) {
-    if (this.day.day === day && this.day.price) {
-      this.setStyleTrip(seats);
-    } else {
-      this.resetStyleTrip();
-    }
+    this.day.day === day && this.day.price
+      ? this.setStyleTrip(seats)
+      : this.resetStyleTrip();
   }
 
   @HostListener('mouseenter', ['$event.target'])
