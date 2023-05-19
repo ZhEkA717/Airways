@@ -14,19 +14,19 @@ const routes: Routes = [
       {
         path: 'flight',
         component: FlightComponent,
-        title: 'flight',
+        title: 'AIRWAYS | Booking | Flight',
       },
       {
         path: 'passengers',
         component: PassengersComponent,
         canActivate: [AuthGuard],
-        title: 'passengers',
+        title: 'AIRWAYS | Booking | Passengers',
       },
       {
         path: 'review',
         component: ReviewComponent,
         canActivate: [AuthGuard],
-        title: 'review',
+        title: 'AIRWAYS | Booking | Review',
       },
     ],
   },
