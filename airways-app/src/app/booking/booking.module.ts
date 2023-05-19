@@ -14,7 +14,6 @@ import OneDateComponent from './components/one-date/one-date.component';
 import CalendarComponent from './components/calendar/calendar.component';
 import CalendarService from './services/calendar.service';
 import SelectTripComponent from './components/select-trip/select-trip.component';
-import ToFloorPipe from './pipes/to-floor.pipe';
 import SeatsCountDirective from './directives/seats-count.directive';
 import SelectSeatsDirective from './directives/select-seats.directive';
 import SeatsCountService from './services/seats-count.service';
@@ -22,6 +21,7 @@ import ReservedSeatsComponent from './components/reserved-seats/reserved-seats.c
 import ReserveSeatDirective from './directives/reserve-seat.directive';
 import TotalComponent from './components/total/total.component';
 import TotalService from './services/total.service';
+import ToTimePipe from './pipes/to-time.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import TotalService from './services/total.service';
     OneDateComponent,
     CalendarComponent,
     SelectTripComponent,
-    ToFloorPipe,
+    ToTimePipe,
     SeatsCountDirective,
     SelectSeatsDirective,
     ReservedSeatsComponent,

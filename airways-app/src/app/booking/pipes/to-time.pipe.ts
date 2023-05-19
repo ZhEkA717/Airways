@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'toTime',
 })
-export default class ToFloorPipe implements PipeTransform {
+export default class ToTimePipe implements PipeTransform {
   transform(value: string): string {
     const minutes = +value;
     const hh = Math.floor(minutes / 60);
