@@ -23,6 +23,7 @@ import SelectPassengersComponent from './components/select-passengers/select-pas
 import SelectValidateDirective from './directives/select-validate.directive';
 import RangeDateComponent from './components/range-date/range-date.component';
 import AutocompleteGroupComponent from './components/autocomplete-group/autocomplete-group.component';
+import AlertComponent from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     RangeDateComponent,
     SelectValidateDirective,
     AutocompleteGroupComponent,
+    AlertComponent,
   ],
   imports: [
     CommonModule,
@@ -78,6 +80,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     MatSnackBarModule,
     MatTableModule,
     MatBadgeModule,
+    AlertComponent,
   ],
 })
 export default class SharedModule { }

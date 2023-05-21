@@ -19,9 +19,10 @@ import {
   thereSelect,
 } from 'src/app/redux/actions/flight.action';
 import {
-  selectBackChoise, selectBackTrip,
-  selectThereChoise, selectThereTrip,
+  selectBackChoice, selectBackTrip,
+  selectThereChoice, selectThereTrip,
 } from 'src/app/redux/selectors/flight.selector';
+import { ActivatedRoute } from '@angular/router';
 import CalendarService from '../../services/calendar.service';
 
 @Component({
@@ -42,6 +43,10 @@ implements OnInit, AfterViewInit, OnDestroy {
   public selectTrip: Trip = <Trip>{};
 
   public isTripObject!: boolean;
+
+  private subTripThere!: Subscription;
+
+  private subTripBack!: Subscription;
 
   private subBack!: Subscription;
 
@@ -77,21 +82,36 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   public choiceTrip = true;
 
+  private isNavigatePassenger!: boolean;
+
   constructor(
     private r: Renderer2,
     private calendarService: CalendarService,
     private store: Store,
+    private route: ActivatedRoute,
   ) {}
 
   @ViewChild('daysWrapper') daysWrapper!: ElementRef;
 
   ngOnInit(): void {
-    this.thereTrip$.subscribe((there) => {
-      this.thereTrip = there;
+    this.route.queryParams.subscribe((params) => {
+      this.isNavigatePassenger = params?.['isNavigatePassenger'];
     });
 
-    this.backTrip$.subscribe((back) => {
-      this.backTrip = back;
+    this.subTripThere = this.thereTrip$.subscribe((trip) => {
+      if (this.isNavigatePassenger) this.thereTrip = trip;
+    });
+
+    this.subTripBack = this.backTrip$.subscribe((trip) => {
+      if (this.isNavigatePassenger) this.backTrip = trip;
+    });
+
+    this.subSelectThere = this.store.select(selectThereChoice).subscribe((res) => {
+      if (!this.isRound && this.isNavigatePassenger) this.choiceTrip = res;
+    });
+
+    this.subSelectBack = this.store.select(selectBackChoice).subscribe((res) => {
+      if (this.isRound && this.isNavigatePassenger) this.choiceTrip = res;
     });
 
     if (this.isRound) {
@@ -105,20 +125,12 @@ implements OnInit, AfterViewInit, OnDestroy {
         this.initCalendar();
       });
     }
-
-    this.subSelectThere = this.store.select(selectThereChoise).subscribe((res) => {
-      if (!this.isRound) this.choiceTrip = res;
-    });
-
-    this.subSelectBack = this.store.select(selectBackChoise).subscribe((res) => {
-      if (this.isRound) this.choiceTrip = res;
-    });
   }
 
   ngAfterViewInit(): void {
     this.dayContainer = this.daysWrapper.nativeElement;
 
-    this.weekIndex$.subscribe((index) => {
+    this.subWeek = this.weekIndex$.subscribe((index) => {
       this.viewSliderCount = 0;
       for (let i = 0; i < index; i += 1) {
         this.next();
@@ -130,6 +142,8 @@ implements OnInit, AfterViewInit, OnDestroy {
     this.subBack?.unsubscribe();
     this.subThere?.unsubscribe();
     this.subWeek?.unsubscribe();
+    this.subTripBack?.unsubscribe();
+    this.subTripThere?.unsubscribe();
     this.subSelectThere?.unsubscribe();
     this.subSelectBack?.unsubscribe();
   }
@@ -210,7 +224,7 @@ implements OnInit, AfterViewInit, OnDestroy {
   }
 
   setDepartDates(months: Trip[]) {
-    let count = 1;
+    let isFirstTrip = true;
     this.departDates.forEach((depart) => {
       const dateWithoutTime = depart.departDate.slice(0, 10);
       const date = new Date(dateWithoutTime);
@@ -221,7 +235,7 @@ implements OnInit, AfterViewInit, OnDestroy {
             ...depart,
           };
 
-          if (count) {
+          if (isFirstTrip) {
             this.selectTrip = (this.isRound ? this.backTrip : this.thereTrip) || months[i];
             this.selectTrip = this.selectTrip.flightNo ? this.selectTrip : months[i];
             this.saveTrips(this.selectTrip);
@@ -229,12 +243,12 @@ implements OnInit, AfterViewInit, OnDestroy {
             this.weekIndex$.next(this.calendarService.week(
               new Date(this.selectTrip.departDate),
             ));
-            count = 0;
+            isFirstTrip = false;
           }
         }
       });
     });
-    if (count) {
+    if (isFirstTrip) {
       this.selectTrip = <Trip>{};
       this.isTripObject = false;
     }

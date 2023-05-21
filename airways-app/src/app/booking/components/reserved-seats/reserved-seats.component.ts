@@ -30,11 +30,7 @@ export default class ReservedSeatsComponent implements OnInit {
   private get getArraySeats() {
     const arr: string[][] = [];
     this.seatsNumbers.forEach((item) => {
-      const arrInArr = [];
-      for (let i = 0; i < this.columnSeats; i += 1) {
-        arrInArr.push(item);
-      }
-      arr.push(arrInArr);
+      arr.push(Array(this.columnSeats).fill(item));
     });
 
     return arr;

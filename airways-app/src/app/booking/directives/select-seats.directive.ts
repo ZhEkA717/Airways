@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
+import { Trip } from 'src/app/shared/model/trip.model';
 import SeatsCountService from '../services/seats-count.service';
 
 @Directive({
@@ -25,23 +26,19 @@ export default class SelectSeatsDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.select(selectBackTrip).subscribe((back) => {
-      if (this.isRound) {
-        this.r.setStyle(
-          this.el.nativeElement,
-          'borderBottom',
-          `${this.seatsCountService.getColor(back.seats)}`,
-        );
-      }
+    this.store.select(selectBackTrip).subscribe((trip) => {
+      if (this.isRound) this.setStyleTrip(trip);
     });
-    this.store.select(selectThereTrip).subscribe((there) => {
-      if (!this.isRound) {
-        this.r.setStyle(
-          this.el.nativeElement,
-          'borderBottom',
-          `${this.seatsCountService.getColor(there.seats)}`,
-        );
-      }
+    this.store.select(selectThereTrip).subscribe((trip) => {
+      if (!this.isRound) this.setStyleTrip(trip);
     });
+  }
+
+  private setStyleTrip(trip: Trip) {
+    this.r.setStyle(
+      this.el.nativeElement,
+      'borderBottom',
+      `${this.seatsCountService.getColor(trip.seats)}`,
+    );
   }
 }
