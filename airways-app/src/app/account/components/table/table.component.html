@@ -3,7 +3,7 @@
   <!-- No Column -->
   <ng-container matColumnDef="flightNo">
     <th mat-header-cell class="account__table-header" *matHeaderCellDef mat-sort-header> No. </th>
-    <td td-title="FlightNo: " class="account__table-cell cart__table-cell-flight" mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
+    <td td-title="FlightNo: " class="account__table-cell account__table-cell-flight" mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
   </ng-container>
 
   <!-- Flight Column -->
@@ -51,7 +51,7 @@
   <!-- Price Column -->
   <ng-container matColumnDef="price">
     <th mat-header-cell class="account__table-header" *matHeaderCellDef> Price </th>
-    <td td-title="Price: " class="account__table-cell cart__table-cell-price" mat-cell *matCellDef="let element"> {{currencyService.moneyIcon}}{{(element.price * currencyService.moneyRatio).toFixed(1)}} </td>
+    <td td-title="Price: " class="account__table-cell account__table-cell-price" mat-cell *matCellDef="let element"> {{currencyService.moneyIcon}}{{(element.price * currencyService.moneyRatio).toFixed(1)}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

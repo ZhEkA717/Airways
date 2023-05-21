@@ -1,17 +1,25 @@
 @import '../../../../stylings/variables';
 
 mat-card{
-  width: 500px;
+  width: 45vw;
+  max-width: 500px;
   height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.avatar__image-male {
-  max-width: 300px;
-  color:aqua;
-  background-color: $logo-color;
-  border-radius: 50%;
-}
 .avatar__image {
   width: 150px;
   height: 150px;
+  background-color: $logo-color;
+  border-radius: 50%;
+}
+
+.user__name {
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 28px;
+  color: $logo-color;
+  text-align: center;
 }

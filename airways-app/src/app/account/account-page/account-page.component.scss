@@ -1,5 +1,9 @@
 @import '../../../stylings/variables';
 
+mat-card {
+  padding-top: 100px;
+}
+
 .container {
   margin-top: 90px;
   margin-bottom: 40px;
@@ -27,4 +31,5 @@
 .acccount__user-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
