@@ -24,6 +24,7 @@ import SelectValidateDirective from './directives/select-validate.directive';
 import RangeDateComponent from './components/range-date/range-date.component';
 import AutocompleteGroupComponent from './components/autocomplete-group/autocomplete-group.component';
 import AlertComponent from './components/alert/alert.component';
+import ConfirmDialogComponent from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import AlertComponent from './components/alert/alert.component';
     SelectValidateDirective,
     AutocompleteGroupComponent,
     AlertComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,

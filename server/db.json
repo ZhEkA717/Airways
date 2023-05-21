@@ -84,6 +84,38 @@
       "citizenship": "Belarus",
       "agreement": true,
       "id": 8
+    },
+    {
+      "email": "admin@mail.com",
+      "password": "$2a$10$qgBOneAv1vaS0amLXIQNzuB8WSUqLaAThI1ubeoDaK7cQKRzEz17e",
+      "firstName": "Zheka",
+      "lastName": "Grushevski",
+      "date": "2023-05-20T21:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "+375336050565"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 9
+    },
+    {
+      "email": "admin@mail.ru",
+      "password": "$2a$10$Davz5/ltHmDvEJhh6YT55eByGUgrgwyxF6yT2AqvbrBQo6h5/uBbO",
+      "firstName": "Zheka",
+      "lastName": "Grush",
+      "date": "2023-05-20T21:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "+375336050565"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 10
     }
   ],
   "posts": [
