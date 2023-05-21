@@ -273,9 +273,9 @@
         "code": "VNO",
         "city": "Vilnius"
       },
-      "departDate": "05.09.2023 16:40:00",
+      "departDate": "2023-05-25T13:40:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.09.2023 19:00:00",
+      "arriveDate": "2023-05-25T16:00:00.000Z",
       "seats": 93,
       "price": 148.9,
       "bookedSeats": [
@@ -351,9 +351,9 @@
         "code": "VNO",
         "city": "Vilnius"
       },
-      "departDate": "05.10.2023 16:40:00",
+      "departDate": "2023-05-26T13:40:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.10.2023 19:00:00",
+      "arriveDate": "2023-05-26T16:00:00.000Z",
       "seats": 25,
       "bookedSeats": [
         "10B",
@@ -489,9 +489,9 @@
         "code": "VNO",
         "city": "Vilnius"
       },
-      "departDate": "05.11.2023 16:40:00",
+      "departDate": "2023-05-27T13:40:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.11.2023 19:00:00",
+      "arriveDate": "2023-05-27T16:00:00.000Z",
       "seats": 119,
       "price": 152.4,
       "bookedSeats": [
@@ -533,9 +533,9 @@
         "code": "VNO",
         "city": "Vilnius"
       },
-      "departDate": "05.12.2023 16:40:00",
+      "departDate": "2023-05-28T13:40:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.12.2023 19:00:00",
+      "arriveDate": "2023-05-28T16:00:00.000Z",
       "seats": 24,
       "price": 153.5,
       "bookedSeats": [
@@ -672,9 +672,9 @@
         "code": "VNO",
         "city": "Vilnius"
       },
-      "departDate": "05.13.2023 16:40:00",
+      "departDate": "2023-05-29T13:40:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.13.2023 19:00:00",
+      "arriveDate": "2023-05-29T16:00:00.000Z",
       "seats": 77,
       "price": 154.6,
       "bookedSeats": [
@@ -758,9 +758,9 @@
         "code": "VNO",
         "city": "Vilnius"
       },
-      "departDate": "05.14.2023 16:40:00",
+      "departDate": "2023-05-30T13:40:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.14.2023 19:00:00",
+      "arriveDate": "2023-05-30T16:00:00.000Z",
       "seats": 30,
       "price": 158.8,
       "bookedSeats": [
@@ -891,9 +891,9 @@
         "code": "ARN",
         "city": "Stockholm"
       },
-      "departDate": "05.10.2023 19:30:00",
+      "departDate": "2023-05-26T16:30:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.10.2023 21:50:00",
+      "arriveDate": "2023-05-26T18:50:00.000Z",
       "seats": 109,
       "price": 159.1,
       "bookedSeats": [
@@ -945,9 +945,9 @@
         "code": "ARN",
         "city": "Stockholm"
       },
-      "departDate": "05.11.2023 19:30:00",
+      "departDate": "2023-05-27T16:30:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.11.2023 21:50:00",
+      "arriveDate": "2023-05-27T18:50:00.000Z",
       "seats": 135,
       "price": 153.5,
       "bookedSeats": [
@@ -973,9 +973,9 @@
         "code": "ARN",
         "city": "Stockholm"
       },
-      "departDate": "05.12.2023 19:30:00",
+      "departDate": "2023-05-28T16:30:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.12.2023 21:50:00",
+      "arriveDate": "2023-05-28T18:50:00.000Z",
       "seats": 20,
       "price": 159.1,
       "bookedSeats": [
@@ -1116,9 +1116,9 @@
         "code": "ARN",
         "city": "Stockholm"
       },
-      "departDate": "05.13.2023 19:30:00",
+      "departDate": "2023-05-29T16:30:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.13.2023 21:50:00",
+      "arriveDate": "2023-05-29T18:50:00.000Z",
       "seats": 18,
       "price": 156,
       "bookedSeats": [
@@ -1261,9 +1261,9 @@
         "code": "ARN",
         "city": "Stockholm"
       },
-      "departDate": "05.14.2023 19:30:00",
+      "departDate": "2023-05-30T16:30:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.14.2023 21:50:00",
+      "arriveDate": "2023-05-30T18:50:00.000Z",
       "seats": 39,
       "price": 158.2,
       "bookedSeats": [
@@ -1385,9 +1385,9 @@
         "code": "ARN",
         "city": "Stockholm"
       },
-      "departDate": "05.15.2023 19:30:00",
+      "departDate": "2023-05-31T16:30:00.000Z",
       "flightTime": 140,
-      "arriveDate": "05.15.2023 21:50:00",
+      "arriveDate": "2023-05-31T18:50:00.000Z",
       "seats": 13,
       "price": 157.9,
       "bookedSeats": [
@@ -1535,9 +1535,9 @@
         "code": "VIE",
         "city": "Vienna"
       },
-      "departDate": "05.10.2023 10:10:00",
+      "departDate": "2023-05-26T07:10:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.10.2023 12:00:00",
+      "arriveDate": "2023-05-26T09:00:00.000Z",
       "seats": 36,
       "price": 85.1,
       "bookedSeats": [
@@ -1662,9 +1662,9 @@
         "code": "VIE",
         "city": "Vienna"
       },
-      "departDate": "05.11.2023 10:10:00",
+      "departDate": "2023-05-27T07:10:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.11.2023 12:00:00",
+      "arriveDate": "2023-05-27T09:00:00.000Z",
       "seats": 53,
       "price": 90.7,
       "bookedSeats": [
@@ -1772,9 +1772,9 @@
         "code": "VIE",
         "city": "Vienna"
       },
-      "departDate": "05.12.2023 10:10:00",
+      "departDate": "2023-05-28T07:10:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.12.2023 12:00:00",
+      "arriveDate": "2023-05-28T09:00:00.000Z",
       "seats": 116,
       "price": 85.4,
       "bookedSeats": [
@@ -1819,9 +1819,9 @@
         "code": "VIE",
         "city": "Vienna"
       },
-      "departDate": "05.13.2023 10:10:00",
+      "departDate": "2023-05-29T07:10:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.13.2023 12:00:00",
+      "arriveDate": "2023-05-29T09:00:00.000Z",
       "seats": 29,
       "price": 87,
       "bookedSeats": [
@@ -1953,9 +1953,9 @@
         "code": "VIE",
         "city": "Vienna"
       },
-      "departDate": "05.14.2023 10:10:00",
+      "departDate": "2023-05-30T07:10:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.14.2023 12:00:00",
+      "arriveDate": "2023-05-30T09:00:00.000Z",
       "seats": 61,
       "price": 87.1,
       "bookedSeats": [
@@ -2055,9 +2055,9 @@
         "code": "VIE",
         "city": "Vienna"
       },
-      "departDate": "05.15.2023 10:10:00",
+      "departDate": "2023-05-31T07:10:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.15.2023 12:00:00",
+      "arriveDate": "2023-05-31T09:00:00.000Z",
       "seats": 33,
       "price": 92.1,
       "bookedSeats": [
@@ -2185,9 +2185,9 @@
         "code": "ATH",
         "city": "Athens"
       },
-      "departDate": "05.11.2023 8:20:00",
+      "departDate": "2023-05-27T05:20:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.11.2023 10:10:00",
+      "arriveDate": "2023-05-27T07:10:00.000Z",
       "seats": 141,
       "price": 93.4,
       "bookedSeats": [
@@ -2207,9 +2207,9 @@
         "code": "ATH",
         "city": "Athens"
       },
-      "departDate": "05.12.2023 8:20:00",
+      "departDate": "2023-05-28T05:20:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.12.2023 10:10:00",
+      "arriveDate": "2023-05-28T07:10:00.000Z",
       "seats": 65,
       "price": 91.2,
       "bookedSeats": [
@@ -2305,9 +2305,9 @@
         "code": "ATH",
         "city": "Athens"
       },
-      "departDate": "05.13.2023 8:20:00",
+      "departDate": "2023-05-29T05:20:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.13.2023 10:10:00",
+      "arriveDate": "2023-05-29T07:10:00.000Z",
       "seats": 128,
       "price": 91.3,
       "bookedSeats": [
@@ -2340,9 +2340,9 @@
         "code": "ATH",
         "city": "Athens"
       },
-      "departDate": "05.14.2023 8:20:00",
+      "departDate": "2023-05-30T05:20:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.14.2023 10:10:00",
+      "arriveDate": "2023-05-30T07:10:00.000Z",
       "seats": 40,
       "price": 87.4,
       "bookedSeats": [
@@ -2463,9 +2463,9 @@
         "code": "ATH",
         "city": "Athens"
       },
-      "departDate": "05.15.2023 8:20:00",
+      "departDate": "2023-05-31T05:20:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.15.2023 10:10:00",
+      "arriveDate": "2023-05-31T07:10:00.000Z",
       "seats": 98,
       "price": 95.6,
       "bookedSeats": [
@@ -2528,9 +2528,9 @@
         "code": "ATH",
         "city": "Athens"
       },
-      "departDate": "05.16.2023 8:20:00",
+      "departDate": "2023-06-01T05:20:00.000Z",
       "flightTime": 110,
-      "arriveDate": "05.16.2023 10:10:00",
+      "arriveDate": "2023-06-01T07:10:00.000Z",
       "seats": 136,
       "price": 85.1,
       "bookedSeats": [
@@ -2555,9 +2555,9 @@
         "code": "WAW",
         "city": "Warsaw"
       },
-      "departDate": "05.08.2023 9:00:00",
+      "departDate": "2023-05-24T06:00:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.08.2023 14:30:00",
+      "arriveDate": "2023-05-24T11:30:00.000Z",
       "seats": 59,
       "price": 95.5,
       "bookedSeats": [
@@ -2659,9 +2659,9 @@
         "code": "WAW",
         "city": "Warsaw"
       },
-      "departDate": "05.09.2023 9:00:00",
+      "departDate": "2023-05-25T06:00:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.09.2023 14:30:00",
+      "arriveDate": "2023-05-25T11:30:00.000Z",
       "seats": 116,
       "price": 99.6,
       "bookedSeats": [
@@ -2706,9 +2706,9 @@
         "code": "WAW",
         "city": "Warsaw"
       },
-      "departDate": "05.10.2023 9:00:00",
+      "departDate": "2023-05-26T06:00:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.10.2023 14:30:00",
+      "arriveDate": "2023-05-26T11:30:00.000Z",
       "seats": 85,
       "price": 97.2,
       "bookedSeats": [
@@ -2784,9 +2784,9 @@
         "code": "WAW",
         "city": "Warsaw"
       },
-      "departDate": "05.11.2023 9:00:00",
+      "departDate": "2023-05-27T06:00:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.11.2023 14:30:00",
+      "arriveDate": "2023-05-27T11:30:00.000Z",
       "seats": 16,
       "price": 92.1,
       "bookedSeats": [
@@ -2931,9 +2931,9 @@
         "code": "WAW",
         "city": "Warsaw"
       },
-      "departDate": "05.12.2023 9:00:00",
+      "departDate": "2023-05-28T06:00:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.12.2023 14:30:00",
+      "arriveDate": "2023-05-28T11:30:00.000Z",
       "seats": 9,
       "price": 101.5,
       "bookedSeats": [
@@ -3085,9 +3085,9 @@
         "code": "WAW",
         "city": "Warsaw"
       },
-      "departDate": "05.13.2023 9:00:00",
+      "departDate": "2023-05-29T06:00:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.13.2023 14:30:00",
+      "arriveDate": "2023-05-29T11:30:00.000Z",
       "seats": 91,
       "price": 92.1,
       "bookedSeats": [
@@ -3157,9 +3157,9 @@
         "code": "AMS",
         "city": "Amsterdam"
       },
-      "departDate": "05.09.2023 18:10:00",
+      "departDate": "2023-05-25T15:10:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.09.2023 23:40:00",
+      "arriveDate": "2023-05-25T20:40:00.000Z",
       "seats": 108,
       "price": 90.1,
       "bookedSeats": [
@@ -3212,9 +3212,9 @@
         "code": "AMS",
         "city": "Amsterdam"
       },
-      "departDate": "05.10.2023 18:10:00",
+      "departDate": "2023-05-26T15:10:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.10.2023 23:40:00",
+      "arriveDate": "2023-05-26T20:40:00.000Z",
       "seats": 110,
       "price": 96.3,
       "bookedSeats": [
@@ -3265,9 +3265,9 @@
         "code": "AMS",
         "city": "Amsterdam"
       },
-      "departDate": "05.11.2023 18:10:00",
+      "departDate": "2023-05-27T15:10:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.11.2023 23:40:00",
+      "arriveDate": "2023-05-27T20:40:00.000Z",
       "seats": 129,
       "price": 92.4,
       "bookedSeats": [
@@ -3299,9 +3299,9 @@
         "code": "AMS",
         "city": "Amsterdam"
       },
-      "departDate": "05.12.2023 18:10:00",
+      "departDate": "2023-05-28T15:10:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.12.2023 23:40:00",
+      "arriveDate": "2023-05-28T20:40:00.000Z",
       "seats": 88,
       "price": 99.4,
       "bookedSeats": [
@@ -3374,9 +3374,9 @@
         "code": "AMS",
         "city": "Amsterdam"
       },
-      "departDate": "05.13.2023 18:10:00",
+      "departDate": "2023-05-29T15:10:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.13.2023 23:40:00",
+      "arriveDate": "2023-05-29T20:40:00.000Z",
       "seats": 13,
       "price": 98.2,
       "bookedSeats": [
@@ -3524,9 +3524,9 @@
         "code": "AMS",
         "city": "Amsterdam"
       },
-      "departDate": "05.14.2023 18:10:00",
+      "departDate": "2023-05-30T15:10:00.000Z",
       "flightTime": 330,
-      "arriveDate": "05.14.2023 23:40:00",
+      "arriveDate": "2023-05-30T20:40:00.000Z",
       "seats": 56,
       "price": 92.7,
       "bookedSeats": [
@@ -3631,9 +3631,9 @@
         "code": "SVO",
         "city": "Moscow"
       },
-      "departDate": "05.13.2023 12:20:00",
+      "departDate": "2023-05-29T09:20:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.13.2023 15:30:00",
+      "arriveDate": "2023-05-29T12:30:00.000Z",
       "seats": 36,
       "price": 169.9,
       "bookedSeats": [
@@ -3758,9 +3758,9 @@
         "code": "SVO",
         "city": "Moscow"
       },
-      "departDate": "05.14.2023 12:20:00",
+      "departDate": "2023-05-30T09:20:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.14.2023 15:30:00",
+      "arriveDate": "2023-05-30T12:30:00.000Z",
       "seats": 130,
       "price": 174.2,
       "bookedSeats": [
@@ -3791,9 +3791,9 @@
         "code": "SVO",
         "city": "Moscow"
       },
-      "departDate": "05.15.2023 12:20:00",
+      "departDate": "2023-05-31T09:20:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.15.2023 15:30:00",
+      "arriveDate": "2023-05-31T12:30:00.000Z",
       "seats": 134,
       "price": 167.3,
       "bookedSeats": [
@@ -3820,9 +3820,9 @@
         "code": "SVO",
         "city": "Moscow"
       },
-      "departDate": "05.16.2023 12:20:00",
+      "departDate": "2023-06-01T09:20:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.16.2023 15:30:00",
+      "arriveDate": "2023-06-01T12:30:00.000Z",
       "seats": 23,
       "price": 177.1,
       "bookedSeats": [
@@ -3960,9 +3960,9 @@
         "code": "SVO",
         "city": "Moscow"
       },
-      "departDate": "05.17.2023 12:20:00",
+      "departDate": "2023-06-02T09:20:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.17.2023 15:30:00",
+      "arriveDate": "2023-06-02T12:30:00.000Z",
       "seats": 119,
       "price": 168.3,
       "bookedSeats": [
@@ -4004,9 +4004,9 @@
         "code": "SVO",
         "city": "Moscow"
       },
-      "departDate": "05.18.2023 12:20:00",
+      "departDate": "2023-06-03T09:20:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.18.2023 15:30:00",
+      "arriveDate": "2023-06-03T12:30:00.000Z",
       "seats": 76,
       "price": 172.5,
       "bookedSeats": [
@@ -4091,9 +4091,9 @@
         "code": "BUD",
         "city": "Budapest"
       },
-      "departDate": "05.14.2023 18:40:00",
+      "departDate": "2023-05-30T15:40:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.14.2023 21:50:00",
+      "arriveDate": "2023-05-30T18:50:00.000Z",
       "seats": 74,
       "price": 174.5,
       "bookedSeats": [
@@ -4180,9 +4180,9 @@
         "code": "BUD",
         "city": "Budapest"
       },
-      "departDate": "05.15.2023 18:40:00",
+      "departDate": "2023-05-31T15:40:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.15.2023 21:50:00",
+      "arriveDate": "2023-05-31T18:50:00.000Z",
       "seats": 86,
       "price": 168.4,
       "bookedSeats": [
@@ -4257,9 +4257,9 @@
         "code": "BUD",
         "city": "Budapest"
       },
-      "departDate": "05.16.2023 18:40:00",
+      "departDate": "2023-06-01T15:40:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.16.2023 21:50:00",
+      "arriveDate": "2023-06-01T18:50:00.000Z",
       "seats": 67,
       "price": 167.4,
       "bookedSeats": [
@@ -4353,9 +4353,9 @@
         "code": "BUD",
         "city": "Budapest"
       },
-      "departDate": "05.17.2023 18:40:00",
+      "departDate": "2023-06-02T15:40:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.17.2023 21:50:00",
+      "arriveDate": "2023-06-02T18:50:00.000Z",
       "seats": 70,
       "price": 178,
       "bookedSeats": [
@@ -4446,9 +4446,9 @@
         "code": "BUD",
         "city": "Budapest"
       },
-      "departDate": "05.18.2023 18:40:00",
+      "departDate": "2023-06-03T15:40:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.18.2023 21:50:00",
+      "arriveDate": "2023-06-03T18:50:00.000Z",
       "seats": 139,
       "price": 178.4,
       "bookedSeats": [
@@ -4470,9 +4470,9 @@
         "code": "BUD",
         "city": "Budapest"
       },
-      "departDate": "05.19.2023 18:40:00",
+      "departDate": "2023-06-04T15:40:00.000Z",
       "flightTime": 190,
-      "arriveDate": "05.19.2023 21:50:00",
+      "arriveDate": "2023-06-04T18:50:00.000Z",
       "seats": 59,
       "price": 176.3,
       "bookedSeats": [
@@ -4574,9 +4574,9 @@
         "code": "SXF",
         "city": "Berlin"
       },
-      "departDate": "05.12.2023 14:50:00",
+      "departDate": "2023-05-28T11:50:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.12.2023 21:00:00",
+      "arriveDate": "2023-05-28T18:00:00.000Z",
       "seats": 123,
       "price": 86.1,
       "bookedSeats": [
@@ -4614,9 +4614,9 @@
         "code": "SXF",
         "city": "Berlin"
       },
-      "departDate": "05.13.2023 14:50:00",
+      "departDate": "2023-05-29T11:50:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.13.2023 21:00:00",
+      "arriveDate": "2023-05-29T18:00:00.000Z",
       "seats": 119,
       "price": 90.1,
       "bookedSeats": [
@@ -4658,9 +4658,9 @@
         "code": "SXF",
         "city": "Berlin"
       },
-      "departDate": "05.14.2023 14:50:00",
+      "departDate": "2023-05-30T11:50:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.14.2023 21:00:00",
+      "arriveDate": "2023-05-30T18:00:00.000Z",
       "seats": 132,
       "price": 92.4,
       "bookedSeats": [
@@ -4689,9 +4689,9 @@
         "code": "SXF",
         "city": "Berlin"
       },
-      "departDate": "05.15.2023 14:50:00",
+      "departDate": "2023-05-31T11:50:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.15.2023 21:00:00",
+      "arriveDate": "2023-05-31T18:00:00.000Z",
       "seats": 87,
       "price": 88.3,
       "bookedSeats": [
@@ -4765,9 +4765,9 @@
         "code": "SXF",
         "city": "Berlin"
       },
-      "departDate": "05.16.2023 14:50:00",
+      "departDate": "2023-06-01T11:50:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.16.2023 21:00:00",
+      "arriveDate": "2023-06-01T18:00:00.000Z",
       "seats": 60,
       "price": 88.9,
       "bookedSeats": [
@@ -4868,9 +4868,9 @@
         "code": "SXF",
         "city": "Berlin"
       },
-      "departDate": "05.17.2023 14:50:00",
+      "departDate": "2023-06-02T11:50:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.17.2023 21:00:00",
+      "arriveDate": "2023-06-02T18:00:00.000Z",
       "seats": 76,
       "price": 91.8,
       "bookedSeats": [
@@ -4955,9 +4955,9 @@
         "code": "BRU",
         "city": "Brussels"
       },
-      "departDate": "05.13.2023 8:00:00",
+      "departDate": "2023-05-29T05:00:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.13.2023 14:10:00",
+      "arriveDate": "2023-05-29T11:10:00.000Z",
       "seats": 35,
       "price": 85,
       "bookedSeats": [
@@ -5083,9 +5083,9 @@
         "code": "BRU",
         "city": "Brussels"
       },
-      "departDate": "05.14.2023 8:00:00",
+      "departDate": "2023-05-30T05:00:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.14.2023 14:10:00",
+      "arriveDate": "2023-05-30T11:10:00.000Z",
       "seats": 75,
       "price": 94.4,
       "bookedSeats": [
@@ -5171,9 +5171,9 @@
         "code": "BRU",
         "city": "Brussels"
       },
-      "departDate": "05.15.2023 8:00:00",
+      "departDate": "2023-05-31T05:00:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.15.2023 14:10:00",
+      "arriveDate": "2023-05-31T11:10:00.000Z",
       "seats": 122,
       "price": 89.4,
       "bookedSeats": [
@@ -5212,9 +5212,9 @@
         "code": "BRU",
         "city": "Brussels"
       },
-      "departDate": "05.16.2023 8:00:00",
+      "departDate": "2023-06-01T05:00:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.16.2023 14:10:00",
+      "arriveDate": "2023-06-01T11:10:00.000Z",
       "seats": 23,
       "price": 90.3,
       "bookedSeats": [
@@ -5352,9 +5352,9 @@
         "code": "BRU",
         "city": "Brussels"
       },
-      "departDate": "05.17.2023 8:00:00",
+      "departDate": "2023-06-02T05:00:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.17.2023 14:10:00",
+      "arriveDate": "2023-06-02T11:10:00.000Z",
       "seats": 19,
       "price": 90.7,
       "bookedSeats": [
@@ -5496,9 +5496,9 @@
         "code": "BRU",
         "city": "Brussels"
       },
-      "departDate": "05.18.2023 8:00:00",
+      "departDate": "2023-06-03T05:00:00.000Z",
       "flightTime": 370,
-      "arriveDate": "05.18.2023 14:10:00",
+      "arriveDate": "2023-06-03T11:10:00.000Z",
       "seats": 26,
       "price": 89.7,
       "bookedSeats": [
@@ -5633,9 +5633,9 @@
         "code": "TLV",
         "city": "Tel Aviv"
       },
-      "departDate": "05.11.2023 8:00:00",
+      "departDate": "2023-05-27T05:00:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.11.2023 12:10:00",
+      "arriveDate": "2023-05-27T09:10:00.000Z",
       "seats": 26,
       "price": 176.4,
       "bookedSeats": [
@@ -5770,9 +5770,9 @@
         "code": "TLV",
         "city": "Tel Aviv"
       },
-      "departDate": "05.12.2023 8:00:00",
+      "departDate": "2023-05-28T05:00:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.12.2023 12:10:00",
+      "arriveDate": "2023-05-28T09:10:00.000Z",
       "seats": 52,
       "price": 179.4,
       "bookedSeats": [
@@ -5881,9 +5881,9 @@
         "code": "TLV",
         "city": "Tel Aviv"
       },
-      "departDate": "05.13.2023 8:00:00",
+      "departDate": "2023-05-29T05:00:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.13.2023 12:10:00",
+      "arriveDate": "2023-05-29T09:10:00.000Z",
       "seats": 69,
       "price": 172,
       "bookedSeats": [
@@ -5975,9 +5975,9 @@
         "code": "TLV",
         "city": "Tel Aviv"
       },
-      "departDate": "05.14.2023 8:00:00",
+      "departDate": "2023-05-30T05:00:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.14.2023 12:10:00",
+      "arriveDate": "2023-05-30T09:10:00.000Z",
       "seats": 121,
       "price": 175.5,
       "bookedSeats": [
@@ -6017,9 +6017,9 @@
         "code": "TLV",
         "city": "Tel Aviv"
       },
-      "departDate": "05.15.2023 8:00:00",
+      "departDate": "2023-05-31T05:00:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.15.2023 12:10:00",
+      "arriveDate": "2023-05-31T09:10:00.000Z",
       "seats": 5,
       "price": 179.1,
       "bookedSeats": [
@@ -6175,9 +6175,9 @@
         "code": "TLV",
         "city": "Tel Aviv"
       },
-      "departDate": "05.16.2023 8:00:00",
+      "departDate": "2023-06-01T05:00:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.16.2023 12:10:00",
+      "arriveDate": "2023-06-01T09:10:00.000Z",
       "seats": 87,
       "price": 173.3,
       "bookedSeats": [
@@ -6251,9 +6251,9 @@
         "code": "BCN",
         "city": "Barcelona"
       },
-      "departDate": "05.12.2023 9:10:00",
+      "departDate": "2023-05-28T06:10:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.12.2023 13:20:00",
+      "arriveDate": "2023-05-28T10:20:00.000Z",
       "seats": 95,
       "price": 179.1,
       "bookedSeats": [
@@ -6319,9 +6319,9 @@
         "code": "BCN",
         "city": "Barcelona"
       },
-      "departDate": "05.13.2023 9:10:00",
+      "departDate": "2023-05-29T06:10:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.13.2023 13:20:00",
+      "arriveDate": "2023-05-29T10:20:00.000Z",
       "seats": 127,
       "price": 183,
       "bookedSeats": [
@@ -6355,9 +6355,9 @@
         "code": "BCN",
         "city": "Barcelona"
       },
-      "departDate": "05.14.2023 9:10:00",
+      "departDate": "2023-05-30T06:10:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.14.2023 13:20:00",
+      "arriveDate": "2023-05-30T10:20:00.000Z",
       "seats": 80,
       "price": 173.6,
       "bookedSeats": [
@@ -6438,9 +6438,9 @@
         "code": "BCN",
         "city": "Barcelona"
       },
-      "departDate": "05.15.2023 9:10:00",
+      "departDate": "2023-05-31T06:10:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.15.2023 13:20:00",
+      "arriveDate": "2023-05-31T10:20:00.000Z",
       "seats": 29,
       "price": 176.2,
       "bookedSeats": [
@@ -6572,9 +6572,9 @@
         "code": "BCN",
         "city": "Barcelona"
       },
-      "departDate": "05.16.2023 9:10:00",
+      "departDate": "2023-06-01T06:10:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.16.2023 13:20:00",
+      "arriveDate": "2023-06-01T10:20:00.000Z",
       "seats": 91,
       "price": 174.4,
       "bookedSeats": [
@@ -6644,9 +6644,9 @@
         "code": "BCN",
         "city": "Barcelona"
       },
-      "departDate": "05.17.2023 9:10:00",
+      "departDate": "2023-06-02T06:10:00.000Z",
       "flightTime": 250,
-      "arriveDate": "05.17.2023 13:20:00",
+      "arriveDate": "2023-06-02T10:20:00.000Z",
       "seats": 85,
       "price": 182.5,
       "bookedSeats": [
@@ -6722,9 +6722,9 @@
         "code": "PRG",
         "city": "Prague"
       },
-      "departDate": "05.16.2023 17:40:00",
+      "departDate": "2023-06-01T14:40:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.16.2023 22:40:00",
+      "arriveDate": "2023-06-01T19:40:00.000Z",
       "seats": 15,
       "price": 176.7,
       "bookedSeats": [
@@ -6870,9 +6870,9 @@
         "code": "PRG",
         "city": "Prague"
       },
-      "departDate": "05.17.2023 17:40:00",
+      "departDate": "2023-06-02T14:40:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.17.2023 22:40:00",
+      "arriveDate": "2023-06-02T19:40:00.000Z",
       "seats": 130,
       "price": 172.5,
       "bookedSeats": [
@@ -6903,9 +6903,9 @@
         "code": "PRG",
         "city": "Prague"
       },
-      "departDate": "05.18.2023 17:40:00",
+      "departDate": "2023-06-03T14:40:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.18.2023 22:40:00",
+      "arriveDate": "2023-06-03T19:40:00.000Z",
       "seats": 118,
       "price": 174.1,
       "bookedSeats": [
@@ -6948,9 +6948,9 @@
         "code": "PRG",
         "city": "Prague"
       },
-      "departDate": "05.19.2023 17:40:00",
+      "departDate": "2023-06-04T14:40:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.19.2023 22:40:00",
+      "arriveDate": "2023-06-04T19:40:00.000Z",
       "seats": 108,
       "price": 173.4,
       "bookedSeats": [
@@ -7003,9 +7003,9 @@
         "code": "PRG",
         "city": "Prague"
       },
-      "departDate": "05.20.2023 17:40:00",
+      "departDate": "2023-06-05T14:40:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.20.2023 22:40:00",
+      "arriveDate": "2023-06-05T19:40:00.000Z",
       "seats": 131,
       "price": 181.1,
       "bookedSeats": [
@@ -7035,9 +7035,9 @@
         "code": "PRG",
         "city": "Prague"
       },
-      "departDate": "05.21.2023 17:40:00",
+      "departDate": "2023-06-06T14:40:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.21.2023 22:40:00",
+      "arriveDate": "2023-06-06T19:40:00.000Z",
       "seats": 86,
       "price": 182.4,
       "bookedSeats": [
@@ -7112,9 +7112,9 @@
         "code": "CPH",
         "city": "Copenhagen"
       },
-      "departDate": "05.17.2023 17:30:00",
+      "departDate": "2023-06-02T14:30:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.17.2023 22:30:00",
+      "arriveDate": "2023-06-02T19:30:00.000Z",
       "seats": 54,
       "price": 176.1,
       "bookedSeats": [
@@ -7221,9 +7221,9 @@
         "code": "CPH",
         "city": "Copenhagen"
       },
-      "departDate": "05.18.2023 17:30:00",
+      "departDate": "2023-06-03T14:30:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.18.2023 22:30:00",
+      "arriveDate": "2023-06-03T19:30:00.000Z",
       "seats": 71,
       "price": 176.2,
       "bookedSeats": [
@@ -7313,9 +7313,9 @@
         "code": "CPH",
         "city": "Copenhagen"
       },
-      "departDate": "05.19.2023 17:30:00",
+      "departDate": "2023-06-04T14:30:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.19.2023 22:30:00",
+      "arriveDate": "2023-06-04T19:30:00.000Z",
       "seats": 131,
       "price": 179.9,
       "bookedSeats": [
@@ -7345,9 +7345,9 @@
         "code": "CPH",
         "city": "Copenhagen"
       },
-      "departDate": "05.20.2023 17:30:00",
+      "departDate": "2023-06-05T14:30:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.20.2023 22:30:00",
+      "arriveDate": "2023-06-05T19:30:00.000Z",
       "seats": 80,
       "price": 183.9,
       "bookedSeats": [
@@ -7428,9 +7428,9 @@
         "code": "CPH",
         "city": "Copenhagen"
       },
-      "departDate": "05.21.2023 17:30:00",
+      "departDate": "2023-06-06T14:30:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.21.2023 22:30:00",
+      "arriveDate": "2023-06-06T19:30:00.000Z",
       "seats": 66,
       "price": 178.7,
       "bookedSeats": [
@@ -7525,9 +7525,9 @@
         "code": "CPH",
         "city": "Copenhagen"
       },
-      "departDate": "05.22.2023 17:30:00",
+      "departDate": "2023-06-07T14:30:00.000Z",
       "flightTime": 300,
-      "arriveDate": "05.22.2023 22:30:00",
+      "arriveDate": "2023-06-07T19:30:00.000Z",
       "seats": 88,
       "price": 182.6,
       "bookedSeats": [
@@ -7600,9 +7600,9 @@
         "code": "RIX",
         "city": "Riga"
       },
-      "departDate": "05.15.2023 18:20:00",
+      "departDate": "2023-05-31T15:20:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.15.2023 23:30:00",
+      "arriveDate": "2023-05-31T20:30:00.000Z",
       "seats": 101,
       "price": 188,
       "bookedSeats": [
@@ -7662,9 +7662,9 @@
         "code": "RIX",
         "city": "Riga"
       },
-      "departDate": "05.16.2023 18:20:00",
+      "departDate": "2023-06-01T15:20:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.16.2023 23:30:00",
+      "arriveDate": "2023-06-01T20:30:00.000Z",
       "seats": 140,
       "price": 180.9,
       "bookedSeats": [
@@ -7685,9 +7685,9 @@
         "code": "RIX",
         "city": "Riga"
       },
-      "departDate": "05.17.2023 18:20:00",
+      "departDate": "2023-06-02T15:20:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.17.2023 23:30:00",
+      "arriveDate": "2023-06-02T20:30:00.000Z",
       "seats": 41,
       "price": 177.6,
       "bookedSeats": [
@@ -7807,9 +7807,9 @@
         "code": "RIX",
         "city": "Riga"
       },
-      "departDate": "05.18.2023 18:20:00",
+      "departDate": "2023-06-03T15:20:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.18.2023 23:30:00",
+      "arriveDate": "2023-06-03T20:30:00.000Z",
       "seats": 113,
       "price": 186.1,
       "bookedSeats": [
@@ -7857,9 +7857,9 @@
         "code": "RIX",
         "city": "Riga"
       },
-      "departDate": "05.19.2023 18:20:00",
+      "departDate": "2023-06-04T15:20:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.19.2023 23:30:00",
+      "arriveDate": "2023-06-04T20:30:00.000Z",
       "seats": 60,
       "price": 182,
       "bookedSeats": [
@@ -7960,9 +7960,9 @@
         "code": "RIX",
         "city": "Riga"
       },
-      "departDate": "05.20.2023 18:20:00",
+      "departDate": "2023-06-05T15:20:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.20.2023 23:30:00",
+      "arriveDate": "2023-06-05T20:30:00.000Z",
       "seats": 16,
       "price": 178.1,
       "bookedSeats": [
@@ -8107,9 +8107,9 @@
         "code": "CIA",
         "city": "Rome"
       },
-      "departDate": "05.16.2023 17:00:00",
+      "departDate": "2023-06-01T14:00:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.16.2023 22:10:00",
+      "arriveDate": "2023-06-01T19:10:00.000Z",
       "seats": 31,
       "price": 180.2,
       "bookedSeats": [
@@ -8239,9 +8239,9 @@
         "code": "CIA",
         "city": "Rome"
       },
-      "departDate": "05.17.2023 17:00:00",
+      "departDate": "2023-06-02T14:00:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.17.2023 22:10:00",
+      "arriveDate": "2023-06-02T19:10:00.000Z",
       "seats": 78,
       "price": 177.3,
       "bookedSeats": [
@@ -8324,9 +8324,9 @@
         "code": "CIA",
         "city": "Rome"
       },
-      "departDate": "05.18.2023 17:00:00",
+      "departDate": "2023-06-03T14:00:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.18.2023 22:10:00",
+      "arriveDate": "2023-06-03T19:10:00.000Z",
       "seats": 44,
       "price": 185.9,
       "bookedSeats": [
@@ -8443,9 +8443,9 @@
         "code": "CIA",
         "city": "Rome"
       },
-      "departDate": "05.19.2023 17:00:00",
+      "departDate": "2023-06-04T14:00:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.19.2023 22:10:00",
+      "arriveDate": "2023-06-04T19:10:00.000Z",
       "seats": 112,
       "price": 180.2,
       "bookedSeats": [
@@ -8494,9 +8494,9 @@
         "code": "CIA",
         "city": "Rome"
       },
-      "departDate": "05.20.2023 17:00:00",
+      "departDate": "2023-06-05T14:00:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.20.2023 22:10:00",
+      "arriveDate": "2023-06-05T19:10:00.000Z",
       "seats": 85,
       "price": 188.9,
       "bookedSeats": [
@@ -8572,9 +8572,9 @@
         "code": "CIA",
         "city": "Rome"
       },
-      "departDate": "05.21.2023 17:00:00",
+      "departDate": "2023-06-06T14:00:00.000Z",
       "flightTime": 310,
-      "arriveDate": "05.21.2023 22:10:00",
+      "arriveDate": "2023-06-06T19:10:00.000Z",
       "seats": 17,
       "price": 180.8,
       "bookedSeats": [
@@ -8718,9 +8718,9 @@
         "code": "SOF",
         "city": "Sofia"
       },
-      "departDate": "05.14.2023 16:10:00",
+      "departDate": "2023-05-30T13:10:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.14.2023 23:40:00",
+      "arriveDate": "2023-05-30T20:40:00.000Z",
       "seats": 124,
       "price": 133.5,
       "bookedSeats": [
@@ -8757,9 +8757,9 @@
         "code": "SOF",
         "city": "Sofia"
       },
-      "departDate": "05.15.2023 16:10:00",
+      "departDate": "2023-05-31T13:10:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.15.2023 23:40:00",
+      "arriveDate": "2023-05-31T20:40:00.000Z",
       "seats": 55,
       "price": 139.7,
       "bookedSeats": [
@@ -8865,9 +8865,9 @@
         "code": "SOF",
         "city": "Sofia"
       },
-      "departDate": "05.16.2023 16:10:00",
+      "departDate": "2023-06-01T13:10:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.16.2023 23:40:00",
+      "arriveDate": "2023-06-01T20:40:00.000Z",
       "seats": 127,
       "price": 134.8,
       "bookedSeats": [
@@ -8901,9 +8901,9 @@
         "code": "SOF",
         "city": "Sofia"
       },
-      "departDate": "05.17.2023 16:10:00",
+      "departDate": "2023-06-02T13:10:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.17.2023 23:40:00",
+      "arriveDate": "2023-06-02T20:40:00.000Z",
       "seats": 65,
       "price": 143.3,
       "bookedSeats": [
@@ -8999,9 +8999,9 @@
         "code": "SOF",
         "city": "Sofia"
       },
-      "departDate": "05.18.2023 16:10:00",
+      "departDate": "2023-06-03T13:10:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.18.2023 23:40:00",
+      "arriveDate": "2023-06-03T20:40:00.000Z",
       "seats": 112,
       "price": 139.1,
       "bookedSeats": [
@@ -9050,9 +9050,9 @@
         "code": "SOF",
         "city": "Sofia"
       },
-      "departDate": "05.19.2023 16:10:00",
+      "departDate": "2023-06-04T13:10:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.19.2023 23:40:00",
+      "arriveDate": "2023-06-04T20:40:00.000Z",
       "seats": 38,
       "price": 142.5,
       "bookedSeats": [
@@ -9175,9 +9175,9 @@
         "code": "CDG",
         "city": "Paris"
       },
-      "departDate": "05.15.2023 8:30:00",
+      "departDate": "2023-05-31T05:30:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.15.2023 16:00:00",
+      "arriveDate": "2023-05-31T13:00:00.000Z",
       "seats": 119,
       "price": 133.9,
       "bookedSeats": [
@@ -9219,9 +9219,9 @@
         "code": "CDG",
         "city": "Paris"
       },
-      "departDate": "05.16.2023 8:30:00",
+      "departDate": "2023-06-01T05:30:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.16.2023 16:00:00",
+      "arriveDate": "2023-06-01T13:00:00.000Z",
       "seats": 116,
       "price": 138.1,
       "bookedSeats": [
@@ -9266,9 +9266,9 @@
         "code": "CDG",
         "city": "Paris"
       },
-      "departDate": "05.17.2023 8:30:00",
+      "departDate": "2023-06-02T05:30:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.17.2023 16:00:00",
+      "arriveDate": "2023-06-02T13:00:00.000Z",
       "seats": 124,
       "price": 138.8,
       "bookedSeats": [
@@ -9305,9 +9305,9 @@
         "code": "CDG",
         "city": "Paris"
       },
-      "departDate": "05.18.2023 8:30:00",
+      "departDate": "2023-06-03T05:30:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.18.2023 16:00:00",
+      "arriveDate": "2023-06-03T13:00:00.000Z",
       "seats": 81,
       "price": 139.6,
       "bookedSeats": [
@@ -9387,9 +9387,9 @@
         "code": "CDG",
         "city": "Paris"
       },
-      "departDate": "05.19.2023 8:30:00",
+      "departDate": "2023-06-04T05:30:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.19.2023 16:00:00",
+      "arriveDate": "2023-06-04T13:00:00.000Z",
       "seats": 118,
       "price": 143.2,
       "bookedSeats": [
@@ -9432,9 +9432,9 @@
         "code": "CDG",
         "city": "Paris"
       },
-      "departDate": "05.20.2023 8:30:00",
+      "departDate": "2023-06-05T05:30:00.000Z",
       "flightTime": 450,
-      "arriveDate": "05.20.2023 16:00:00",
+      "arriveDate": "2023-06-05T13:00:00.000Z",
       "seats": 70,
       "price": 139.2,
       "bookedSeats": [
@@ -9525,9 +9525,9 @@
         "code": "OSL",
         "city": "Oslo"
       },
-      "departDate": "05.17.2023 21:30:00",
+      "departDate": "2023-06-02T18:30:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.17.2023 23:40:00",
+      "arriveDate": "2023-06-02T20:40:00.000Z",
       "seats": 77,
       "price": 190.2,
       "bookedSeats": [
@@ -9611,9 +9611,9 @@
         "code": "OSL",
         "city": "Oslo"
       },
-      "departDate": "05.18.2023 21:30:00",
+      "departDate": "2023-06-03T18:30:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.18.2023 23:40:00",
+      "arriveDate": "2023-06-03T20:40:00.000Z",
       "seats": 74,
       "price": 198.3,
       "bookedSeats": [
@@ -9700,9 +9700,9 @@
         "code": "OSL",
         "city": "Oslo"
       },
-      "departDate": "05.19.2023 21:30:00",
+      "departDate": "2023-06-04T18:30:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.19.2023 23:40:00",
+      "arriveDate": "2023-06-04T20:40:00.000Z",
       "seats": 68,
       "price": 188.5,
       "bookedSeats": [
@@ -9795,9 +9795,9 @@
         "code": "OSL",
         "city": "Oslo"
       },
-      "departDate": "05.20.2023 21:30:00",
+      "departDate": "2023-06-05T18:30:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.20.2023 23:40:00",
+      "arriveDate": "2023-06-05T20:40:00.000Z",
       "seats": 8,
       "price": 194.6,
       "bookedSeats": [
@@ -9950,9 +9950,9 @@
         "code": "OSL",
         "city": "Oslo"
       },
-      "departDate": "05.21.2023 21:30:00",
+      "departDate": "2023-06-06T18:30:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.21.2023 23:40:00",
+      "arriveDate": "2023-06-06T20:40:00.000Z",
       "seats": 90,
       "price": 188,
       "bookedSeats": [
@@ -10023,9 +10023,9 @@
         "code": "OSL",
         "city": "Oslo"
       },
-      "departDate": "05.22.2023 21:30:00",
+      "departDate": "2023-06-07T18:30:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.22.2023 23:40:00",
+      "arriveDate": "2023-06-07T20:40:00.000Z",
       "seats": 70,
       "price": 189.5,
       "bookedSeats": [
@@ -10116,9 +10116,9 @@
         "code": "DUB",
         "city": "Dublin"
       },
-      "departDate": "05.18.2023 9:40:00",
+      "departDate": "2023-06-03T06:40:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.18.2023 11:50:00",
+      "arriveDate": "2023-06-03T08:50:00.000Z",
       "seats": 84,
       "price": 188.8,
       "bookedSeats": [
@@ -10195,9 +10195,9 @@
         "code": "DUB",
         "city": "Dublin"
       },
-      "departDate": "05.19.2023 9:40:00",
+      "departDate": "2023-06-04T06:40:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.19.2023 11:50:00",
+      "arriveDate": "2023-06-04T08:50:00.000Z",
       "seats": 66,
       "price": 199,
       "bookedSeats": [
@@ -10292,9 +10292,9 @@
         "code": "DUB",
         "city": "Dublin"
       },
-      "departDate": "05.20.2023 9:40:00",
+      "departDate": "2023-06-05T06:40:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.20.2023 11:50:00",
+      "arriveDate": "2023-06-05T08:50:00.000Z",
       "seats": 74,
       "price": 193.8,
       "bookedSeats": [
@@ -10381,9 +10381,9 @@
         "code": "DUB",
         "city": "Dublin"
       },
-      "departDate": "05.21.2023 9:40:00",
+      "departDate": "2023-06-06T06:40:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.21.2023 11:50:00",
+      "arriveDate": "2023-06-06T08:50:00.000Z",
       "seats": 21,
       "price": 195.9,
       "bookedSeats": [
@@ -10523,9 +10523,9 @@
         "code": "DUB",
         "city": "Dublin"
       },
-      "departDate": "05.22.2023 9:40:00",
+      "departDate": "2023-06-07T06:40:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.22.2023 11:50:00",
+      "arriveDate": "2023-06-07T08:50:00.000Z",
       "seats": 29,
       "price": 196.6,
       "bookedSeats": [
@@ -10657,9 +10657,9 @@
         "code": "DUB",
         "city": "Dublin"
       },
-      "departDate": "05.23.2023 9:40:00",
+      "departDate": "2023-06-08T06:40:00.000Z",
       "flightTime": 130,
-      "arriveDate": "05.23.2023 11:50:00",
+      "arriveDate": "2023-06-08T08:50:00.000Z",
       "seats": 14,
       "price": 196.4,
       "bookedSeats": [
@@ -10806,9 +10806,9 @@
         "code": "MHP",
         "city": "Minsk"
       },
-      "departDate": "05.18.2023 12:50:00",
+      "departDate": "2023-06-03T09:50:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.18.2023 15:40:00",
+      "arriveDate": "2023-06-03T12:40:00.000Z",
       "seats": 88,
       "price": 126.4,
       "bookedSeats": [
@@ -10881,9 +10881,9 @@
         "code": "MHP",
         "city": "Minsk"
       },
-      "departDate": "05.19.2023 12:50:00",
+      "departDate": "2023-06-04T09:50:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.19.2023 15:40:00",
+      "arriveDate": "2023-06-04T12:40:00.000Z",
       "seats": 121,
       "price": 120.3,
       "bookedSeats": [
@@ -10923,9 +10923,9 @@
         "code": "MHP",
         "city": "Minsk"
       },
-      "departDate": "05.20.2023 12:50:00",
+      "departDate": "2023-06-05T09:50:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.20.2023 15:40:00",
+      "arriveDate": "2023-06-05T12:40:00.000Z",
       "seats": 7,
       "price": 125.3,
       "bookedSeats": [
@@ -11079,9 +11079,9 @@
         "code": "MHP",
         "city": "Minsk"
       },
-      "departDate": "05.21.2023 12:50:00",
+      "departDate": "2023-06-06T09:50:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.21.2023 15:40:00",
+      "arriveDate": "2023-06-06T12:40:00.000Z",
       "seats": 88,
       "price": 125.5,
       "bookedSeats": [
@@ -11154,9 +11154,9 @@
         "code": "MHP",
         "city": "Minsk"
       },
-      "departDate": "05.22.2023 12:50:00",
+      "departDate": "2023-06-07T09:50:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.22.2023 15:40:00",
+      "arriveDate": "2023-06-07T12:40:00.000Z",
       "seats": 139,
       "price": 120.7,
       "bookedSeats": [
@@ -11178,9 +11178,9 @@
         "code": "MHP",
         "city": "Minsk"
       },
-      "departDate": "05.23.2023 12:50:00",
+      "departDate": "2023-06-08T09:50:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.23.2023 15:40:00",
+      "arriveDate": "2023-06-08T12:40:00.000Z",
       "seats": 60,
       "price": 120.9,
       "bookedSeats": [
@@ -11281,9 +11281,9 @@
         "code": "GVA",
         "city": "Geneva"
       },
-      "departDate": "05.19.2023 9:10:00",
+      "departDate": "2023-06-04T06:10:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.19.2023 12:00:00",
+      "arriveDate": "2023-06-04T09:00:00.000Z",
       "seats": 61,
       "price": 120.1,
       "bookedSeats": [
@@ -11383,9 +11383,9 @@
         "code": "GVA",
         "city": "Geneva"
       },
-      "departDate": "05.20.2023 9:10:00",
+      "departDate": "2023-06-05T06:10:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.20.2023 12:00:00",
+      "arriveDate": "2023-06-05T09:00:00.000Z",
       "seats": 38,
       "price": 128.3,
       "bookedSeats": [
@@ -11508,9 +11508,9 @@
         "code": "GVA",
         "city": "Geneva"
       },
-      "departDate": "05.21.2023 9:10:00",
+      "departDate": "2023-06-06T06:10:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.21.2023 12:00:00",
+      "arriveDate": "2023-06-06T09:00:00.000Z",
       "seats": 46,
       "price": 123.8,
       "bookedSeats": [
@@ -11625,9 +11625,9 @@
         "code": "GVA",
         "city": "Geneva"
       },
-      "departDate": "05.22.2023 9:10:00",
+      "departDate": "2023-06-07T06:10:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.22.2023 12:00:00",
+      "arriveDate": "2023-06-07T09:00:00.000Z",
       "seats": 127,
       "price": 121,
       "bookedSeats": [
@@ -11661,9 +11661,9 @@
         "code": "GVA",
         "city": "Geneva"
       },
-      "departDate": "05.23.2023 9:10:00",
+      "departDate": "2023-06-08T06:10:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.23.2023 12:00:00",
+      "arriveDate": "2023-06-08T09:00:00.000Z",
       "seats": 135,
       "price": 125.1,
       "bookedSeats": [
@@ -11689,9 +11689,9 @@
         "code": "GVA",
         "city": "Geneva"
       },
-      "departDate": "05.24.2023 9:10:00",
+      "departDate": "2023-06-09T06:10:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.24.2023 12:00:00",
+      "arriveDate": "2023-06-09T09:00:00.000Z",
       "seats": 116,
       "price": 124.3,
       "bookedSeats": [
@@ -11736,9 +11736,9 @@
         "code": "LCY",
         "city": "London"
       },
-      "departDate": "05.19.2023 12:30:00",
+      "departDate": "2023-06-04T09:30:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.19.2023 13:40:00",
+      "arriveDate": "2023-06-04T10:40:00.000Z",
       "seats": 62,
       "price": 181.4,
       "bookedSeats": [
@@ -11837,9 +11837,9 @@
         "code": "LCY",
         "city": "London"
       },
-      "departDate": "05.20.2023 12:30:00",
+      "departDate": "2023-06-05T09:30:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.20.2023 13:40:00",
+      "arriveDate": "2023-06-05T10:40:00.000Z",
       "seats": 47,
       "price": 189,
       "bookedSeats": [
@@ -11953,9 +11953,9 @@
         "code": "LCY",
         "city": "London"
       },
-      "departDate": "05.21.2023 12:30:00",
+      "departDate": "2023-06-06T09:30:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.21.2023 13:40:00",
+      "arriveDate": "2023-06-06T10:40:00.000Z",
       "seats": 49,
       "price": 184.1,
       "bookedSeats": [
@@ -12067,9 +12067,9 @@
         "code": "LCY",
         "city": "London"
       },
-      "departDate": "05.22.2023 12:30:00",
+      "departDate": "2023-06-07T09:30:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.22.2023 13:40:00",
+      "arriveDate": "2023-06-07T10:40:00.000Z",
       "seats": 35,
       "price": 189.1,
       "bookedSeats": [
@@ -12195,9 +12195,9 @@
         "code": "LCY",
         "city": "London"
       },
-      "departDate": "05.23.2023 12:30:00",
+      "departDate": "2023-06-08T09:30:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.23.2023 13:40:00",
+      "arriveDate": "2023-06-08T10:40:00.000Z",
       "seats": 129,
       "price": 188.5,
       "bookedSeats": [
@@ -12229,9 +12229,9 @@
         "code": "LCY",
         "city": "London"
       },
-      "departDate": "05.24.2023 12:30:00",
+      "departDate": "2023-06-09T09:30:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.24.2023 13:40:00",
+      "arriveDate": "2023-06-09T10:40:00.000Z",
       "seats": 119,
       "price": 183,
       "bookedSeats": [
@@ -12273,9 +12273,9 @@
         "code": "HEL",
         "city": "Helsinki"
       },
-      "departDate": "05.20.2023 21:50:00",
+      "departDate": "2023-06-05T18:50:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.20.2023 23:00:00",
+      "arriveDate": "2023-06-05T20:00:00.000Z",
       "seats": 25,
       "price": 185.6,
       "bookedSeats": [
@@ -12411,9 +12411,9 @@
         "code": "HEL",
         "city": "Helsinki"
       },
-      "departDate": "05.21.2023 21:50:00",
+      "departDate": "2023-06-06T18:50:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.21.2023 23:00:00",
+      "arriveDate": "2023-06-06T20:00:00.000Z",
       "seats": 138,
       "price": 184.8,
       "bookedSeats": [
@@ -12436,9 +12436,9 @@
         "code": "HEL",
         "city": "Helsinki"
       },
-      "departDate": "05.22.2023 21:50:00",
+      "departDate": "2023-06-07T18:50:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.22.2023 23:00:00",
+      "arriveDate": "2023-06-07T20:00:00.000Z",
       "seats": 104,
       "price": 187.6,
       "bookedSeats": [
@@ -12495,9 +12495,9 @@
         "code": "HEL",
         "city": "Helsinki"
       },
-      "departDate": "05.23.2023 21:50:00",
+      "departDate": "2023-06-08T18:50:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.23.2023 23:00:00",
+      "arriveDate": "2023-06-08T20:00:00.000Z",
       "seats": 124,
       "price": 188.7,
       "bookedSeats": [
@@ -12534,9 +12534,9 @@
         "code": "HEL",
         "city": "Helsinki"
       },
-      "departDate": "05.24.2023 21:50:00",
+      "departDate": "2023-06-09T18:50:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.24.2023 23:00:00",
+      "arriveDate": "2023-06-09T20:00:00.000Z",
       "seats": 88,
       "price": 189.4,
       "bookedSeats": [
@@ -12609,9 +12609,9 @@
         "code": "HEL",
         "city": "Helsinki"
       },
-      "departDate": "05.25.2023 21:50:00",
+      "departDate": "2023-06-10T18:50:00.000Z",
       "flightTime": 70,
-      "arriveDate": "05.25.2023 23:00:00",
+      "arriveDate": "2023-06-10T20:00:00.000Z",
       "seats": 136,
       "price": 186.5,
       "bookedSeats": [
@@ -12636,9 +12636,9 @@
         "code": "KEF",
         "city": "Reykjavik"
       },
-      "departDate": "05.20.2023 18:20:00",
+      "departDate": "2023-06-05T15:20:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.20.2023 21:10:00",
+      "arriveDate": "2023-06-05T18:10:00.000Z",
       "seats": 40,
       "price": 117.5,
       "bookedSeats": [
@@ -12759,9 +12759,9 @@
         "code": "KEF",
         "city": "Reykjavik"
       },
-      "departDate": "05.21.2023 18:20:00",
+      "departDate": "2023-06-06T15:20:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.21.2023 21:10:00",
+      "arriveDate": "2023-06-06T18:10:00.000Z",
       "seats": 38,
       "price": 121.8,
       "bookedSeats": [
@@ -12884,9 +12884,9 @@
         "code": "KEF",
         "city": "Reykjavik"
       },
-      "departDate": "05.22.2023 18:20:00",
+      "departDate": "2023-06-07T15:20:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.22.2023 21:10:00",
+      "arriveDate": "2023-06-07T18:10:00.000Z",
       "seats": 44,
       "price": 116.1,
       "bookedSeats": [
@@ -13003,9 +13003,9 @@
         "code": "KEF",
         "city": "Reykjavik"
       },
-      "departDate": "05.23.2023 18:20:00",
+      "departDate": "2023-06-08T15:20:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.23.2023 21:10:00",
+      "arriveDate": "2023-06-08T18:10:00.000Z",
       "seats": 62,
       "price": 123.4,
       "bookedSeats": [
@@ -13104,9 +13104,9 @@
         "code": "KEF",
         "city": "Reykjavik"
       },
-      "departDate": "05.24.2023 18:20:00",
+      "departDate": "2023-06-09T15:20:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.24.2023 21:10:00",
+      "arriveDate": "2023-06-09T18:10:00.000Z",
       "seats": 113,
       "price": 121,
       "bookedSeats": [
@@ -13154,9 +13154,9 @@
         "code": "KEF",
         "city": "Reykjavik"
       },
-      "departDate": "05.25.2023 18:20:00",
+      "departDate": "2023-06-10T15:20:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.25.2023 21:10:00",
+      "arriveDate": "2023-06-10T18:10:00.000Z",
       "seats": 72,
       "price": 118.6,
       "bookedSeats": [
@@ -13245,9 +13245,9 @@
         "code": "KBP",
         "city": "Kiev"
       },
-      "departDate": "05.21.2023 15:00:00",
+      "departDate": "2023-06-06T12:00:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.21.2023 17:50:00",
+      "arriveDate": "2023-06-06T14:50:00.000Z",
       "seats": 26,
       "price": 124,
       "bookedSeats": [
@@ -13382,9 +13382,9 @@
         "code": "KBP",
         "city": "Kiev"
       },
-      "departDate": "05.22.2023 15:00:00",
+      "departDate": "2023-06-07T12:00:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.22.2023 17:50:00",
+      "arriveDate": "2023-06-07T14:50:00.000Z",
       "seats": 15,
       "price": 115.4,
       "bookedSeats": [
@@ -13530,9 +13530,9 @@
         "code": "KBP",
         "city": "Kiev"
       },
-      "departDate": "05.23.2023 15:00:00",
+      "departDate": "2023-06-08T12:00:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.23.2023 17:50:00",
+      "arriveDate": "2023-06-08T14:50:00.000Z",
       "seats": 51,
       "price": 123.5,
       "bookedSeats": [
@@ -13642,9 +13642,9 @@
         "code": "KBP",
         "city": "Kiev"
       },
-      "departDate": "05.24.2023 15:00:00",
+      "departDate": "2023-06-09T12:00:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.24.2023 17:50:00",
+      "arriveDate": "2023-06-09T14:50:00.000Z",
       "seats": 133,
       "price": 115.3,
       "bookedSeats": [
@@ -13672,9 +13672,9 @@
         "code": "KBP",
         "city": "Kiev"
       },
-      "departDate": "05.25.2023 15:00:00",
+      "departDate": "2023-06-10T12:00:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.25.2023 17:50:00",
+      "arriveDate": "2023-06-10T14:50:00.000Z",
       "seats": 87,
       "price": 124.5,
       "bookedSeats": [
@@ -13748,9 +13748,9 @@
         "code": "KBP",
         "city": "Kiev"
       },
-      "departDate": "05.26.2023 15:00:00",
+      "departDate": "2023-06-11T12:00:00.000Z",
       "flightTime": 170,
-      "arriveDate": "05.26.2023 17:50:00",
+      "arriveDate": "2023-06-11T14:50:00.000Z",
       "seats": 98,
       "price": 126.9,
       "bookedSeats": [
