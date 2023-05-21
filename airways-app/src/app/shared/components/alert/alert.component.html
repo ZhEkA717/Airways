@@ -1,0 +1,21 @@
+<mat-card
+  class="alert-wrapper"
+  [class.active] = "isShow"
+>
+  <div
+    class="alert"
+    [ngClass] = "{
+      'alert-success': type === 'success',
+      'alert-warning': type === 'warning',
+      'alert-error': type === 'error'
+    }"
+  >
+  <div class="info">
+    <mat-icon>
+      {{type === 'success' ? 'check_box' : 'error'}}
+    </mat-icon>
+    <p>{{text}}</p>
+  </div>
+  <button (click)="close()">x</button>
+  </div>
+</mat-card>
