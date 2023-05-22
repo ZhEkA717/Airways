@@ -1,7 +1,7 @@
 <div class="container">
   <div class="acccount__user-container">
     <app-user-avatar [gender]="user.gender" [userName]="user.firstName + ' ' + user.lastName"></app-user-avatar>
-    <app-user-info [birthDate]="user.birthDate" [email]="user.email" [phone]="user.phone.code + user.phone.number" ></app-user-info>
+    <app-user-info [birthDate]="user.birthDate" [email]="user.email" [phone]="user.phone.number" [adress]="user.citizenship" ></app-user-info>
   </div>
     <div class="account__table-title">
       Booked trips

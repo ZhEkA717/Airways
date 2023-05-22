@@ -9,7 +9,8 @@ export interface Person {
 export interface User extends Person {
   email: string;
   password?: string;
-  phone: Phone
+  phone: Phone;
+  citizenship: string;
 }
 
 export interface Passenger extends Person {

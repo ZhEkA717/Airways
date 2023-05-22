@@ -18,6 +18,7 @@ export class AccountPageComponent implements OnInit {
       phone: { code: '', number: '' },
       birthDate: '',
       gender: 'Female',
+      citizenship: '',
     };
   }
 
