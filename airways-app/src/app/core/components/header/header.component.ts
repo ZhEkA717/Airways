@@ -28,7 +28,7 @@ export default class HeaderComponent {
 
   public isLogged = false;
 
-  public isOverlayOpen = false;
+  public isAccount = false;
 
   public loginButtonCaption = 'Sign in';
 
@@ -49,6 +49,7 @@ export default class HeaderComponent {
     });
     this.getRouterUrl().subscribe((url) => {
       this.isNotMain = url !== 'main';
+      this.isAccount = url === 'account';
       this.stepperShow = url === 'booking';
     });
   }
@@ -78,10 +79,5 @@ export default class HeaderComponent {
     } else {
       this.openDialog('500ms', '0ms');
     }
-  }
-
-  public logout() {
-    this.isOverlayOpen = false;
-    this.authService.logout();
   }
 }

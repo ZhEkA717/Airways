@@ -88,30 +88,20 @@
           >done</mat-icon>
       </button>
     </mat-menu>
-    <button cdkOverlayOrigin #trigger="cdkOverlayOrigin"
-      (click)="auth()"
-      class="button header__button-login">
-      <mat-icon
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__img"
-      >person</mat-icon>
-      <div
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__title"
-      >{{loginButtonCaption}}</div>
-    </button>
-    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayOpen" (overlayOutsideClick)="isOverlayOpen = false">
-      <button (click)="logout()" class="button header__button-logout">
-        <mat-icon
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__img"
-      >power_settings_new</mat-icon>
-      <div
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__title"
-      >Logout</div>
+    <div *ngIf="(isAccount&&isLogged); then logout else profile"></div>
+    <ng-template #logout>
+      <button (click)="authService.logout()" class="button header__button-logout">
+        <mat-icon [class.isBooking]="isNotMain" class="header__button-login__img">power_settings_new</mat-icon>
+        <div [class.isBooking]="isNotMain" class="header__button-login__title">Logout</div>
       </button>
     </ng-template>
+    <ng-template #profile>
+      <button (click)="auth()" class="button header__button-login">
+        <mat-icon [class.isBooking]="isNotMain" class="header__button-login__img">person</mat-icon>
+        <div [class.isBooking]="isNotMain" class="header__button-login__title">{{loginButtonCaption}}</div>
+      </button>
+    </ng-template>
+
   </div>
   <div class="button-wrapper">
     <button
