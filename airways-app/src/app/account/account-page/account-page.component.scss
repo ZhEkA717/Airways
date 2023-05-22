@@ -30,10 +30,10 @@ mat-card {
 
 .acccount__user-container {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   align-items: center;
-  
-  @media(max-width:450px) {
+
+  @media(max-width:650px) {
     flex-direction: column;
   }
 }
