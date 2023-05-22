@@ -1,30 +1,6 @@
 {
   "users": [
     {
-      "email": "admin@airways.com",
-      "password": "$2a$10$noMoM04GPzHK.aBR0yy55.CA8M2xOGgDQ8SwKm.eoGiCMuF/q/j0y",
-      "userName": "admin",
-      "id": 1
-    },
-    {
-      "email": "customer1@airways.com",
-      "password": "$2a$10$3O5SfMxIW1rN3W/nHs4UYuOy9IjgKAaEJH1a/MX7ZHX73v8lSP2am",
-      "userName": "EXisTAnZ",
-      "id": 2
-    },
-    {
-      "email": "customer2@airways.com",
-      "password": "$2a$10$rZI/.11ewX4SZWVqZNlYcujXg8iXIZGJ/9uN/nlcruWDLQZD/8cCS",
-      "userName": "ZhEkA717",
-      "id": 3
-    },
-    {
-      "email": "customer3@airways.com",
-      "password": "$2a$10$r1PYAbUE90ab/DXF.7qdGu9O0DS/l431KkhKPZBPhkM7V6cPQa7vK",
-      "userName": "mironovahl",
-      "id": 4
-    },
-    {
       "email": "admin@admin.ua",
       "password": "$2a$10$va.uPBeZpAZgVyndWoSpauNrhb3fvTl8N6hohQKgcuYkTjalGrvr.",
       "phone": {
@@ -33,16 +9,16 @@
       },
       "firstName": "Vadim",
       "lastName": "Koloskov",
-      "birthDate": "08.04.1994",
+      "date": "08.04.1994",
       "gender": "Male",
-      "id": 5
+      "id": 1
     },
     {
       "email": "sundarpichai@google.com",
       "password": "$2a$10$znW.mMGa0QTSt4qJS0WmOeg0q7SmDeqNwqiNQqW9Oj0TVVTN5nl5O",
       "firstName": "Sundar",
       "lastName": "Pachai",
-      "birthDate": "1972-10-05T21:00:00.000Z",
+      "date": "1972-10-05T21:00:00.000Z",
       "gender": "Male",
       "countryCode": "044",
       "phone": {
@@ -51,14 +27,14 @@
       },
       "citizenship": "England",
       "agreement": true,
-      "id": 6
+      "id": 2
     },
     {
       "email": "markzuckerberg@fb.com",
       "password": "$2a$10$Z4gXX7tyjsLh7UCtVsrpP.k6WQ5Ll5pBvnX9geHsWDtMA6jpuKReu",
       "firstName": "Mark",
       "lastName": "Zuckerberg",
-      "birthDate": "1984-05-13T20:00:00.000Z",
+      "date": "1984-05-13T20:00:00.000Z",
       "gender": "Male",
       "countryCode": "375",
       "phone": {
@@ -67,14 +43,14 @@
       },
       "citizenship": "Belarus",
       "agreement": true,
-      "id": 7
+      "id": 3
     },
     {
       "email": "grushevskiy.yevgeniy@mail.ru",
       "password": "$2a$10$0r1TxUYyUGzac/0voJX3/uwAAz5TJE6SxMBhu9rNpOgiW3v2m3kR.",
       "firstName": "Евгений",
       "lastName": "Грушевский",
-      "birthDate": "2023-05-18T21:00:00.000Z",
+      "date": "2023-05-18T21:00:00.000Z",
       "gender": "Male",
       "countryCode": "375",
       "phone": {
@@ -83,7 +59,39 @@
       },
       "citizenship": "Belarus",
       "agreement": true,
-      "id": 8
+      "id": 4
+    },
+    {
+      "email": "valik@mail.com",
+      "password": "$2a$10$qbQxmhNVFuNjO/z8FhiPDe2zDhMNnTW2hzHrCSd3oyPXY97SzZMxa",
+      "firstName": "Valik",
+      "lastName": "Grushevskiy",
+      "date": "2023-04-30T21:00:00.000Z",
+      "gender": "Female",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "+375295237498"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 5
+    },
+    {
+      "email": "grushevskiy.yevgeniy@mail.com",
+      "password": "$2a$10$meOgGkroJVPvxwVSWLF1DeXnDklLVl4TWS9qq5VK8UbBS4c2a31Pm",
+      "firstName": "Zheka",
+      "lastName": "Grushevskiy",
+      "date": "2023-05-01T21:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "80295237498"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 6
     }
   ],
   "posts": [

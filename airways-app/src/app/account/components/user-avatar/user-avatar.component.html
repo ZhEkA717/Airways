@@ -1,4 +1,5 @@
 <mat-card>
+  <div class="background"></div>
   <div class="avatar__image">
     <div *ngIf="gender.toLowerCase()==='male'; then maleAvatar else femaleAvatar"></div>
       <ng-template #maleAvatar><img src ="assets/icons/avatar-m.svg" alt="man" class="avatar__image-male"></ng-template>

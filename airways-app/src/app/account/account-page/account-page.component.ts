@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/model/persons.model';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/shared/model/persons.model';
 import AuthService from '../../auth/services/auth.service';
 
 @Component({
@@ -7,22 +8,10 @@ import AuthService from '../../auth/services/auth.service';
   templateUrl: './account-page.component.html',
   styleUrls: ['./account-page.component.scss'],
 })
-export class AccountPageComponent implements OnInit {
-  public user: User;
+export class AccountPageComponent {
+  public user$!: Observable<User>;
 
   constructor(private authService: AuthService) {
-    this.user = {
-      email: '',
-      firstName: '',
-      lastName: '',
-      phone: { code: '', number: '' },
-      birthDate: '',
-      gender: 'Female',
-      citizenship: '',
-    };
-  }
-
-  ngOnInit() {
-    this.authService.getCurrentUser().subscribe((user) => { this.user = user; });
+    this.user$ = this.authService.getCurrentUser();
   }
 }

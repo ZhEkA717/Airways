@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class UserInfoComponent {
   @Input() birthDate = '01.20.1990';
 
-  @Input() adress = 'New Vasyuki, Ohio';
+  @Input() address = 'New Vasyuki, Ohio';
 
   @Input() email = 'elonmusk@tesla.com';
 

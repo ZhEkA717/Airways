@@ -1,3 +1,5 @@
+@import '../../../../stylings/variables';
+
 :host {
   width: 100%;
 }
@@ -9,9 +11,21 @@ mat-card {
   align-items: center;
   justify-content: center;
 
+  .user__info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .user__info {
     display: flex;
     align-items: center;
     gap: 15px;
+    font-weight: 500;
+    color: $average-color;
+
+    mat-icon {
+      color: $logo-color;
+    }
   }
 }

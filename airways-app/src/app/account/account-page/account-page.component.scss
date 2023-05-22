@@ -1,7 +1,8 @@
 @import '../../../stylings/variables';
 
-mat-card {
-  padding-top: 100px;
+
+:host {
+  margin-top: 40px;
 }
 
 .container {
