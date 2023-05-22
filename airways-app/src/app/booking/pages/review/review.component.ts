@@ -145,6 +145,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       price,
       thereSeats: this.thereSeats,
       backSeats: this.backSeats,
+      isPayed: false,
     };
     this.store.dispatch(addToCart({ cart }));
   }

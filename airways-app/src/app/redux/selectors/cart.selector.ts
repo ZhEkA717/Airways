@@ -6,7 +6,12 @@ export const selectCart = createFeatureSelector<CartState>(CART_REDUCER_KEY);
 
 export const selectCartItems = createSelector(
   selectCart,
-  (cart: CartState) => cart.items,
+  (cart: CartState) => cart.items.filter((item) => !item.isPayed),
+);
+
+export const selectBuyedItems = createSelector(
+  selectCart,
+  (cart: CartState) => cart.items.filter((item) => item.isPayed),
 );
 
 export const selectAmountCart = createSelector(
