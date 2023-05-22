@@ -7,17 +7,20 @@ import { saveBackTrip } from 'src/app/redux/actions/flight.action';
 import {
   selectBackSeats,
   selectBackTrip,
+  selectFeatureFlight,
   selectThereSeats,
   selectThereTrip,
 } from 'src/app/redux/selectors/flight.selector';
-import { selectTripWay } from 'src/app/redux/selectors/search.selector';
+import { selectFeatureSearch, selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { TripWay } from 'src/app/main/model/flight-search.model';
 import { addToCart } from 'src/app/redux/actions/cart.action';
 import { CartItem } from 'src/app/shared/model/cart.model';
-import TotalService from '../../services/total.service';
-import { TotalInfo } from '../../models/total-info.model';
+import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
+import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
 import { selectMaxId } from '../../../redux/selectors/cart.selector';
+import { TotalInfo } from '../../models/total-info.model';
+import TotalService from '../../services/total.service';
 
 @Component({
   selector: 'app-review',
@@ -55,12 +58,36 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   subBack!: Subscription;
 
+  private search$ = this.store.select(selectFeatureSearch);
+
+  private search!: SearchState;
+
+  private passengersForm$ = this.store.select(selectFeaturePassengerForm);
+
+  private passengersForm!: PassengersState;
+
+  private flight$ = this.store.select(selectFeatureFlight);
+
+  private flight!: TripState;
+
   constructor(
     private headerService: HeaderService,
     private totalService: TotalService,
     private router: Router,
     private store: Store,
-  ) {}
+  ) {
+    this.search$.subscribe((res) => {
+      this.search = res;
+    });
+
+    this.passengersForm$.subscribe((res) => {
+      this.passengersForm = res;
+    });
+
+    this.flight$.subscribe((res) => {
+      this.flight = res;
+    });
+  }
 
   ngOnInit(): void {
     this.headerService.setStepper({
@@ -146,6 +173,9 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       thereSeats: this.thereSeats,
       backSeats: this.backSeats,
       isPayed: false,
+      search: this.search,
+      passengersForm: this.passengersForm,
+      flight: this.flight,
     };
     this.store.dispatch(addToCart({ cart }));
   }

@@ -1,21 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
-import { Airport } from 'src/app/shared/model/airport.model';
 import {
   getAirportError,
   getAirportSuccess,
   saveDateFormat,
   saveMoneyFormat,
 } from '../actions/settings.action';
+import { SettingsState } from '../models/redux-states';
 
 export const SETTINGS_REDUCER_KEY = 'settings';
-
-export interface SettingsState {
-  format: {
-    dateFormat: string,
-    moneyFormat: string,
-  },
-  airports: Airport[],
-}
 
 export const initialState: SettingsState = {
   format: {

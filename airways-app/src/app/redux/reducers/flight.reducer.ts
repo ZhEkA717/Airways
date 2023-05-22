@@ -5,21 +5,14 @@ import {
   backSelect,
   resetFlight,
   saveBackTrip,
+  saveFlight,
   saveThereTrip,
   thereSeats,
   thereSelect,
 } from '../actions/flight.action';
+import { TripState } from '../models/redux-states';
 
 export const TRIP_REDUCER_KEY = 'flight';
-
-export interface TripState {
-  thereSelect: boolean,
-  backSelect: boolean,
-  thereSeats: string[],
-  backSeats: string[],
-  thereTrip: Trip,
-  backTrip: Trip,
-}
 
 export const initialState: TripState = {
   thereSelect: true,
@@ -32,6 +25,9 @@ export const initialState: TripState = {
 
 export const flightReducer = createReducer(
   initialState,
+  on(saveFlight, (state, action):TripState => ({
+    ...action,
+  })),
   on(saveThereTrip, (state, action):TripState => ({
     ...state,
     thereTrip: action,
