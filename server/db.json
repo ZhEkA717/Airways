@@ -42,7 +42,7 @@
       "password": "$2a$10$znW.mMGa0QTSt4qJS0WmOeg0q7SmDeqNwqiNQqW9Oj0TVVTN5nl5O",
       "firstName": "Sundar",
       "lastName": "Pachai",
-      "date": "1972-10-05T21:00:00.000Z",
+      "birthDate": "1972-10-05T21:00:00.000Z",
       "gender": "Male",
       "countryCode": "044",
       "phone": {
@@ -58,7 +58,7 @@
       "password": "$2a$10$Z4gXX7tyjsLh7UCtVsrpP.k6WQ5Ll5pBvnX9geHsWDtMA6jpuKReu",
       "firstName": "Mark",
       "lastName": "Zuckerberg",
-      "date": "1984-05-13T20:00:00.000Z",
+      "birthDate": "1984-05-13T20:00:00.000Z",
       "gender": "Male",
       "countryCode": "375",
       "phone": {
@@ -74,7 +74,7 @@
       "password": "$2a$10$0r1TxUYyUGzac/0voJX3/uwAAz5TJE6SxMBhu9rNpOgiW3v2m3kR.",
       "firstName": "Евгений",
       "lastName": "Грушевский",
-      "date": "2023-05-18T21:00:00.000Z",
+      "birthDate": "2023-05-18T21:00:00.000Z",
       "gender": "Male",
       "countryCode": "375",
       "phone": {
