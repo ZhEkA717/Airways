@@ -60,38 +60,6 @@
       "citizenship": "Belarus",
       "agreement": true,
       "id": 4
-    },
-    {
-      "email": "valik@mail.com",
-      "password": "$2a$10$qbQxmhNVFuNjO/z8FhiPDe2zDhMNnTW2hzHrCSd3oyPXY97SzZMxa",
-      "firstName": "Valik",
-      "lastName": "Grushevskiy",
-      "date": "2023-04-30T21:00:00.000Z",
-      "gender": "Female",
-      "countryCode": "375",
-      "phone": {
-        "code": "375",
-        "number": "+375295237498"
-      },
-      "citizenship": "Belarus",
-      "agreement": true,
-      "id": 5
-    },
-    {
-      "email": "grushevskiy.yevgeniy@mail.com",
-      "password": "$2a$10$meOgGkroJVPvxwVSWLF1DeXnDklLVl4TWS9qq5VK8UbBS4c2a31Pm",
-      "firstName": "Zheka",
-      "lastName": "Grushevskiy",
-      "date": "2023-05-01T21:00:00.000Z",
-      "gender": "Male",
-      "countryCode": "375",
-      "phone": {
-        "code": "375",
-        "number": "80295237498"
-      },
-      "citizenship": "Belarus",
-      "agreement": true,
-      "id": 6
     }
   ],
   "posts": [
