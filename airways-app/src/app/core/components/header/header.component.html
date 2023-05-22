@@ -90,7 +90,7 @@
     </mat-menu>
     <div *ngIf="(isAccount&&isLogged); then logout else profile"></div>
     <ng-template #logout>
-      <button (click)="authService.logout()" class="button header__button-logout">
+      <button (click)="logOut()" class="button header__button-logout">
         <mat-icon [class.isBooking]="isNotMain" class="header__button-login__img">power_settings_new</mat-icon>
         <div [class.isBooking]="isNotMain" class="header__button-login__title">Logout</div>
       </button>

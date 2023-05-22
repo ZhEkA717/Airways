@@ -80,4 +80,9 @@ export default class HeaderComponent {
       this.openDialog('500ms', '0ms');
     }
   }
+
+  public logOut() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }
