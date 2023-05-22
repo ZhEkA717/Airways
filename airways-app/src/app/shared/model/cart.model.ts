@@ -6,8 +6,9 @@ export interface CartItem {
   type: 'Round trip' | 'One way';
   passengers: string[];
   price: number;
-  thereSeats: string[],
-  backSeats: string[],
+  thereSeats: string[];
+  backSeats: string[];
+  isPayed: boolean;
 }
 
 interface Destination {

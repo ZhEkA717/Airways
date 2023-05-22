@@ -1,0 +1,40 @@
+@import '../../../stylings/variables';
+
+
+:host {
+  margin-top: 40px;
+}
+
+.container {
+  margin-top: 90px;
+  margin-bottom: 40px;
+
+  @media(max-width: 1230px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+
+.account__main-title,
+.account__table-title {
+  margin: 30px ;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 28px;
+  color: $logo-color;
+
+  @media (max-width: 605px) {
+    margin-left: 10px;
+  }
+}
+
+.acccount__user-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  @media(max-width:650px) {
+    flex-direction: column;
+  }
+}

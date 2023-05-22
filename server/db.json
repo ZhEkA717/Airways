@@ -1,30 +1,6 @@
 {
   "users": [
     {
-      "email": "admin@airways.com",
-      "password": "$2a$10$noMoM04GPzHK.aBR0yy55.CA8M2xOGgDQ8SwKm.eoGiCMuF/q/j0y",
-      "userName": "admin",
-      "id": 1
-    },
-    {
-      "email": "customer1@airways.com",
-      "password": "$2a$10$3O5SfMxIW1rN3W/nHs4UYuOy9IjgKAaEJH1a/MX7ZHX73v8lSP2am",
-      "userName": "EXisTAnZ",
-      "id": 2
-    },
-    {
-      "email": "customer2@airways.com",
-      "password": "$2a$10$rZI/.11ewX4SZWVqZNlYcujXg8iXIZGJ/9uN/nlcruWDLQZD/8cCS",
-      "userName": "ZhEkA717",
-      "id": 3
-    },
-    {
-      "email": "customer3@airways.com",
-      "password": "$2a$10$r1PYAbUE90ab/DXF.7qdGu9O0DS/l431KkhKPZBPhkM7V6cPQa7vK",
-      "userName": "mironovahl",
-      "id": 4
-    },
-    {
       "email": "admin@admin.ua",
       "password": "$2a$10$va.uPBeZpAZgVyndWoSpauNrhb3fvTl8N6hohQKgcuYkTjalGrvr.",
       "phone": {
@@ -33,9 +9,9 @@
       },
       "firstName": "Vadim",
       "lastName": "Koloskov",
-      "birthDate": "08.04.1994",
+      "date": "08.04.1994",
       "gender": "Male",
-      "id": 5
+      "id": 1
     },
     {
       "email": "sundarpichai@google.com",
@@ -51,7 +27,7 @@
       },
       "citizenship": "England",
       "agreement": true,
-      "id": 6
+      "id": 2
     },
     {
       "email": "markzuckerberg@fb.com",
@@ -67,7 +43,7 @@
       },
       "citizenship": "Belarus",
       "agreement": true,
-      "id": 7
+      "id": 3
     },
     {
       "email": "grushevskiy.yevgeniy@mail.ru",
@@ -83,39 +59,7 @@
       },
       "citizenship": "Belarus",
       "agreement": true,
-      "id": 8
-    },
-    {
-      "email": "admin@mail.com",
-      "password": "$2a$10$qgBOneAv1vaS0amLXIQNzuB8WSUqLaAThI1ubeoDaK7cQKRzEz17e",
-      "firstName": "Zheka",
-      "lastName": "Grushevski",
-      "date": "2023-05-20T21:00:00.000Z",
-      "gender": "Male",
-      "countryCode": "375",
-      "phone": {
-        "code": "375",
-        "number": "+375336050565"
-      },
-      "citizenship": "Belarus",
-      "agreement": true,
-      "id": 9
-    },
-    {
-      "email": "admin@mail.ru",
-      "password": "$2a$10$Davz5/ltHmDvEJhh6YT55eByGUgrgwyxF6yT2AqvbrBQo6h5/uBbO",
-      "firstName": "Zheka",
-      "lastName": "Grush",
-      "date": "2023-05-20T21:00:00.000Z",
-      "gender": "Male",
-      "countryCode": "375",
-      "phone": {
-        "code": "375",
-        "number": "+375336050565"
-      },
-      "citizenship": "Belarus",
-      "agreement": true,
-      "id": 10
+      "id": 4
     }
   ],
   "posts": [

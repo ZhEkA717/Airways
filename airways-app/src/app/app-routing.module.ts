@@ -24,6 +24,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     title: 'AIRWAYS | Cart',
   },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then((accountPage) => accountPage.default),
+    canActivate: [AuthGuard],
+    title: 'account',
+  },
 ];
 
 @NgModule({
