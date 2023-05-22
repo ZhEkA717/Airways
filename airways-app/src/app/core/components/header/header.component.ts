@@ -45,7 +45,7 @@ export default class HeaderComponent {
     authService.checkLogin();
     authService.isLogged$.subscribe((isLogged) => {
       this.isLogged = isLogged;
-      this.loginButtonCaption = authService.userName || 'Sign in';
+      this.loginButtonCaption = authService.userName ? 'Profile' : 'Sign in';
     });
     this.getRouterUrl().subscribe((url) => {
       this.isNotMain = url !== 'main';
@@ -74,7 +74,7 @@ export default class HeaderComponent {
 
   public auth() {
     if (this.isLogged) {
-      this.isOverlayOpen = !this.isOverlayOpen;
+      this.router.navigate(['account']);
     } else {
       this.openDialog('500ms', '0ms');
     }
