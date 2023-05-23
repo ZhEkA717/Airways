@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
@@ -29,6 +29,8 @@ import TotalService from '../../services/total.service';
 })
 export default class ReviewComponent implements OnInit, OnDestroy {
   public isOneTripWay = false;
+
+  public isFromAccount = false;
 
   public thereTrip: Trip = <Trip>{};
 
@@ -80,6 +82,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private headerService: HeaderService,
     private totalService: TotalService,
     private router: Router,
+    private route: ActivatedRoute,
     private store: Store,
   ) {
     this.subSearch = this.search$.subscribe((res) => {
@@ -130,6 +133,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       .subscribe((info) => {
         this.totalInfo = info;
       });
+
+    this.route.queryParams.subscribe((params) => { if (params['fromaccount']) this.isFromAccount = params['fromaccount']; });
   }
 
   ngOnDestroy(): void {

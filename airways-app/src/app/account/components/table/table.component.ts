@@ -38,13 +38,11 @@ export class TableComponent {
 
   /** Onclick row from table */
   goSummary(row: CartItem) {
-    const { id } = row;
-    const clickedEl = this.cart.find((item) => item.id === id);
     this.store.dispatch(sendPassengersForm(
-      clickedEl?.passengersForm.passengersForm as PassengersForm,
+      row.passengersForm.passengersForm as PassengersForm,
     ));
-    this.store.dispatch(sendSearch(clickedEl?.search.searchForm as FlightSearch));
-    this.store.dispatch(saveFlight(clickedEl?.flight as TripState));
-    this.router.navigate(['/booking', 'review', { fromAccount: true }]);
+    this.store.dispatch(sendSearch(row.search.searchForm as FlightSearch));
+    this.store.dispatch(saveFlight(row.flight as TripState));
+    this.router.navigate(['/booking', 'review'], { queryParams: { fromaccount: true } });
   }
 }

@@ -51,7 +51,8 @@
 
   .back-button,
   .buy-button,
-  .cart-button
+  .cart-button,
+  .account-button
    {
     width: 126px;
     height: 60px;
@@ -65,7 +66,8 @@
     }
   }
 
-  .cart-button {
+  .cart-button,
+  .account-button {
     width: 171px;
     height: 60px;
     border: 1px solid $base-primary-color;
