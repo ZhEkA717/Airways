@@ -1,7 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { Trip } from 'src/app/shared/model/trip.model';
+import { TripState } from '../models/redux-states';
 
 export enum FlightAction {
+  saveFlight = '[FLIGHT] save flight',
   saveThereTrip = '[FLIGHT] save there Trip',
   saveBackTrip = '[FLIGHT] save back Trip',
   thereSelect = '[FLIGHT] save there select',
@@ -10,6 +12,11 @@ export enum FlightAction {
   thereSeats = '[FLIGHT] save there seats',
   backSeats = '[FLIGHT] save back seats',
 }
+
+export const saveFlight = createAction(
+  FlightAction.saveFlight,
+  (flight: TripState) => flight,
+);
 
 export const saveThereTrip = createAction(
   FlightAction.saveThereTrip,

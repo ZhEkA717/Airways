@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CartItem } from 'src/app/shared/model/cart.model';
-import { CART_REDUCER_KEY, CartState } from '../reducers/cart.reducer';
+import { CART_REDUCER_KEY } from '../reducers/cart.reducer';
+import { CartState } from '../models/redux-states';
 
 export const selectCart = createFeatureSelector<CartState>(CART_REDUCER_KEY);
 
@@ -20,6 +21,6 @@ export const selectAmountCart = createSelector(
 );
 
 export const selectMaxId = createSelector(
-  selectCartItems,
-  (items: CartItem[]) => Math.max(...items.map((item) => item.id), 0),
+  selectCart,
+  (cart: CartState) => Math.max(...cart.items.map((item) => item.id), 0),
 );

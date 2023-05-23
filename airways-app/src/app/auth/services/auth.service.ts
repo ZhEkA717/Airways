@@ -118,4 +118,8 @@ export default class AuthService {
       return 'Token validation error';
     }
   }
+
+  public isAuth() {
+    return !!this.accessToken;
+  }
 }

@@ -21,22 +21,29 @@
   </div>
 
   <div class="wrapper-buttons">
-    <button
+    <button *ngIf="!isFromAccount"
       (click)="toPassengers()"
       class="back-button"
       mat-stroked-button
       color="primary"
     >Back</button>
-    <button
+    <button *ngIf="!isFromAccount"
       (click) = "addToCart()"
       class="cart-button"
       mat-stroked-button
       color="primary"
     >Add to order cart</button>
-    <button
+    <button *ngIf="!isFromAccount"
       class="buy-button"
       mat-raised-button
       color="primary"
     >Buy now</button>
+    <button *ngIf="isFromAccount"
+      [routerLink]="['/account']"
+      class="account-button"
+      mat-raised-button
+      color="primary"
+    >Return to Account</button>
+    
   </div>
 </div>
