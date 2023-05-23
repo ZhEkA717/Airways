@@ -54,6 +54,7 @@ export default class AuthService {
     this.httpApi.registerUser(user).subscribe({
       next: (data) => {
         this.saveLoginInfo(data);
+        this.httpApi.createCart(data.user.id || 0);
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage.next(error.error);

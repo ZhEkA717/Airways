@@ -6,10 +6,11 @@ import {
 import { Airport } from '../../shared/model/airport.model';
 import { Trip } from '../../shared/model/trip.model';
 import {
-  URL_AIRPORTS, URL_LOGIN, URL_REGISTER, URL_TRIPS, URL_USERS,
+  URL_AIRPORTS, URL_CARTS, URL_LOGIN, URL_REGISTER, URL_TRIPS, URL_USERS,
 } from '../../shared/env.constants';
 import { User } from '../../shared/model/persons.model';
 import { UserResponse } from '../../shared/model/response.model';
+import { Cart, CartItem } from '../../shared/model/cart.model';
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +59,18 @@ export default class HttpApiService {
 
   setBookedSeats(tripId: number, seats: string[]) {
     return this.http.patch<Trip>(`${URL_TRIPS}/${tripId}`, { seats: 144 - seats.length, bookedSeats: seats });
+  }
+
+  updateCart(cart: Cart): Observable<Cart> {
+    return this.http.patch<Cart>(`${URL_CARTS}/${cart.userId}`, { items: cart.items });
+  }
+
+  createCart(userId: number): Observable<Cart> {
+    return this.http.post<Cart>(URL_CARTS, { id: userId, userId, items: [] });
+  }
+
+  getCart(userId: number): Observable<CartItem[]> {
+    return this.http.get<Cart>(`${URL_USERS}/${userId}`)
+      .pipe(map((cart) => cart.items));
   }
 }
