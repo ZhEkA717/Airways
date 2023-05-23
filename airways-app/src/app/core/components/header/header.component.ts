@@ -15,6 +15,7 @@ import { Observable, merge } from 'rxjs';
 import FormatService from '../../services/format.service';
 import HeaderService from '../../services/header.service';
 import AuthService from '../../../auth/services/auth.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -53,6 +54,7 @@ export default class HeaderComponent implements OnInit {
     public authService: AuthService,
     private store: Store,
     public dialog: MatDialog,
+    private cartService: CartService,
   ) {
     authService.checkLogin();
     authService.isLogged$.subscribe((isLogged) => {

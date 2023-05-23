@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCartItems } from '../../redux/selectors/cart.selector';
+import { selectCart, selectCartItems } from '../../redux/selectors/cart.selector';
 import { CartItem } from '../../shared/model/cart.model';
 import { deleteFromCart } from '../../redux/actions/cart.action';
+import HttpApiService from './http-api.service';
+import AuthService from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,13 @@ import { deleteFromCart } from '../../redux/actions/cart.action';
 export class CartService {
   public table: CartItem[] = [];
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private httpApi: HttpApiService,
+    private authService: AuthService,
+  ) {
     store.select(selectCartItems).subscribe((res) => { this.table = res; });
+    store.select(selectCart).subscribe((res) => this.updateCart(res.items));
   }
 
   getTotalPrice() {
@@ -21,5 +28,11 @@ export class CartService {
 
   delete(row: CartItem) {
     this.store.dispatch(deleteFromCart({ id: row.id }));
+  }
+
+  updateCart(items: CartItem[]) {
+    if (this.authService.userId) {
+      this.httpApi.updateCart({ userId: this.authService.userId, items }).subscribe();
+    }
   }
 }

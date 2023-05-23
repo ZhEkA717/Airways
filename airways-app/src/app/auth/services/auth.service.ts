@@ -12,7 +12,7 @@ import { UserResponse } from '../../shared/model/response.model';
 export default class AuthService {
   public accessToken: string;
 
-  private userId: number;
+  public userId: number;
 
   public userName: string;
 
