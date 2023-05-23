@@ -28,7 +28,7 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./account/account.module').then((accountPage) => accountPage.default),
     canActivate: [AuthGuard],
-    title: 'account',
+    title: 'AIRWAYS | Account',
   },
 ];
 
