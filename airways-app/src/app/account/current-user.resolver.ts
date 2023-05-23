@@ -11,7 +11,7 @@ import AuthService from '../auth/services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export default class AccountPageResolver implements Resolve<User> {
+export default class CurrentUserResolver implements Resolve<User> {
   constructor(
     private authService: AuthService,
     private router: Router,
