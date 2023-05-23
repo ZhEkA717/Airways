@@ -9,16 +9,13 @@ import AuthDialogComponent from '../../auth/components/auth-dialog/auth-dialog.c
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private dialog: MatDialog) {}
+  constructor(
+    private authService: AuthService,
+    private dialog: MatDialog,
+  ) {}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.isAuth() || this.openAuthModal();
-  }
-
-  isAuth() {
-    let isLogged = false;
-    this.authService.isLogged$.subscribe((isLoged) => { isLogged = isLoged; });
-    return isLogged;
+    return this.authService.isAuth() || this.openAuthModal();
   }
 
   openAuthModal() {
