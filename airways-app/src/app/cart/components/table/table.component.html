@@ -94,5 +94,16 @@
 
 <div class="cart__table-footer">
   <button color="primary" mat-button [routerLink]="['/']" class="cart__table-footer-addtrip">+ Add new trip</button>
-  <div class="cart__table-footer-total">Total <span class="cart__table-footer-price"> {{currencyService.moneyIcon}}{{(total * currencyService.moneyRatio).toFixed(1)}} </span> </div>
+  <div class="cart__table-footer-total">Total
+    <span
+      [class.isDiscount]="isPromoCode && total !== 0"
+      class="cart__table-footer-price">
+      {{currencyService.moneyIcon}}
+      {{(total * currencyService.moneyRatio).toFixed(1)}}
+    </span>
+    <div *ngIf="isPromoCode && total !== 0" class="discount">
+      {{currencyService.moneyIcon}}
+      {{(total * (1 - promoDiscountService.DISCOUNT) * currencyService.moneyRatio).toFixed(2)}}
+    </div>
+  </div>
 </div>

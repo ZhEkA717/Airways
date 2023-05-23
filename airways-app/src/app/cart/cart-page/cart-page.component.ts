@@ -12,7 +12,10 @@ import { payCartItem } from '../../redux/actions/cart.action';
 export class CartPageComponent {
   selected: CartItem[] = [];
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(
+    private store: Store,
+    private router: Router,
+  ) { }
 
   setSelected(selection: CartItem[]) {
     this.selected = selection;

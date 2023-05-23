@@ -1,16 +1,22 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  OnInit,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
+import PromoDiscountService from '../../services/promo-discount.service';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
   displayedColumns: string[] = ['select', 'flightNo', 'flight', 'typetrip', 'datetime', 'passengers', 'price', 'actions'];
 
   dataSource: MatTableDataSource<CartItem>;
@@ -21,7 +27,13 @@ export class TableComponent {
 
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
-  constructor(public cartService: CartService, public currencyService: ConvertMoneyService) {
+  public isPromoCode = false;
+
+  constructor(
+    public cartService: CartService,
+    public currencyService: ConvertMoneyService,
+    public promoDiscountService: PromoDiscountService,
+  ) {
     this.dataSource = new MatTableDataSource<CartItem>(cartService.table);
 
     /** Selection event to get total price and count of selected */
@@ -31,6 +43,13 @@ export class TableComponent {
         ? sel.source.selected.map((item) => item.price).reduce((acc, cur) => acc + cur)
         : 0;
     });
+  }
+
+  ngOnInit(): void {
+    this.promoDiscountService.promoCode$
+      .subscribe((code) => {
+        this.isPromoCode = this.promoDiscountService.PROMO_CODE.includes(code);
+      });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
