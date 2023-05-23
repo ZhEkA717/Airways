@@ -1,9 +1,11 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CartService } from '../../services/cart.service';
+import { Store } from '@ngrx/store';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
+import { selectCartItems } from '../../../redux/selectors/cart.selector';
+import { deleteFromCart } from '../../../redux/actions/cart.action';
 
 @Component({
   selector: 'app-table',
@@ -21,8 +23,11 @@ export class TableComponent {
 
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
-  constructor(public cartService: CartService, public currencyService: ConvertMoneyService) {
-    this.dataSource = new MatTableDataSource<CartItem>(cartService.table);
+  constructor(private store: Store, public currencyService: ConvertMoneyService) {
+    this.dataSource = new MatTableDataSource<CartItem>([]);
+    store.select(selectCartItems).subscribe((res) => {
+      this.dataSource.data = res;
+    });
 
     /** Selection event to get total price and count of selected */
     this.selection.changed.subscribe((sel) => {
@@ -61,7 +66,6 @@ export class TableComponent {
   /** Delete row from table */
   delete(row: CartItem) {
     this.selection.deselect(row);
-    this.cartService.delete(row);
-    this.dataSource.data = this.cartService.table;
+    this.store.dispatch(deleteFromCart({ id: row.id }));
   }
 }
