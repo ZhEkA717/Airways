@@ -62,13 +62,19 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   private search!: SearchState;
 
+  private subSearch!: Subscription;
+
   private passengersForm$ = this.store.select(selectFeaturePassengerForm);
 
   private passengersForm!: PassengersState;
 
+  private subPassengersForm!: Subscription;
+
   private flight$ = this.store.select(selectFeatureFlight);
 
   private flight!: TripState;
+
+  private subFlight!: Subscription;
 
   constructor(
     private headerService: HeaderService,
@@ -76,15 +82,15 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private router: Router,
     private store: Store,
   ) {
-    this.search$.subscribe((res) => {
+    this.subSearch = this.search$.subscribe((res) => {
       this.search = res;
     });
 
-    this.passengersForm$.subscribe((res) => {
+    this.subPassengersForm = this.passengersForm$.subscribe((res) => {
       this.passengersForm = res;
     });
 
-    this.flight$.subscribe((res) => {
+    this.subFlight = this.flight$.subscribe((res) => {
       this.flight = res;
     });
   }
@@ -130,6 +136,9 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     this.subThere?.unsubscribe();
     this.subBack?.unsubscribe();
     this.subTotalInfo?.unsubscribe();
+    this.subSearch?.unsubscribe();
+    this.subPassengersForm?.unsubscribe();
+    this.subFlight?.unsubscribe();
   }
 
   toPassengers() {
