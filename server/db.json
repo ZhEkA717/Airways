@@ -17,7 +17,7 @@
       "email": "sundarpichai@google.com",
       "password": "$2a$10$znW.mMGa0QTSt4qJS0WmOeg0q7SmDeqNwqiNQqW9Oj0TVVTN5nl5O",
       "firstName": "Sundar",
-      "lastName": "Pachai",
+      "lastName": "Pichai",
       "date": "1972-10-05T21:00:00.000Z",
       "gender": "Male",
       "countryCode": "044",
@@ -62,23 +62,6 @@
       "id": 4
     }
   ],
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "airports": [
     {
       "city": "Vienna",
@@ -13777,6 +13760,519 @@
         "9B",
         "9C"
       ]
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "items": []
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "items": [
+        {
+          "id": 18,
+          "type": "Round trip",
+          "flightNo": "AV875",
+          "forward": {
+            "flight": "Vienna - Athens",
+            "departDate": "05.11.2023 8:20:00",
+            "arriveDate": "05.11.2023 10:10:00"
+          },
+          "backward": {
+            "flight": "Athens - Vienna",
+            "departDate": "05.10.2023 10:10:00",
+            "arriveDate": "05.10.2023 12:00:00"
+          },
+          "passengers": [
+            "1 x Adult"
+          ],
+          "price": 178.5,
+          "thereSeats": [
+            "1A"
+          ],
+          "backSeats": [
+            "4A"
+          ],
+          "isPayed": false,
+          "search": {
+            "searchForm": {
+              "tripWay": "round",
+              "from": "Vienna VIE",
+              "destination": "Athens ATH",
+              "startDate": "Tue May 23 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "passengers": [
+                {
+                  "id": 0,
+                  "view": "Adult",
+                  "description": "14+ years",
+                  "value": 1
+                },
+                {
+                  "id": 1,
+                  "view": "Child",
+                  "description": "2-14 years",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "view": "Infant",
+                  "description": "0-2 years",
+                  "value": 0
+                }
+              ],
+              "type": "[SEARCH] send form"
+            }
+          },
+          "passengersForm": {
+            "passengersForm": {
+              "passengers": [
+                {
+                  "firstName": "asdfasdf",
+                  "lastName": "asdfadsf",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand",
+                    "text": "hand luggage",
+                    "weight": 5,
+                    "size": "56 x 45 x 20",
+                    "price": 0
+                  },
+                  "date": "2023-04-30T21:00:00.000Z",
+                  "dateFormat": "2023-05-23T14:35:47.233Z",
+                  "isCripple": "",
+                  "type": "Adult"
+                }
+              ],
+              "countryCode": "375",
+              "phone": "asdfasdfasdf",
+              "email": "asdfasdf@asdfasdf",
+              "type": "[PASSENGERS] send form"
+            }
+          },
+          "flight": {
+            "thereSelect": false,
+            "backSelect": false,
+            "thereSeats": [
+              "1A"
+            ],
+            "backSeats": [
+              "4A"
+            ],
+            "thereTrip": {
+              "day": "11",
+              "departDate": "05.11.2023 8:20:00",
+              "id": 19,
+              "flightNo": "AV875",
+              "from": {
+                "code": "VIE",
+                "city": "Vienna"
+              },
+              "to": {
+                "code": "ATH",
+                "city": "Athens"
+              },
+              "flightTime": 110,
+              "arriveDate": "05.11.2023 10:10:00",
+              "seats": 141,
+              "price": 93.4,
+              "bookedSeats": [
+                "18D",
+                "22B",
+                "22E"
+              ],
+              "type": "[FLIGHT] save there Trip"
+            },
+            "backTrip": {
+              "day": "10",
+              "departDate": "05.10.2023 10:10:00",
+              "id": 13,
+              "flightNo": "AV875",
+              "from": {
+                "code": "ATH",
+                "city": "Athens"
+              },
+              "to": {
+                "code": "VIE",
+                "city": "Vienna"
+              },
+              "flightTime": 110,
+              "arriveDate": "05.10.2023 12:00:00",
+              "seats": 36,
+              "price": 85.1,
+              "bookedSeats": [
+                "10A",
+                "10B",
+                "10C",
+                "10D",
+                "10F",
+                "11C",
+                "11E",
+                "11F",
+                "12A",
+                "12B",
+                "12C",
+                "12D",
+                "12E",
+                "12F",
+                "13A",
+                "13C",
+                "13D",
+                "13E",
+                "13F",
+                "14A",
+                "14C",
+                "14D",
+                "14E",
+                "14F",
+                "15A",
+                "15B",
+                "15D",
+                "15E",
+                "15F",
+                "16C",
+                "16D",
+                "16E",
+                "16F",
+                "17A",
+                "17B",
+                "17C",
+                "17D",
+                "17E",
+                "17F",
+                "18B",
+                "18C",
+                "18D",
+                "18E",
+                "18F",
+                "19A",
+                "19B",
+                "19C",
+                "19D",
+                "19E",
+                "19F",
+                "1B",
+                "1C",
+                "1F",
+                "20A",
+                "20C",
+                "20D",
+                "20E",
+                "20F",
+                "21A",
+                "21B",
+                "21C",
+                "21E",
+                "22A",
+                "22B",
+                "22D",
+                "22F",
+                "23A",
+                "23B",
+                "23C",
+                "23D",
+                "23F",
+                "24A",
+                "24B",
+                "24D",
+                "24E",
+                "24F",
+                "2B",
+                "2C",
+                "2D",
+                "2E",
+                "2F",
+                "3A",
+                "3C",
+                "3D",
+                "3E",
+                "3F",
+                "4B",
+                "4C",
+                "4E",
+                "5A",
+                "5B",
+                "5C",
+                "5D",
+                "5E",
+                "6C",
+                "6E",
+                "7B",
+                "7C",
+                "7D",
+                "7E",
+                "8B",
+                "8D",
+                "8F",
+                "9A",
+                "9C",
+                "9D",
+                "9E",
+                "9F"
+              ],
+              "type": "[FLIGHT] save back Trip"
+            }
+          }
+        },
+        {
+          "id": 19,
+          "type": "Round trip",
+          "flightNo": "AV875",
+          "forward": {
+            "flight": "Vienna - Athens",
+            "departDate": "05.11.2023 8:20:00",
+            "arriveDate": "05.11.2023 10:10:00"
+          },
+          "backward": {
+            "flight": "Athens - Vienna",
+            "departDate": "05.10.2023 10:10:00",
+            "arriveDate": "05.10.2023 12:00:00"
+          },
+          "passengers": [
+            "1 x Adult"
+          ],
+          "price": 178.5,
+          "thereSeats": [
+            "1A"
+          ],
+          "backSeats": [
+            "4A"
+          ],
+          "isPayed": false,
+          "search": {
+            "searchForm": {
+              "tripWay": "round",
+              "from": "Vienna VIE",
+              "destination": "Athens ATH",
+              "startDate": "Tue May 23 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "passengers": [
+                {
+                  "id": 0,
+                  "view": "Adult",
+                  "description": "14+ years",
+                  "value": 1
+                },
+                {
+                  "id": 1,
+                  "view": "Child",
+                  "description": "2-14 years",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "view": "Infant",
+                  "description": "0-2 years",
+                  "value": 0
+                }
+              ],
+              "type": "[SEARCH] send form"
+            }
+          },
+          "passengersForm": {
+            "passengersForm": {
+              "passengers": [
+                {
+                  "firstName": "asdfasdf",
+                  "lastName": "asdfadsf",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand",
+                    "text": "hand luggage",
+                    "weight": 5,
+                    "size": "56 x 45 x 20",
+                    "price": 0
+                  },
+                  "date": "2023-04-30T21:00:00.000Z",
+                  "dateFormat": "2023-05-23T14:35:47.233Z",
+                  "isCripple": "",
+                  "type": "Adult"
+                }
+              ],
+              "countryCode": "375",
+              "phone": "asdfasdfasdf",
+              "email": "asdfasdf@asdfasdf",
+              "type": "[PASSENGERS] send form"
+            }
+          },
+          "flight": {
+            "thereSelect": false,
+            "backSelect": false,
+            "thereSeats": [
+              "1A"
+            ],
+            "backSeats": [
+              "4A"
+            ],
+            "thereTrip": {
+              "day": "11",
+              "departDate": "05.11.2023 8:20:00",
+              "id": 19,
+              "flightNo": "AV875",
+              "from": {
+                "code": "VIE",
+                "city": "Vienna"
+              },
+              "to": {
+                "code": "ATH",
+                "city": "Athens"
+              },
+              "flightTime": 110,
+              "arriveDate": "05.11.2023 10:10:00",
+              "seats": 141,
+              "price": 93.4,
+              "bookedSeats": [
+                "18D",
+                "22B",
+                "22E"
+              ],
+              "type": "[FLIGHT] save there Trip"
+            },
+            "backTrip": {
+              "day": "10",
+              "departDate": "05.10.2023 10:10:00",
+              "id": 13,
+              "flightNo": "AV875",
+              "from": {
+                "code": "ATH",
+                "city": "Athens"
+              },
+              "to": {
+                "code": "VIE",
+                "city": "Vienna"
+              },
+              "flightTime": 110,
+              "arriveDate": "05.10.2023 12:00:00",
+              "seats": 36,
+              "price": 85.1,
+              "bookedSeats": [
+                "10A",
+                "10B",
+                "10C",
+                "10D",
+                "10F",
+                "11C",
+                "11E",
+                "11F",
+                "12A",
+                "12B",
+                "12C",
+                "12D",
+                "12E",
+                "12F",
+                "13A",
+                "13C",
+                "13D",
+                "13E",
+                "13F",
+                "14A",
+                "14C",
+                "14D",
+                "14E",
+                "14F",
+                "15A",
+                "15B",
+                "15D",
+                "15E",
+                "15F",
+                "16C",
+                "16D",
+                "16E",
+                "16F",
+                "17A",
+                "17B",
+                "17C",
+                "17D",
+                "17E",
+                "17F",
+                "18B",
+                "18C",
+                "18D",
+                "18E",
+                "18F",
+                "19A",
+                "19B",
+                "19C",
+                "19D",
+                "19E",
+                "19F",
+                "1B",
+                "1C",
+                "1F",
+                "20A",
+                "20C",
+                "20D",
+                "20E",
+                "20F",
+                "21A",
+                "21B",
+                "21C",
+                "21E",
+                "22A",
+                "22B",
+                "22D",
+                "22F",
+                "23A",
+                "23B",
+                "23C",
+                "23D",
+                "23F",
+                "24A",
+                "24B",
+                "24D",
+                "24E",
+                "24F",
+                "2B",
+                "2C",
+                "2D",
+                "2E",
+                "2F",
+                "3A",
+                "3C",
+                "3D",
+                "3E",
+                "3F",
+                "4B",
+                "4C",
+                "4E",
+                "5A",
+                "5B",
+                "5C",
+                "5D",
+                "5E",
+                "6C",
+                "6E",
+                "7B",
+                "7C",
+                "7D",
+                "7E",
+                "8B",
+                "8D",
+                "8F",
+                "9A",
+                "9C",
+                "9D",
+                "9E",
+                "9F"
+              ],
+              "type": "[FLIGHT] save back Trip"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "items": []
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "items": []
     }
   ]
 }
