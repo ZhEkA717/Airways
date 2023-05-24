@@ -8,6 +8,7 @@ export enum CartAction {
   updateCart = '[CART] update cart',
   updateCartSuccess = '[CART] update cart success',
   updateCartError = '[CART] update cart error',
+  resetCart = '[CART] reset cart',
   addToCart = '[CART] add to cart',
   deleteFromCart = '[CART] delete from cart',
   payCartItem = '[CART] booked cart item',
@@ -25,6 +26,24 @@ export const getCartSuccess = createAction(
 
 export const getCartError = createAction(
   CartAction.getCartError,
+);
+
+export const updateCart = createAction(
+  CartAction.updateCart,
+  props<{ cartItems: CartItem[] }>(),
+);
+
+export const updateCartSuccess = createAction(
+  CartAction.updateCartSuccess,
+  props<{ cartItems: CartItem[] }>(),
+);
+
+export const updateCartError = createAction(
+  CartAction.updateCartSuccess,
+);
+
+export const resetCart = createAction(
+  CartAction.resetCart,
 );
 
 export const addToCart = createAction(

@@ -7,7 +7,14 @@ import {
   of,
 } from 'rxjs';
 import HttpApiService from 'src/app/core/services/http-api.service';
-import { CartAction, getCartError, getCartSuccess } from '../actions/cart.action';
+import { CartService } from 'src/app/core/services/cart.service';
+import {
+  CartAction,
+  getCartError,
+  getCartSuccess,
+  updateCartError,
+  updateCartSuccess,
+} from '../actions/cart.action';
 
 @Injectable()
 export default class CartEffect {
@@ -22,8 +29,20 @@ export default class CartEffect {
     catchError(() => of(getCartError())),
   ));
 
+  public updateCart$ = createEffect(() => this.actions$.pipe(
+    ofType(CartAction.updateCart),
+    mergeMap(({ cartItems }) => this.cartService
+      .updateCart(cartItems).pipe(
+        map(
+          (cart) => updateCartSuccess({ cartItems: cart.items }),
+        ),
+      )),
+    catchError(() => of(updateCartError())),
+  ));
+
   constructor(
     private actions$: Actions,
     private httpApiService: HttpApiService,
+    private cartService: CartService,
   ) { }
 }

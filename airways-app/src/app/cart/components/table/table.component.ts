@@ -1,18 +1,25 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { updateCart } from 'src/app/redux/actions/cart.action';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
-import { selectCartItems } from '../../../redux/selectors/cart.selector';
-import { deleteFromCart } from '../../../redux/actions/cart.action';
+import { selectCart, selectCartItems } from '../../../redux/selectors/cart.selector';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent {
+export class TableComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     'select',
     'flightNo',
@@ -32,6 +39,12 @@ export class TableComponent {
 
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
+  private cartItems$ = this.store.select(selectCart);
+
+  private cartItems!: CartItem[];
+
+  private subCartItems!: Subscription;
+
   constructor(
     private store: Store,
     public currencyService: ConvertMoneyService,
@@ -50,6 +63,16 @@ export class TableComponent {
           .reduce((acc, cur) => acc + cur)
         : 0;
     });
+  }
+
+  ngOnInit(): void {
+    this.cartItems$.subscribe((items) => {
+      this.cartItems = items;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subCartItems?.unsubscribe();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -81,6 +104,8 @@ export class TableComponent {
   /** Delete row from table */
   delete(row: CartItem) {
     this.selection.deselect(row);
-    this.store.dispatch(deleteFromCart({ id: row.id }));
+    this.store.dispatch(updateCart({
+      cartItems: this.cartItems.filter((item) => item.id !== row.id),
+    }));
   }
 }

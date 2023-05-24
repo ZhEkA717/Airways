@@ -14,11 +14,11 @@ import {
 import { selectFeatureSearch, selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { TripWay } from 'src/app/main/model/flight-search.model';
-import { addToCart } from 'src/app/redux/actions/cart.action';
+import { updateCart } from 'src/app/redux/actions/cart.action';
 import { CartItem } from 'src/app/shared/model/cart.model';
 import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
-import { selectMaxId } from '../../../redux/selectors/cart.selector';
+import { selectCart, selectMaxId } from '../../../redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
 
@@ -78,6 +78,14 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   private subFlight!: Subscription;
 
+  private cartItems$ = this.store.select(selectCart);
+
+  private cartItems!: CartItem[];
+
+  private subCartItems!: Subscription;
+
+  private id = 0;
+
   constructor(
     private headerService: HeaderService,
     private totalService: TotalService,
@@ -85,6 +93,10 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private store: Store,
   ) {
+    this.cartItems$.subscribe((items) => {
+      this.cartItems = items;
+    });
+
     this.subSearch = this.search$.subscribe((res) => {
       this.search = res;
     });
@@ -135,6 +147,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       });
 
     this.route.queryParams.subscribe((params) => { if (params['fromaccount']) this.isFromAccount = params['fromaccount']; });
+
+    this.store.select(selectMaxId).subscribe((val) => { this.id = val + 1; });
   }
 
   ngOnDestroy(): void {
@@ -144,6 +158,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     this.subSearch?.unsubscribe();
     this.subPassengersForm?.unsubscribe();
     this.subFlight?.unsubscribe();
+    this.subCartItems?.unsubscribe();
   }
 
   toPassengers() {
@@ -151,8 +166,6 @@ export default class ReviewComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
-    let id = 0;
-    this.store.select(selectMaxId).subscribe((val) => { id = val + 1; });
     const {
       flightNo,
       from: thereFrom, to: thereTo,
@@ -169,7 +182,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     const { price, passengers } = this.totalInfo;
 
     const cart: CartItem = {
-      id,
+      id: this.id,
       type: this.tripWay === 'round' ? 'Round trip' : 'One way',
       flightNo,
       forward: {
@@ -191,6 +204,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       passengersForm: this.passengersForm,
       flight: this.flight,
     };
-    this.store.dispatch(addToCart({ cart }));
+    this.store.dispatch(updateCart({
+      cartItems: [...this.cartItems, cart],
+    }));
   }
 }

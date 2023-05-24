@@ -6,6 +6,9 @@ import {
   getCartError,
   getCartSuccess,
   payCartItem,
+  resetCart,
+  updateCartError,
+  updateCartSuccess,
 } from '../actions/cart.action';
 import { CartState } from '../models/redux-states';
 
@@ -24,6 +27,20 @@ export const cartReducer = createReducer(
 
   on(getCartError, (state): CartState => ({
     ...state,
+  })),
+
+  on(updateCartSuccess, (state, action): CartState => ({
+    ...state,
+    items: action.cartItems,
+  })),
+
+  on(updateCartError, (state): CartState => ({
+    ...state,
+  })),
+
+  on(resetCart, (state): CartState => ({
+    ...state,
+    items: [],
   })),
 
   on(addToCart, (state, action): CartState => ({

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { getCart } from 'src/app/redux/actions/cart.action';
+import { getCart, resetCart } from 'src/app/redux/actions/cart.action';
 import HttpApiService from '../../core/services/http-api.service';
 import { AuthToken } from '../../shared/model/auth-token.model';
 import { User } from '../../shared/model/persons.model';
@@ -86,6 +86,7 @@ export default class AuthService {
     this.userEmail = '';
     this.isLogged.next(false);
     localStorage.removeItem('JWT');
+    this.store.dispatch(resetCart());
   }
 
   public getCurrentUser(): Observable<User> {

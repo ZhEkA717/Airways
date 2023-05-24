@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { EMPTY } from 'rxjs';
 import { selectCartItems } from '../../redux/selectors/cart.selector';
 import { CartItem } from '../../shared/model/cart.model';
 import { deleteFromCart } from '../../redux/actions/cart.action';
@@ -30,9 +31,9 @@ export class CartService {
   }
 
   updateCart(items: CartItem[]) {
-    if (this.authService.userId) {
-      this.httpApi.updateCart({ userId: this.authService.userId, items }).subscribe();
-    }
+    return this.authService.userId
+      ? this.httpApi.updateCart({ userId: this.authService.userId, items })
+      : EMPTY;
   }
 
   getCart() {
