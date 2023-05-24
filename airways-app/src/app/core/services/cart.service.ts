@@ -44,6 +44,14 @@ export class CartService {
     return items.filter((item) => item.id !== id);
   }
 
+  payCartItem(items: CartItem[], id: number) {
+    return [...items].map((item) => {
+      const newItem: CartItem = { ...item };
+      if (newItem.id === id) newItem.isPayed = true;
+      return newItem;
+    });
+  }
+
   getCart() {
     return this.httpApi.getCart(this.authService.userId);
   }
