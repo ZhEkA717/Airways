@@ -1,6 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { CartItem } from 'src/app/shared/model/cart.model';
-import { addToCart, deleteFromCart, payCartItem } from '../actions/cart.action';
+import {
+  addToCart,
+  deleteFromCart,
+  getCartError,
+  getCartSuccess,
+  payCartItem,
+} from '../actions/cart.action';
 import { CartState } from '../models/redux-states';
 
 export const CART_REDUCER_KEY = 'cart';
@@ -11,6 +17,15 @@ export const initialState: CartState = {
 
 export const cartReducer = createReducer(
   initialState,
+  on(getCartSuccess, (state, action): CartState => ({
+    ...state,
+    items: action.items,
+  })),
+
+  on(getCartError, (state): CartState => ({
+    ...state,
+  })),
+
   on(addToCart, (state, action): CartState => ({
     ...state,
     items: [...state.items, action.cart],

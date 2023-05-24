@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
-  BehaviorSubject, Observable, EMPTY, map,
+  BehaviorSubject,
+  Observable,
+  EMPTY,
+  map,
 } from 'rxjs';
 import { Airport } from '../../shared/model/airport.model';
 import { Trip } from '../../shared/model/trip.model';
 import {
-  URL_AIRPORTS, URL_CARTS, URL_LOGIN, URL_REGISTER, URL_TRIPS, URL_USERS,
+  URL_AIRPORTS,
+  URL_CARTS,
+  URL_LOGIN,
+  URL_REGISTER,
+  URL_TRIPS,
+  URL_USERS,
 } from '../../shared/env.constants';
 import { User } from '../../shared/model/persons.model';
 import { UserResponse } from '../../shared/model/response.model';
@@ -26,7 +34,10 @@ export default class HttpApiService {
 
   getAvailableTrips(from: string, to: string): Observable<Trip[]> {
     if (!from || from === to) return EMPTY;
-    const params = new HttpParams().appendAll({ 'from.code': from, 'to.code': to });
+    const params = new HttpParams().appendAll({
+      'from.code': from,
+      'to.code': to,
+    });
     return this.http.get<Trip[]>(URL_TRIPS, { params });
   }
 
@@ -36,7 +47,8 @@ export default class HttpApiService {
 
   getAirportByCode(code: string): Observable<Airport> {
     const params = new HttpParams().appendAll({ code });
-    return this.http.get<Airport[]>(URL_AIRPORTS, { params })
+    return this.http
+      .get<Airport[]>(URL_AIRPORTS, { params })
       .pipe(map((items) => items[0]));
   }
 
@@ -58,11 +70,16 @@ export default class HttpApiService {
   }
 
   setBookedSeats(tripId: number, seats: string[]) {
-    return this.http.patch<Trip>(`${URL_TRIPS}/${tripId}`, { seats: 144 - seats.length, bookedSeats: seats });
+    return this.http.patch<Trip>(`${URL_TRIPS}/${tripId}`, {
+      seats: 144 - seats.length,
+      bookedSeats: seats,
+    });
   }
 
   updateCart(cart: Cart): Observable<Cart> {
-    return this.http.patch<Cart>(`${URL_CARTS}/${cart.userId}`, { items: cart.items });
+    return this.http.patch<Cart>(`${URL_CARTS}/${cart.userId}`, {
+      items: cart.items,
+    });
   }
 
   createCart(userId: number): Observable<Cart> {
@@ -70,7 +87,8 @@ export default class HttpApiService {
   }
 
   getCart(userId: number): Observable<CartItem[]> {
-    return this.http.get<Cart>(`${URL_USERS}/${userId}`)
+    return this.http
+      .get<Cart>(`${URL_CARTS}/${userId}`)
       .pipe(map((cart) => cart.items));
   }
 }

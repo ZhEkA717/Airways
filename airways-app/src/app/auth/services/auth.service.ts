@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { getCart } from 'src/app/redux/actions/cart.action';
 import HttpApiService from '../../core/services/http-api.service';
 import { AuthToken } from '../../shared/model/auth-token.model';
 import { User } from '../../shared/model/persons.model';
@@ -26,7 +28,10 @@ export default class AuthService {
 
   public isLogged$: Observable<boolean>;
 
-  constructor(private httpApi: HttpApiService) {
+  constructor(
+    private httpApi: HttpApiService,
+    private store: Store,
+  ) {
     const token = localStorage.getItem('JWT');
     this.accessToken = token ?? '';
     this.userId = 0;
@@ -71,6 +76,7 @@ export default class AuthService {
     this.isLogged.next(true);
     this.errorMessage.next('');
     localStorage.setItem('JWT', data.accessToken);
+    this.store.dispatch(getCart({ userId: this.userId }));
   }
 
   public logout() {

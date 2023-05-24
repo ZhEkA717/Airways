@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCart, selectCartItems } from '../../redux/selectors/cart.selector';
+import { selectCartItems } from '../../redux/selectors/cart.selector';
 import { CartItem } from '../../shared/model/cart.model';
 import { deleteFromCart } from '../../redux/actions/cart.action';
 import HttpApiService from './http-api.service';
@@ -18,7 +18,7 @@ export class CartService {
     private authService: AuthService,
   ) {
     store.select(selectCartItems).subscribe((res) => { this.table = res; });
-    store.select(selectCart).subscribe((res) => this.updateCart(res.items));
+    // store.select(selectCart).subscribe((res) => this.updateCart(res.items));
   }
 
   getTotalPrice() {

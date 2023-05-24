@@ -13,7 +13,16 @@ import { deleteFromCart } from '../../../redux/actions/cart.action';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent {
-  displayedColumns: string[] = ['select', 'flightNo', 'flight', 'typetrip', 'datetime', 'passengers', 'price', 'actions'];
+  displayedColumns: string[] = [
+    'select',
+    'flightNo',
+    'flight',
+    'typetrip',
+    'datetime',
+    'passengers',
+    'price',
+    'actions',
+  ];
 
   dataSource: MatTableDataSource<CartItem>;
 
@@ -23,7 +32,10 @@ export class TableComponent {
 
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
-  constructor(private store: Store, public currencyService: ConvertMoneyService) {
+  constructor(
+    private store: Store,
+    public currencyService: ConvertMoneyService,
+  ) {
     this.dataSource = new MatTableDataSource<CartItem>([]);
     store.select(selectCartItems).subscribe((res) => {
       this.dataSource.data = res;
@@ -33,7 +45,9 @@ export class TableComponent {
     this.selection.changed.subscribe((sel) => {
       this.selectionEvent.emit(sel.source.selected);
       this.total = sel.source.selected.length
-        ? sel.source.selected.map((item) => item.price).reduce((acc, cur) => acc + cur)
+        ? sel.source.selected
+          .map((item) => item.price)
+          .reduce((acc, cur) => acc + cur)
         : 0;
     });
   }
@@ -57,10 +71,11 @@ export class TableComponent {
 
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: CartItem): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+    return !row
+      ? `${this.isAllSelected() ? 'deselect' : 'select'} all`
+      : `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+        row.id + 1
+      }`;
   }
 
   /** Delete row from table */
