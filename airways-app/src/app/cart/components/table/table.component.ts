@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { updateCart } from 'src/app/redux/actions/cart.action';
+import { CartService } from 'src/app/core/services/cart.service';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
 import { selectCart, selectCartItems } from '../../../redux/selectors/cart.selector';
@@ -48,6 +49,7 @@ export class TableComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     public currencyService: ConvertMoneyService,
+    private cartService: CartService,
   ) {
     this.dataSource = new MatTableDataSource<CartItem>([]);
     store.select(selectCartItems).subscribe((res) => {
@@ -105,7 +107,7 @@ export class TableComponent implements OnInit, OnDestroy {
   delete(row: CartItem) {
     this.selection.deselect(row);
     this.store.dispatch(updateCart({
-      cartItems: this.cartItems.filter((item) => item.id !== row.id),
+      cartItems: this.cartService.deleteFromCart(this.cartItems, row.id),
     }));
   }
 }

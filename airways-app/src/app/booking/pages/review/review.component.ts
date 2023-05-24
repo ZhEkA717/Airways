@@ -18,6 +18,7 @@ import { updateCart } from 'src/app/redux/actions/cart.action';
 import { CartItem } from 'src/app/shared/model/cart.model';
 import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
+import { CartService } from 'src/app/core/services/cart.service';
 import { selectCart, selectMaxId } from '../../../redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
@@ -91,6 +92,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private totalService: TotalService,
     private router: Router,
     private route: ActivatedRoute,
+    private cartService: CartService,
     private store: Store,
   ) {
     this.cartItems$.subscribe((items) => {
@@ -205,7 +207,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       flight: this.flight,
     };
     this.store.dispatch(updateCart({
-      cartItems: [...this.cartItems, cart],
+      cartItems: this.cartService.addToCart(this.cartItems, cart),
     }));
   }
 }

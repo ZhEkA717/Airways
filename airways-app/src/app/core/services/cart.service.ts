@@ -36,6 +36,14 @@ export class CartService {
       : EMPTY;
   }
 
+  addToCart(items: CartItem[], item: CartItem) {
+    return [...items, item];
+  }
+
+  deleteFromCart(items: CartItem[], id: number) {
+    return items.filter((item) => item.id !== id);
+  }
+
   getCart() {
     return this.httpApi.getCart(this.authService.userId);
   }
