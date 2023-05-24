@@ -183,7 +183,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.subTripWay?.unsubscribe();
   }
 
-  get passengers() {
+  public get passengers() {
     return this.form.get('passengers') as FormArray;
   }
 
@@ -206,7 +206,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
   }
 
-  createPassenger() {
+  public createPassenger() {
     return new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
@@ -231,7 +231,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
   }
 
-  toFlight() {
+  public toFlight() {
     this.router.navigate(['/booking/flight'], {
       queryParams: {
         isNavigatePassenger: true,
@@ -239,7 +239,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
   }
 
-  toReview() {
+  public toReview() {
     this.router.navigate(['/booking/review']);
   }
 
@@ -276,7 +276,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     return baggage;
   }
 
-  submit() {
+  private get formSubmit() {
     const passengers = this.passengers.value
       .map((item: PassengersInfo, i: number) => ({
         ...item,
@@ -289,7 +289,11 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       passengers,
     };
 
-    this.store.dispatch(send(form as PassengersForm));
+    return form;
+  }
+
+  public submit() {
+    this.store.dispatch(send(this.formSubmit as PassengersForm));
 
     if (this.form.valid) {
       this.toReview();
