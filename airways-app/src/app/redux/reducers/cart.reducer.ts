@@ -1,11 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { CartItem } from 'src/app/shared/model/cart.model';
 import {
-  addToCart,
-  deleteFromCart,
   getCartError,
   getCartSuccess,
-  payCartItem,
   resetCart,
   updateCartError,
   updateCartSuccess,
@@ -41,24 +37,5 @@ export const cartReducer = createReducer(
   on(resetCart, (state): CartState => ({
     ...state,
     items: [],
-  })),
-
-  on(addToCart, (state, action): CartState => ({
-    ...state,
-    items: [...state.items, action.cart],
-  })),
-
-  on(deleteFromCart, (state, action): CartState => ({
-    ...state,
-    items: state.items.filter((item) => item.id !== action.id),
-  })),
-
-  on(payCartItem, (state, action): CartState => ({
-    ...state,
-    items: [...state.items].map((item) => {
-      const newItem: CartItem = { ...item };
-      if (newItem.id === action.id) newItem.isPayed = true;
-      return newItem;
-    }),
   })),
 );

@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { EMPTY } from 'rxjs';
 import { selectCartItems } from '../../redux/selectors/cart.selector';
 import { CartItem } from '../../shared/model/cart.model';
-import { deleteFromCart } from '../../redux/actions/cart.action';
 import HttpApiService from './http-api.service';
 import AuthService from '../../auth/services/auth.service';
 
@@ -24,10 +23,6 @@ export class CartService {
   getTotalPrice() {
     if (this.table.length === 0) return 0;
     return this.table.map((item) => item.price).reduce((acc, cur) => acc + cur);
-  }
-
-  delete(row: CartItem) {
-    this.store.dispatch(deleteFromCart({ id: row.id }));
   }
 
   updateCart(items: CartItem[]) {
