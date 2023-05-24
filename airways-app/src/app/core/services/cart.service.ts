@@ -18,7 +18,6 @@ export class CartService {
     private authService: AuthService,
   ) {
     store.select(selectCartItems).subscribe((res) => { this.table = res; });
-    // store.select(selectCart).subscribe((res) => this.updateCart(res.items));
   }
 
   getTotalPrice() {
@@ -34,5 +33,9 @@ export class CartService {
     if (this.authService.userId) {
       this.httpApi.updateCart({ userId: this.authService.userId, items }).subscribe();
     }
+  }
+
+  getCart() {
+    return this.httpApi.getCart(this.authService.userId);
   }
 }
