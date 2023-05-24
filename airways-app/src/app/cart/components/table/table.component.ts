@@ -13,7 +13,7 @@ import { updateCart } from 'src/app/redux/actions/cart.action';
 import { CartService } from 'src/app/core/services/cart.service';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
-import { selectCart, selectCartItems } from '../../../redux/selectors/cart.selector';
+import { selectCart, selectCartItems, selectCartLoading } from '../../../redux/selectors/cart.selector';
 
 @Component({
   selector: 'app-table',
@@ -45,6 +45,8 @@ export class TableComponent implements OnInit, OnDestroy {
   private cartItems!: CartItem[];
 
   private subCartItems!: Subscription;
+
+  public isCartLoading$ = this.store.select(selectCartLoading);
 
   constructor(
     private store: Store,

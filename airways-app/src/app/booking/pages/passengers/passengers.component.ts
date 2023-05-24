@@ -291,9 +291,6 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(send(form as PassengersForm));
 
-    // this.store.dispatch(thereSeats({ thereSeats: this.seatsThere }));
-    // this.store.dispatch(backSeats({ backSeats: this.seatsBack }));
-
     if (this.form.valid) {
       this.toReview();
     }

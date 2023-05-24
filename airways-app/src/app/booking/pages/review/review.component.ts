@@ -19,7 +19,7 @@ import { CartItem } from 'src/app/shared/model/cart.model';
 import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
 import { CartService } from 'src/app/core/services/cart.service';
-import { selectCart, selectMaxId } from '../../../redux/selectors/cart.selector';
+import { selectCart, selectCartLoading, selectMaxId } from '../../../redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
 
@@ -84,6 +84,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
   private cartItems!: CartItem[];
 
   private subCartItems!: Subscription;
+
+  public isCartLoading$ = this.store.select(selectCartLoading);
 
   private id = 0;
 

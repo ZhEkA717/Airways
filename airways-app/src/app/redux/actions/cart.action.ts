@@ -32,11 +32,15 @@ export const updateCart = createAction(
 
 export const updateCartSuccess = createAction(
   CartAction.updateCartSuccess,
-  props<{ cartItems: CartItem[] }>(),
+  props<{
+    cartItems: CartItem[],
+    loading: boolean,
+  }>(),
 );
 
 export const updateCartError = createAction(
   CartAction.updateCartSuccess,
+  props<{ loading: boolean }>(),
 );
 
 export const resetCart = createAction(

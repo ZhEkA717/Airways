@@ -14,7 +14,7 @@
           (click)="pay()"
           class="cart__bottom-payment"
           mat-raised-button color="primary"
-          [disabled]="!selected.length"
+          [disabled]="!selected.length || (isCartLoading$ | async)"
         >Payment</button>
       </div>
     </div>

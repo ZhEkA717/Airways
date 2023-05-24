@@ -32,6 +32,7 @@
       class="cart-button"
       mat-stroked-button
       color="primary"
+      [disabled]="isCartLoading$ | async"
     >Add to order cart</button>
     <button *ngIf="!isFromAccount"
       class="buy-button"
@@ -44,6 +45,5 @@
       mat-raised-button
       color="primary"
     >Return to Account</button>
-    
   </div>
 </div>

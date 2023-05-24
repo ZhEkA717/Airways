@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/cart.service';
-import { selectCart } from 'src/app/redux/selectors/cart.selector';
+import { selectCart, selectCartLoading } from 'src/app/redux/selectors/cart.selector';
 import { Subscription } from 'rxjs';
 import { CartItem } from '../../shared/model/cart.model';
 import { updateCart } from '../../redux/actions/cart.action';
@@ -20,6 +20,8 @@ export class CartPageComponent implements OnInit, OnDestroy {
   private cartItems!: CartItem[];
 
   private subCartItems!: Subscription;
+
+  public isCartLoading$ = this.store.select(selectCartLoading);
 
   constructor(
     private store: Store,

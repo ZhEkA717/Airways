@@ -80,7 +80,11 @@
            <mat-icon>more_vert</mat-icon>
        </button>
        <mat-menu #appMenu="matMenu">
-         <button mat-menu-item (click)="delete(element)">Delete</button>
+         <button
+          mat-menu-item
+          (click)="delete(element)"
+          [disabled]="isCartLoading$ | async"
+        >Delete</button>
          <button mat-menu-item>Edit</button>
        </mat-menu>
     </td>

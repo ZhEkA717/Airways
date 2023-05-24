@@ -34,15 +34,15 @@ export default class CartEffect {
     mergeMap(({ cartItems }) => this.cartService
       .updateCart(cartItems).pipe(
         map(
-          (cart) => updateCartSuccess({ cartItems: cart.items }),
+          (cart) => updateCartSuccess({ cartItems: cart.items, loading: false }),
         ),
       )),
-    catchError(() => of(updateCartError())),
+    catchError(() => of(updateCartError({ loading: false }))),
   ));
 
   constructor(
     private actions$: Actions,
     private httpApiService: HttpApiService,
     private cartService: CartService,
-  ) { }
+  ) {}
 }

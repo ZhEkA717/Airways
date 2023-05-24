@@ -5,6 +5,7 @@ import {
   Observable,
   EMPTY,
   map,
+  delay,
 } from 'rxjs';
 import { Airport } from '../../shared/model/airport.model';
 import { Trip } from '../../shared/model/trip.model';
@@ -79,7 +80,7 @@ export default class HttpApiService {
   updateCart(cart: Cart): Observable<Cart> {
     return this.http.patch<Cart>(`${URL_CARTS}/${cart.userId}`, {
       items: cart.items,
-    });
+    }).pipe(delay(700));
   }
 
   createCart(userId: number): Observable<Cart> {
@@ -89,6 +90,8 @@ export default class HttpApiService {
   getCart(userId: number): Observable<CartItem[]> {
     return this.http
       .get<Cart>(`${URL_CARTS}/${userId}`)
-      .pipe(map((cart) => cart.items));
+      .pipe(
+        map((cart) => cart.items),
+      );
   }
 }

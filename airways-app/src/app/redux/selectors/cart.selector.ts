@@ -10,6 +10,11 @@ export const selectCart = createSelector(
   (cart: CartState) => cart.items,
 );
 
+export const selectCartLoading = createSelector(
+  selectFeatureCart,
+  (cart: CartState) => cart.loading,
+);
+
 export const selectCartItems = createSelector(
   selectFeatureCart,
   (cart: CartState) => cart.items.filter((item) => !item.isPayed),
