@@ -84,6 +84,8 @@ implements OnInit, AfterViewInit, OnDestroy {
 
   private isNavigatePassenger!: boolean;
 
+  private isEditNavigate!: boolean;
+
   constructor(
     private r: Renderer2,
     private calendarService: CalendarService,
@@ -96,22 +98,25 @@ implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.isNavigatePassenger = params?.['isNavigatePassenger'];
+      this.isEditNavigate = params?.['edit'];
     });
 
     this.subTripThere = this.thereTrip$.subscribe((trip) => {
-      if (this.isNavigatePassenger) this.thereTrip = trip;
+      if (this.isNavigatePassenger || this.isEditNavigate) this.thereTrip = trip;
     });
 
     this.subTripBack = this.backTrip$.subscribe((trip) => {
-      if (this.isNavigatePassenger) this.backTrip = trip;
+      if (this.isNavigatePassenger || this.isEditNavigate) this.backTrip = trip;
     });
 
     this.subSelectThere = this.store.select(selectThereChoice).subscribe((res) => {
-      if (!this.isRound && this.isNavigatePassenger) this.choiceTrip = res;
+      if (!this.isRound
+        && (this.isNavigatePassenger || this.isEditNavigate)) this.choiceTrip = res;
     });
 
     this.subSelectBack = this.store.select(selectBackChoice).subscribe((res) => {
-      if (this.isRound && this.isNavigatePassenger) this.choiceTrip = res;
+      if (this.isRound
+        && (this.isNavigatePassenger || this.isEditNavigate)) this.choiceTrip = res;
     });
 
     if (this.isRound) {

@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { updateCart } from 'src/app/redux/actions/cart.action';
 import { CartService } from 'src/app/core/services/cart.service';
+import { Router } from '@angular/router';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
 import { selectCart, selectCartItems, selectCartLoading } from '../../../redux/selectors/cart.selector';
@@ -50,6 +51,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
+    private router: Router,
     public currencyService: ConvertMoneyService,
     private cartService: CartService,
   ) {
@@ -106,10 +108,17 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   /** Delete row from table */
-  delete(row: CartItem) {
+  public delete(row: CartItem) {
     this.selection.deselect(row);
     this.store.dispatch(updateCart({
       cartItems: this.cartService.deleteFromCart(this.cartItems, row.id),
     }));
+  }
+
+  public edit(row: CartItem) {
+    this.cartService.dispatchClickedTrip(row);
+    this.router.navigate(['/booking', 'flight'], {
+      queryParams: { edit: true, id: row.id },
+    });
   }
 }

@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
@@ -106,16 +106,26 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   private subTripWay!: Subscription;
 
+  public isEditNavigate!: boolean;
+
+  private editId!: number;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private router: Router,
+    private route: ActivatedRoute,
     public location: Location,
     public airportsService: AirportsService,
     public reserveSeatService: ReserveSeatService,
   ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.isEditNavigate = params?.['edit'];
+      this.editId = params?.['id'];
+    });
+
     this.headerService.setStepper({
       flight: true,
       passengers: true,
@@ -232,15 +242,27 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   }
 
   public toFlight() {
-    this.router.navigate(['/booking/flight'], {
-      queryParams: {
-        isNavigatePassenger: true,
-      },
-    });
+    this.isEditNavigate
+      ? this.router.navigate(['/booking/flight'], {
+        queryParams: {
+          edit: true,
+          isNavigatePassenger: true,
+          id: this.editId,
+        },
+      })
+      : this.router.navigate(['/booking/flight'], {
+        queryParams: {
+          isNavigatePassenger: true,
+        },
+      });
   }
 
   public toReview() {
-    this.router.navigate(['/booking/review']);
+    this.isEditNavigate
+      ? this.router.navigate(['/booking/review'], {
+        queryParams: { edit: true, id: this.editId },
+      })
+      : this.router.navigate(['/booking/review']);
   }
 
   public getBaggage(type: string): Baggage {

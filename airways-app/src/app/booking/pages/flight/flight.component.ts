@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 import HeaderService from 'src/app/core/services/header.service';
 import HttpApiService from 'src/app/core/services/http-api.service';
 import { selectSearch } from 'src/app/redux/selectors/search.selector';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { selectBackChoice, selectThereChoice } from 'src/app/redux/selectors/flight.selector';
 import CalendarService from '../../services/calendar.service';
 
@@ -48,15 +48,25 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   public tripWay!: string;
 
+  private isEditNavigate!: boolean;
+
+  private editId!: number;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private httpApiService: HttpApiService,
     private calendarService: CalendarService,
     private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.isEditNavigate = params?.['edit'];
+      this.editId = params?.['id'];
+    });
+
     this.headerService.setStepper({
       flight: true, passengers: false, review: false,
     });
@@ -117,11 +127,19 @@ export default class FlightComponent implements OnInit, OnDestroy {
   }
 
   toMain() {
-    this.router.navigate(['main']);
+    this.isEditNavigate
+      ? this.router.navigate(['main'], {
+        queryParams: { edit: true, id: this.editId },
+      })
+      : this.router.navigate(['main']);
   }
 
   toPassengers() {
-    this.router.navigate(['booking', 'passengers']);
+    this.isEditNavigate
+      ? this.router.navigate(['booking', 'passengers'], {
+        queryParams: { edit: true, id: this.editId },
+      })
+      : this.router.navigate(['booking', 'passengers']);
   }
 
   public get isContinue() {

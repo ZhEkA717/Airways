@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EMPTY } from 'rxjs';
-import { selectCartItems } from '../../redux/selectors/cart.selector';
-import { CartItem } from '../../shared/model/cart.model';
-import HttpApiService from './http-api.service';
+import { send as sendPassengersForm } from 'src/app/redux/actions/passengers.action';
+import { send as sendSearch } from 'src/app/redux/actions/search.action';
+import { PassengersForm } from 'src/app/booking/models/passengers.model';
+import { FlightSearch } from 'src/app/main/model/flight-search.model';
+import { saveFlight } from 'src/app/redux/actions/flight.action';
+import { TripState } from 'src/app/redux/models/redux-states';
 import AuthService from '../../auth/services/auth.service';
+import HttpApiService from './http-api.service';
+import { CartItem } from '../../shared/model/cart.model';
+import { selectCartItems } from '../../redux/selectors/cart.selector';
 
 @Injectable({
   providedIn: 'root',
@@ -47,7 +53,21 @@ export class CartService {
     });
   }
 
+  editCartItem(items: CartItem[], id: number, editCart: CartItem) {
+    const arr = items.map((item) => (item.id === id ? editCart : item));
+    console.log(editCart);
+    return arr;
+  }
+
   getCart() {
     return this.httpApi.getCart(this.authService.userId);
+  }
+
+  public dispatchClickedTrip(row: CartItem) {
+    this.store.dispatch(sendPassengersForm(
+      row.passengersForm.passengersForm as PassengersForm,
+    ));
+    this.store.dispatch(sendSearch(row.search.searchForm as FlightSearch));
+    this.store.dispatch(saveFlight(row.flight as TripState));
   }
 }

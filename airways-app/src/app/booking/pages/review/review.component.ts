@@ -87,7 +87,11 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   public isCartLoading$ = this.store.select(selectCartLoading);
 
+  public isEditNavigate!: Subscription;
+
   private id = 0;
+
+  private editId!: number;
 
   constructor(
     private headerService: HeaderService,
@@ -97,6 +101,11 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private store: Store,
   ) {
+    this.route.queryParams.subscribe((params) => {
+      this.isEditNavigate = params?.['edit'];
+      this.editId = params?.['id'];
+    });
+
     this.cartItems$.subscribe((items) => {
       this.cartItems = items;
     });
@@ -169,7 +178,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     this.router.navigate(['booking', 'passengers']);
   }
 
-  addToCart() {
+  private get cartSubmit() {
     const {
       flightNo,
       from: thereFrom, to: thereTo,
@@ -208,8 +217,19 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       passengersForm: this.passengersForm,
       flight: this.flight,
     };
+    return cart;
+  }
+
+  addToCart() {
     this.store.dispatch(updateCart({
-      cartItems: this.cartService.addToCart(this.cartItems, cart),
+      cartItems: this.cartService.addToCart(this.cartItems, this.cartSubmit),
+    }));
+  }
+
+  editTrip() {
+    const editCart = { ...this.cartSubmit, id: this.editId };
+    this.store.dispatch(updateCart({
+      cartItems: this.cartService.editCartItem(this.cartItems, this.editId, editCart),
     }));
   }
 }

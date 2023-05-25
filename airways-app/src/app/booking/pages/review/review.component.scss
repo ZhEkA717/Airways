@@ -52,7 +52,8 @@
   .back-button,
   .buy-button,
   .cart-button,
-  .account-button
+  .account-button,
+  .edit-trip
    {
     width: 126px;
     height: 60px;
@@ -67,7 +68,8 @@
   }
 
   .cart-button,
-  .account-button {
+  .account-button,
+  .edit-trip {
     width: 171px;
     height: 60px;
     border: 1px solid $base-primary-color;
