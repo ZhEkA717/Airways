@@ -108,7 +108,7 @@
       <button
         [matBadge]="cartAmount$ | async"
         matBadgeColor="warn"
-        [matBadgeHidden]="!!(cartAmount$ | async) !== true"
+        [matBadgeHidden]="(cartAmount$ | async) === 0"
         [routerLink]="['/cart']" class="button header__basket"
       >
         <img
