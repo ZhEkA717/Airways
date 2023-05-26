@@ -25,7 +25,9 @@
     (click)="toMain()"
     color="primary"
     mat-stroked-button
-  >Back</button>
+  >
+  {{isEditNavigate ? 'back to Cart' : 'back'}}
+  </button>
   <button
     (click)="toPassengers()"
     mat-raised-button

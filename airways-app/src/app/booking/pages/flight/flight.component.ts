@@ -48,7 +48,7 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   public tripWay!: string;
 
-  private isEditNavigate!: boolean;
+  public isEditNavigate!: boolean;
 
   private editId!: number;
 
@@ -128,9 +128,7 @@ export default class FlightComponent implements OnInit, OnDestroy {
 
   toMain() {
     this.isEditNavigate
-      ? this.router.navigate(['main'], {
-        queryParams: { edit: true, id: this.editId },
-      })
+      ? this.router.navigate(['cart'])
       : this.router.navigate(['main']);
   }
 

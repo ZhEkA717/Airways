@@ -175,7 +175,11 @@ export default class ReviewComponent implements OnInit, OnDestroy {
   }
 
   toPassengers() {
-    this.router.navigate(['booking', 'passengers']);
+    this.isEditNavigate
+      ? this.router.navigate(['booking', 'passengers'], {
+        queryParams: { editId: this.editId, edit: true },
+      })
+      : this.router.navigate(['booking', 'passengers']);
   }
 
   private get cartSubmit() {
@@ -231,5 +235,6 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     this.store.dispatch(updateCart({
       cartItems: this.cartService.editCartItem(this.cartItems, +this.editId, editCart),
     }));
+    this.router.navigate(['/cart']);
   }
 }
