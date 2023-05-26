@@ -7,6 +7,7 @@ import { PassengersForm } from 'src/app/booking/models/passengers.model';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
 import { saveFlight } from 'src/app/redux/actions/flight.action';
 import { TripState } from 'src/app/redux/models/redux-states';
+import ReserveSeatService from 'src/app/booking/services/reserve-seat.service';
 import AuthService from '../../auth/services/auth.service';
 import HttpApiService from './http-api.service';
 import { CartItem } from '../../shared/model/cart.model';
@@ -22,6 +23,7 @@ export class CartService {
     private store: Store,
     private httpApi: HttpApiService,
     private authService: AuthService,
+    private reserveSeatService: ReserveSeatService,
   ) {
     store.select(selectCartItems).subscribe((res) => { this.table = res; });
   }
@@ -67,5 +69,7 @@ export class CartService {
     ));
     this.store.dispatch(sendSearch(row.search.searchForm as FlightSearch));
     this.store.dispatch(saveFlight(row.flight as TripState));
+    this.reserveSeatService.resetReservedSeatsThere();
+    this.reserveSeatService.resetReservedSeatsBack();
   }
 }
