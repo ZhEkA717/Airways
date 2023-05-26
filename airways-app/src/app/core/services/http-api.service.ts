@@ -94,4 +94,11 @@ export default class HttpApiService {
         map((cart) => cart.items),
       );
   }
+
+  getBookedSeats(tripId: number): Observable<string[]> {
+    return this.http.get<Trip>(`${URL_TRIPS}/${tripId}`)
+      .pipe(
+        map((item) => item.bookedSeats),
+      );
+  }
 }
