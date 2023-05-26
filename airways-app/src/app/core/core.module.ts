@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import HeaderComponent from './components/header/header.component';
 import FooterComponent from './components/footer/footer.component';
-import SharedModule from '../shared/shared.module';
+import SharedModule from '@shared/shared.module';
 import FormatService from './services/format.service';
 import HttpApiInterceptor from './services/http-api.interceptor';
 import StepperComponent from './components/stepper/stepper.component';

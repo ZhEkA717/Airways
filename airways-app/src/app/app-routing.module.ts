@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/services/auth.guard';
+import { AuthGuard } from '@core/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,12 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    loadChildren: () => import('./booking/booking.module').then((bookingPage) => bookingPage.default),
+    loadChildren: () => import('@booking/booking.module').then((bookingPage) => bookingPage.default),
     title: 'AIRWAYS | Booking',
   },
   {
     path: 'cart',
-    loadChildren: () => import('./cart/cart.module').then((cartPage) => cartPage.default),
+    loadChildren: () => import('@cart/cart.module').then((cartPage) => cartPage.default),
     canActivate: [AuthGuard],
     title: 'AIRWAYS | Cart',
   },

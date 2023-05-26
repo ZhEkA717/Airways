@@ -11,7 +11,7 @@ import {
   mergeMap,
   of,
 } from 'rxjs';
-import HttpApiService from 'src/app/core/services/http-api.service';
+import HttpApiService from '@core/services/http-api.service';
 import { getAirportError, getAirportSuccess } from '../actions/settings.action';
 
 @Injectable()

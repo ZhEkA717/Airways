@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { CartItem } from '../../shared/model/cart.model';
-import { payCartItem } from '../../redux/actions/cart.action';
+import { CartItem } from '@shared/model/cart.model';
+import { payCartItem } from '@redux/actions/cart.action';
 
 @Component({
   selector: 'app-cart-page',

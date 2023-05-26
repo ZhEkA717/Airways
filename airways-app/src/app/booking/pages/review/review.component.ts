@@ -2,23 +2,23 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import HeaderService from 'src/app/core/services/header.service';
-import { saveBackTrip } from 'src/app/redux/actions/flight.action';
+import HeaderService from '@core/services/header.service';
+import { saveBackTrip } from '@redux/actions/flight.action';
 import {
   selectBackSeats,
   selectBackTrip,
   selectFeatureFlight,
   selectThereSeats,
   selectThereTrip,
-} from 'src/app/redux/selectors/flight.selector';
-import { selectFeatureSearch, selectTripWay } from 'src/app/redux/selectors/search.selector';
-import { Trip } from 'src/app/shared/model/trip.model';
+} from '@redux/selectors/flight.selector';
+import { selectFeatureSearch, selectTripWay } from '@redux/selectors/search.selector';
+import { Trip } from '@shared/model/trip.model';
 import { TripWay } from 'src/app/main/model/flight-search.model';
-import { addToCart } from 'src/app/redux/actions/cart.action';
-import { CartItem } from 'src/app/shared/model/cart.model';
-import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
-import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
-import { selectMaxId } from '../../../redux/selectors/cart.selector';
+import { addToCart } from '@redux/actions/cart.action';
+import { CartItem } from '@shared/model/cart.model';
+import { selectFeaturePassengerForm } from '@redux/selectors/passengers.selector';
+import { PassengersState, SearchState, TripState } from '@redux/models/redux-states';
+import { selectMaxId } from '@redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
 

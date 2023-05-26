@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { selectBookedBack, selectBookedThere } from 'src/app/redux/selectors/flight.selector';
+import { selectBookedBack, selectBookedThere } from '@redux/selectors/flight.selector';
 import { Store } from '@ngrx/store';
 import { SEATS_ALL } from '../../services/seats-count.service';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
+import { selectMoneyFormat } from '@redux/selectors/settings.selector';
 
 @Injectable({
   providedIn: 'root',

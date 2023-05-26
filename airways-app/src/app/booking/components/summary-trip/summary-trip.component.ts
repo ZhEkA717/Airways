@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectPassengers } from 'src/app/redux/selectors/passengers.selector';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { selectPassengers } from '@redux/selectors/passengers.selector';
+import { Trip } from '@shared/model/trip.model';
 
 @Component({
   selector: 'app-summary-trip',

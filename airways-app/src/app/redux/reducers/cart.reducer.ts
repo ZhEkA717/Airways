@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { CartItem } from 'src/app/shared/model/cart.model';
+import { CartItem } from '@shared/model/cart.model';
 import { addToCart, deleteFromCart, payCartItem } from '../actions/cart.action';
 import { CartState } from '../models/redux-states';
 

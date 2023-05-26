@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import HttpApiService from '../../core/services/http-api.service';
-import { AuthToken } from '../../shared/model/auth-token.model';
-import { User } from '../../shared/model/persons.model';
-import { UserResponse } from '../../shared/model/response.model';
+import HttpApiService from '@core/services/http-api.service';
+import { AuthToken } from '@shared/model/auth-token.model';
+import { User } from '@shared/model/persons.model';
+import { UserResponse } from '@shared/model/response.model';
 
 @Injectable({
   providedIn: 'root',

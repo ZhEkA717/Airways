@@ -13,17 +13,17 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
-import DateValidator from 'src/app/auth/Validators/dateValidator';
-import TextValidator from 'src/app/auth/Validators/text.validator';
-import HeaderService from 'src/app/core/services/header.service';
+import DateValidator from '@auth/Validators/dateValidator';
+import TextValidator from '@auth/Validators/text.validator';
+import HeaderService from '@core/services/header.service';
 import { FlightSearch, TripWay } from 'src/app/main/model/flight-search.model';
-import { send } from 'src/app/redux/actions/passengers.action';
-import { selectSearch, selectTripWay } from 'src/app/redux/selectors/search.selector';
-import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
-import AirportsService from 'src/app/shared/services/airports.service';
-import { selectPassengerForm } from 'src/app/redux/selectors/passengers.selector';
-import { backSeats, thereSeats } from 'src/app/redux/actions/flight.action';
-import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
+import { send } from '@redux/actions/passengers.action';
+import { selectSearch, selectTripWay } from '@redux/selectors/search.selector';
+import { selectDateFormat, selectMoneyFormat } from '@redux/selectors/settings.selector';
+import AirportsService from '@shared/services/airports.service';
+import { selectPassengerForm } from '@redux/selectors/passengers.selector';
+import { backSeats, thereSeats } from '@redux/actions/flight.action';
+import { selectBackTrip, selectThereTrip } from '@redux/selectors/flight.selector';
 import ReserveSeatService from '../../services/reserve-seat.service';
 import { Baggage, PassengersForm, PassengersInfo } from '../../models/passengers.model';
 
@@ -232,7 +232,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   }
 
   toFlight() {
-    this.router.navigate(['/booking/flight'], {
+    this.router.navigate(['@booking/flight'], {
       queryParams: {
         isNavigatePassenger: true,
       },
@@ -240,7 +240,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   }
 
   toReview() {
-    this.router.navigate(['/booking/review']);
+    this.router.navigate(['@booking/review']);
   }
 
   public getBaggage(type: string): Baggage {

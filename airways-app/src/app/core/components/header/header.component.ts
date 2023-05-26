@@ -6,15 +6,15 @@ import {
   Router,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/settings.selector';
+import { selectDateFormat, selectMoneyFormat } from '@redux/selectors/settings.selector';
 import { MatDialog } from '@angular/material/dialog';
-import AuthDialogComponent from 'src/app/auth/components/auth-dialog/auth-dialog.component';
+import AuthDialogComponent from '@auth/components/auth-dialog/auth-dialog.component';
 import { filter, map, mapTo } from 'rxjs/operators';
-import { selectAmountCart } from 'src/app/redux/selectors/cart.selector';
+import { selectAmountCart } from '@redux/selectors/cart.selector';
 import { Observable, merge } from 'rxjs';
 import FormatService from '../../services/format.service';
 import HeaderService from '../../services/header.service';
-import AuthService from '../../../auth/services/auth.service';
+import AuthService from '@auth/services/auth.service';
 
 @Component({
   selector: 'app-header',

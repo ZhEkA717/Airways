@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import SelectsService from './shared/services/selects.service';
+import SelectsService from '@shared/services/selects.service';
 
 @Component({
   selector: 'app-root',

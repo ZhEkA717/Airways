@@ -3,13 +3,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   BehaviorSubject, Observable, EMPTY, map,
 } from 'rxjs';
-import { Airport } from '../../shared/model/airport.model';
-import { Trip } from '../../shared/model/trip.model';
+import { Airport } from '@shared/model/airport.model';
+import { Trip } from '@shared/model/trip.model';
 import {
   URL_AIRPORTS, URL_LOGIN, URL_REGISTER, URL_TRIPS, URL_USERS,
-} from '../../shared/env.constants';
-import { User } from '../../shared/model/persons.model';
-import { UserResponse } from '../../shared/model/response.model';
+} from '@shared/env.constants';
+import { User } from '@shared/model/persons.model';
+import { UserResponse } from '@shared/model/response.model';
 
 @Injectable({
   providedIn: 'root',

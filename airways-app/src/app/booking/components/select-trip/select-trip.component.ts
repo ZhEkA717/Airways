@@ -6,9 +6,9 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { Trip } from '@shared/model/trip.model';
 import { Store } from '@ngrx/store';
-import { selectBackChoice, selectThereChoice } from 'src/app/redux/selectors/flight.selector';
+import { selectBackChoice, selectThereChoice } from '@redux/selectors/flight.selector';
 import { Subscription } from 'rxjs';
 import ConvertMoneyService from '../../services/convert-money.service';
 

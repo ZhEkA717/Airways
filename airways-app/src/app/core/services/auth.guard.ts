@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import AuthService from '../../auth/services/auth.service';
-import AuthDialogComponent from '../../auth/components/auth-dialog/auth-dialog.component';
+import AuthService from '@auth/services/auth.service';
+import AuthDialogComponent from '@auth/components/auth-dialog/auth-dialog.component';
 
 @Injectable({
   providedIn: 'root',

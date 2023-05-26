@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCartItems } from '../../redux/selectors/cart.selector';
-import { CartItem } from '../../shared/model/cart.model';
-import { deleteFromCart } from '../../redux/actions/cart.action';
+import { selectCartItems } from '@redux/selectors/cart.selector';
+import { CartItem } from '@shared/model/cart.model';
+import { deleteFromCart } from '@redux/actions/cart.action';
 
 @Injectable({
   providedIn: 'root',

@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { send as sendPassengersForm } from 'src/app/redux/actions/passengers.action';
-import { send as sendSearch } from 'src/app/redux/actions/search.action';
-import { PassengersForm } from 'src/app/booking/models/passengers.model';
+import { send as sendPassengersForm } from '@redux/actions/passengers.action';
+import { send as sendSearch } from '@redux/actions/search.action';
+import { PassengersForm } from '@booking/models/passengers.model';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
-import { saveFlight } from 'src/app/redux/actions/flight.action';
-import { TripState } from 'src/app/redux/models/redux-states';
-import { CartItem } from '../../../shared/model/cart.model';
-import ConvertMoneyService from '../../../booking/services/convert-money.service';
-import { selectBuyedItems } from '../../../redux/selectors/cart.selector';
+import { saveFlight } from '@redux/actions/flight.action';
+import { TripState } from '@redux/models/redux-states';
+import { CartItem } from '@shared/model/cart.model';
+import ConvertMoneyService from '@booking/services/convert-money.service';
+import { selectBuyedItems } from '@redux/selectors/cart.selector';
 
 @Component({
   selector: 'app-account-table',

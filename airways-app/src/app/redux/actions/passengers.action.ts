@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store';
-import { PassengersForm } from 'src/app/booking/models/passengers.model';
+import { PassengersForm } from '@booking/models/passengers.model';
 
 export enum PassengersAction {
   sendForm = '[PASSENGERS] send form',

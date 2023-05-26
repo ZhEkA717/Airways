@@ -4,7 +4,7 @@ import BookingPageComponent from './pages/booking-page/booking-page.component';
 import FlightComponent from './pages/flight/flight.component';
 import PassengersComponent from './pages/passengers/passengers.component';
 import ReviewComponent from './pages/review/review.component';
-import { AuthGuard } from '../core/services/auth.guard';
+import { AuthGuard } from '@core/services/auth.guard';
 import PassengersFormGuard from './guards/passengers-form.guard';
 
 const routes: Routes = [

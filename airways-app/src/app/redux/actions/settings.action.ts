@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Airport } from 'src/app/shared/model/airport.model';
+import { Airport } from '@shared/model/airport.model';
 
 export enum SettingsAction {
   saveDateFormat = '[SETTINGS] save date format',

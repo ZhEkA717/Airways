@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
-import { selectPassengers } from 'src/app/redux/selectors/passengers.selector';
+import { selectBackTrip, selectThereTrip } from '@redux/selectors/flight.selector';
+import { selectPassengers } from '@redux/selectors/passengers.selector';
 import { PassengersInfo } from '../../models/passengers.model';
 import ConvertMoneyService from '../../services/convert-money.service';
 import TotalService from '../../services/total.service';

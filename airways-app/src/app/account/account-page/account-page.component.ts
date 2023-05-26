@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { User } from 'src/app/shared/model/persons.model';
+import { User } from '@shared/model/persons.model';
 import { ActivatedRoute } from '@angular/router';
-import AuthService from '../../auth/services/auth.service';
+import AuthService from '@auth/services/auth.service';
 
 @Component({
   selector: 'app-account-page',

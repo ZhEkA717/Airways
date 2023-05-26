@@ -5,10 +5,10 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectSearch } from 'src/app/redux/selectors/search.selector';
-import { selectBackSeats, selectThereSeats } from 'src/app/redux/selectors/flight.selector';
+import { selectSearch } from '@redux/selectors/search.selector';
+import { selectBackSeats, selectThereSeats } from '@redux/selectors/flight.selector';
 import { MatDialog } from '@angular/material/dialog';
-import ConfirmDialogComponent from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import ConfirmDialogComponent from '@shared/components/confirm-dialog/confirm-dialog.component';
 import PassengersComponent from '../pages/passengers/passengers.component';
 
 @Injectable({

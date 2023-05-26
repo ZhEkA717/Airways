@@ -9,7 +9,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { Trip } from '@shared/model/trip.model';
 import { Subject, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
@@ -17,11 +17,11 @@ import {
   saveBackTrip,
   saveThereTrip,
   thereSelect,
-} from 'src/app/redux/actions/flight.action';
+} from '@redux/actions/flight.action';
 import {
   selectBackChoice, selectBackTrip,
   selectThereChoice, selectThereTrip,
-} from 'src/app/redux/selectors/flight.selector';
+} from '@redux/selectors/flight.selector';
 import { ActivatedRoute } from '@angular/router';
 import CalendarService from '../../services/calendar.service';
 

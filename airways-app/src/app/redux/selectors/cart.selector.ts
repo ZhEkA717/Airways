@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CartItem } from 'src/app/shared/model/cart.model';
+import { CartItem } from '@shared/model/cart.model';
 import { CART_REDUCER_KEY } from '../reducers/cart.reducer';
 import { CartState } from '../models/redux-states';
 

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { Trip } from '@shared/model/trip.model';
 import CalendarService from '../../services/calendar.service';
 import ConvertMoneyService from '../../services/convert-money.service';
 

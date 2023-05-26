@@ -6,7 +6,7 @@ import {
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-import { selectDateFormat } from 'src/app/redux/selectors/settings.selector';
+import { selectDateFormat } from '@redux/selectors/settings.selector';
 import { Observable, Subscription } from 'rxjs';
 import RangeDateService from '../../services/range-date.service';
 

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { Trip } from '@shared/model/trip.model';
 import {
   backSeats,
   backSelect,

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { Trip } from '@shared/model/trip.model';
 import { TRIP_REDUCER_KEY } from '../reducers/flight.reducer';
 import { TripState } from '../models/redux-states';
 

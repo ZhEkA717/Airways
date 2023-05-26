@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { PassengersForm } from 'src/app/booking/models/passengers.model';
+import { PassengersForm } from '@booking/models/passengers.model';
 import {
   send,
 } from '../actions/passengers.action';

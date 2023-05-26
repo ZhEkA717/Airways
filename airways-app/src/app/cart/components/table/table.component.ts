@@ -2,8 +2,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from '../../services/cart.service';
-import { CartItem } from '../../../shared/model/cart.model';
-import ConvertMoneyService from '../../../booking/services/convert-money.service';
+import { CartItem } from '@shared/model/cart.model';
+import ConvertMoneyService from '@booking/services/convert-money.service';
 
 @Component({
   selector: 'app-table',

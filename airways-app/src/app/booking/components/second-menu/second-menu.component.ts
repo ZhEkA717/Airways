@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
-import HeaderService from 'src/app/core/services/header.service';
+import HeaderService from '@core/services/header.service';
 import { FlightSearch } from 'src/app/main/model/flight-search.model';
-import { send } from 'src/app/redux/actions/search.action';
-import { selectSearch } from 'src/app/redux/selectors/search.selector';
-import AutocompleteService from 'src/app/shared/services/autocomplete.service';
-import RangeDateService from 'src/app/shared/services/range-date.service';
-import SelectsService from 'src/app/shared/services/selects.service';
-import { send as sendPassengerForm } from 'src/app/redux/actions/passengers.action';
-import { resetFlight } from 'src/app/redux/actions/flight.action';
+import { send } from '@redux/actions/search.action';
+import { selectSearch } from '@redux/selectors/search.selector';
+import AutocompleteService from '@shared/services/autocomplete.service';
+import RangeDateService from '@shared/services/range-date.service';
+import SelectsService from '@shared/services/selects.service';
+import { send as sendPassengerForm } from '@redux/actions/passengers.action';
+import { resetFlight } from '@redux/actions/flight.action';
 import { PassengersForm } from '../../models/passengers.model';
 import ReserveSeatService from '../../services/reserve-seat.service';
 

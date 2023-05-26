@@ -1,4 +1,4 @@
-import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
+import { PassengersState, SearchState, TripState } from '@redux/models/redux-states';
 
 export interface CartItem {
   id: number;

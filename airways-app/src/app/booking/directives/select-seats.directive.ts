@@ -6,8 +6,8 @@ import {
   Renderer2,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectBackTrip, selectThereTrip } from 'src/app/redux/selectors/flight.selector';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { selectBackTrip, selectThereTrip } from '@redux/selectors/flight.selector';
+import { Trip } from '@shared/model/trip.model';
 import SeatsCountService from '../services/seats-count.service';
 
 @Directive({

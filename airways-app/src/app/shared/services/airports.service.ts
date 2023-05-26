@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectAirports } from 'src/app/redux/selectors/settings.selector';
+import { selectAirports } from '@redux/selectors/settings.selector';
 import { Subscription } from 'rxjs';
 import { Airport } from '../model/airport.model';
 

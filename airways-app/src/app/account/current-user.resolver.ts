@@ -5,8 +5,8 @@ import {
   Observable,
   catchError,
 } from 'rxjs';
-import { User } from '../shared/model/persons.model';
-import AuthService from '../auth/services/auth.service';
+import { User } from '@shared/model/persons.model';
+import AuthService from '@auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',

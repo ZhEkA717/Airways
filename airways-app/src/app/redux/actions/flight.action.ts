@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Trip } from 'src/app/shared/model/trip.model';
+import { Trip } from '@shared/model/trip.model';
 import { TripState } from '../models/redux-states';
 
 export enum FlightAction {

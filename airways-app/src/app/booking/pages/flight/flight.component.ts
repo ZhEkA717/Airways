@@ -5,11 +5,11 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import HeaderService from 'src/app/core/services/header.service';
-import HttpApiService from 'src/app/core/services/http-api.service';
-import { selectSearch } from 'src/app/redux/selectors/search.selector';
+import HeaderService from '@core/services/header.service';
+import HttpApiService from '@core/services/http-api.service';
+import { selectSearch } from '@redux/selectors/search.selector';
 import { Router } from '@angular/router';
-import { selectBackChoice, selectThereChoice } from 'src/app/redux/selectors/flight.selector';
+import { selectBackChoice, selectThereChoice } from '@redux/selectors/flight.selector';
 import CalendarService from '../../services/calendar.service';
 
 @Component({

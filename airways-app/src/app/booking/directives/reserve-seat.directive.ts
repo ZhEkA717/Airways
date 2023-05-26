@@ -8,7 +8,7 @@ import {
   Renderer2,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectBackSeats, selectThereSeats } from 'src/app/redux/selectors/flight.selector';
+import { selectBackSeats, selectThereSeats } from '@redux/selectors/flight.selector';
 import { Subscription } from 'rxjs';
 import ReserveSeatService from '../services/reserve-seat.service';
 

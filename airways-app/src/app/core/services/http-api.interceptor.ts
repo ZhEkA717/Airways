@@ -6,8 +6,8 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { URL_API } from '../../shared/env.constants';
-import AuthService from '../../auth/services/auth.service';
+import { URL_API } from '@shared/env.constants';
+import AuthService from '@auth/services/auth.service';
 
 @Injectable()
 export default class HttpApiInterceptor implements HttpInterceptor {

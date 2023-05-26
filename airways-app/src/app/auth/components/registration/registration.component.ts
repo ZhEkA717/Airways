@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
-import AirportsService from 'src/app/shared/services/airports.service';
+import AirportsService from '@shared/services/airports.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
@@ -9,7 +9,7 @@ import DateValidator from '../../Validators/dateValidator';
 import AgreementValidator from '../../Validators/agreement.validator';
 import TextValidator from '../../Validators/text.validator';
 import AuthService from '../../services/auth.service';
-import { User } from '../../../shared/model/persons.model';
+import { User } from '@shared/model/persons.model';
 
 @Component({
   selector: 'app-registration',

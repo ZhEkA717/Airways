@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { saveDateFormat, saveMoneyFormat } from 'src/app/redux/actions/settings.action';
+import { saveDateFormat, saveMoneyFormat } from '@redux/actions/settings.action';
 
 @Injectable()
 export default class FormatService {
