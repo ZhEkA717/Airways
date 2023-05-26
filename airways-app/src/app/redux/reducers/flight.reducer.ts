@@ -9,6 +9,10 @@ import {
   saveThereTrip,
   thereSeats,
   thereSelect,
+  updateBackBookedSeatsError,
+  updateBackBookedSeatsSuccess,
+  updateThereBookedSeatsError,
+  updateThereBookedSeatsSuccess,
 } from '../actions/flight.action';
 import { TripState } from '../models/redux-states';
 
@@ -54,5 +58,19 @@ export const flightReducer = createReducer(
   })),
   on(resetFlight, () => ({
     ...initialState,
+  })),
+  on(updateThereBookedSeatsSuccess, (state, action) => ({
+    ...state,
+    bookedSeats: action.bookedSeats,
+  })),
+  on(updateBackBookedSeatsSuccess, (state, action) => ({
+    ...state,
+    bookedSeats: action.bookedSeats,
+  })),
+  on(updateThereBookedSeatsError, (state) => ({
+    ...state,
+  })),
+  on(updateBackBookedSeatsError, (state) => ({
+    ...state,
   })),
 );
