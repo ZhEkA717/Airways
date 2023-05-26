@@ -227,9 +227,9 @@ export default class ReviewComponent implements OnInit, OnDestroy {
   }
 
   editTrip() {
-    const editCart = { ...this.cartSubmit, id: this.editId };
+    const editCart = { ...this.cartSubmit, id: +this.editId };
     this.store.dispatch(updateCart({
-      cartItems: this.cartService.editCartItem(this.cartItems, this.editId, editCart),
+      cartItems: this.cartService.editCartItem(this.cartItems, +this.editId, editCart),
     }));
   }
 }

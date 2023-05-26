@@ -53,10 +53,8 @@ export class CartService {
     });
   }
 
-  editCartItem(items: CartItem[], id: number, editCart: CartItem) {
-    const arr = items.map((item) => (item.id === id ? editCart : item));
-    console.log(editCart);
-    return arr;
+  editCartItem(items: CartItem[], id: number, editCartItem: CartItem) {
+    return items.map((item) => (item.id === id ? editCartItem : item));
   }
 
   getCart() {
