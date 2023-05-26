@@ -11,12 +11,6 @@ export enum FlightAction {
   resetFlight = '[FLIGHT] reset flight state',
   thereSeats = '[FLIGHT] save there seats',
   backSeats = '[FLIGHT] save back seats',
-  updateThereBooked = '[Flight] update there booked seats',
-  updateThereBookedSeatsSuccess = '[Flight] update there booked seats success',
-  updateThereBookedSeatsError = '[Flight] update there booked seats error',
-  updateBookedBooked = '[Flight] update back booked seats',
-  updateBackBookedSeatsSuccess = '[Flight] update back booked seats success',
-  updateBackBookedSeatsError = '[Flight] update back booked seats error',
 }
 
 export const saveFlight = createAction(
@@ -56,22 +50,4 @@ export const backSeats = createAction(
 
 export const resetFlight = createAction(
   FlightAction.resetFlight,
-);
-
-export const updateThereBookedSeatsSuccess = createAction(
-  FlightAction.updateThereBookedSeatsSuccess,
-  props<{ bookedSeats: string[] }>(),
-);
-
-export const updateBackBookedSeatsSuccess = createAction(
-  FlightAction.updateThereBookedSeatsSuccess,
-  props<{ bookedSeats: string[] }>(),
-);
-
-export const updateBackBookedSeatsError = createAction(
-  FlightAction.updateBackBookedSeatsError,
-);
-
-export const updateThereBookedSeatsError = createAction(
-  FlightAction.updateThereBookedSeatsError,
 );
