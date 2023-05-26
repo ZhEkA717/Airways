@@ -14,6 +14,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { Router } from '@angular/router';
 import { CartItem } from '../../../shared/model/cart.model';
 import ConvertMoneyService from '../../../booking/services/convert-money.service';
+import PromoDiscountService from '../../services/promo-discount.service';
 import { selectCart, selectCartItems, selectCartLoading } from '../../../redux/selectors/cart.selector';
 
 @Component({
@@ -21,6 +22,7 @@ import { selectCart, selectCartItems, selectCartLoading } from '../../../redux/s
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
+
 export class TableComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     'select',
@@ -41,6 +43,8 @@ export class TableComponent implements OnInit, OnDestroy {
 
   @Output() selectionEvent = new EventEmitter<CartItem[]>();
 
+  public isPromoCode = false;
+
   private cartItems$ = this.store.select(selectCart);
 
   private cartItems!: CartItem[];
@@ -54,6 +58,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private router: Router,
     public currencyService: ConvertMoneyService,
     private cartService: CartService,
+    public promoDiscountService: PromoDiscountService,
   ) {
     this.dataSource = new MatTableDataSource<CartItem>([]);
     store.select(selectCartItems).subscribe((res) => {
@@ -72,6 +77,10 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.promoDiscountService.promoCode$
+      .subscribe((code) => {
+        this.isPromoCode = this.promoDiscountService.PROMO_CODE.includes(code);
+      });
     this.cartItems$.subscribe((items) => {
       this.cartItems = items;
     });
