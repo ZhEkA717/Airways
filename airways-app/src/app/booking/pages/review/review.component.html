@@ -27,16 +27,19 @@
       mat-stroked-button
       color="primary"
     >Back</button>
-    <button *ngIf="!isFromAccount"
+    <button *ngIf="!isFromAccount && !isEditNavigate"
       (click) = "addToCart()"
       class="cart-button"
       mat-stroked-button
       color="primary"
+      [disabled]="isCartLoading$ | async"
     >Add to order cart</button>
-    <button *ngIf="!isFromAccount"
+    <button *ngIf="!isFromAccount && !isEditNavigate"
+      (click)="buyNow()"
       class="buy-button"
       mat-raised-button
       color="primary"
+      [disabled]="isCartLoading$ | async"
     >Buy now</button>
     <button *ngIf="isFromAccount"
       [routerLink]="['/account']"
@@ -44,6 +47,11 @@
       mat-raised-button
       color="primary"
     >Return to Account</button>
-    
+    <button *ngIf="isEditNavigate"
+      (click) = "editTrip()"
+      class="edit-trip"
+      mat-raised-button
+      color="primary"
+    >Edit trip</button>
   </div>
 </div>

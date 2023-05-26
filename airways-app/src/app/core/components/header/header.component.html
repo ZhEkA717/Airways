@@ -89,7 +89,7 @@
             >done</mat-icon>
         </button>
       </mat-menu>
-      <div *ngIf="(isAccount&&isLogged); then logout else profile"></div>
+      <div *ngIf="(isAccount && isLogged); then logout else profile"></div>
       <ng-template #logout>
         <button (click)="logOut()" class="button header__button-logout">
           <mat-icon [class.isBooking]="isNotMain" class="header__button-login__img">power_settings_new</mat-icon>
@@ -134,7 +134,10 @@
   </div>
 </div>
 <mat-progress-bar
-  *ngIf="isLoading$ |async"
+  *ngIf="
+  (isLoading$ |async)
+  || (isCartLoading$ | async)
+  "
   class="loading-bar"
   mode="indeterminate"
 ></mat-progress-bar>

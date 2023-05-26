@@ -21,3 +21,8 @@ interface Destination {
   departDate: string;
   arriveDate: string;
 }
+
+export interface Cart {
+  userId: number;
+  items: CartItem[];
+}

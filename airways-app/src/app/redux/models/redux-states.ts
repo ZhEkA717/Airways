@@ -14,6 +14,7 @@ export interface TripState {
 }
 
 export interface CartState {
+  loading: boolean,
   items: CartItem[],
 }
 

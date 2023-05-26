@@ -14,11 +14,12 @@ import {
 import { selectFeatureSearch, selectTripWay } from 'src/app/redux/selectors/search.selector';
 import { Trip } from 'src/app/shared/model/trip.model';
 import { TripWay } from 'src/app/main/model/flight-search.model';
-import { addToCart } from 'src/app/redux/actions/cart.action';
+import { updateCart } from 'src/app/redux/actions/cart.action';
 import { CartItem } from 'src/app/shared/model/cart.model';
 import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
-import { selectMaxId } from '../../../redux/selectors/cart.selector';
+import { CartService } from 'src/app/core/services/cart.service';
+import { selectCart, selectCartLoading, selectMaxId } from '../../../redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
 
@@ -78,13 +79,37 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   private subFlight!: Subscription;
 
+  private cartItems$ = this.store.select(selectCart);
+
+  private cartItems!: CartItem[];
+
+  private subCartItems!: Subscription;
+
+  public isCartLoading$ = this.store.select(selectCartLoading);
+
+  public isEditNavigate!: Subscription;
+
+  private id = 0;
+
+  private editId!: number;
+
   constructor(
     private headerService: HeaderService,
     private totalService: TotalService,
     private router: Router,
     private route: ActivatedRoute,
+    private cartService: CartService,
     private store: Store,
   ) {
+    this.route.queryParams.subscribe((params) => {
+      this.isEditNavigate = params?.['edit'];
+      this.editId = params?.['id'];
+    });
+
+    this.cartItems$.subscribe((items) => {
+      this.cartItems = items;
+    });
+
     this.subSearch = this.search$.subscribe((res) => {
       this.search = res;
     });
@@ -135,6 +160,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       });
 
     this.route.queryParams.subscribe((params) => { if (params['fromaccount']) this.isFromAccount = params['fromaccount']; });
+
+    this.store.select(selectMaxId).subscribe((val) => { this.id = val + 1; });
   }
 
   ngOnDestroy(): void {
@@ -144,15 +171,18 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     this.subSearch?.unsubscribe();
     this.subPassengersForm?.unsubscribe();
     this.subFlight?.unsubscribe();
+    this.subCartItems?.unsubscribe();
   }
 
   toPassengers() {
-    this.router.navigate(['booking', 'passengers']);
+    this.isEditNavigate
+      ? this.router.navigate(['booking', 'passengers'], {
+        queryParams: { editId: this.editId, edit: true },
+      })
+      : this.router.navigate(['booking', 'passengers']);
   }
 
-  addToCart() {
-    let id = 0;
-    this.store.select(selectMaxId).subscribe((val) => { id = val + 1; });
+  private get cartSubmit() {
     const {
       flightNo,
       from: thereFrom, to: thereTo,
@@ -169,7 +199,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     const { price, passengers } = this.totalInfo;
 
     const cart: CartItem = {
-      id,
+      id: this.id,
       type: this.tripWay === 'round' ? 'Round trip' : 'One way',
       flightNo,
       forward: {
@@ -191,6 +221,28 @@ export default class ReviewComponent implements OnInit, OnDestroy {
       passengersForm: this.passengersForm,
       flight: this.flight,
     };
-    this.store.dispatch(addToCart({ cart }));
+    return cart;
+  }
+
+  buyNow() {
+    const payedCartItem = { ...this.cartSubmit, isPayed: true };
+    this.store.dispatch(updateCart({
+      cartItems: this.cartService.addToCart(this.cartItems, payedCartItem),
+    }));
+    this.router.navigate(['/account']);
+  }
+
+  addToCart() {
+    this.store.dispatch(updateCart({
+      cartItems: this.cartService.addToCart(this.cartItems, this.cartSubmit),
+    }));
+  }
+
+  editTrip() {
+    const editCart = { ...this.cartSubmit, id: +this.editId };
+    this.store.dispatch(updateCart({
+      cartItems: this.cartService.editCartItem(this.cartItems, +this.editId, editCart),
+    }));
+    this.router.navigate(['/cart']);
   }
 }

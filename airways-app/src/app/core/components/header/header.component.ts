@@ -10,11 +10,12 @@ import { selectDateFormat, selectMoneyFormat } from 'src/app/redux/selectors/set
 import { MatDialog } from '@angular/material/dialog';
 import AuthDialogComponent from 'src/app/auth/components/auth-dialog/auth-dialog.component';
 import { filter, map, mapTo } from 'rxjs/operators';
-import { selectAmountCart } from 'src/app/redux/selectors/cart.selector';
+import { selectAmountCart, selectCartLoading } from 'src/app/redux/selectors/cart.selector';
 import { Observable, merge } from 'rxjs';
 import FormatService from '../../services/format.service';
 import HeaderService from '../../services/header.service';
 import AuthService from '../../../auth/services/auth.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -31,6 +32,8 @@ export default class HeaderComponent implements OnInit {
   public formatDate$ = this.store.select(selectDateFormat);
 
   public formatMoney$ = this.store.select(selectMoneyFormat);
+
+  public isCartLoading$ = this.store.select(selectCartLoading);
 
   public isLogged = false;
 
@@ -53,6 +56,7 @@ export default class HeaderComponent implements OnInit {
     public authService: AuthService,
     private store: Store,
     public dialog: MatDialog,
+    private cartService: CartService,
   ) {
     authService.checkLogin();
     authService.isLogged$.subscribe((isLogged) => {
