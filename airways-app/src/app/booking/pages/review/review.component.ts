@@ -19,6 +19,8 @@ import { CartItem } from 'src/app/shared/model/cart.model';
 import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.selector';
 import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
 import { CartService } from 'src/app/core/services/cart.service';
+import AlertService from 'src/app/shared/services/alert.service';
+import HttpApiService from 'src/app/core/services/http-api.service';
 import { selectCart, selectCartLoading, selectMaxId } from '../../../redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
@@ -81,6 +83,10 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   private cartItems$ = this.store.select(selectCart);
 
+  private thereBookedSeats!: string[];
+
+  private backBookedSeats!: string[];
+
   private cartItems!: CartItem[];
 
   private subCartItems!: Subscription;
@@ -89,7 +95,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   public isEditNavigate!: Subscription;
 
-  private id = 0;
+  private idCart = 0;
 
   private editId!: number;
 
@@ -100,6 +106,8 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private cartService: CartService,
     private store: Store,
+    private alertService: AlertService,
+    private httpApiService: HttpApiService,
   ) {
     this.route.queryParams.subscribe((params) => {
       this.isEditNavigate = params?.['edit'];
@@ -130,10 +138,12 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
     this.subThere = this.thereTrip$.subscribe((there) => {
       this.thereTrip = there;
+      this.thereBookedSeats = there.bookedSeats;
     });
 
     this.subBack = this.backTrip$.subscribe((back) => {
       this.backTrip = back;
+      this.backBookedSeats = back.bookedSeats;
     });
 
     this.thereSeats$.subscribe((there) => {
@@ -159,9 +169,13 @@ export default class ReviewComponent implements OnInit, OnDestroy {
         this.totalInfo = info;
       });
 
-    this.route.queryParams.subscribe((params) => { if (params['fromaccount']) this.isFromAccount = params['fromaccount']; });
+    this.route.queryParams.subscribe((params) => {
+      this.isFromAccount = params?.['fromaccount'];
+    });
 
-    this.store.select(selectMaxId).subscribe((val) => { this.id = val + 1; });
+    this.store.select(selectMaxId).subscribe((val) => {
+      this.idCart = val + 1;
+    });
   }
 
   ngOnDestroy(): void {
@@ -199,7 +213,7 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     const { price, passengers } = this.totalInfo;
 
     const cart: CartItem = {
-      id: this.id,
+      id: this.idCart,
       type: this.tripWay === 'round' ? 'Round trip' : 'One way',
       flightNo,
       forward: {
@@ -224,25 +238,62 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     return cart;
   }
 
+  public get isExistCart() {
+    const empty: string[] = [];
+    let isThereSeatsExist = false;
+    let isBackSeatsExist = false;
+    const {
+      thereSeats,
+      backSeats,
+      forward,
+    } = this.cartSubmit;
+    const thereCartSeats = empty.concat(...this.cartItems
+      .filter((item) => item.forward.flight === forward.flight)
+      .map((item) => item.thereSeats) as string[][]) as string[];
+    const backCartSeats = empty.concat(...this.cartItems
+      .filter((item) => item.forward.flight === forward.flight)
+      .map((item) => item.backSeats) as string[][]) as string[];
+
+    for (let i = 0; i < thereSeats?.length; i += 1) {
+      if (thereCartSeats.includes(thereSeats[i])) isThereSeatsExist = true;
+    }
+    for (let i = 0; i < backSeats?.length; i += 1) {
+      if (backCartSeats.includes(backSeats[i])) isBackSeatsExist = true;
+    }
+    return isThereSeatsExist || isBackSeatsExist;
+  }
+
   buyNow() {
     const payedCartItem = { ...this.cartSubmit, isPayed: true };
-    this.store.dispatch(updateCart({
-      cartItems: this.cartService.addToCart(this.cartItems, payedCartItem),
-    }));
-    this.router.navigate(['/account']);
+    if (!this.isExistCart) {
+      this.store.dispatch(updateCart({
+        cartItems: this.cartService.addToCart(this.cartItems, payedCartItem),
+      }));
+      this.router.navigate(['/account']);
+    } else {
+      this.alertService.warning('Please change seats');
+    }
   }
 
   addToCart() {
-    this.store.dispatch(updateCart({
-      cartItems: this.cartService.addToCart(this.cartItems, this.cartSubmit),
-    }));
+    if (!this.isExistCart) {
+      this.store.dispatch(updateCart({
+        cartItems: this.cartService.addToCart(this.cartItems, this.cartSubmit),
+      }));
+    } else {
+      this.alertService.warning('Please change seats');
+    }
   }
 
   editTrip() {
     const editCart = { ...this.cartSubmit, id: +this.editId };
-    this.store.dispatch(updateCart({
-      cartItems: this.cartService.editCartItem(this.cartItems, +this.editId, editCart),
-    }));
-    this.router.navigate(['/cart']);
+    if (!this.isExistCart) {
+      this.store.dispatch(updateCart({
+        cartItems: this.cartService.editCartItem(this.cartItems, +this.editId, editCart),
+      }));
+      this.router.navigate(['/cart']);
+    } else {
+      this.alertService.warning('Please change seats');
+    }
   }
 }
