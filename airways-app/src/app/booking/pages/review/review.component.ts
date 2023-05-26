@@ -224,6 +224,14 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     return cart;
   }
 
+  buyNow() {
+    const payedCartItem = { ...this.cartSubmit, isPayed: true };
+    this.store.dispatch(updateCart({
+      cartItems: this.cartService.addToCart(this.cartItems, payedCartItem),
+    }));
+    this.router.navigate(['/account']);
+  }
+
   addToCart() {
     this.store.dispatch(updateCart({
       cartItems: this.cartService.addToCart(this.cartItems, this.cartSubmit),

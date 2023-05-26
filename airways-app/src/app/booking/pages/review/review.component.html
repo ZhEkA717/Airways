@@ -35,6 +35,7 @@
       [disabled]="isCartLoading$ | async"
     >Add to order cart</button>
     <button *ngIf="!isFromAccount && !isEditNavigate"
+      (click)="buyNow()"
       class="buy-button"
       mat-raised-button
       color="primary"
