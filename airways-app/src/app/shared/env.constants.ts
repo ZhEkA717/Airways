@@ -5,3 +5,4 @@ export const URL_AIRPORTS = 'airports';
 export const URL_USERS = 'users';
 export const URL_LOGIN = 'login';
 export const URL_REGISTER = 'register';
+export const URL_CARTS = 'carts';

@@ -69,8 +69,8 @@ export default class PassengersFormGuard implements CanDeactivate<PassengersComp
       )
       && !component.form.valid
     ) {
-      const dialogRef = this.dialog.open(ConfirmDialogComponent);
-      return dialogRef.afterClosed();
+      return this.dialog.open(ConfirmDialogComponent)
+        .afterClosed();
     }
     return of(true);
   }

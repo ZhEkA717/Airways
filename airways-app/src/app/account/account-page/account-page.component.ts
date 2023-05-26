@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { User } from 'src/app/shared/model/persons.model';
+import { ActivatedRoute } from '@angular/router';
 import AuthService from '../../auth/services/auth.service';
 
 @Component({
@@ -11,7 +12,12 @@ import AuthService from '../../auth/services/auth.service';
 export class AccountPageComponent {
   public user$!: Observable<User>;
 
-  constructor(private authService: AuthService) {
-    this.user$ = this.authService.getCurrentUser();
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+  ) {
+    this.user$ = this.route.data.pipe(
+      map((data) => data?.['currentUser']),
+    );
   }
 }

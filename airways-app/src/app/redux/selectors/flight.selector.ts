@@ -1,16 +1,17 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Trip } from 'src/app/shared/model/trip.model';
-import { TRIP_REDUCER_KEY, TripState } from '../reducers/flight.reducer';
+import { TRIP_REDUCER_KEY } from '../reducers/flight.reducer';
+import { TripState } from '../models/redux-states';
 
-export const selectFlight = createFeatureSelector<TripState>(TRIP_REDUCER_KEY);
+export const selectFeatureFlight = createFeatureSelector<TripState>(TRIP_REDUCER_KEY);
 
 export const selectThereTrip = createSelector(
-  selectFlight,
+  selectFeatureFlight,
   (trip: TripState) => trip.thereTrip,
 );
 
 export const selectBackTrip = createSelector(
-  selectFlight,
+  selectFeatureFlight,
   (trip: TripState) => trip.backTrip,
 );
 
@@ -34,21 +35,21 @@ export const selectBookedThere = createSelector(
 );
 
 export const selectThereChoice = createSelector(
-  selectFlight,
+  selectFeatureFlight,
   (trip: TripState) => trip.thereSelect,
 );
 
 export const selectBackChoice = createSelector(
-  selectFlight,
+  selectFeatureFlight,
   (trip: TripState) => trip.backSelect,
 );
 
 export const selectThereSeats = createSelector(
-  selectFlight,
+  selectFeatureFlight,
   (trip: TripState) => trip.thereSeats,
 );
 
 export const selectBackSeats = createSelector(
-  selectFlight,
+  selectFeatureFlight,
   (trip: TripState) => trip.backSeats,
 );

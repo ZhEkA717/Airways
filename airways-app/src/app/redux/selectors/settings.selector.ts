@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { SETTINGS_REDUCER_KEY, SettingsState } from '../reducers/settings.reducer';
+import { SETTINGS_REDUCER_KEY } from '../reducers/settings.reducer';
+import { SettingsState } from '../models/redux-states';
 
 export const selectFeatureSettings = createFeatureSelector<SettingsState>(SETTINGS_REDUCER_KEY);
 

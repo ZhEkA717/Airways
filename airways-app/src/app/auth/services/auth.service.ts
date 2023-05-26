@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { getCart, resetCart } from 'src/app/redux/actions/cart.action';
 import HttpApiService from '../../core/services/http-api.service';
 import { AuthToken } from '../../shared/model/auth-token.model';
 import { User } from '../../shared/model/persons.model';
@@ -12,7 +14,7 @@ import { UserResponse } from '../../shared/model/response.model';
 export default class AuthService {
   public accessToken: string;
 
-  private userId: number;
+  public userId: number;
 
   public userName: string;
 
@@ -26,7 +28,10 @@ export default class AuthService {
 
   public isLogged$: Observable<boolean>;
 
-  constructor(private httpApi: HttpApiService) {
+  constructor(
+    private httpApi: HttpApiService,
+    private store: Store,
+  ) {
     const token = localStorage.getItem('JWT');
     this.accessToken = token ?? '';
     this.userId = 0;
@@ -54,6 +59,7 @@ export default class AuthService {
     this.httpApi.registerUser(user).subscribe({
       next: (data) => {
         this.saveLoginInfo(data);
+        this.httpApi.createCart(data.user.id || 0).subscribe();
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage.next(error.error);
@@ -70,6 +76,7 @@ export default class AuthService {
     this.isLogged.next(true);
     this.errorMessage.next('');
     localStorage.setItem('JWT', data.accessToken);
+    this.store.dispatch(getCart({ userId: this.userId }));
   }
 
   public logout() {
@@ -79,6 +86,7 @@ export default class AuthService {
     this.userEmail = '';
     this.isLogged.next(false);
     localStorage.removeItem('JWT');
+    this.store.dispatch(resetCart());
   }
 
   public getCurrentUser(): Observable<User> {
@@ -117,5 +125,9 @@ export default class AuthService {
     } catch (error) {
       return 'Token validation error';
     }
+  }
+
+  public isAuth() {
+    return !!this.accessToken;
   }
 }

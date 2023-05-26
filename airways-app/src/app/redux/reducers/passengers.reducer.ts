@@ -3,12 +3,9 @@ import { PassengersForm } from 'src/app/booking/models/passengers.model';
 import {
   send,
 } from '../actions/passengers.action';
+import { PassengersState } from '../models/redux-states';
 
 export const PASSENGERS_REDUCER_KEY = 'passengers-form';
-
-export interface PassengersState {
-  passengersForm: PassengersForm,
-}
 
 export const initialState: PassengersState = {
   passengersForm: <PassengersForm>{},

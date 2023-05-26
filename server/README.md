@@ -69,6 +69,20 @@ by default server starts at http://localhost:3000/
   ```
   
 </details>
+ <details>
+  <summary> /carts </summary>
+
+  ```
+  [
+    {
+      "id": 3,
+      "userId": 3,
+      "items": CartItem[]
+    },
+  ]
+  ```
+  
+</details>
 
 To access and modify resources, you can use any HTTP method: GET POST PUT PATCH DELETE OPTIONS
 
