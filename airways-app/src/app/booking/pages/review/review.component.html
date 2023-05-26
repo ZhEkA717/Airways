@@ -39,6 +39,7 @@
       class="buy-button"
       mat-raised-button
       color="primary"
+      [disabled]="isCartLoading$ | async"
     >Buy now</button>
     <button *ngIf="isFromAccount"
       [routerLink]="['/account']"
