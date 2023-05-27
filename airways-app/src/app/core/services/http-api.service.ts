@@ -95,7 +95,7 @@ export default class HttpApiService {
       );
   }
 
-  getBookedSeats(tripId: number): Observable<string[]> {
+  getBookedSeats(tripId: string): Observable<string[]> {
     return this.http.get<Trip>(`${URL_TRIPS}/${tripId}`)
       .pipe(
         map((item) => item.bookedSeats),

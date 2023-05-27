@@ -269,6 +269,7 @@
   </div>
 
   <app-reserved-seats
+    [thereBookedSeats$]="thereBookedSeats$"
     [passengerLength]="passengersWithoutInfant.length"
   ></app-reserved-seats>
 
@@ -287,6 +288,7 @@
 
     <app-reserved-seats
       [isRound]="true"
+      [backBookedSeats$]="backBookedSeats$"
       [passengerLength]="passengersWithoutInfant.length"
     ></app-reserved-seats>
   </div>

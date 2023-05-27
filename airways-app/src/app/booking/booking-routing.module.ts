@@ -6,6 +6,8 @@ import PassengersComponent from './pages/passengers/passengers.component';
 import ReviewComponent from './pages/review/review.component';
 import { AuthGuard } from '../core/services/auth.guard';
 import PassengersFormGuard from './guards/passengers-form.guard';
+import { ThereBookedResolver } from './there-booked.resolver';
+import { BackBookedResolver } from './back-booked.resolver';
 
 const routes: Routes = [
   {
@@ -23,6 +25,10 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         canDeactivate: [PassengersFormGuard],
         title: 'AIRWAYS | Booking | Passengers',
+        resolve: {
+          thereBookedSeats: ThereBookedResolver,
+          backBookedSeats: BackBookedResolver,
+        },
       },
       {
         path: 'review',
