@@ -12,7 +12,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import DateValidator from 'src/app/auth/Validators/dateValidator';
 import TextValidator from 'src/app/auth/Validators/text.validator';
 import HeaderService from 'src/app/core/services/header.service';
@@ -110,6 +110,10 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   private editId!: number;
 
+  public thereBookedSeats$!: Observable<string[]>;
+
+  public backBookedSeats$!: Observable<string[]>;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
@@ -121,6 +125,14 @@ export default class PassengersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.thereBookedSeats$ = this.route.data.pipe(
+      map((data) => data?.['thereBookedSeats']),
+    );
+
+    this.backBookedSeats$ = this.route.data.pipe(
+      map((data) => data?.['backBookedSeats']),
+    );
+
     this.route.queryParams.subscribe((params) => {
       this.isEditNavigate = params?.['edit'];
       this.editId = params?.['id'];

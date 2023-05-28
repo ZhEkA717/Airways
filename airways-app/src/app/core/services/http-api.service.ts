@@ -99,6 +99,14 @@ export default class HttpApiService {
       );
   }
 
+  getBookedSeats(tripId: string): Observable<string[]> {
+    return this.http.get<Trip>(`${URL_TRIPS}/${tripId}`)
+      .pipe(
+        delay(700),
+        map((item) => item.bookedSeats),
+      );
+  }
+
   updateDates(tripId: number, departDate: string, arriveDate: string) {
     return this.http.patch<Trip>(`${URL_TRIPS}/${tripId}`, { departDate, arriveDate });
   }

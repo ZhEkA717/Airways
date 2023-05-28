@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getCart, resetCart } from 'src/app/redux/actions/cart.action';
+import AlertService from 'src/app/shared/services/alert.service';
 import HttpApiService from '../../core/services/http-api.service';
 import { AuthToken } from '../../shared/model/auth-token.model';
 import { User } from '../../shared/model/persons.model';
@@ -30,6 +31,7 @@ export default class AuthService {
 
   constructor(
     private httpApi: HttpApiService,
+    private alertService: AlertService,
     private store: Store,
   ) {
     const token = localStorage.getItem('JWT');
@@ -47,9 +49,10 @@ export default class AuthService {
     this.httpApi.loginUser(email, password).subscribe({
       next: (data) => {
         this.saveLoginInfo(data);
+        this.alertService.success(`Welcome ${data.user.firstName}!`);
       },
       error: (error: HttpErrorResponse) => {
-        this.errorMessage.next(error.error);
+        this.alertService.error(error.error);
         this.logout();
       },
     });
@@ -62,7 +65,7 @@ export default class AuthService {
         this.httpApi.createCart(data.user.id || 0).subscribe();
       },
       error: (error: HttpErrorResponse) => {
-        this.errorMessage.next(error.error);
+        this.alertService.error(error.error);
         this.logout();
       },
     });

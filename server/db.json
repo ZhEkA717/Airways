@@ -62,52 +62,36 @@
       "id": 4
     },
     {
-      "email": "magomed@oziev.ru",
-      "password": "$2a$10$gU3aho2ZSVaskLsMKDI.g.z7.OXsUbH80WuU4xLcYY89wpo/0rYM2",
-      "firstName": "Magomed",
-      "lastName": "Oziev",
-      "date": "1984-04-01T20:00:00.000Z",
-      "gender": "Female",
-      "countryCode": "359",
+      "email": "yevgeniy@mail.ru",
+      "password": "$2a$10$f9/YcZkeWTa4VMk7QuyHw.ZpEc8YGYYA35sAmaXJyeJcvtE3SuQ.6",
+      "firstName": "Nataliya",
+      "lastName": "Grushevskaya",
+      "date": "2023-05-26T21:00:00.000Z",
+      "gender": "Male",
+      "countryCode": "375",
       "phone": {
-        "code": "359",
-        "number": "65406540654"
+        "code": "375",
+        "number": "321216"
       },
-      "citizenship": "Austria",
+      "citizenship": "Belarus",
       "agreement": true,
       "id": 5
     },
     {
-      "email": "dsgdfg@sdfgsdfg.com",
-      "password": "$2a$10$jjInooiUq3LPMhEqqa066OY6R1pWbpkVt0u5uzUbC.wVVXCUzpUJO",
-      "firstName": "adfasdf",
-      "lastName": "asdfasdf",
-      "date": "2023-04-30T21:00:00.000Z",
-      "gender": "Male",
-      "countryCode": "359",
+      "email": "grushevskaya.nataliya@mail.ru",
+      "password": "$2a$10$njIE.XfjuX0aG0GlB33qaeBaxVs24BDRxIaLWjxDKs6/NETChf/06",
+      "firstName": "Nataliya",
+      "lastName": "Grushevskaya",
+      "date": "2023-05-02T21:00:00.000Z",
+      "gender": "Female",
+      "countryCode": "375",
       "phone": {
-        "code": "359",
-        "number": "1234567"
+        "code": "375",
+        "number": "+375336050565"
       },
-      "citizenship": "Czech Republic",
+      "citizenship": "Belarus",
       "agreement": true,
       "id": 6
-    },
-    {
-      "email": "Djamal@Oziev.ing",
-      "password": "$2a$10$Mib3WkaoHQ4y6lRr2bTuVeKrDa.5GdShghVqvae36Ws4w4R/63ONm",
-      "firstName": "Djamal",
-      "lastName": "Oziev",
-      "date": "2015-06-16T21:00:00.000Z",
-      "gender": "Male",
-      "countryCode": "420",
-      "phone": {
-        "code": "420",
-        "number": "132132132"
-      },
-      "citizenship": "Denmark",
-      "agreement": true,
-      "id": 7
     }
   ],
   "airports": [
@@ -1544,7 +1528,7 @@
       },
       "departDate": "06.03.2023 10:10:00",
       "flightTime": 110,
-      "arriveDate": "06.03.2023 12:00:00",
+      "arriveDate": "05.10.2023 12:00:00",
       "seats": 36,
       "price": 85.1,
       "bookedSeats": [
@@ -1655,7 +1639,9 @@
         "9C",
         "9D",
         "9E",
-        "9F"
+        "9F",
+        "1E",
+        "1D"
       ]
     },
     {
@@ -1962,7 +1948,7 @@
       },
       "departDate": "06.07.2023 10:10:00",
       "flightTime": 110,
-      "arriveDate": "06.07.2023 12:00:00",
+      "arriveDate": "05.14.2023 12:00:00",
       "seats": 61,
       "price": 87.1,
       "bookedSeats": [
@@ -2048,7 +2034,8 @@
         "8D",
         "8E",
         "8F",
-        "9F"
+        "9F",
+        "1D"
       ]
     },
     {
@@ -2194,13 +2181,16 @@
       },
       "departDate": "06.04.2023 08:20:00",
       "flightTime": 110,
-      "arriveDate": "06.04.2023 10:10:00",
+      "arriveDate": "05.11.2023 10:10:00",
       "seats": 141,
       "price": 93.4,
       "bookedSeats": [
         "18D",
         "22B",
-        "22E"
+        "22E",
+        "1F",
+        "1E",
+        "1D"
       ]
     },
     {
@@ -14881,501 +14871,748 @@
           }
         },
         {
-          "id": 9,
-          "type": "One way",
-          "flightNo": "GM1136",
-          "forward": {
-            "flight": "Minsk - Geneva",
-            "departDate": "05.21.2023 9:10:00",
-            "arriveDate": "05.21.2023 12:00:00"
-          },
-          "backward": {
-            "flight": "",
-            "departDate": "",
-            "arriveDate": ""
-          },
-          "passengers": [
-            "1 x Adult",
-            "1 x Child",
-            "1 x Infant"
-          ],
-          "price": 367.78200000000004,
-          "thereSeats": [
-            "2B",
-            "3B"
-          ],
-          "backSeats": [],
-          "isPayed": true,
-          "search": {
-            "searchForm": {
-              "tripWay": "one",
-              "from": "Minsk MHP",
-              "destination": "Geneva GVA",
-              "startDate": "Mon May 22 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
-              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
-              "passengers": [
-                {
-                  "id": 0,
-                  "view": "Adult",
-                  "description": "14+ years",
-                  "value": 1
-                },
-                {
-                  "id": 1,
-                  "view": "Child",
-                  "description": "2-14 years",
-                  "value": 1
-                },
-                {
-                  "id": 2,
-                  "view": "Infant",
-                  "description": "0-2 years",
-                  "value": 1
-                }
-              ],
-              "type": "[SEARCH] send form"
-            }
-          },
-          "passengersForm": {
-            "passengersForm": {
-              "passengers": [
-                {
-                  "firstName": "asdfasdf",
-                  "lastName": "asdfasdf",
-                  "gender": "Male",
-                  "baggage": {
-                    "type": "hand+",
-                    "text": "hand luggage +",
-                    "weight": 10,
-                    "size": "56 x 45 x 20",
-                    "price": 10
-                  },
-                  "date": "2023-04-30T21:00:00.000Z",
-                  "dateFormat": "2023-05-22T18:58:21.933Z",
-                  "isCripple": true,
-                  "type": "Adult"
-                },
-                {
-                  "firstName": "fdfasdfasdf",
-                  "lastName": "fdfasdfasdf",
-                  "gender": "Male",
-                  "baggage": {
-                    "type": "hand",
-                    "text": "hand luggage",
-                    "weight": 5,
-                    "size": "56 x 45 x 20",
-                    "price": 0
-                  },
-                  "date": "2023-04-30T21:00:00.000Z",
-                  "dateFormat": "2023-05-22T18:58:21.934Z",
-                  "isCripple": "",
-                  "type": "Child"
-                },
-                {
-                  "firstName": "qewrqwer",
-                  "lastName": "qwerqwer",
-                  "gender": "Male",
-                  "baggage": {
-                    "type": "hand",
-                    "text": "hand luggage",
-                    "weight": 5,
-                    "size": "56 x 45 x 20",
-                    "price": 0
-                  },
-                  "date": "2023-05-08T21:00:00.000Z",
-                  "dateFormat": "2023-05-22T18:58:21.934Z",
-                  "isCripple": "",
-                  "type": "Infant"
-                }
-              ],
-              "countryCode": "420",
-              "phone": "qwerqwerqwerqwer",
-              "email": "ewqrwerqwer@qwerqwer",
-              "type": "[PASSENGERS] send form"
-            }
-          },
-          "flight": {
-            "thereSelect": false,
-            "backSelect": true,
-            "thereSeats": [
-              "2B",
-              "3B"
-            ],
-            "backSeats": [],
-            "thereTrip": {
-              "day": "21",
-              "departDate": "05.21.2023 9:10:00",
-              "id": 129,
-              "flightNo": "GM1136",
-              "from": {
-                "code": "MHP",
-                "city": "Minsk"
-              },
-              "to": {
-                "code": "GVA",
-                "city": "Geneva"
-              },
-              "flightTime": 170,
-              "arriveDate": "05.21.2023 12:00:00",
-              "seats": 46,
-              "price": 123.8,
-              "bookedSeats": [
-                "10A",
-                "10B",
-                "10C",
-                "10D",
-                "10E",
-                "10F",
-                "11B",
-                "12B",
-                "12C",
-                "12D",
-                "12E",
-                "13A",
-                "13C",
-                "13D",
-                "13E",
-                "14A",
-                "14C",
-                "14D",
-                "15A",
-                "15B",
-                "15C",
-                "15D",
-                "15E",
-                "16B",
-                "16C",
-                "16D",
-                "16F",
-                "17C",
-                "17D",
-                "17F",
-                "18A",
-                "18B",
-                "18E",
-                "19A",
-                "19B",
-                "19C",
-                "19F",
-                "1A",
-                "1B",
-                "1C",
-                "1E",
-                "1F",
-                "20A",
-                "20B",
-                "20C",
-                "20D",
-                "20E",
-                "21A",
-                "21C",
-                "21E",
-                "21F",
-                "22A",
-                "22B",
-                "22D",
-                "22E",
-                "22F",
-                "23A",
-                "23D",
-                "23E",
-                "23F",
-                "24A",
-                "24B",
-                "24C",
-                "24D",
-                "24E",
-                "2A",
-                "2C",
-                "2D",
-                "2E",
-                "2F",
-                "3C",
-                "3D",
-                "3E",
-                "3F",
-                "4A",
-                "4B",
-                "4D",
-                "4E",
-                "4F",
-                "5B",
-                "5C",
-                "5E",
-                "5F",
-                "6A",
-                "6B",
-                "6C",
-                "7A",
-                "7B",
-                "7C",
-                "7E",
-                "7F",
-                "8A",
-                "8F",
-                "9A",
-                "9B",
-                "9C",
-                "9E",
-                "9F"
-              ],
-              "type": "[FLIGHT] save there Trip"
-            },
-            "backTrip": {
-              "type": "[FLIGHT] save back Trip"
-            },
-            "type": "[FLIGHT] save flight"
-          }
-        },
-        {
-          "id": 10,
-          "type": "One way",
-          "flightNo": "GM1136",
-          "forward": {
-            "flight": "Minsk - Geneva",
-            "departDate": "05.21.2023 9:10:00",
-            "arriveDate": "05.21.2023 12:00:00"
-          },
-          "backward": {
-            "flight": "",
-            "departDate": "",
-            "arriveDate": ""
-          },
-          "passengers": [
-            "1 x Adult",
-            "1 x Child",
-            "1 x Infant"
-          ],
-          "price": 367.78200000000004,
-          "thereSeats": [
-            "2B",
-            "3B"
-          ],
-          "backSeats": [],
-          "isPayed": true,
-          "search": {
-            "searchForm": {
-              "tripWay": "one",
-              "from": "Minsk MHP",
-              "destination": "Geneva GVA",
-              "startDate": "Mon May 22 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
-              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
-              "passengers": [
-                {
-                  "id": 0,
-                  "view": "Adult",
-                  "description": "14+ years",
-                  "value": 1
-                },
-                {
-                  "id": 1,
-                  "view": "Child",
-                  "description": "2-14 years",
-                  "value": 1
-                },
-                {
-                  "id": 2,
-                  "view": "Infant",
-                  "description": "0-2 years",
-                  "value": 1
-                }
-              ],
-              "type": "[SEARCH] send form"
-            }
-          },
-          "passengersForm": {
-            "passengersForm": {
-              "passengers": [
-                {
-                  "firstName": "asdfasdf",
-                  "lastName": "asdfasdf",
-                  "gender": "Male",
-                  "baggage": {
-                    "type": "hand+",
-                    "text": "hand luggage +",
-                    "weight": 10,
-                    "size": "56 x 45 x 20",
-                    "price": 10
-                  },
-                  "date": "2023-04-30T21:00:00.000Z",
-                  "dateFormat": "2023-05-22T18:58:21.933Z",
-                  "isCripple": true,
-                  "type": "Adult"
-                },
-                {
-                  "firstName": "fdfasdfasdf",
-                  "lastName": "fdfasdfasdf",
-                  "gender": "Male",
-                  "baggage": {
-                    "type": "hand",
-                    "text": "hand luggage",
-                    "weight": 5,
-                    "size": "56 x 45 x 20",
-                    "price": 0
-                  },
-                  "date": "2023-04-30T21:00:00.000Z",
-                  "dateFormat": "2023-05-22T18:58:21.934Z",
-                  "isCripple": "",
-                  "type": "Child"
-                },
-                {
-                  "firstName": "qewrqwer",
-                  "lastName": "qwerqwer",
-                  "gender": "Male",
-                  "baggage": {
-                    "type": "hand",
-                    "text": "hand luggage",
-                    "weight": 5,
-                    "size": "56 x 45 x 20",
-                    "price": 0
-                  },
-                  "date": "2023-05-08T21:00:00.000Z",
-                  "dateFormat": "2023-05-22T18:58:21.934Z",
-                  "isCripple": "",
-                  "type": "Infant"
-                }
-              ],
-              "countryCode": "420",
-              "phone": "qwerqwerqwerqwer",
-              "email": "ewqrwerqwer@qwerqwer",
-              "type": "[PASSENGERS] send form"
-            }
-          },
-          "flight": {
-            "thereSelect": false,
-            "backSelect": true,
-            "thereSeats": [
-              "2B",
-              "3B"
-            ],
-            "backSeats": [],
-            "thereTrip": {
-              "day": "21",
-              "departDate": "05.21.2023 9:10:00",
-              "id": 129,
-              "flightNo": "GM1136",
-              "from": {
-                "code": "MHP",
-                "city": "Minsk"
-              },
-              "to": {
-                "code": "GVA",
-                "city": "Geneva"
-              },
-              "flightTime": 170,
-              "arriveDate": "05.21.2023 12:00:00",
-              "seats": 46,
-              "price": 123.8,
-              "bookedSeats": [
-                "10A",
-                "10B",
-                "10C",
-                "10D",
-                "10E",
-                "10F",
-                "11B",
-                "12B",
-                "12C",
-                "12D",
-                "12E",
-                "13A",
-                "13C",
-                "13D",
-                "13E",
-                "14A",
-                "14C",
-                "14D",
-                "15A",
-                "15B",
-                "15C",
-                "15D",
-                "15E",
-                "16B",
-                "16C",
-                "16D",
-                "16F",
-                "17C",
-                "17D",
-                "17F",
-                "18A",
-                "18B",
-                "18E",
-                "19A",
-                "19B",
-                "19C",
-                "19F",
-                "1A",
-                "1B",
-                "1C",
-                "1E",
-                "1F",
-                "20A",
-                "20B",
-                "20C",
-                "20D",
-                "20E",
-                "21A",
-                "21C",
-                "21E",
-                "21F",
-                "22A",
-                "22B",
-                "22D",
-                "22E",
-                "22F",
-                "23A",
-                "23D",
-                "23E",
-                "23F",
-                "24A",
-                "24B",
-                "24C",
-                "24D",
-                "24E",
-                "2A",
-                "2C",
-                "2D",
-                "2E",
-                "2F",
-                "3C",
-                "3D",
-                "3E",
-                "3F",
-                "4A",
-                "4B",
-                "4D",
-                "4E",
-                "4F",
-                "5B",
-                "5C",
-                "5E",
-                "5F",
-                "6A",
-                "6B",
-                "6C",
-                "7A",
-                "7B",
-                "7C",
-                "7E",
-                "7F",
-                "8A",
-                "8F",
-                "9A",
-                "9B",
-                "9C",
-                "9E",
-                "9F"
-              ],
-              "type": "[FLIGHT] save there Trip"
-            },
-            "backTrip": {
-              "type": "[FLIGHT] save back Trip"
-            },
-            "type": "[FLIGHT] save flight"
-          }
-        },
-        {
           "id": 12,
+          "type": "Round trip",
+          "flightNo": "AV875",
+          "forward": {
+            "flight": "Vienna - Athens",
+            "departDate": "05.11.2023 8:20:00",
+            "arriveDate": "05.11.2023 10:10:00"
+          },
+          "backward": {
+            "flight": "Athens - Vienna",
+            "departDate": "05.14.2023 10:10:00",
+            "arriveDate": "05.14.2023 12:00:00"
+          },
+          "passengers": [
+            "1 x Adult",
+            "1 x Child",
+            "1 x Infant"
+          ],
+          "price": 200.5,
+          "thereSeats": [
+            "10F"
+          ],
+          "backSeats": [
+            "15C"
+          ],
+          "isPayed": false,
+          "search": {
+            "searchForm": {
+              "tripWay": "round",
+              "from": "Vienna VIE",
+              "destination": "Athens ATH",
+              "startDate": "Fri May 26 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "passengers": [
+                {
+                  "id": 0,
+                  "view": "Adult",
+                  "description": "14+ years",
+                  "value": 1
+                },
+                {
+                  "id": 1,
+                  "view": "Child",
+                  "description": "2-14 years",
+                  "value": 1
+                },
+                {
+                  "id": 2,
+                  "view": "Infant",
+                  "description": "0-2 years",
+                  "value": 1
+                }
+              ],
+              "type": "[SEARCH] send form"
+            }
+          },
+          "passengersForm": {
+            "passengersForm": {
+              "passengers": [
+                {
+                  "firstName": "asvcxsads",
+                  "lastName": "fasdfas",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "baggage",
+                    "text": "checked baggage",
+                    "weight": 30,
+                    "size": "158 x 158 x 158",
+                    "price": 15
+                  },
+                  "date": "2023-05-25T21:00:00.000Z",
+                  "dateFormat": "2023-05-26T05:58:01.237Z",
+                  "isCripple": "",
+                  "type": "Adult"
+                },
+                {
+                  "firstName": "fdfasdfasdf",
+                  "lastName": "fdfasdfasdf",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand",
+                    "text": "hand luggage",
+                    "weight": 5,
+                    "size": "56 x 45 x 20",
+                    "price": 0
+                  },
+                  "date": "2023-04-30T21:00:00.000Z",
+                  "dateFormat": "2023-05-22T18:58:21.934Z",
+                  "isCripple": "",
+                  "type": "Child"
+                },
+                {
+                  "firstName": "qewrqwer",
+                  "lastName": "qwerqwer",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand",
+                    "text": "hand luggage",
+                    "weight": 5,
+                    "size": "56 x 45 x 20",
+                    "price": 0
+                  },
+                  "date": "2023-05-08T21:00:00.000Z",
+                  "dateFormat": "2023-05-22T18:58:21.934Z",
+                  "isCripple": "",
+                  "type": "Infant"
+                }
+              ],
+              "countryCode": "375",
+              "phone": "asdsdasfaf",
+              "email": "asfasfas@asfasf",
+              "type": "[PASSENGERS] send form"
+            }
+          },
+          "flight": {
+            "thereSelect": false,
+            "backSelect": true,
+            "thereSeats": [
+              "10F"
+            ],
+            "backSeats": [
+              "15C"
+            ],
+            "thereTrip": {
+              "day": "11",
+              "departDate": "05.11.2023 8:20:00",
+              "id": 19,
+              "flightNo": "AV875",
+              "from": {
+                "code": "VIE",
+                "city": "Vienna"
+              },
+              "to": {
+                "code": "ATH",
+                "city": "Athens"
+              },
+              "flightTime": 110,
+              "arriveDate": "05.11.2023 10:10:00",
+              "seats": 141,
+              "price": 93.4,
+              "bookedSeats": [
+                "10A",
+                "10B",
+                "10C",
+                "10D",
+                "10F",
+                "11B",
+                "11C",
+                "11E",
+                "12A",
+                "12B",
+                "12F",
+                "13A",
+                "13C",
+                "13D",
+                "13F",
+                "14A",
+                "14C",
+                "14D",
+                "14F",
+                "15D",
+                "15E",
+                "16D",
+                "16F",
+                "17A",
+                "17B",
+                "17C",
+                "17D",
+                "17E",
+                "18A",
+                "18B",
+                "18C",
+                "18E",
+                "18F",
+                "19A",
+                "19C",
+                "19E",
+                "19F",
+                "1A",
+                "1B",
+                "1C",
+                "1D",
+                "1F",
+                "20A",
+                "20B",
+                "20D",
+                "20E",
+                "20F",
+                "21B",
+                "21C",
+                "21D",
+                "21E",
+                "21F",
+                "22A",
+                "22B",
+                "22C",
+                "22E",
+                "22F",
+                "23A",
+                "23E",
+                "24B",
+                "24D",
+                "24F",
+                "2A",
+                "2C",
+                "2D",
+                "2E",
+                "2F",
+                "3B",
+                "3C",
+                "3F",
+                "4A",
+                "4C",
+                "4D",
+                "4F",
+                "5B",
+                "5C",
+                "5D",
+                "5E",
+                "6B",
+                "6D",
+                "7C",
+                "7E",
+                "7F",
+                "8D",
+                "8E",
+                "8F",
+                "9F"
+              ],
+              "type": "[FLIGHT] save there Trip"
+            },
+            "backTrip": {
+              "type": "[FLIGHT] save back Trip"
+            },
+            "type": "[FLIGHT] save flight"
+          }
+        },
+        {
+          "id": 13,
+          "type": "Round trip",
+          "flightNo": "CP1661",
+          "forward": {
+            "flight": "Minsk - Geneva",
+            "departDate": "05.21.2023 9:10:00",
+            "arriveDate": "05.21.2023 12:00:00"
+          },
+          "backward": {
+            "flight": "",
+            "departDate": "",
+            "arriveDate": ""
+          },
+          "passengers": [
+            "1 x Adult",
+            "1 x Child",
+            "1 x Infant"
+          ],
+          "price": 367.78200000000004,
+          "thereSeats": [
+            "2B",
+            "3B"
+          ],
+          "backSeats": [],
+          "isPayed": true,
+          "search": {
+            "searchForm": {
+              "tripWay": "one",
+              "from": "Minsk MHP",
+              "destination": "Geneva GVA",
+              "startDate": "Mon May 22 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "passengers": [
+                {
+                  "id": 0,
+                  "view": "Adult",
+                  "description": "14+ years",
+                  "value": 1
+                },
+                {
+                  "id": 1,
+                  "view": "Child",
+                  "description": "2-14 years",
+                  "value": 1
+                },
+                {
+                  "id": 2,
+                  "view": "Infant",
+                  "description": "0-2 years",
+                  "value": 1
+                }
+              ],
+              "type": "[SEARCH] send form"
+            }
+          },
+          "passengersForm": {
+            "passengersForm": {
+              "passengers": [
+                {
+                  "firstName": "asdfasdf",
+                  "lastName": "asdfasdf",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand+",
+                    "text": "hand luggage +",
+                    "weight": 10,
+                    "size": "56 x 45 x 20",
+                    "price": 10
+                  },
+                  "date": "2023-04-30T21:00:00.000Z",
+                  "dateFormat": "2023-05-22T18:58:21.933Z",
+                  "isCripple": true,
+                  "type": "Adult"
+                }
+              ],
+              "countryCode": "375",
+              "phone": "+375295237498",
+              "email": "grushevskiy.yevgeniy@mail.ru",
+              "type": "[PASSENGERS] send form"
+            }
+          },
+          "flight": {
+            "thereSelect": false,
+            "backSelect": false,
+            "thereSeats": [
+              "15F"
+            ],
+            "backSeats": [
+              "15F"
+            ],
+            "thereTrip": {
+              "day": "17",
+              "departDate": "05.17.2023 17:30:00",
+              "id": 79,
+              "flightNo": "CP1661",
+              "from": {
+                "code": "PRG",
+                "city": "Prague"
+              },
+              "to": {
+                "code": "CPH",
+                "city": "Copenhagen"
+              },
+              "flightTime": 300,
+              "arriveDate": "05.17.2023 22:30:00",
+              "seats": 54,
+              "price": 176.1,
+              "bookedSeats": [
+                "10A",
+                "10B",
+                "10D",
+                "11A",
+                "11B",
+                "11C",
+                "11D",
+                "11E",
+                "12A",
+                "12D",
+                "12E",
+                "12F",
+                "13A",
+                "13C",
+                "13E",
+                "13F",
+                "14A",
+                "14C",
+                "14E",
+                "14F",
+                "15A",
+                "15B",
+                "15D",
+                "15E",
+                "16B",
+                "16E",
+                "16F",
+                "17A",
+                "17B",
+                "17C",
+                "17D",
+                "17E",
+                "18A",
+                "18D",
+                "18E",
+                "18F",
+                "19C",
+                "19E",
+                "1A",
+                "1C",
+                "1D",
+                "1F",
+                "20A",
+                "20B",
+                "20C",
+                "20E",
+                "21B",
+                "21C",
+                "21D",
+                "21F",
+                "22A",
+                "22B",
+                "22E",
+                "22F",
+                "23A",
+                "23B",
+                "23C",
+                "23E",
+                "23F",
+                "24A",
+                "24D",
+                "24F",
+                "2B",
+                "2C",
+                "2E",
+                "2F",
+                "3C",
+                "3D",
+                "3E",
+                "4A",
+                "4C",
+                "5A",
+                "5B",
+                "5D",
+                "5E",
+                "5F",
+                "6A",
+                "6E",
+                "6F",
+                "7A",
+                "7C",
+                "7D",
+                "8A",
+                "8C",
+                "8D",
+                "8E",
+                "8F",
+                "9B",
+                "9D",
+                "9E"
+              ],
+              "type": "[FLIGHT] save there Trip"
+            },
+            "backTrip": {
+              "day": "21",
+              "departDate": "05.21.2023 17:40:00",
+              "id": 78,
+              "flightNo": "CP1661",
+              "from": {
+                "code": "CPH",
+                "city": "Copenhagen"
+              },
+              "to": {
+                "code": "PRG",
+                "city": "Prague"
+              },
+              "flightTime": 300,
+              "arriveDate": "05.21.2023 22:40:00",
+              "seats": 86,
+              "price": 182.4,
+              "bookedSeats": [
+                "10A",
+                "11A",
+                "11B",
+                "11C",
+                "11D",
+                "11F",
+                "12D",
+                "12F",
+                "13B",
+                "13E",
+                "13F",
+                "14D",
+                "14F",
+                "15B",
+                "15D",
+                "16F",
+                "17A",
+                "17B",
+                "17E",
+                "17F",
+                "18A",
+                "18C",
+                "19C",
+                "19D",
+                "19F",
+                "1A",
+                "20B",
+                "20E",
+                "21A",
+                "22F",
+                "23A",
+                "23F",
+                "24A",
+                "24D",
+                "2A",
+                "2C",
+                "2D",
+                "2E",
+                "2F",
+                "3A",
+                "3B",
+                "3F",
+                "4A",
+                "4B",
+                "5B",
+                "5C",
+                "5D",
+                "6D",
+                "6E",
+                "6F",
+                "7A",
+                "7C",
+                "7E",
+                "7F",
+                "8F",
+                "9C",
+                "9E",
+                "9F"
+              ],
+              "type": "[FLIGHT] save back Trip"
+            }
+          }
+        },
+        {
+          "id": 14,
+          "type": "Round trip",
+          "flightNo": "CP1661",
+          "forward": {
+            "flight": "Prague - Copenhagen",
+            "departDate": "05.17.2023 17:30:00",
+            "arriveDate": "05.17.2023 22:30:00"
+          },
+          "backward": {
+            "flight": "Copenhagen - Prague",
+            "departDate": "05.21.2023 17:40:00",
+            "arriveDate": "05.21.2023 22:40:00"
+          },
+          "passengers": [
+            "1 x Adult"
+          ],
+          "price": 388.5,
+          "thereSeats": [
+            "15F"
+          ],
+          "backSeats": [
+            "15F"
+          ],
+          "isPayed": true,
+          "search": {
+            "searchForm": {
+              "tripWay": "round",
+              "from": "Prague PRG",
+              "destination": "Copenhagen CPH",
+              "startDate": "Fri May 26 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "passengers": [
+                {
+                  "id": 0,
+                  "view": "Adult",
+                  "description": "14+ years",
+                  "value": 1
+                },
+                {
+                  "id": 1,
+                  "view": "Child",
+                  "description": "2-14 years",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "view": "Infant",
+                  "description": "0-2 years",
+                  "value": 0
+                }
+              ],
+              "type": "[SEARCH] send form"
+            }
+          },
+          "passengersForm": {
+            "passengersForm": {
+              "passengers": [
+                {
+                  "firstName": "Zheka",
+                  "lastName": "Grushevskiy",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "baggage",
+                    "text": "checked baggage",
+                    "weight": 30,
+                    "size": "158 x 158 x 158",
+                    "price": 15
+                  },
+                  "date": "2023-05-04T21:00:00.000Z",
+                  "dateFormat": "2023-05-26T06:29:42.910Z",
+                  "isCripple": "",
+                  "type": "Infant"
+                }
+              ],
+              "countryCode": "375",
+              "phone": "+375295237498",
+              "email": "grushevskiy.yevgeniy@mail.ru",
+              "type": "[PASSENGERS] send form"
+            }
+          },
+          "flight": {
+            "thereSelect": false,
+            "backSelect": true,
+            "thereSeats": [
+              "15F"
+            ],
+            "backSeats": [
+              "15F"
+            ],
+            "thereTrip": {
+              "day": "21",
+              "departDate": "05.21.2023 9:10:00",
+              "id": 129,
+              "flightNo": "GM1136",
+              "from": {
+                "code": "MHP",
+                "city": "Minsk"
+              },
+              "to": {
+                "code": "GVA",
+                "city": "Geneva"
+              },
+              "flightTime": 170,
+              "arriveDate": "05.21.2023 12:00:00",
+              "seats": 46,
+              "price": 123.8,
+              "bookedSeats": [
+                "10A",
+                "10B",
+                "10C",
+                "10D",
+                "10E",
+                "10F",
+                "11B",
+                "12B",
+                "12C",
+                "12D",
+                "12E",
+                "13A",
+                "13C",
+                "13D",
+                "13E",
+                "14A",
+                "14C",
+                "14D",
+                "15A",
+                "15B",
+                "15C",
+                "15D",
+                "15E",
+                "16B",
+                "16C",
+                "16D",
+                "16F",
+                "17C",
+                "17D",
+                "17F",
+                "18A",
+                "18B",
+                "18E",
+                "19A",
+                "19B",
+                "19C",
+                "19F",
+                "1A",
+                "1B",
+                "1C",
+                "1E",
+                "1F",
+                "20A",
+                "20B",
+                "20C",
+                "20D",
+                "20E",
+                "21A",
+                "21C",
+                "21E",
+                "21F",
+                "22A",
+                "22B",
+                "22D",
+                "22E",
+                "22F",
+                "23A",
+                "23D",
+                "23E",
+                "23F",
+                "24A",
+                "24B",
+                "24C",
+                "24D",
+                "24E",
+                "2A",
+                "2C",
+                "2D",
+                "2E",
+                "2F",
+                "3C",
+                "3D",
+                "3E",
+                "3F",
+                "4A",
+                "4B",
+                "4D",
+                "4E",
+                "4F",
+                "5B",
+                "5C",
+                "5E",
+                "5F",
+                "6A",
+                "6B",
+                "6C",
+                "7A",
+                "7B",
+                "7C",
+                "7E",
+                "7F",
+                "8A",
+                "8F",
+                "9A",
+                "9B",
+                "9C",
+                "9E",
+                "9F"
+              ],
+              "type": "[FLIGHT] save there Trip"
+            },
+            "backTrip": {
+              "type": "[FLIGHT] save back Trip"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "items": [
+        {
+          "id": 2,
           "type": "Round trip",
           "flightNo": "AV875",
           "forward": {
@@ -17007,25 +17244,371 @@
                 "9F"
               ],
               "type": "[FLIGHT] save back Trip"
+            },
+            "type": "[FLIGHT] save flight"
+          }
+        },
+        {
+          "id": 41,
+          "type": "Round trip",
+          "flightNo": "GM1136",
+          "forward": {
+            "flight": "Minsk - Geneva",
+            "departDate": "05.19.2023 9:10:00",
+            "arriveDate": "05.19.2023 12:00:00"
+          },
+          "backward": {
+            "flight": "Geneva - Minsk",
+            "departDate": "05.23.2023 12:50:00",
+            "arriveDate": "05.23.2023 15:40:00"
+          },
+          "passengers": [
+            "2 x Adult",
+            "1 x Child",
+            "1 x Infant"
+          ],
+          "price": 1007.49,
+          "thereSeats": [
+            "15D",
+            "15E",
+            "15F"
+          ],
+          "backSeats": [
+            "20A",
+            "20B",
+            "20C"
+          ],
+          "isPayed": true,
+          "search": {
+            "searchForm": {
+              "tripWay": "round",
+              "from": "Minsk MHP",
+              "destination": "Geneva GVA",
+              "startDate": "Wed May 24 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "endDate": "Wed May 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)",
+              "passengers": [
+                {
+                  "id": 0,
+                  "view": "Adult",
+                  "description": "14+ years",
+                  "value": 2
+                },
+                {
+                  "id": 1,
+                  "view": "Child",
+                  "description": "2-14 years",
+                  "value": 1
+                },
+                {
+                  "id": 2,
+                  "view": "Infant",
+                  "description": "0-2 years",
+                  "value": 1
+                }
+              ],
+              "type": "[SEARCH] send form"
             }
+          },
+          "passengersForm": {
+            "passengersForm": {
+              "passengers": [
+                {
+                  "firstName": "Zheka",
+                  "lastName": "Grushevskiy",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand+",
+                    "text": "hand luggage +",
+                    "weight": 10,
+                    "size": "56 x 45 x 20",
+                    "price": 10
+                  },
+                  "date": "2023-05-01T21:00:00.000Z",
+                  "dateFormat": "2023-05-24T11:28:29.196Z",
+                  "isCripple": "",
+                  "type": "Adult"
+                },
+                {
+                  "firstName": "Daria",
+                  "lastName": "Grushevskya",
+                  "gender": "Female",
+                  "baggage": {
+                    "type": "baggage",
+                    "text": "checked baggage",
+                    "weight": 30,
+                    "size": "158 x 158 x 158",
+                    "price": 15
+                  },
+                  "date": "2023-05-01T21:00:00.000Z",
+                  "dateFormat": "2023-05-24T11:28:29.196Z",
+                  "isCripple": "",
+                  "type": "Adult"
+                },
+                {
+                  "firstName": "Valik",
+                  "lastName": "Grushevskiy",
+                  "gender": "Male",
+                  "baggage": {
+                    "type": "hand+",
+                    "text": "hand luggage +",
+                    "weight": 10,
+                    "size": "56 x 45 x 20",
+                    "price": 10
+                  },
+                  "date": "2023-04-30T21:00:00.000Z",
+                  "dateFormat": "2023-05-24T11:28:29.196Z",
+                  "isCripple": "",
+                  "type": "Child"
+                },
+                {
+                  "firstName": "Eseniya",
+                  "lastName": "Grushevskya",
+                  "gender": "Female",
+                  "baggage": {
+                    "type": "hand",
+                    "text": "hand luggage",
+                    "weight": 5,
+                    "size": "56 x 45 x 20",
+                    "price": 0
+                  },
+                  "date": "2023-05-01T21:00:00.000Z",
+                  "dateFormat": "2023-05-24T11:28:29.196Z",
+                  "isCripple": "",
+                  "type": "Infant"
+                }
+              ],
+              "countryCode": "375",
+              "phone": "+375295237498",
+              "email": "grushevskiy.yevgeniy@mail.ru",
+              "type": "[PASSENGERS] send form"
+            }
+          },
+          "flight": {
+            "thereSelect": false,
+            "backSelect": false,
+            "thereSeats": [
+              "15D",
+              "15E",
+              "15F"
+            ],
+            "backSeats": [
+              "20A",
+              "20B",
+              "20C"
+            ],
+            "thereTrip": {
+              "day": "19",
+              "departDate": "05.19.2023 9:10:00",
+              "id": 127,
+              "flightNo": "GM1136",
+              "from": {
+                "code": "MHP",
+                "city": "Minsk"
+              },
+              "to": {
+                "code": "GVA",
+                "city": "Geneva"
+              },
+              "flightTime": 170,
+              "arriveDate": "05.19.2023 12:00:00",
+              "seats": 61,
+              "price": 120.1,
+              "bookedSeats": [
+                "10C",
+                "10D",
+                "10E",
+                "11C",
+                "11F",
+                "12B",
+                "12C",
+                "12D",
+                "13A",
+                "13B",
+                "13E",
+                "13F",
+                "14A",
+                "14B",
+                "14E",
+                "15A",
+                "15B",
+                "16B",
+                "16C",
+                "16F",
+                "17A",
+                "17B",
+                "17C",
+                "17D",
+                "17F",
+                "18A",
+                "18B",
+                "18C",
+                "18D",
+                "18E",
+                "18F",
+                "19B",
+                "19D",
+                "19E",
+                "1A",
+                "1D",
+                "20A",
+                "20B",
+                "20C",
+                "20D",
+                "20E",
+                "21B",
+                "21C",
+                "21D",
+                "21E",
+                "21F",
+                "22E",
+                "23A",
+                "23B",
+                "23D",
+                "23E",
+                "23F",
+                "24A",
+                "24B",
+                "24C",
+                "24D",
+                "24F",
+                "2A",
+                "2B",
+                "2C",
+                "2D",
+                "3B",
+                "3C",
+                "3D",
+                "3E",
+                "4D",
+                "4F",
+                "5B",
+                "5C",
+                "5E",
+                "6A",
+                "6B",
+                "6D",
+                "6E",
+                "7D",
+                "7F",
+                "8C",
+                "8D",
+                "8E",
+                "8F",
+                "9B",
+                "9E",
+                "9F"
+              ],
+              "type": "[FLIGHT] save there Trip"
+            },
+            "backTrip": {
+              "day": "23",
+              "departDate": "05.23.2023 12:50:00",
+              "id": 126,
+              "flightNo": "GM1136",
+              "from": {
+                "code": "GVA",
+                "city": "Geneva"
+              },
+              "to": {
+                "code": "MHP",
+                "city": "Minsk"
+              },
+              "flightTime": 170,
+              "arriveDate": "05.23.2023 15:40:00",
+              "seats": 60,
+              "price": 120.9,
+              "bookedSeats": [
+                "10A",
+                "10B",
+                "10E",
+                "10F",
+                "11C",
+                "11D",
+                "11F",
+                "12A",
+                "12B",
+                "12D",
+                "12F",
+                "13E",
+                "14A",
+                "14B",
+                "14D",
+                "14F",
+                "15C",
+                "15D",
+                "16A",
+                "16B",
+                "16F",
+                "17A",
+                "17B",
+                "17C",
+                "17D",
+                "18A",
+                "18B",
+                "18C",
+                "18E",
+                "19B",
+                "1B",
+                "1C",
+                "1E",
+                "1F",
+                "20D",
+                "20E",
+                "20F",
+                "21A",
+                "21B",
+                "21C",
+                "21D",
+                "21E",
+                "22A",
+                "22C",
+                "22D",
+                "22E",
+                "22F",
+                "23D",
+                "24D",
+                "24E",
+                "24F",
+                "2A",
+                "2B",
+                "2C",
+                "2D",
+                "3A",
+                "3B",
+                "3C",
+                "3E",
+                "3F",
+                "4A",
+                "4B",
+                "4E",
+                "4F",
+                "5B",
+                "5C",
+                "5D",
+                "5E",
+                "5F",
+                "6B",
+                "6C",
+                "6D",
+                "6E",
+                "7D",
+                "7E",
+                "7F",
+                "8A",
+                "8B",
+                "8C",
+                "8D",
+                "9A",
+                "9B",
+                "9C",
+                "9E"
+              ],
+              "type": "[FLIGHT] save back Trip"
+            },
+            "type": "[FLIGHT] save flight"
           }
         }
       ]
-    },
-    {
-      "id": 3,
-      "userId": 3,
-      "items": []
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "items": []
-    },
-    {
-      "id": 7,
-      "userId": 7,
-      "items": []
     }
   ]
 }

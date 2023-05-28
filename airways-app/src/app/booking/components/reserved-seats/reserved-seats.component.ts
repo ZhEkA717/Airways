@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { selectBookedBack, selectBookedThere } from 'src/app/redux/selectors/flight.selector';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { SEATS_ALL } from '../../services/seats-count.service';
 
 @Component({
@@ -12,6 +13,10 @@ export default class ReservedSeatsComponent implements OnInit {
   @Input() passengerLength!: number;
 
   @Input() isRound!: boolean;
+
+  @Input() thereBookedSeats$!: Observable<string[]>;
+
+  @Input() backBookedSeats$!: Observable<string[]>;
 
   private seatNumber = 6;
 
