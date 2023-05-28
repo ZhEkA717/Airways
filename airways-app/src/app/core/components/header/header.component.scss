@@ -88,6 +88,9 @@
 
     &.isBooking {
       width: 380px;
+      @media(max-width:700px) {
+        width: 200px;
+      }
     }
 
     @media(max-width:700px) {
