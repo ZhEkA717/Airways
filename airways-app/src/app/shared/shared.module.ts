@@ -19,10 +19,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import SelectPassengersComponent from './components/select-passengers/select-passengers.component';
 import SelectValidateDirective from './directives/select-validate.directive';
 import RangeDateComponent from './components/range-date/range-date.component';
 import AutocompleteGroupComponent from './components/autocomplete-group/autocomplete-group.component';
+import AlertComponent from './components/alert/alert.component';
+import ConfirmDialogComponent from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     RangeDateComponent,
     SelectValidateDirective,
     AutocompleteGroupComponent,
+    AlertComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +58,7 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     MatTableModule,
     OverlayModule,
     MatBadgeModule,
+    MatProgressBarModule,
   ],
   exports: [
     FormsModule,
@@ -78,6 +84,8 @@ import AutocompleteGroupComponent from './components/autocomplete-group/autocomp
     MatSnackBarModule,
     MatTableModule,
     MatBadgeModule,
+    AlertComponent,
+    MatProgressBarModule,
   ],
 })
 export default class SharedModule { }

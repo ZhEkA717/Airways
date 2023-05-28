@@ -1,13 +1,14 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { PassengersForm } from 'src/app/booking/models/passengers.model';
-import { PASSENGERS_REDUCER_KEY, PassengersState } from '../reducers/passengers.reducer';
+import { PASSENGERS_REDUCER_KEY } from '../reducers/passengers.reducer';
+import { PassengersState } from '../models/redux-states';
 
-export const passengerFeatureSearch = createFeatureSelector<PassengersState>(
+export const selectFeaturePassengerForm = createFeatureSelector<PassengersState>(
   PASSENGERS_REDUCER_KEY,
 );
 
 export const selectPassengerForm = createSelector(
-  passengerFeatureSearch,
+  selectFeaturePassengerForm,
   (state: PassengersState) => state.passengersForm,
 );
 

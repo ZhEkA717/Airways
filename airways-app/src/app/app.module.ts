@@ -17,6 +17,7 @@ import ReliableColorDirective from './auth/directives/reliable-color.directive';
 import LoginComponent from './auth/components/login/login.component';
 import StatisticsService from './auth/services/statistics.service';
 import SettingsEffects from './redux/effects/settings.effect';
+import CartEffect from './redux/effects/cart.effect';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import SettingsEffects from './redux/effects/settings.effect';
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([SettingsEffects]),
+    EffectsModule.forRoot([
+      SettingsEffects,
+      CartEffect,
+    ]),
   ],
   providers: [StatisticsService],
   bootstrap: [AppComponent],

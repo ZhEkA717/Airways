@@ -15,6 +15,10 @@
     background: $text-light-color;
   }
 
+  &.isAccount {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -254,4 +258,10 @@
   &:hover {
     opacity: .7;
   }
+}
+
+.loading-bar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }

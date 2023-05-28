@@ -1,0 +1,53 @@
+@import '../../../../stylings/variables';
+
+:host {
+  width: 100%;
+}
+
+mat-card{
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background: #EFF6FF;
+}
+
+.avatar__image {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 20px));
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 10px;
+
+  img {
+    width: 80px;
+    height: 80px;
+    background-color: $logo-color;
+    border-radius: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+}
+
+.user__name {
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 28px;
+  color: $logo-color;
+  text-align: center;
+  width: 100%;
+}

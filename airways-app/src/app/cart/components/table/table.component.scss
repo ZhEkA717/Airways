@@ -116,16 +116,24 @@
   &-total {
     text-align: right;
     line-height: 37px;
+    position: relative;
+
+    .discount {
+      position: absolute;
+      right: 0;
+      bottom: -25px;
+    }
   }
 
   &-price {
     padding-left: 10px;
     font-size: 1.875rem;
     line-height: 2.25rem;
-    background: linear-gradient(90deg, #11397E 0%, #005ABC 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: $logo-color;
+
+    &.isDiscount {
+      text-decoration: line-through;
+    }
 
     @media (max-width: 400px) {
       font-size: 1.3rem;
@@ -202,5 +210,4 @@
   .cart__table-footer {
     text-align: right;
   }
-
  }

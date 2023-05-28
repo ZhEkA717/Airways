@@ -2,14 +2,15 @@ export interface Person {
   id?: number;
   firstName: string;
   lastName: string;
-  birthDate: string;
+  date: string;
   gender: Gender;
 }
 
 export interface User extends Person {
   email: string;
   password?: string;
-  phone: Phone
+  phone: Phone;
+  citizenship: string;
 }
 
 export interface Passenger extends Person {

@@ -1,26 +1,56 @@
 import { createReducer, on } from '@ngrx/store';
-import { CartItem } from 'src/app/shared/model/cart.model';
-import { addToCart, deleteFromCart } from '../actions/cart.action';
+import {
+  getCart,
+  getCartError,
+  getCartSuccess,
+  resetCart,
+  updateCart,
+  updateCartError,
+  updateCartSuccess,
+} from '../actions/cart.action';
+import { CartState } from '../models/redux-states';
 
 export const CART_REDUCER_KEY = 'cart';
 
-export interface CartState {
-  items: CartItem[],
-}
-
 export const initialState: CartState = {
+  loading: false,
   items: [],
 };
 
 export const cartReducer = createReducer(
   initialState,
-  on(addToCart, (state, action): CartState => ({
+
+  on(getCart, (state): CartState => ({
     ...state,
-    items: [...state.items, action.cart],
   })),
 
-  on(deleteFromCart, (state, action): CartState => ({
+  on(getCartSuccess, (state, action): CartState => ({
     ...state,
-    items: state.items.filter((item) => item.id !== action.id),
+    items: action.items,
+  })),
+
+  on(getCartError, (state): CartState => ({
+    ...state,
+  })),
+
+  on(updateCart, (state): CartState => ({
+    ...state,
+    loading: true,
+  })),
+
+  on(updateCartSuccess, (state, action): CartState => ({
+    ...state,
+    items: action.cartItems,
+    loading: action.loading,
+  })),
+
+  on(updateCartError, (state, action): CartState => ({
+    ...state,
+    loading: action.loading,
+  })),
+
+  on(resetCart, (state): CartState => ({
+    ...state,
+    items: [],
   })),
 );

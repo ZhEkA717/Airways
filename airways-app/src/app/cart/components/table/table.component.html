@@ -80,8 +80,15 @@
            <mat-icon>more_vert</mat-icon>
        </button>
        <mat-menu #appMenu="matMenu">
-         <button mat-menu-item (click)="delete(element)">Delete</button>
-         <button mat-menu-item>Edit</button>
+         <button
+          mat-menu-item
+          (click)="delete(element)"
+          [disabled]="isCartLoading$ | async"
+        >Delete</button>
+         <button
+            mat-menu-item
+            (click)="edit(element)"
+          >Edit</button>
        </mat-menu>
     </td>
   </ng-container>
@@ -94,5 +101,16 @@
 
 <div class="cart__table-footer">
   <button color="primary" mat-button [routerLink]="['/']" class="cart__table-footer-addtrip">+ Add new trip</button>
-  <div class="cart__table-footer-total">Total <span class="cart__table-footer-price"> {{currencyService.moneyIcon}}{{(total * currencyService.moneyRatio).toFixed(1)}} </span> </div>
+  <div class="cart__table-footer-total">Total
+    <span
+      [class.isDiscount]="isPromoCode && total !== 0"
+      class="cart__table-footer-price">
+      {{currencyService.moneyIcon}}
+      {{(total * currencyService.moneyRatio).toFixed(1)}}
+    </span>
+    <div *ngIf="isPromoCode && total !== 0" class="discount">
+      {{currencyService.moneyIcon}}
+      {{(total * (1 - promoDiscountService.DISCOUNT) * currencyService.moneyRatio).toFixed(2)}}
+    </div>
+  </div>
 </div>

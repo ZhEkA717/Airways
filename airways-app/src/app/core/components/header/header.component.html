@@ -1,144 +1,144 @@
 <div
   class="header"
   [class.isBooking] = "isNotMain"
+  [class.isAccount] = "isAccount"
 >
-<div class="container">
-  <div
-    [routerLink]="['/']"
-    class="header__logo"
-  >
-    <div class="header__logo__img">
-      <img
-        src="assets/icons/logo.svg"
-        alt="logo-icon"
-      >
-    </div>
-    <div class="header__logo__title">airways</div>
-  </div>
-  <app-stepper
-    *ngIf="stepperShow"
-  ></app-stepper>
-  <div class="wrapper-menu">
+  <div class="container">
     <div
-      [ngClass]="{showMenu: menuShow}"
-      [class.isBooking] = "isNotMain"
-      class="header__menu"
+      [routerLink]="['/']"
+      class="header__logo"
     >
-    <div class="header__title">
-      <div *ngIf="!isNotMain">Book flights</div>
-      <div
-        *ngIf="isNotMain && menuShow"
-      >Book flights</div>
-      <button
-      (click)="menuShow = false"
-        class="button button_menu"
-      >
-      <mat-icon>close</mat-icon>
-    </button>
+      <div class="header__logo__img">
+        <img
+          src="assets/icons/logo.svg"
+          alt="logo-icon"
+        >
+      </div>
+      <div class="header__logo__title">airways</div>
     </div>
-    <button
-      [matMenuTriggerFor]="menuFormatDate"
-      class="button header__format-date"
-    >
-      <span
-        class="header__format-date__title"
+    <app-stepper
+      *ngIf="stepperShow"
+    ></app-stepper>
+    <div class="wrapper-menu">
+      <div
+        [ngClass]="{showMenu: menuShow}"
         [class.isBooking] = "isNotMain"
-      >{{formatDate$ | async}}</span>
-      <mat-icon
-        class="header__format-date__drop-down"
-        [class.isBooking] = "isNotMain"
-      >arrow_drop_down</mat-icon>
-    </button>
-    <mat-menu #menuFormatDate="matMenu">
+        class="header__menu"
+      >
+      <div class="header__title">
+        <div *ngIf="!isNotMain">Book flights</div>
+        <div
+          *ngIf="isNotMain && menuShow"
+        >Book flights</div>
         <button
-          *ngFor="let date of formatService.formatDate"
-          (click)="formatService.switchFormatDate(date.id)"
+        (click)="menuShow = false"
+          class="button button_menu"
+        >
+        <mat-icon>close</mat-icon>
+      </button>
+      </div>
+      <button
+        [matMenuTriggerFor]="menuFormatDate"
+        class="button header__format-date"
+      >
+        <span
+          class="header__format-date__title"
+          [class.isBooking] = "isNotMain"
+        >{{formatDate$ | async}}</span>
+        <mat-icon
+          class="header__format-date__drop-down"
+          [class.isBooking] = "isNotMain"
+        >arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuFormatDate="matMenu">
+          <button
+            *ngFor="let date of formatService.formatDate"
+            (click)="formatService.switchFormatDate(date.id)"
+            mat-menu-item
+            [style]="
+              (formatDate$ | async) === date.text
+              ? 'display: flex; flex-direction: row-reverse;'
+              : ''
+            "
+          >
+            <div style="font-size: 14px;">{{date.text}}</div>
+            <mat-icon *ngIf="(formatDate$ | async) === date.text"
+              style="transform: translate(18px); color:#11397E"
+            >done</mat-icon>
+          </button>
+      </mat-menu>
+      <button
+        [matMenuTriggerFor]="menuFormatMoney"
+        class="button header__format-money"
+        [class.isBooking] = "isNotMain"
+      >{{formatMoney$ | async}}</button>
+      <mat-menu #menuFormatMoney="matMenu">
+        <button
+          *ngFor="let money of formatService.formatMoney"
           mat-menu-item
+          (click)="formatService.switchFormatMoney(money.id)"
           [style]="
-            (formatDate$ | async) === date.text
-            ? 'display: flex; flex-direction: row-reverse;'
-            : ''
+            (formatMoney$ | async) === money.text
+            ? 'display: flex; flex-direction: row-reverse; gap: 18px'
+            : 'display: flex;'
           "
         >
-          <div style="font-size: 14px;">{{date.text}}</div>
-          <mat-icon *ngIf="(formatDate$ | async) === date.text"
-            style="transform: translate(18px); color:#11397E"
-          >done</mat-icon>
+            <div style="font-size: 14px;">{{money.text}}</div>
+            <mat-icon *ngIf="(formatMoney$ | async) === money.text"
+              style="transform: translate(18px); color:#11397E"
+            >done</mat-icon>
         </button>
-    </mat-menu>
-    <button
-      [matMenuTriggerFor]="menuFormatMoney"
-      class="button header__format-money"
-      [class.isBooking] = "isNotMain"
-    >{{formatMoney$ | async}}</button>
-    <mat-menu #menuFormatMoney="matMenu">
+      </mat-menu>
+      <div *ngIf="(isAccount && isLogged); then logout else profile"></div>
+      <ng-template #logout>
+        <button (click)="logOut()" class="button header__button-logout">
+          <mat-icon [class.isBooking]="isNotMain" class="header__button-login__img">power_settings_new</mat-icon>
+          <div [class.isBooking]="isNotMain" class="header__button-login__title">Logout</div>
+        </button>
+      </ng-template>
+      <ng-template #profile>
+        <button (click)="auth()" class="button header__button-login">
+          <mat-icon [class.isBooking]="isNotMain" class="header__button-login__img">person</mat-icon>
+          <div [class.isBooking]="isNotMain" class="header__button-login__title">{{loginButtonCaption}}</div>
+        </button>
+      </ng-template>
+
+    </div>
+    <div class="button-wrapper">
       <button
-        *ngFor="let money of formatService.formatMoney"
-        mat-menu-item
-        (click)="formatService.switchFormatMoney(money.id)"
-        [style]="
-          (formatMoney$ | async) === money.text
-          ? 'display: flex; flex-direction: row-reverse; gap: 18px'
-          : 'display: flex;'
-        "
+        [matBadge]="cartAmount$ | async"
+        matBadgeColor="warn"
+        [matBadgeHidden]="!!(cartAmount$ | async) !== true"
+        [routerLink]="['/cart']" class="button header__basket"
       >
-          <div style="font-size: 14px;">{{money.text}}</div>
-          <mat-icon *ngIf="(formatMoney$ | async) === money.text"
-            style="transform: translate(18px); color:#11397E"
-          >done</mat-icon>
+        <img
+          class="header__basket__img"
+          src="assets/icons/basket.svg"
+          [src]="
+            (isNotMain)
+            ? 'assets/icons/basket-booking.svg'
+            : 'assets/icons/basket.svg'
+          "
+          alt="basket"
+        >
       </button>
-    </mat-menu>
-    <button cdkOverlayOrigin #trigger="cdkOverlayOrigin"
-      (click)="auth()"
-      class="button header__button-login">
-      <mat-icon
+      <button
+        (click)="menuShow = true"
+        class="button button_menu"
         [class.isBooking] = "isNotMain"
-        class="header__button-login__img"
-      >person</mat-icon>
-      <div
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__title"
-      >{{loginButtonCaption}}</div>
-    </button>
-    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayOpen" (overlayOutsideClick)="isOverlayOpen = false">
-      <button (click)="logout()" class="button header__button-logout">
-        <mat-icon
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__img"
-      >power_settings_new</mat-icon>
-      <div
-        [class.isBooking] = "isNotMain"
-        class="header__button-login__title"
-      >Logout</div>
-      </button>
-    </ng-template>
-  </div>
-  <div class="button-wrapper">
-    <button
-      [matBadge]="cartAmount$ | async"
-      matBadgeColor="warn"
-      [matBadgeHidden]="!!(cartAmount$ | async) !== true"
-      [routerLink]="['/cart']" class="button header__basket"
-    >
-      <img
-        class="header__basket__img"
-        src="assets/icons/basket.svg"
-        [src]="
-          (isNotMain)
-          ? 'assets/icons/basket-booking.svg'
-          : 'assets/icons/basket.svg'
-        "
-        alt="basket"
       >
-    </button>
-    <button
-      (click)="menuShow = true"
-      class="button button_menu"
-      [class.isBooking] = "isNotMain"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    </div>
   </div>
 </div>
-</div>
+<mat-progress-bar
+  *ngIf="
+  (isLoading$ |async)
+  || (isCartLoading$ | async)
+  "
+  class="loading-bar"
+  mode="indeterminate"
+></mat-progress-bar>
+

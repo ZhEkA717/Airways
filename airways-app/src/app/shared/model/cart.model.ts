@@ -1,3 +1,5 @@
+import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
+
 export interface CartItem {
   id: number;
   flightNo: string;
@@ -6,12 +8,21 @@ export interface CartItem {
   type: 'Round trip' | 'One way';
   passengers: string[];
   price: number;
-  thereSeats: string[],
-  backSeats: string[],
+  thereSeats: string[];
+  backSeats: string[];
+  isPayed: boolean;
+  search: SearchState,
+  passengersForm: PassengersState,
+  flight: TripState,
 }
 
 interface Destination {
   flight: string;
   departDate: string;
   arriveDate: string;
+}
+
+export interface Cart {
+  userId: number;
+  items: CartItem[];
 }

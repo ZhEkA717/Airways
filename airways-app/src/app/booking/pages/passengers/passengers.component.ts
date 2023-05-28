@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
@@ -106,16 +106,26 @@ export default class PassengersComponent implements OnInit, OnDestroy {
 
   private subTripWay!: Subscription;
 
+  public isEditNavigate!: boolean;
+
+  private editId!: number;
+
   constructor(
     private headerService: HeaderService,
     private store: Store,
     private router: Router,
+    private route: ActivatedRoute,
     public location: Location,
     public airportsService: AirportsService,
     public reserveSeatService: ReserveSeatService,
   ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.isEditNavigate = params?.['edit'];
+      this.editId = params?.['id'];
+    });
+
     this.headerService.setStepper({
       flight: true,
       passengers: true,
@@ -183,7 +193,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     this.subTripWay?.unsubscribe();
   }
 
-  get passengers() {
+  public get passengers() {
     return this.form.get('passengers') as FormArray;
   }
 
@@ -206,7 +216,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
   }
 
-  createPassenger() {
+  public createPassenger() {
     return new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
@@ -231,16 +241,28 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     });
   }
 
-  toFlight() {
-    this.router.navigate(['/booking/flight'], {
-      queryParams: {
-        isNavigatePassenger: true,
-      },
-    });
+  public toFlight() {
+    this.isEditNavigate
+      ? this.router.navigate(['/booking/flight'], {
+        queryParams: {
+          edit: true,
+          isNavigatePassenger: true,
+          id: this.editId,
+        },
+      })
+      : this.router.navigate(['/booking/flight'], {
+        queryParams: {
+          isNavigatePassenger: true,
+        },
+      });
   }
 
-  toReview() {
-    this.router.navigate(['/booking/review']);
+  public toReview() {
+    this.isEditNavigate
+      ? this.router.navigate(['/booking/review'], {
+        queryParams: { edit: true, id: this.editId },
+      })
+      : this.router.navigate(['/booking/review']);
   }
 
   public getBaggage(type: string): Baggage {
@@ -276,7 +298,7 @@ export default class PassengersComponent implements OnInit, OnDestroy {
     return baggage;
   }
 
-  submit() {
+  private get formSubmit() {
     const passengers = this.passengers.value
       .map((item: PassengersInfo, i: number) => ({
         ...item,
@@ -289,10 +311,11 @@ export default class PassengersComponent implements OnInit, OnDestroy {
       passengers,
     };
 
-    this.store.dispatch(send(form as PassengersForm));
+    return form;
+  }
 
-    // this.store.dispatch(thereSeats({ thereSeats: this.seatsThere }));
-    // this.store.dispatch(backSeats({ backSeats: this.seatsBack }));
+  public submit() {
+    this.store.dispatch(send(this.formSubmit as PassengersForm));
 
     if (this.form.valid) {
       this.toReview();
