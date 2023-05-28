@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import AuthService from '../../services/auth.service';
@@ -34,10 +33,8 @@ export default class LoginComponent {
     public statisticsService: StatisticsService,
     private authService: AuthService,
     private dialogRef: DialogRef,
-    private snackBar: MatSnackBar,
   ) {
     this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
-    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
   }
 
   public onUpdateStatistics() {

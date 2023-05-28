@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import AirportsService from 'src/app/shared/services/airports.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import AlertService from 'src/app/shared/services/alert.service';
 import PasswordValidators from '../../Validators/password.validator';
 import StatisticsService from '../../services/statistics.service';
 import DateValidator from '../../Validators/dateValidator';
@@ -69,11 +69,10 @@ export default class RegistrationComponent implements OnInit {
     private authService: AuthService,
     private dialogRef: DialogRef,
     public airportsService: AirportsService,
-    private snackBar: MatSnackBar,
+    private alertService: AlertService,
   ) {}
 
   ngOnInit(): void {
-    this.authService.errorMessage$.subscribe((message) => !message || this.snackBar.open(message, '', { duration: 2500 }));
     this.authService.isLogged$.subscribe((isLogged) => !isLogged || this.dialogRef.close());
   }
 

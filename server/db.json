@@ -76,6 +76,22 @@
       "citizenship": "Belarus",
       "agreement": true,
       "id": 5
+    },
+    {
+      "email": "grushevskaya.nataliya@mail.ru",
+      "password": "$2a$10$njIE.XfjuX0aG0GlB33qaeBaxVs24BDRxIaLWjxDKs6/NETChf/06",
+      "firstName": "Nataliya",
+      "lastName": "Grushevskaya",
+      "date": "2023-05-02T21:00:00.000Z",
+      "gender": "Female",
+      "countryCode": "375",
+      "phone": {
+        "code": "375",
+        "number": "+375336050565"
+      },
+      "citizenship": "Belarus",
+      "agreement": true,
+      "id": 6
     }
   ],
   "airports": [
@@ -15727,10 +15743,10 @@
           ],
           "price": 261,
           "thereSeats": [
-            "10F"
+            "12F"
           ],
           "backSeats": [
-            "9F"
+            "12E"
           ],
           "isPayed": false,
           "search": {
@@ -15778,7 +15794,7 @@
                     "price": 10
                   },
                   "date": "2023-05-26T21:00:00.000Z",
-                  "dateFormat": "2023-05-27T19:03:22.771Z",
+                  "dateFormat": "2023-05-28T14:41:32.152Z",
                   "isCripple": "",
                   "type": "Adult"
                 }
@@ -15793,10 +15809,10 @@
             "thereSelect": false,
             "backSelect": false,
             "thereSeats": [
-              "10F"
+              "12F"
             ],
             "backSeats": [
-              "9F"
+              "12E"
             ],
             "thereTrip": {
               "day": "19",
@@ -16006,7 +16022,8 @@
                 "9E"
               ],
               "type": "[FLIGHT] save back Trip"
-            }
+            },
+            "type": "[FLIGHT] save flight"
           }
         },
         {
@@ -22268,6 +22285,11 @@
           }
         }
       ]
+    },
+    {
+      "id": 6,
+      "userId": 6,
+      "items": []
     }
   ]
 }
