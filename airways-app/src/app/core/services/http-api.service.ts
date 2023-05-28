@@ -42,6 +42,10 @@ export default class HttpApiService {
     return this.http.get<Trip[]>(URL_TRIPS, { params });
   }
 
+  getTripById(tripId: number): Observable<Trip> {
+    return this.http.get<Trip>(`${URL_TRIPS}/${tripId}`);
+  }
+
   getAirports(): Observable<Airport[]> {
     return this.http.get<Airport[]>(URL_AIRPORTS);
   }
@@ -93,5 +97,9 @@ export default class HttpApiService {
       .pipe(
         map((cart) => cart.items),
       );
+  }
+
+  updateDates(tripId: number, departDate: string, arriveDate: string) {
+    return this.http.patch<Trip>(`${URL_TRIPS}/${tripId}`, { departDate, arriveDate });
   }
 }
