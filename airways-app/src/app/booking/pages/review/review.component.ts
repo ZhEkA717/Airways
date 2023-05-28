@@ -20,7 +20,6 @@ import { selectFeaturePassengerForm } from 'src/app/redux/selectors/passengers.s
 import { PassengersState, SearchState, TripState } from 'src/app/redux/models/redux-states';
 import { CartService } from 'src/app/core/services/cart.service';
 import AlertService from 'src/app/shared/services/alert.service';
-import HttpApiService from 'src/app/core/services/http-api.service';
 import { selectCart, selectCartLoading, selectMaxId } from '../../../redux/selectors/cart.selector';
 import { TotalInfo } from '../../models/total-info.model';
 import TotalService from '../../services/total.service';
@@ -83,10 +82,6 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   private cartItems$ = this.store.select(selectCart);
 
-  private thereBookedSeats!: string[];
-
-  private backBookedSeats!: string[];
-
   private cartItems!: CartItem[];
 
   private subCartItems!: Subscription;
@@ -107,7 +102,6 @@ export default class ReviewComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private store: Store,
     private alertService: AlertService,
-    private httpApiService: HttpApiService,
   ) {
     this.route.queryParams.subscribe((params) => {
       this.isEditNavigate = params?.['edit'];
@@ -138,12 +132,10 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
     this.subThere = this.thereTrip$.subscribe((there) => {
       this.thereTrip = there;
-      this.thereBookedSeats = there.bookedSeats;
     });
 
     this.subBack = this.backTrip$.subscribe((back) => {
       this.backTrip = back;
-      this.backBookedSeats = back.bookedSeats;
     });
 
     this.thereSeats$.subscribe((there) => {
@@ -265,14 +257,10 @@ export default class ReviewComponent implements OnInit, OnDestroy {
 
   buyNow() {
     const payedCartItem = { ...this.cartSubmit, isPayed: true };
-    if (!this.isExistCart) {
-      this.store.dispatch(updateCart({
-        cartItems: this.cartService.addToCart(this.cartItems, payedCartItem),
-      }));
-      this.router.navigate(['/account']);
-    } else {
-      this.alertService.warning('Please change seats');
-    }
+    this.store.dispatch(updateCart({
+      cartItems: this.cartService.addToCart(this.cartItems, payedCartItem),
+    }));
+    this.router.navigate(['/account']);
   }
 
   addToCart() {
