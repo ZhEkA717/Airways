@@ -1,0 +1,92 @@
+@import '../../../../stylings/variables';
+
+:host {
+  width: 50%;
+
+  @media (max-width: 900px) {
+   width: 100%;
+  }
+}
+
+.prices-wrapper {
+  width: calc(100% - 12px);
+  margin-left: 12px;
+  background: #F1F3F6;
+
+  @media (max-width: 900px) {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .type-passenger {
+    background: $light-color;
+    padding: 24px 72px 16px 40px;
+
+    @media (max-width: 450px) {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    &.isVisible {
+      display: none;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .prices {
+      margin-top: 4px;
+      padding-left: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      @media (max-width: 450px) {
+        padding-left: 15px
+      }
+
+      .fare,
+      .tax,
+      .baggage {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+  }
+
+  .total {
+    margin-top: 2px;
+    padding: 20px 72px 20px 40px;
+    background: $light-color;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    @media (max-width: 450px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    &__price {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      color: $logo-color;
+    }
+  }
+
+}

@@ -1,0 +1,117 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="form.valid && submit()"
+>
+  <div
+    class="form"
+    #progressBar
+  >
+    <mat-form-field class="form__login">
+        <mat-label>Email</mat-label>
+        <input
+          formControlName="email"
+          matInput
+        >
+    </mat-form-field>
+    <div
+      class="error-message error-message_email"
+      *ngIf="form.get('email')?.invalid &&
+      form.get('email')?.touched"
+    >
+        <small *ngIf="form.get('email')?.errors?.['required']">
+          Please enter a login email
+        </small>
+        <small *ngIf="form.get('email')?.errors?.['email']">
+          The login email is invalid
+        </small>
+    </div>
+      <mat-form-field class="form__password">
+        <mat-label>Password</mat-label>
+        <input
+          (input)="onUpdateStatistics()"
+          formControlName="password"
+          matInput
+          [type]="isHidePassword ? 'password' : 'text'"
+        >
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="isHidePassword = !isHidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="isHidePassword"
+        >
+          <mat-icon>
+            {{ isHidePassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="form__forgot">
+        <a>Forgot password?</a>
+      </div>
+      <div
+        class="statistics"
+        *ngIf="form.get('password')?.touched"
+      >
+        <svg
+          viewBox="10 10 20 20"
+          style="width: 15px; height: 15px;"
+        >
+          <circle
+            class="substrate-0-2-376"
+            r="8" cx="20" cy="20"
+            fill="none"
+            stroke="rgba(0, 16, 61, 0.06)"
+            stroke-width="4"
+          >
+          </circle>
+          <circle
+            appReliableColor
+            [valueReliable]="statisticsService.valueReliable"
+            r="8" cx="20" cy="20"
+            fill="none"
+            stroke-width="4"
+            style="stroke-dasharray: 50;
+                  transition: .5s linear;"
+          >
+          </circle>
+        </svg>
+        <span appTextColor>
+          {{statisticsService.text}}
+        </span>
+      </div>
+      <div
+        class="error-message green"
+        *ngIf="form.get('password')?.invalid &&
+        form.get('password')?.touched"
+      >
+        <small *ngIf="form.get('password')?.errors?.['required']">
+          Please enter a password
+        </small>
+        <small  *ngIf="form.get('password')?.errors?.['lengthPassword']">
+          At least 8 characters
+        </small>
+        <small *ngIf="form.get('password')?.errors?.['mixtureLowerAndUpperLetter']">
+          A mixture of both uppercase and lowercase letters
+        </small>
+        <small *ngIf="form.get('password')?.errors?.['mixtureLettersAndNumbers']">
+          A mixture of letters and numbers
+        </small>
+        <small *ngIf="form.get('password')?.errors?.['specialSymbols']">
+          Inclusion of at least one special character: ! @ # ? ]
+        </small>
+      </div>
+      <button
+        type="submit"
+        class="login-button"
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+      >Log in</button>
+  </div>
+</form>
+
+
+
+
+
+

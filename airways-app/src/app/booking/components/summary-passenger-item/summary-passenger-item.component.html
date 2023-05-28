@@ -1,0 +1,16 @@
+<div class="passenger">
+  <div class="passenger__name">
+    {{passenger.firstName}} {{passenger.lastName}}
+  </div>
+  <ul class="passenger__options">
+    <li *ngIf="passenger.baggage.type !== 'hand' ">
+      1 {{passenger.baggage.text}} (max {{passenger.baggage.weight}} kg) included
+    </li>
+    <li>1 hand luggage (max 5kg) included</li>
+    <li *ngIf="passenger.baggage.price">
+      Baggage price {{(passenger.baggage.price * convertMoneyService.moneyRatio).toFixed(1)}}
+      {{convertMoneyService.moneyIcon}}
+    </li>
+    <li *ngIf="passenger.type !== 'Infant' ">Seat {{seats[i]}}</li>
+  </ul>
+</div>

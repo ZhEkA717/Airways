@@ -1,0 +1,116 @@
+<table mat-table [dataSource]="dataSource" class="cart__table">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef>
+      <mat-checkbox color="primary" (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td class="cart__table-select" mat-cell *matCellDef="let row">
+      <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- No Column -->
+  <ng-container matColumnDef="flightNo">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef mat-sort-header> No. </th>
+    <td td-title="FlightNo: " class="cart__table-cell cart__table-cell-flight" [class.isSelected-head]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.flightNo}} </td>
+  </ng-container>
+
+  <!-- Flight Column -->
+  <ng-container matColumnDef="flight">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Flight </th>
+    <td td-title="Flight: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">
+      <div class="flight-items">
+        <div class="flight-item">{{element.forward.flight}}</div>
+        <div class="flight-item">{{element.backward.flight}}</div>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- TripType Column -->
+  <ng-container matColumnDef="typetrip">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Type trip </th>
+    <td td-title="Type trip: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <!-- DateTime Column -->
+  <ng-container matColumnDef="datetime">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Date & Time </th>
+    <td td-title="Date & Time: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">
+      <div class="date-time">
+        <div class="date-time__item">{{element.forward.departDate | date }}</div>
+        <div class="date-time__item">{{element.forward.departDate | date: 'hh:mm' }} - {{element.forward.arriveDate | date: 'hh:mm' }}</div>
+      </div>
+       <div class="date-time">
+        <div class="date-time__item">{{element.backward.departDate | date }}</div>
+        <div class="date-time__item">{{element.backward.departDate | date: 'hh:mm' }} <span *ngIf="element.type === 'Round trip'"> - </span> {{element.backward.arriveDate | date: 'hh:mm' }}</div>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Passengers Column -->
+  <ng-container matColumnDef="passengers">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Passengers </th>
+    <td td-title="Passengers: " class="cart__table-cell" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element">
+      <div class="passengers">{{element.passengers[0]}}</div>
+      <div class="passengers">{{element.passengers[1]}}</div>
+      <div class="passengers">{{element.passengers[2]}}</div>
+    </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef> Price </th>
+    <td td-title="Price: " class="cart__table-cell cart__table-cell-price" [class.isSelected]="selection.isSelected(element)" mat-cell *matCellDef="let element"> {{currencyService.moneyIcon}}{{(element.price * currencyService.moneyRatio).toFixed(1)}} </td>
+  </ng-container>
+
+  <!-- Edit menu button -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell class="cart__table-header" *matHeaderCellDef mat-sort-header> </th>
+    <td mat-cell class="cart__table-edit" [class.isSelected]="selection.isSelected(element)" *matCellDef="let element">
+       <button (click)="$event.stopPropagation()" class="cart__table-edit-button" mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="edit">
+           <mat-icon>more_vert</mat-icon>
+       </button>
+       <mat-menu #appMenu="matMenu">
+         <button
+          mat-menu-item
+          (click)="delete(element)"
+          [disabled]="isCartLoading$ | async"
+        >Delete</button>
+         <button
+            mat-menu-item
+            (click)="edit(element)"
+          >Edit</button>
+       </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr class="cart__table-row" [class.isSelected]="selection.isSelected(row)" mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table>
+
+<div class="cart__table-footer">
+  <button color="primary" mat-button [routerLink]="['/']" class="cart__table-footer-addtrip">+ Add new trip</button>
+  <div class="cart__table-footer-total">Total
+    <span
+      [class.isDiscount]="isPromoCode && total !== 0"
+      class="cart__table-footer-price">
+      {{currencyService.moneyIcon}}
+      {{(total * currencyService.moneyRatio).toFixed(1)}}
+    </span>
+    <div *ngIf="isPromoCode && total !== 0" class="discount">
+      {{currencyService.moneyIcon}}
+      {{(total * (1 - promoDiscountService.DISCOUNT) * currencyService.moneyRatio).toFixed(2)}}
+    </div>
+  </div>
+</div>

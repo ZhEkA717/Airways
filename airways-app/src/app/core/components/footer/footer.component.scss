@@ -1,0 +1,56 @@
+@import '../../../../stylings/variables';
+
+:host {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.footer {
+  height: 92px;
+  border-top: 1px solid $footer-border-color;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .left {
+    &__description {
+      @media(max-width:460px) {
+        display: none;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 24px;
+
+    &__description {
+      @media(max-width:710px) {
+        display: none;
+      }
+    }
+
+    &__icons {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+
+
+
+
+

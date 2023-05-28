@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "json-server db.json -m ./node_modules/json-server-auth -r routes.json"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.3",
+    "json-server-auth": "^2.1.0"
+  }
+}

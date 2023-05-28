@@ -1,0 +1,57 @@
+<div
+  *ngIf="headerService.stepper$ | async as stepper"
+  class="stepper"
+>
+<div class="step">
+  <span
+    *ngIf="stepper.flight
+    && stepper.passengers"
+    class="done"
+  >
+    <img src="assets/icons/done.svg" alt="done">
+  </span>
+  <span
+    *ngIf="stepper.flight
+      && !stepper.passengers
+      && !stepper.review"
+    class="active"
+  >
+    <img src="assets/icons/edit.svg" alt="edit">
+  </span>
+  <span class="text">Flight</span>
+</div>
+<hr class="line">
+<div class="step">
+  <span
+    *ngIf="!stepper.passengers"
+    class="number">2</span>
+  <span *ngIf="stepper.flight
+    && stepper.passengers
+    && stepper.review"
+    class="done">
+    <img src="assets/icons/done.svg" alt="done">
+  </span>
+  <span
+    *ngIf="stepper.flight
+    && stepper.passengers
+    && !stepper.review"
+    class="active"
+  >
+  <img src="assets/icons/edit.svg" alt="edit">
+  </span>
+  <span class="text">Passengers</span>
+</div>
+<hr class="line">
+<div class="step">
+  <span
+    *ngIf="!stepper.review"
+    class="number">3</span>
+  <span
+    *ngIf="stepper.review"
+    class="active"
+  >
+    <img src="assets/icons/edit.svg" alt="edit">
+  </span>
+  <span class="text">Review & Payment</span>
+</div>
+</div>

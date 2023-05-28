@@ -1,0 +1,83 @@
+<div class="from">
+  <mat-form-field
+    [formGroup]="autocompleteService.form"
+    class="autocomplete"
+    appearance="fill"
+  >
+    <mat-label>From</mat-label>
+    <input type="text"
+         aria-label="from"
+         matInput
+         formControlName="from"
+         [matAutocomplete]="from">
+    <mat-autocomplete
+      autoActiveFirstOption
+      #from="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptionsFrom | async"
+        [value]="option.city + ' ' + option.code"
+      >
+        {{option.city}} ({{option.code}})
+        <small class="country">{{option.country}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div
+    class="error-message"
+    *ngIf="autocompleteService.form.get('from')?.invalid &&
+    autocompleteService.form.get('from')?.touched"
+  >
+    <small *ngIf="autocompleteService.form.get('from')?.errors?.['required']">
+      {{autocompleteService.form.get('from')?.errors?.['requiredFrom']}}
+    </small>
+  </div>
+</div>
+<div
+  *ngIf="directionVisibility"
+  (click)="autocompleteService.onChangeDirection()"
+  class="change-destination"
+>
+<img src="assets/icons/left-right-arrow.svg" alt="change-destination">
+</div>
+<div class="destination">
+  <mat-form-field
+    [formGroup]="autocompleteService.form"
+    class="autocomplete"
+    appearance="fill"
+  >
+  <mat-label>Destination</mat-label>
+  <input type="text"
+         aria-label="destination"
+         matInput
+         formControlName="destination"
+         [matAutocomplete]="destination">
+  <mat-autocomplete #destination="matAutocomplete">
+    <mat-option
+      *ngFor="let option of filteredOptionsDestination | async"
+      [value]="option.city + ' ' + option.code"
+    >
+      {{option.city}} ({{option.code}})
+    <small class="country">{{option.country}}</small>
+    </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+  <div
+    class="error-message"
+    *ngIf="autocompleteService.form.get('destination')?.invalid &&
+    autocompleteService.form.get('destination')?.touched"
+  >
+    <small *ngIf="autocompleteService.form.get('destination')?.errors?.['required']">
+      {{autocompleteService.form.get('destination')?.errors?.['requiredDestination']}}
+    </small>
+  </div>
+</div>
+
+<div
+  class="error-message"
+>
+  <small *ngIf="autocompleteService.form.get('destination')?.errors?.['equalFields']">
+    {{autocompleteService.form.get('destination')?.errors?.['errorMessage']}}
+  </small>
+</div>
+
+

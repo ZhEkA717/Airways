@@ -1,0 +1,213 @@
+@import '../../../../stylings/variables';
+
+.cart__table {
+  box-shadow: none;
+  border-bottom: 1px solid #E1E5EB;
+}
+.cart__table-cell {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  letter-spacing: 0.5px;
+  display: table-cell;
+  vertical-align: middle;
+
+  .date-time {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+
+    &__item {
+      white-space: nowrap;
+    }
+
+    @media (max-width:1230px) {
+      display: block;
+    }
+  }
+
+  .flight-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &-flight {
+    color: #0090BD;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+  &-price {
+    color: #7F8906;
+  }
+
+  .passengers {
+    white-space: nowrap;
+  }
+}
+
+.cart__table-header {
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    line-height: 12px;
+    padding: 0 5px;
+  }
+}
+
+.cart__table-edit-button {
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+}
+
+.mdc-data-table__header-cell {
+  padding: 0 0px 0 16px;
+
+  @media (max-width: 1020px) {
+    padding: 0 0px 0 5px;
+  }
+}
+.mdc-data-table__cell {
+  @media (max-width: 1020px) {
+    font-size: 16px;
+    line-height: 14px;
+    padding: 0 5px;
+  }
+  @media (max-width: 885px) {
+    font-size: 14px;
+  }
+  @media (max-width: 660px) {
+    font-size: 12px;
+  }
+}
+
+.cart__table-footer {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 33px;
+  border-bottom: 1px solid #80808059;
+  height: 104px;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &-addtrip {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 37px;
+  }
+
+  &-total {
+    text-align: right;
+    line-height: 37px;
+    position: relative;
+
+    .discount {
+      position: absolute;
+      right: 0;
+      bottom: -25px;
+    }
+  }
+
+  &-price {
+    padding-left: 10px;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: $logo-color;
+
+    &.isDiscount {
+      text-decoration: line-through;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 1.3rem;
+
+    }
+  }
+
+  @media (max-width: 1020px) {
+    font-size: 16px;
+  }
+}
+
+ @media (max-width: 605px) {
+  .cart__table {
+    padding: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+  }
+  .cart__table-header,
+  .cart__table-select,
+  .mdc-data-table__header-row {
+    display:none;
+  }
+  .cart__table-cell {
+    text-align: right;
+    display: block;
+    font-size: 16px;
+    line-height: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+
+    &::before {
+      content: attr(td-title);
+      float: left;
+    }
+
+    &.isSelected-head {
+      background-color: $base-primary-color;
+      color: $light-color;
+    }
+
+    &.isSelected {
+      background-color:  whitesmoke;
+    }
+  }
+  .cart__table-edit {
+    display:block;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px auto;
+    height: 50px;
+
+    &-button {
+      margin-top: 1px;
+    }
+
+    mat-icon {
+      rotate: 90deg;
+      scale: 0.7;
+    }
+
+    &.isSelected {
+      background-color: $base-primary-color;
+      color: $light-color;
+    }
+  }
+  .cart__table-row {
+
+    &.isSelected {
+      color: $light-color;
+    }
+  }
+  .cart__table-footer {
+    text-align: right;
+  }
+ }

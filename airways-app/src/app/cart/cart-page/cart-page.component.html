@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-card>
+    <div class="cart__main-title">
+      Cart
+    </div>
+    <div class="cart__table-container">
+      <app-table (selectionEvent)="setSelected($event)"></app-table>
+    </div>
+    <div class="cart__bottom-panel">
+      <app-promo></app-promo>
+      <div class="cart__bottom-right">
+        <div class="cart__bottom-selected">{{selected.length}} selected</div>
+        <button
+          (click)="pay()"
+          class="cart__bottom-payment"
+          mat-raised-button color="primary"
+          [disabled]="!selected.length || (isCartLoading$ | async)"
+        >Payment</button>
+      </div>
+    </div>
+  </mat-card>
+</div>
+

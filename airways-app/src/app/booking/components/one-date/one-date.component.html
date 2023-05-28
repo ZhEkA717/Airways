@@ -1,0 +1,34 @@
+<div
+  class="date"
+  [ngClass]="{unActive: !day.price}"
+>
+  {{
+    calendarService.getDate(
+      day.day,
+      date.getMonth() + numMonth,
+      date.getFullYear().toString()
+    ) | date: 'dd MMM'
+  }}
+</div>
+<div
+  class="day-of-week"
+  [ngClass]="{unActive: !day.price}"
+>
+  {{
+    calendarService.dayOfWeek(
+      day.day,
+      date.getMonth() + numMonth,
+      date.getFullYear().toString())
+  }}
+</div>
+<div
+  *ngIf="day.price; else noFlight"
+  class="price">
+   <span class="price__format">{{convertMoneyService.moneyIcon}}</span>
+   <span class="price__value">
+    {{(day.price * convertMoneyService.moneyRatio).toFixed(1)}}
+   </span>
+</div>
+<ng-template #noFlight>
+    <mat-icon class="no-flight">airplanemode_inactive</mat-icon>
+</ng-template>

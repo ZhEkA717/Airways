@@ -1,0 +1,10 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<div
+  (click)="hideDarkSpace()"
+  [ngClass]="{visible: selectService.isChoiceInput}"
+  class="dark-background">
+</div>
+
+<app-alert></app-alert>

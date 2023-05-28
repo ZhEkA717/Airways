@@ -1,0 +1,90 @@
+@import '../../../../stylings/variables';
+
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.title {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 48px;
+
+  &__text {
+    font-weight: 700;
+    font-size: 24px;
+    color: $logo-color;
+  }
+}
+
+.summary-flight {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width:840px) {
+    flex-wrap: wrap;
+  }
+}
+
+.total {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.wrapper-buttons {
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+
+  @media (max-width: 500px) {
+    gap: 5px;
+    justify-content: space-between;
+  }
+
+  .back-button,
+  .buy-button,
+  .cart-button,
+  .account-button,
+  .edit-trip
+   {
+    width: 126px;
+    height: 60px;
+    font-size: 16px;
+    letter-spacing: .1;
+    font-weight: 500;
+    white-space: nowrap;
+
+    @media (max-width: 340px) {
+      font-size: 14px;
+    }
+  }
+
+  .cart-button,
+  .account-button,
+  .edit-trip {
+    width: 171px;
+    height: 60px;
+    border: 1px solid $base-primary-color;
+  }
+
+  .back-button,
+  .buy-button {
+    @media (max-width: 430px) {
+      width: 100px;
+    }
+  }
+
+  .back-button {
+    @media (max-width: 360px) {
+      width: 70px;
+    }
+  }
+}

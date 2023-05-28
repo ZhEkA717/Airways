@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card class="card-seats">
+    <div
+      class="seats"
+      *ngFor="let seats of arraySeats;
+      let i = index"
+    >
+   <div class="seat-column-letters">
+    {{seatsNumbers[i]}}
+   </div>
+    <div
+      [title]="k + 1 + seat"
+      class="seat-wrapper"
+      *ngFor="let seat of seats;
+      let k = index">
+      <div
+        [ngClass]="{hide: (i !== 2)}"
+        class="seat-column-number">
+        {{i === 2 ? k + 1 : ''}}
+      </div>
+      <div
+        *ngIf="{
+          bookedThere: thereBookedSeats$ | async,
+          bookedBack: backBookedSeats$ | async,
+        } as bookedSeats"
+        #elSeat
+        appReserveSeat
+        [passengerLength]="passengerLength"
+        [isRound]="isRound"
+        [elSeat]="elSeat"
+        [seat]="seat"
+        [k] = "k"
+        class="seat"
+        [ngClass]="{
+          'disabled': isRound
+            ? bookedSeats.bookedBack?.includes(k+1 + seat)
+            : bookedSeats.bookedThere?.includes(k+1 + seat)
+          }"
+      >
+        <span>{{seat}}</span>
+      </div>
+    </div>
+  </div>
+  </mat-card>
+</div>
