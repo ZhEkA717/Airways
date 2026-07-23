@@ -8,11 +8,11 @@ import StartDateValidator from '../validators/start-date.validator';
 })
 export default class RangeDateService {
   public form = new FormGroup({
-    startDate: new FormControl(null, [
+    startDate: new FormControl(new Date(2027, 6, 1), [
       Validators.required,
       StartDateValidator.validityDate,
     ]),
-    endDate: new FormControl(null, Validators.required),
+    endDate: new FormControl(new Date(2027, 6, 30), Validators.required),
     date: new FormControl(moment(), Validators.required),
   });
 

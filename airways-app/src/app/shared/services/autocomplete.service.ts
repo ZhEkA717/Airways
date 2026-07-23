@@ -7,8 +7,8 @@ import MatchFieldValidator from '../validators/autocomplete.validator';
 })
 export default class AutocompleteService {
   public form = new FormGroup({
-    from: new FormControl(''),
-    destination: new FormControl(''),
+    from: new FormControl('Vienna VIE'),
+    destination: new FormControl('Athens ATH'),
   }, {
     validators: Validators.compose([
       MatchFieldValidator.validFieldMatch('from', 'destination'),
